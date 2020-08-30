@@ -1,0 +1,60 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "BuilderMode",
+            "id": "1a0dd22e-9eca-4c41-948e-22b89fd8ee06",
+            "actions": [
+                {
+                    "name": "Quit",
+                    "type": "Button",
+                    "id": "e3297c48-6ead-4b05-901f-d4f4df5d24e3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "75d4dd25-c446-44af-a0de-0e9f9a19893f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "ViewerMode",
+            "id": "ebd91f5c-ac3a-4c56-b1b8-fda42d8666f9",
+            "actions": [
+                {
+                    "name": "CallMenu",
+                    "type": "Button",
+                    "id": "36520d05-7459-46e2-bd93-82a820b2119c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "660798f8-813f-4102-a8b5-45a6175b8c52",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CallMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
