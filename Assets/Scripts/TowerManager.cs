@@ -17,7 +17,7 @@ public class TowerManager : MonoBehaviour
     private void OnEnable()
     {
         Instance = this;
-        input = new Input();
+        input = InputShell.Instance;
         input.BuilderMode.Quit.performed += _ => ChooseNone();
     }
     public static Tower ChosenTower { get; private set; }
@@ -28,13 +28,16 @@ public class TowerManager : MonoBehaviour
         ChosenTower = Instantiate(towers[0]);
         ChosenTower.gameObject.SetActive(false);
         input.BuilderMode.Enable();
+        input.ViewerMode.Disable();
     }
 
     public void ChooseNone()
     {
+        if (ChosenTower == null) return;
         Destroy(ChosenTower.gameObject);
         ChosenTower = null;
         input.BuilderMode.Disable();
+        input.ViewerMode.Enable();
     }
 
     public Tower BuildChosenTower(Vector3 buildPoint)

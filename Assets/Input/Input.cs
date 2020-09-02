@@ -67,6 +67,164 @@ public class @Input : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MovementMode"",
+            ""id"": ""f805b270-e697-4412-aac2-4bc5dcaf4032"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""b53cc78d-2be0-42ae-9ee0-d2c0a703d9b0"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""f1b6287e-e34e-4dd6-aa04-6b9164a7b409"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""f91dc548-80ab-4b2b-9858-2edcf6d42143"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""d1c73981-f308-4d4c-a0d9-5f3c571c92eb"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d10be780-2247-402e-98d0-f5ca48ce99eb"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c593035b-7217-44ec-9c65-cf889e21c7b4"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""38a20659-ef9c-42f0-96e4-235f3b4287bb"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""76f81ddb-738a-4460-be18-768519194ef7"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""26875de7-e8e2-4367-8e12-cc4644e6a877"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""e23dc0f2-317c-4a67-9852-52dd01a6ba4c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1970812c-4e34-41ac-a483-a562145075cb"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42740d7e-928c-4608-8f96-b35c9af08bbc"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MenuMode"",
+            ""id"": ""61faa959-c454-4bb9-8633-1ee35ecc8824"",
+            ""actions"": [
+                {
+                    ""name"": ""CloseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab8d97a8-02b6-4800-84e8-04176f159d02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0c617744-eebc-4bda-b990-ae933238aed0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -77,6 +235,14 @@ public class @Input : IInputActionCollection, IDisposable
         // ViewerMode
         m_ViewerMode = asset.FindActionMap("ViewerMode", throwIfNotFound: true);
         m_ViewerMode_CallMenu = m_ViewerMode.FindAction("CallMenu", throwIfNotFound: true);
+        // MovementMode
+        m_MovementMode = asset.FindActionMap("MovementMode", throwIfNotFound: true);
+        m_MovementMode_Move = m_MovementMode.FindAction("Move", throwIfNotFound: true);
+        m_MovementMode_Rotate = m_MovementMode.FindAction("Rotate", throwIfNotFound: true);
+        m_MovementMode_Zoom = m_MovementMode.FindAction("Zoom", throwIfNotFound: true);
+        // MenuMode
+        m_MenuMode = asset.FindActionMap("MenuMode", throwIfNotFound: true);
+        m_MenuMode_CloseMenu = m_MenuMode.FindAction("CloseMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -188,6 +354,88 @@ public class @Input : IInputActionCollection, IDisposable
         }
     }
     public ViewerModeActions @ViewerMode => new ViewerModeActions(this);
+
+    // MovementMode
+    private readonly InputActionMap m_MovementMode;
+    private IMovementModeActions m_MovementModeActionsCallbackInterface;
+    private readonly InputAction m_MovementMode_Move;
+    private readonly InputAction m_MovementMode_Rotate;
+    private readonly InputAction m_MovementMode_Zoom;
+    public struct MovementModeActions
+    {
+        private @Input m_Wrapper;
+        public MovementModeActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_MovementMode_Move;
+        public InputAction @Rotate => m_Wrapper.m_MovementMode_Rotate;
+        public InputAction @Zoom => m_Wrapper.m_MovementMode_Zoom;
+        public InputActionMap Get() { return m_Wrapper.m_MovementMode; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MovementModeActions set) { return set.Get(); }
+        public void SetCallbacks(IMovementModeActions instance)
+        {
+            if (m_Wrapper.m_MovementModeActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnMove;
+                @Rotate.started -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnRotate;
+                @Zoom.started -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_MovementModeActionsCallbackInterface.OnZoom;
+            }
+            m_Wrapper.m_MovementModeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
+                @Zoom.started += instance.OnZoom;
+                @Zoom.performed += instance.OnZoom;
+                @Zoom.canceled += instance.OnZoom;
+            }
+        }
+    }
+    public MovementModeActions @MovementMode => new MovementModeActions(this);
+
+    // MenuMode
+    private readonly InputActionMap m_MenuMode;
+    private IMenuModeActions m_MenuModeActionsCallbackInterface;
+    private readonly InputAction m_MenuMode_CloseMenu;
+    public struct MenuModeActions
+    {
+        private @Input m_Wrapper;
+        public MenuModeActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CloseMenu => m_Wrapper.m_MenuMode_CloseMenu;
+        public InputActionMap Get() { return m_Wrapper.m_MenuMode; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuModeActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuModeActions instance)
+        {
+            if (m_Wrapper.m_MenuModeActionsCallbackInterface != null)
+            {
+                @CloseMenu.started -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCloseMenu;
+                @CloseMenu.performed -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCloseMenu;
+                @CloseMenu.canceled -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCloseMenu;
+            }
+            m_Wrapper.m_MenuModeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @CloseMenu.started += instance.OnCloseMenu;
+                @CloseMenu.performed += instance.OnCloseMenu;
+                @CloseMenu.canceled += instance.OnCloseMenu;
+            }
+        }
+    }
+    public MenuModeActions @MenuMode => new MenuModeActions(this);
     public interface IBuilderModeActions
     {
         void OnQuit(InputAction.CallbackContext context);
@@ -195,5 +443,15 @@ public class @Input : IInputActionCollection, IDisposable
     public interface IViewerModeActions
     {
         void OnCallMenu(InputAction.CallbackContext context);
+    }
+    public interface IMovementModeActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
+    }
+    public interface IMenuModeActions
+    {
+        void OnCloseMenu(InputAction.CallbackContext context);
     }
 }

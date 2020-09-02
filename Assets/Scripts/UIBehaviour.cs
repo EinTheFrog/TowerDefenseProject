@@ -7,12 +7,12 @@ public class UIBehaviour : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
     }
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void ResumeGame()

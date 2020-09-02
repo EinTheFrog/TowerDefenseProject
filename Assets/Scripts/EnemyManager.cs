@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     List<Enemy> enemies;
     Treasure treasure;
     Dictionary<RoadPlatform, List<List<RoadPlatform>>> paths;
+    Input input;
 
     public Vector3 TreasurePosition { get { return treasure.PositionForEnemies; } }
 
@@ -36,6 +37,12 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(SpawnTreasure());
+    }
+
+    IEnumerator SpawnTreasure()
+    {
+        yield return new WaitWhile(() => !RoadManager.Instance.IsReady);
         treasure = Instantiate(treasurePrefab);
         treasure.SetPosition(TreasurePlatform.GetCenterUnderPlatform());
     }
@@ -69,7 +76,11 @@ public class EnemyManager : MonoBehaviour
     public Queue<RoadPlatform> GetPath(RoadPlatform lastNode, RoadPlatform nextNode, bool hasTreasure)
     {
         RoadPlatform finish;
-        if (hasTreasure) finish = spawnPlatform;
+        if (hasTreasure)
+        {
+            finish = spawnPlatform;
+            if (lastNode == finish && nextNode == finish) DefeatMenuBehaviour.Instance.Show();
+        }
         else if (Carrier != null) finish = Carrier.NextRoadNode;
         else finish = TreasurePlatform;
 

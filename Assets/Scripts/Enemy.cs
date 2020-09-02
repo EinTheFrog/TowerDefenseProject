@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Path.Count > 0) MovementUpdate();
+        if (Path != null && Path.Count > 0) MovementUpdate();
         else
         {
             UpdatePath(Manager.GetPath(LastRoadNote, NextRoadNode, HasTreasure));

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoadManager : MonoBehaviour
@@ -10,18 +11,28 @@ public class RoadManager : MonoBehaviour
     
     public static RoadManager Instance { get; private set; }
 
+    public bool IsReady { get; private set; }
+
     private void Awake()
     {
         Instance = this;
     }
     private void OnEnable()
     {
+        IsReady = false;
         graph = new Graph();
-        int id = 0;
         roadDirs = new Dictionary<RoadPlatform, List<Vector3>>();
         roadNodes = new Dictionary<RoadPlatform, Node>();
         nodeRoads = new Dictionary<Node, RoadPlatform>();
-       
+
+        StartCoroutine(AddAllRoadParts());
+        IsReady = true;
+    }
+
+    IEnumerator AddAllRoadParts()
+    {
+        yield return new WaitForEndOfFrame();
+        int id = 0;
         foreach (RoadPlatform roadPart in gameObject.GetComponentsInChildren<RoadPlatform>())
         {
             roadPart.Id = id++;

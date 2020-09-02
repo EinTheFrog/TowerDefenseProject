@@ -8,7 +8,7 @@ public class RoadPlatform : Platform
     public List<Vector3> NeighboursDirs { get; private set; }
     public Dictionary<Vector3, RoadPlatform> Neighbours { get; private set; }
     public int Id { get; set; }
-    void Awake()
+    private void Start()
     {
         Neighbours = new Dictionary<Vector3, RoadPlatform>();
         NeighboursDirs = new List<Vector3>();
