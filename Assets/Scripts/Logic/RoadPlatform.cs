@@ -1,12 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
 public class RoadPlatform : Platform
 {
+    private float _danger = 0f;
     public List<Vector3> NeighboursDirs { get; private set; }
     public Dictionary<Vector3, RoadPlatform> Neighbours { get; private set; }
+
+    public RoadManager Manager { get; set; }
+
+    public float Danger { 
+        get
+        {
+            return _danger;
+        }
+        set
+        {
+            Manager.UpdateDanger(this, value);
+            _danger = value;
+        }
+    }
     public int Id { get; set; }
     private void Start()
     {
@@ -30,5 +44,10 @@ public class RoadPlatform : Platform
             NeighboursDirs.Add(direction);
             Neighbours[direction] = hit.transform.gameObject.GetComponent<RoadPlatform>();
         }
+    }
+
+    public override string ToString()
+    {
+        return $"id: {Id}, position: {transform.localPosition}, gameobject name: {gameObject.name}";
     }
 }

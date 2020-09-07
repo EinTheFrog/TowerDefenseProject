@@ -6,21 +6,21 @@ using System.Linq;
 
 public class Graph
 {
-    Dictionary<Node, Dictionary<Node, int>> graph = new Dictionary<Node, Dictionary<Node, int>>();
+    Dictionary<Node, Dictionary<Node, float>> graph = new Dictionary<Node, Dictionary<Node, float>>();
     Dictionary<int, Node> nodes = new Dictionary<int, Node>();
 
-    public void AddNode(Node newNode, Dictionary<Node, int> neighbours)
+    public void AddNode(Node newNode, Dictionary<Node, float> neighbours)
     {
         if (!graph.ContainsKey(newNode)) graph[newNode] = neighbours;
         else
         {
-            foreach (KeyValuePair<Node, int> pair in neighbours)
+            foreach (KeyValuePair<Node, float> pair in neighbours)
                 graph[newNode].Add(pair.Key, pair.Value);
         }
         nodes[newNode.Id] = newNode;
         foreach (Node neighbour in neighbours.Keys)
         {
-            if (!graph.ContainsKey(neighbour)) graph[neighbour] = new Dictionary<Node, int>();
+            if (!graph.ContainsKey(neighbour)) graph[neighbour] = new Dictionary<Node, float>();
             graph[neighbour][newNode] = graph[newNode][neighbour];
         }
     }
@@ -43,20 +43,26 @@ public class Graph
 
         SimplePriorityQueue<Node> priorityQueue = new SimplePriorityQueue<Node>();
         HashSet<Node> visited = new HashSet<Node>();
-        Dictionary<Node, int> pathCost = new Dictionary<Node, int>();
+        Dictionary<Node, float> pathCost = new Dictionary<Node, float>();
         Dictionary<Node, Node> pathParts = new Dictionary<Node, Node>();
-        pathCost[start] = 0;
+        pathCost[start] = 0f;
         priorityQueue.Enqueue(start, pathCost[start]);
         visited.Add(start);
 
         while (priorityQueue.Count > 0 && !pathParts.Keys.Contains(finish))
         {
             var node = priorityQueue.Dequeue();
+
+            if (!graph.ContainsKey(node))
+                Debug.LogError("Stop right there criminal scum1");
             foreach (Node neighbour in graph[node].Keys)
             {
-                int cost = pathCost[node] + graph[node][neighbour];
+                if (!graph.ContainsKey(neighbour))
+                    Debug.LogError("Stop right there criminal scum2");
+                float roughtRange = Mathf.Abs((neighbour.Position.X - finish.Position.X) + (neighbour.Position.Y - finish.Position.Y));
+                float cost = pathCost[node] + graph[node][neighbour];
                 if (!visited.Contains(neighbour)) priorityQueue.Enqueue(neighbour, cost);
-                else if (cost < pathCost[neighbour]) priorityQueue.UpdatePriority(neighbour, cost);
+                else if (cost < pathCost[neighbour]) priorityQueue.UpdatePriority(neighbour, cost + roughtRange);
                 else continue;
                 pathCost[neighbour] = cost;
                 pathParts[neighbour] = node;
@@ -67,10 +73,20 @@ public class Graph
         return WritePath(pathParts, start, finish);
     }
 
+    public void UpdateCost(Node start, Node finish, float costChange)
+    {
+        if (graph.ContainsKey(start) && graph[start].ContainsKey(finish)) graph[start][finish] += costChange;
+        if (graph.ContainsKey(finish) && graph[finish].ContainsKey(start)) graph[finish][start] += costChange;
+    }
+
     private List<Node> WritePath(Dictionary<Node, Node> pathParts, Node start, Node finish)
     {
         List<Node> path = new List<Node>();
-        if (!pathParts.ContainsKey(finish)) return null;
+        if (!pathParts.ContainsKey(finish))
+        {
+            Debug.LogError("Cannot find path to the finish");
+            return null;
+        } 
         var node = finish;
         path.Add(finish);
         while (!path.Contains(start))
@@ -80,23 +96,6 @@ public class Graph
         }
         path.Reverse();
         return path;
-    }
-
-    public override string ToString()
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (KeyValuePair<Node, Dictionary<Node, int>> pair1 in graph)
-        {
-            sb.Append("\n");
-            sb.Append(pair1.Key.Id);
-            sb.Append(":");
-            foreach (KeyValuePair<Node,  int> pair2 in pair1.Value)
-            {
-                sb.Append($"{pair2.Key.Id}-{pair2.Value}");
-            }
-            sb.Append("\n");
-        }
-        return sb.ToString();
     }
 }
 

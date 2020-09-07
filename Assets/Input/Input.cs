@@ -15,7 +15,7 @@ public class @Input : IInputActionCollection, IDisposable
     ""name"": ""Input"",
     ""maps"": [
         {
-            ""name"": ""BuilderMode"",
+            ""name"": ""BuildingMode"",
             ""id"": ""1a0dd22e-9eca-4c41-948e-22b89fd8ee06"",
             ""actions"": [
                 {
@@ -42,7 +42,7 @@ public class @Input : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""ViewerMode"",
+            ""name"": ""ViewMode"",
             ""id"": ""ebd91f5c-ac3a-4c56-b1b8-fda42d8666f9"",
             ""actions"": [
                 {
@@ -229,12 +229,12 @@ public class @Input : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // BuilderMode
-        m_BuilderMode = asset.FindActionMap("BuilderMode", throwIfNotFound: true);
-        m_BuilderMode_Quit = m_BuilderMode.FindAction("Quit", throwIfNotFound: true);
-        // ViewerMode
-        m_ViewerMode = asset.FindActionMap("ViewerMode", throwIfNotFound: true);
-        m_ViewerMode_CallMenu = m_ViewerMode.FindAction("CallMenu", throwIfNotFound: true);
+        // BuildingMode
+        m_BuildingMode = asset.FindActionMap("BuildingMode", throwIfNotFound: true);
+        m_BuildingMode_Quit = m_BuildingMode.FindAction("Quit", throwIfNotFound: true);
+        // ViewMode
+        m_ViewMode = asset.FindActionMap("ViewMode", throwIfNotFound: true);
+        m_ViewMode_CallMenu = m_ViewMode.FindAction("CallMenu", throwIfNotFound: true);
         // MovementMode
         m_MovementMode = asset.FindActionMap("MovementMode", throwIfNotFound: true);
         m_MovementMode_Move = m_MovementMode.FindAction("Move", throwIfNotFound: true);
@@ -289,29 +289,29 @@ public class @Input : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // BuilderMode
-    private readonly InputActionMap m_BuilderMode;
-    private IBuilderModeActions m_BuilderModeActionsCallbackInterface;
-    private readonly InputAction m_BuilderMode_Quit;
-    public struct BuilderModeActions
+    // BuildingMode
+    private readonly InputActionMap m_BuildingMode;
+    private IBuildingModeActions m_BuildingModeActionsCallbackInterface;
+    private readonly InputAction m_BuildingMode_Quit;
+    public struct BuildingModeActions
     {
         private @Input m_Wrapper;
-        public BuilderModeActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Quit => m_Wrapper.m_BuilderMode_Quit;
-        public InputActionMap Get() { return m_Wrapper.m_BuilderMode; }
+        public BuildingModeActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Quit => m_Wrapper.m_BuildingMode_Quit;
+        public InputActionMap Get() { return m_Wrapper.m_BuildingMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(BuilderModeActions set) { return set.Get(); }
-        public void SetCallbacks(IBuilderModeActions instance)
+        public static implicit operator InputActionMap(BuildingModeActions set) { return set.Get(); }
+        public void SetCallbacks(IBuildingModeActions instance)
         {
-            if (m_Wrapper.m_BuilderModeActionsCallbackInterface != null)
+            if (m_Wrapper.m_BuildingModeActionsCallbackInterface != null)
             {
-                @Quit.started -= m_Wrapper.m_BuilderModeActionsCallbackInterface.OnQuit;
-                @Quit.performed -= m_Wrapper.m_BuilderModeActionsCallbackInterface.OnQuit;
-                @Quit.canceled -= m_Wrapper.m_BuilderModeActionsCallbackInterface.OnQuit;
+                @Quit.started -= m_Wrapper.m_BuildingModeActionsCallbackInterface.OnQuit;
+                @Quit.performed -= m_Wrapper.m_BuildingModeActionsCallbackInterface.OnQuit;
+                @Quit.canceled -= m_Wrapper.m_BuildingModeActionsCallbackInterface.OnQuit;
             }
-            m_Wrapper.m_BuilderModeActionsCallbackInterface = instance;
+            m_Wrapper.m_BuildingModeActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Quit.started += instance.OnQuit;
@@ -320,31 +320,31 @@ public class @Input : IInputActionCollection, IDisposable
             }
         }
     }
-    public BuilderModeActions @BuilderMode => new BuilderModeActions(this);
+    public BuildingModeActions @BuildingMode => new BuildingModeActions(this);
 
-    // ViewerMode
-    private readonly InputActionMap m_ViewerMode;
-    private IViewerModeActions m_ViewerModeActionsCallbackInterface;
-    private readonly InputAction m_ViewerMode_CallMenu;
-    public struct ViewerModeActions
+    // ViewMode
+    private readonly InputActionMap m_ViewMode;
+    private IViewModeActions m_ViewModeActionsCallbackInterface;
+    private readonly InputAction m_ViewMode_CallMenu;
+    public struct ViewModeActions
     {
         private @Input m_Wrapper;
-        public ViewerModeActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CallMenu => m_Wrapper.m_ViewerMode_CallMenu;
-        public InputActionMap Get() { return m_Wrapper.m_ViewerMode; }
+        public ViewModeActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CallMenu => m_Wrapper.m_ViewMode_CallMenu;
+        public InputActionMap Get() { return m_Wrapper.m_ViewMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ViewerModeActions set) { return set.Get(); }
-        public void SetCallbacks(IViewerModeActions instance)
+        public static implicit operator InputActionMap(ViewModeActions set) { return set.Get(); }
+        public void SetCallbacks(IViewModeActions instance)
         {
-            if (m_Wrapper.m_ViewerModeActionsCallbackInterface != null)
+            if (m_Wrapper.m_ViewModeActionsCallbackInterface != null)
             {
-                @CallMenu.started -= m_Wrapper.m_ViewerModeActionsCallbackInterface.OnCallMenu;
-                @CallMenu.performed -= m_Wrapper.m_ViewerModeActionsCallbackInterface.OnCallMenu;
-                @CallMenu.canceled -= m_Wrapper.m_ViewerModeActionsCallbackInterface.OnCallMenu;
+                @CallMenu.started -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCallMenu;
+                @CallMenu.performed -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCallMenu;
+                @CallMenu.canceled -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCallMenu;
             }
-            m_Wrapper.m_ViewerModeActionsCallbackInterface = instance;
+            m_Wrapper.m_ViewModeActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @CallMenu.started += instance.OnCallMenu;
@@ -353,7 +353,7 @@ public class @Input : IInputActionCollection, IDisposable
             }
         }
     }
-    public ViewerModeActions @ViewerMode => new ViewerModeActions(this);
+    public ViewModeActions @ViewMode => new ViewModeActions(this);
 
     // MovementMode
     private readonly InputActionMap m_MovementMode;
@@ -436,11 +436,11 @@ public class @Input : IInputActionCollection, IDisposable
         }
     }
     public MenuModeActions @MenuMode => new MenuModeActions(this);
-    public interface IBuilderModeActions
+    public interface IBuildingModeActions
     {
         void OnQuit(InputAction.CallbackContext context);
     }
-    public interface IViewerModeActions
+    public interface IViewModeActions
     {
         void OnCallMenu(InputAction.CallbackContext context);
     }

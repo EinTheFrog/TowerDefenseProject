@@ -22,4 +22,9 @@ public class Node
     {
         return Id + 31 * Position.GetHashCode();
     }
+
+    public override string ToString()
+    {
+        return $"id: {Id}, position: {Position}";
+    }
 }

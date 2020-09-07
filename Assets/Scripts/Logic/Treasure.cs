@@ -8,7 +8,7 @@ public class Treasure : MonoBehaviour
     float levitateHeight = 0;
     public float Deceleration { get { return deceleration; } }
 
-    public bool isCaptured { get; set; }
+    public bool IsCaptured { get; set; }
 
     public Vector3 PositionForEnemies
     {
@@ -19,6 +19,14 @@ public class Treasure : MonoBehaviour
                 transform.localPosition.y - (transform.localScale.y * 0.5f + levitateHeight),
                 transform.localPosition.z);
         }
+    }
+
+    public void Init(bool isActive, Vector3? spawnPos = null)
+    {
+        if (!isActive) return;
+        gameObject.SetActive(true);
+        spawnPos = spawnPos ?? Vector3.zero;
+        SetPosition((Vector3)spawnPos);
     }
 
     public void SetPosition(Vector3 newPosition)

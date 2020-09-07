@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Platform : MonoBehaviour
 {
+    public Vector3 Center { get; private set; }
 
-    Vector2 center;
-    void OnDrawGizmos()
+    void OnDrawGizmos() // метод для упрощения постройки уровней в редакторе
     {
         if (transform.hasChanged)
         {
@@ -19,24 +17,16 @@ public abstract class Platform : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    void Awake() 
     {
+        //выставляем Center удобный для нас
         Vector3 localPos = transform.localPosition;
         Vector3 scale = transform.localScale;
         Vector3 size = GetComponent<MeshFilter>().mesh.bounds.size;
-        center = new Vector2(
+        Center = new Vector3(
             localPos.x + scale.x * size.x * 0.5f,
+            scale.y * size.y,
             localPos.z - scale.z * size.z * 0.5f
             );
-    }
-
-    public Vector3 GetCenterForHeight(float height)
-    {
-        return new Vector3(center.x, height, center.y);
-    }
-
-    public Vector3 GetCenterUnderPlatform()
-    {
-        return new Vector3(center.x, GetComponent<MeshRenderer>().bounds.size.y, center.y);
     }
 }

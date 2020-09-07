@@ -2,7 +2,7 @@
     "name": "Input",
     "maps": [
         {
-            "name": "BuilderMode",
+            "name": "BuildingMode",
             "id": "1a0dd22e-9eca-4c41-948e-22b89fd8ee06",
             "actions": [
                 {
@@ -29,7 +29,7 @@
             ]
         },
         {
-            "name": "ViewerMode",
+            "name": "ViewMode",
             "id": "ebd91f5c-ac3a-4c56-b1b8-fda42d8666f9",
             "actions": [
                 {

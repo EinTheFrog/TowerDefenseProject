@@ -28,7 +28,7 @@ public class DefeatMenuBehaviour : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
 
         input.MovementMode.Disable();
-        input.ViewerMode.Disable();
+        input.ViewMode.Disable();
         input.MenuMode.Disable();
         Time.timeScale = 0f;
     }

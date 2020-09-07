@@ -13,8 +13,8 @@ public class MenuBehaviour : MonoBehaviour
 
         input = InputShell.Instance;
         input.MovementMode.Enable();
-        input.ViewerMode.Enable();
-        input.ViewerMode.CallMenu.performed += _ => CallMenu();
+        input.ViewMode.Enable();
+        input.ViewMode.CallMenu.performed += _ => CallMenu();
         input.MenuMode.CloseMenu.performed += _ => CloseMenu();
 
         CloseMenu();
@@ -28,7 +28,7 @@ public class MenuBehaviour : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
 
         input.MovementMode.Disable();
-        input.ViewerMode.Disable();
+        input.ViewMode.Disable();
         input.MenuMode.Enable();
         Time.timeScale = 0f;
     }
@@ -41,7 +41,7 @@ public class MenuBehaviour : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
 
         input.MenuMode.Disable();
-        input.ViewerMode.Enable();
+        input.ViewMode.Enable();
         input.MovementMode.Enable();
         Time.timeScale = 1f;
     }
