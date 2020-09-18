@@ -15,18 +15,18 @@ public class Enemy : MonoBehaviour
  
     public Queue<RoadPlatform> Path { get; private set; }
     public EnemyManager Manager { get; private set; }
-    public RoadPlatform LastDestination { get; private set; }
+    public RoadPlatform LastDestination { get; set; }
     public RoadPlatform NextDestination { get; private set; }
     public bool HasTreasure { get; set; }
     public float ReceivedDamage { get; set; }
     public bool CarriersPath { get; set; }
 
-    private void Init(bool isActive, Vector3? spawnPos = null)
+/*    private void Init(bool isActive, Vector3? spawnPos = null)
     {
         gameObject.SetActive(isActive);
         if (!isActive) return;
         SetPosition(spawnPos ?? Vector3.zero);
-    }
+    }*/
 
     public void Init(Queue<RoadPlatform> initPath, EnemyManager manager)
     {
@@ -36,18 +36,15 @@ public class Enemy : MonoBehaviour
             Debug.LogError("Cannot process empty path");
             return;
         }
-        Init(true, initPath.Peek().Center);
+
+        //Init(true, initPath.Peek().Center);
         Path = new Queue<RoadPlatform>(initPath);
+        transform.localPosition = PosAbove(Path.Peek());
         LastDestination = Path.Dequeue();
         //тут каой-то баг и я не могу прямо в выражении задать null, поэтому работаем так
         NextDestination = null;
         NextDestination = Path.Count > 0 ? Path.Peek() : NextDestination;
         CalculateVelocity();
-    }
-
-    public void SetPosition(Vector3 spawnPoint)
-    {
-        transform.localPosition = PosAbove(spawnPoint);
     }
 
     private void OnEnable()
@@ -78,6 +75,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
+        //Если столкнулись с противником, несущим сокровище, то должны просто следовать зат ним
         if (enemy && enemy.HasTreasure)
         {
             SetPath(enemy.Path);
@@ -85,19 +83,18 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if (other.GetComponent<Treasure>() != null)
-            {
-                Manager.CaptureTreasure(this);
-            }
+            //Если столкнулись с скоровищем, то должны забрать его
+            if (other.GetComponent<Treasure>() != null) Manager.CaptureTreasure(this);
         }
     }
 
     void MovementUpdate()
     {
-        Vector3 distenationPos = PosAbove(NextDestination.Center);
-        if (Vector3.Distance(transform.localPosition, distenationPos) < speed * Time.deltaTime)
+        Vector3 distinationPos = PosAbove(NextDestination);
+        //Если добрались до следующего пункта пути - пора обновить скорость
+        if (Vector3.Distance(transform.localPosition, distinationPos) < speed * Time.deltaTime)
         {
-            transform.localPosition = distenationPos;
+            transform.localPosition = distinationPos;
             DefineDestinations();
         }
         transform.localPosition += velocity * Time.deltaTime;
@@ -129,15 +126,17 @@ public class Enemy : MonoBehaviour
             NextDestination = null;
             return;
         }
-        //Если мы поменяли направление пути посередние дороги, то меняем last и next местами
+        //Если мы поменяли направление пути посередние дороги или просто достаем слоедующий пукт из пути
+        //то присваеваем LastDestinatiom значение NextDestination
         if (NextDestination != null && NextDestination != Path.Peek()) LastDestination = NextDestination;
         NextDestination = Path.Count > 0 ? Path.Dequeue() : null;
         if (NextDestination != null) CalculateVelocity();
     }
 
-    private void CalculateVelocity() => velocity = speed * (PosAbove(NextDestination.Center) - transform.localPosition).normalized;
+    private void CalculateVelocity() => velocity = speed * (PosAbove(NextDestination) - transform.localPosition).normalized;
 
-    private Vector3 PosAbove(Vector3 pos) => new Vector3(pos.x, pos.y + levitateHeight, pos.z);
+    //Расчитываем позицию противника, с учетом того, что он левитирует над платформами
+    private Vector3 PosAbove(RoadPlatform road) => road.Center + Vector3.up * levitateHeight;
 
     public void UpdatePath()
     {
@@ -147,11 +146,5 @@ public class Enemy : MonoBehaviour
     public void MeetTheCarrier()
     {
         if (!CarriersPath) UpdatePath();
-    }
-
-    public void ReplaceCarriersPath()
-    {
-        if (!CarriersPath) return;
-        UpdatePath();
     }
 }

@@ -117,12 +117,17 @@ public class RoadManager : MonoBehaviour
         return ConvertNodesToRoads(graph.FindPath(roadNodes[roadStart], roadNodes[roadFinish]));
     }
 
-    public void RemoveNodeIfUseless(RoadPlatform road)
+    public KeyValuePair<RoadPlatform, RoadPlatform> RemoveNodeIfUseless(RoadPlatform road)
     {
         //todo: проверить на вшивость (не нашел ключ в графе)
-        if (road.Neighbours.Count < 2 ||
-             (road.Neighbours.Count == 2 && Vector3.Dot(road.NeighboursDirs[0], road.NeighboursDirs[1]) != 0))
+        if (road.Neighbours.Count == 2 &&
+             Vector3.Dot(road.NeighboursDirs[0], road.NeighboursDirs[1]) != 0)
+        {
             graph.RemoveNode(road.Id);
+            return roadsBetweenNodes[road];
+        }
+        return new KeyValuePair<RoadPlatform, RoadPlatform>();
+           
     }
 
     private List<RoadPlatform> ConvertNodesToRoads(List<Node> nodes)

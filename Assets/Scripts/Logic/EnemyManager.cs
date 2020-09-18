@@ -19,6 +19,7 @@ public class EnemyManager : MonoBehaviour
 
     public RoadPlatform ObjectivePlatform { get; private set; }
 
+    //Свойство для хранения противника, несущего сокровище (HasTreasure такого противника должно быть равно true)
     public Enemy Carrier {
         get
         {
@@ -31,6 +32,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    //Свойство для сравнения правильности взаимных ссылок в Manager-ах
     public RoadManager RoadManager { get => roadManager; }
 
     private void OnValidate()
@@ -50,6 +52,7 @@ public class EnemyManager : MonoBehaviour
     {
         treasure = Instantiate(treasurePrefab);
         treasure.Init(true, ObjectivePlatform.Center);
+        //устанавливаем кол-во секунд до следущего спауна (с учетом того, что для спауна secondsSinceLastSpawn должен быть >= secondsBetweenSpawn)
         secondsSinceLastSpawn = secondsBetweenSpawn - secondsBeforeFirstSpawn;
     }
 
@@ -65,6 +68,7 @@ public class EnemyManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Двигаем сокровище (чтобы не нагружать логикой сокровище)
         if (Carrier != null) treasure.SetPosition(Carrier.transform.localPosition);
     }
 
@@ -73,23 +77,19 @@ public class EnemyManager : MonoBehaviour
         Enemy enemy = Instantiate(enemyPrefab);
         enemy.Init(GetPath(spawnPlatform, null, false), this);
         enemies.Add(enemy);
-/*        enemy.SetPosition(spawnPlatform.Center);
-        enemy.NextRoadNode = spawnPlatform;
-        enemy.Manager = this;
-        enemies[enemy] = new List<RoadPlatform>();*/
     }
 
+    //Используем такую вариацию GetPath только при спауне противника
     private Queue<RoadPlatform> GetPath(RoadPlatform lastDestination, RoadPlatform nextDestination, bool hasTreasure)
     {
         RoadPlatform finish;
-        if (hasTreasure)
-        {
-            finish = spawnPlatform;
-            if (lastDestination == finish) ;
-        }
+        //Определяем куда нужно идти противнику
+        if (hasTreasure)finish = spawnPlatform;
         else finish = ObjectivePlatform;
 
         List<RoadPlatform> bestPath;
+        //если противник находится на дороге из одного пункта в другой,
+        //то он может посередине дороги развернуться и пойти в направлении любого из 2-ух
         if (nextDestination != null)
         {
             List<RoadPlatform> firstPath = roadManager.GetOrAddPath(lastDestination, finish);
@@ -112,8 +112,24 @@ public class EnemyManager : MonoBehaviour
         treasure.IsCaptured = true;
         Carrier = enemy;
         enemy.UpdatePath();
-        roadManager.RemoveNodeIfUseless(ObjectivePlatform);
-        ObjectivePlatform = enemy.NextDestination;
+        //Удаляем бесполезный пункт (стоит посреди прямой дороги или вообще ведет в тупик),
+        //т.к. он был нужен только для того, чтобы оптимально искать путь до упавшего (или заспауненного) сокровища
+        RemoveNodeIfUseless(ObjectivePlatform);
+        //Все  противники теперь должны двигаться наопережение неусущему
+        ObjectivePlatform = Carrier.NextDestination;
+    }
+
+    public void RemoveNodeIfUseless(RoadPlatform road)
+    {
+        KeyValuePair<RoadPlatform, RoadPlatform> roadsBeside = roadManager.RemoveNodeIfUseless(ObjectivePlatform);
+        if (roadsBeside.Key != null)
+        {
+            foreach (Enemy enemy in enemies)
+            {
+                if (enemy.LastDestination == road)
+                    enemy.LastDestination = enemy.NextDestination == roadsBeside.Value ? roadsBeside.Key : roadsBeside.Value;
+            }
+        }
     }
 
     public void UpdateCarrierPosition(Enemy caller)
@@ -123,6 +139,7 @@ public class EnemyManager : MonoBehaviour
             Debug.LogError("Enemy withour treasure is trying to update carriets position");
             return;
         }
+        //Обновляем позицию до которпой (наопережение) нужно двигаться всем проотивникам, которые еще не идут вместе с несущим
         foreach (Enemy enemy in enemies) if (!enemy.HasTreasure) enemy.MeetTheCarrier();
     }
 
@@ -130,18 +147,21 @@ public class EnemyManager : MonoBehaviour
     {
         if (dyingEnemy.HasTreasure)
         {
+            //Роняем сокровище
             Physics.Raycast(dyingEnemy.transform.localPosition, Vector3.down, out RaycastHit hit, 1f, 1 << 9);
             RoadPlatform road = hit.transform.GetComponent<RoadPlatform>();
             if (road == null) Debug.LogError("Where is no road platform under the enemy!");
             ObjectivePlatform = road;
             treasure.IsCaptured = false;
+            //Обнуляем несущего
             Carrier = null;
-            foreach (Enemy enemy in enemies) enemy.ReplaceCarriersPath();
+            foreach (Enemy enemy in enemies) enemy.UpdatePath();
         }
         enemies.Remove(dyingEnemy);
         Destroy(dyingEnemy.gameObject);
     }
 
+    //Метод для предупреждения всех необходимых противников о том, что опасность дорог изменилась
     public void AwareEnemies(RoadPlatform road)
     {
         foreach (Enemy enemy in enemies) if (enemy.Path.Contains(road)) enemy.UpdatePath();
