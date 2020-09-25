@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class RoadManager : MonoBehaviour
 {
     [SerializeField] EnemyManager enemyManager = null;
 
-    Dictionary<RoadPlatform, List<Vector3>> roadDirs;
+    Dictionary<RoadPlatform, List<Vector3>> roadNodeDirs;
     Dictionary<RoadPlatform, Node> roadNodes;
     Dictionary<Node, RoadPlatform> nodeRoads;
     Dictionary<RoadPlatform, KeyValuePair<RoadPlatform, RoadPlatform>> roadsBetweenNodes;
@@ -26,7 +27,7 @@ public class RoadManager : MonoBehaviour
     private void Awake()
     {
         graph = new Graph();
-        roadDirs = new Dictionary<RoadPlatform, List<Vector3>>();
+        roadNodeDirs = new Dictionary<RoadPlatform, List<Vector3>>();
         roadNodes = new Dictionary<RoadPlatform, Node>();
         nodeRoads = new Dictionary<Node, RoadPlatform>();
         roadsBetweenNodes = new Dictionary<RoadPlatform, KeyValuePair<RoadPlatform, RoadPlatform>>();
@@ -36,7 +37,9 @@ public class RoadManager : MonoBehaviour
     private void OnEnable()
     {
         foreach (RoadPlatform road in GetComponentsInChildren<RoadPlatform>())
+        {
             road.Manager = this;
+        }
     }
 
     private void Start()
@@ -51,49 +54,64 @@ public class RoadManager : MonoBehaviour
         {
             roadPart.Id = id++;
             if (roadPart.Neighbours.Count == 1) continue;
-            if (roadPart.Neighbours.Count > 2 ||
-                Vector3.Dot(roadPart.NeighboursDirs[0], roadPart.NeighboursDirs[1]) == 0)
-                roadDirs.Add(roadPart, roadPart.NeighboursDirs);
+            if (
+                roadPart.Neighbours.Count > 2 ||
+                Vector3.Dot(roadPart.NeighboursDirs[0], roadPart.NeighboursDirs[1]) == 0
+                )
+            {
+                roadNodeDirs.Add(roadPart, roadPart.NeighboursDirs);
+            }
         }
 
-        foreach (RoadPlatform road in roadDirs.Keys) AddNodeToGraph(road);
+        foreach (RoadPlatform road in roadNodeDirs.Keys)
+        {
+            AddNodeToGraph(road);
+        }
     }
 
     private void AddNodeToGraph(RoadPlatform roadNode)
     {
-        if (!roadDirs.ContainsKey(roadNode))
+        if (!roadNodeDirs.ContainsKey(roadNode))
         {
-            Debug.LogError("roadNode hasn't been added to roadDirs");
-            return;
+            throw new ArgumentException("roadNode hasn't been added to the roadNodeDirs");
         }
+
         Node node = new Node(
                 roadNode.Id,
                 roadNode.transform.localPosition.x,
                 roadNode.transform.localPosition.z
                 );
         Dictionary<Node, float> nodeNeighbours = new Dictionary<Node, float>();
-        foreach (Vector3 direction in roadDirs[roadNode])
+        roadsBetweenNodes.Remove(roadNode);
+
+        foreach (Vector3 direction in roadNodeDirs[roadNode])
         {
             HashSet<RoadPlatform> roadsBetween = new HashSet<RoadPlatform>();
-            roadsBetween.Add(roadNode);
             RoadPlatform next = roadNode;
             float pathCost = 0;
             while (next.Neighbours.ContainsKey(direction))
             {
                 next = next.Neighbours[direction];
                 pathCost += next.Danger;
-                roadsBetween.Add(next);
-                if (roadDirs.ContainsKey(next))
+                if (roadNodeDirs.ContainsKey(next))
                 {
-                    var x = next.transform.localPosition.x;
-                    var z = next.transform.localPosition.z;
-                    nodeNeighbours[new Node(next.Id, x, z)] = pathCost;
-                    roadDirs[next].Remove(direction * (-1));
+                    float x = next.transform.localPosition.x;
+                    float z = next.transform.localPosition.z;
+                    Node nodeNeighbour = roadNodes.ContainsKey(next) ? roadNodes[next] : new Node(next.Id, x, z);
+                    nodeNeighbours[nodeNeighbour] = pathCost;
+                    roadNodeDirs[next].Remove(direction * (-1));
 
                     KeyValuePair<RoadPlatform, RoadPlatform> value = new KeyValuePair<RoadPlatform, RoadPlatform>(roadNode, next);
-                    foreach (RoadPlatform road in roadsBetween) roadsBetweenNodes[road] = value;
+                    foreach (RoadPlatform road in roadsBetween)
+                    {
+                        roadsBetweenNodes[road] = value;
+                    }
 
                     break;
+                }
+                else
+                {
+                    roadsBetween.Add(next);
                 }
             }
         }
@@ -106,28 +124,60 @@ public class RoadManager : MonoBehaviour
     {
         if (!roadNodes.ContainsKey(roadStart))
         {
-            roadDirs.Add(roadStart, roadStart.NeighboursDirs);
+            roadNodeDirs.Add(roadStart, roadStart.NeighboursDirs);
             AddNodeToGraph(roadStart);
         }
         if (!roadNodes.ContainsKey(roadFinish))
         {
-            roadDirs.Add(roadFinish, roadFinish.NeighboursDirs);
+            roadNodeDirs.Add(roadFinish, roadFinish.NeighboursDirs);
             AddNodeToGraph(roadFinish);
         }
         return ConvertNodesToRoads(graph.FindPath(roadNodes[roadStart], roadNodes[roadFinish]));
     }
 
-    public KeyValuePair<RoadPlatform, RoadPlatform> RemoveNodeIfUseless(RoadPlatform road)
+    public bool RemoveNodeIfUseless(RoadPlatform road)
     {
         //todo: проверить на вшивость (не нашел ключ в графе)
         if (road.Neighbours.Count == 2 &&
              Vector3.Dot(road.NeighboursDirs[0], road.NeighboursDirs[1]) != 0)
         {
             graph.RemoveNode(road.Id);
-            return roadsBetweenNodes[road];
+            roadNodeDirs.Remove(road);
+            roadsBetweenNodes[road] = FindNearestRoadNodes(road);
+            return true;
         }
-        return new KeyValuePair<RoadPlatform, RoadPlatform>();
-           
+        return false;
+    }
+
+    public KeyValuePair<RoadPlatform, RoadPlatform>? GetNodesForRoadBetween(RoadPlatform road)
+    {
+        if (roadsBetweenNodes.ContainsKey(road)) return roadsBetweenNodes[road];
+        else return null;
+    }
+
+    private KeyValuePair<RoadPlatform, RoadPlatform> FindNearestRoadNodes(RoadPlatform road)
+    {
+        List<RoadPlatform> nearestRoadNodes = new List<RoadPlatform>();
+        foreach (RoadPlatform neighbour in road.Neighbours.Values)
+        {
+            if (roadsBetweenNodes.ContainsKey(neighbour))
+            {
+                nearestRoadNodes.Add(roadsBetweenNodes[neighbour].Key != road ? roadsBetweenNodes[neighbour].Key : roadsBetweenNodes[neighbour].Value);
+            }
+            else if (roadNodeDirs.ContainsKey(neighbour))
+            {
+                nearestRoadNodes.Add(neighbour);
+            }
+            else
+            {
+                throw new Exception("neighbour rode is not a roadNode but it is also not in roadsBetween");
+            }
+        }
+        if (nearestRoadNodes.Count != 2)
+        {
+            throw new ArgumentException("You are trying to remove useful roadnode");
+        }
+        return new KeyValuePair<RoadPlatform, RoadPlatform>(nearestRoadNodes[0], nearestRoadNodes[1]);
     }
 
     private List<RoadPlatform> ConvertNodesToRoads(List<Node> nodes)
@@ -136,7 +186,9 @@ public class RoadManager : MonoBehaviour
         foreach (Node node in nodes)
         {
             if (nodeRoads[node] == null)
+            {
                 Debug.LogError("Null in nodeRoads");
+            }
             result.Add(nodeRoads[node]);
         }
         return result;
@@ -144,16 +196,29 @@ public class RoadManager : MonoBehaviour
 
     public void UpdateDanger(RoadPlatform road, float newDanger)
     {
-        float costChange = newDanger - road.Danger;
-        if (!roadsBetweenNodes.ContainsKey(road)) return;
-        graph.UpdateCost(roadNodes[roadsBetweenNodes[road].Key], roadNodes[roadsBetweenNodes[road].Value], costChange);
+        float costChange = newDanger;
+        if (roadNodes.ContainsKey(road))
+        {
+            graph.UpdateCost(roadNodes[road], costChange);
+        }
+        else if (roadsBetweenNodes.ContainsKey(road))
+        {
+            graph.UpdateCost(roadNodes[roadsBetweenNodes[road].Key], roadNodes[roadsBetweenNodes[road].Value], costChange);
+        }
+        else return;
+
+        paths.Remove(road);
         foreach (RoadPlatform start in paths.Keys)
         {
             foreach (List<RoadPlatform> path in paths[start])
             {
-                if (path.Contains(road)) paths[start].Remove(path);
+                if (path.Contains(road))
+                {
+                    paths[start].Remove(path);
+                }
             }
         }
+
         enemyManager.AwareEnemies(road);
     }
 
@@ -196,10 +261,12 @@ public class RoadManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             RoadPlatform road = collidersInRadius[i].GetComponent<RoadPlatform>();
-            if (road != null) road.Danger++;
+            if (road != null)
+            {
+                road.Danger++;
+            }
         }
     }
-
 }
 
 

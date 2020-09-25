@@ -8,7 +8,9 @@ public class SoleManager : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (SolePlatform sole in GetComponentsInChildren<SolePlatform>()) 
+        foreach (SolePlatform sole in GetComponentsInChildren<SolePlatform>())
+        {
             sole.TowerManager = towerManager;
+        }
     }
 }

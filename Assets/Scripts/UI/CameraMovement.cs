@@ -31,6 +31,12 @@ public class CameraMovement : MonoBehaviour
     float zoomVelocity;
     float timeSinceLastScroll;
     Input input;
+
+    public static CameraMovement Instance { get; private set; }
+    private void Start()
+    {
+        Instance = this;
+    }
     private void OnEnable()
     {
         input = InputShell.Instance;
@@ -103,5 +109,17 @@ public class CameraMovement : MonoBehaviour
     {
         float deltaSpeed = rotationAcceleration * Time.deltaTime;
         rotationVelocity = Mathf.Lerp(rotationVelocity, desiredRotationVelocity * rotationMaxSpeed, deltaSpeed);
+    }
+
+    public void TriggerOnTowers(bool isTrigger)
+    {
+        if (isTrigger)
+        {
+            GetComponent<PhysicsRaycaster>().eventMask += LayerMask.GetMask("Towers");
+        }
+        else
+        {
+            GetComponent<PhysicsRaycaster>().eventMask -= LayerMask.GetMask("Towers");
+        }
     }
 }

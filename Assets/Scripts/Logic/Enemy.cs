@@ -15,18 +15,14 @@ public class Enemy : MonoBehaviour
  
     public Queue<RoadPlatform> Path { get; private set; }
     public EnemyManager Manager { get; private set; }
-    public RoadPlatform LastDestination { get; set; }
+    public RoadPlatform LastDestination { get; private set; }
     public RoadPlatform NextDestination { get; private set; }
     public bool HasTreasure { get; set; }
     public float ReceivedDamage { get; set; }
     public bool CarriersPath { get; set; }
 
-/*    private void Init(bool isActive, Vector3? spawnPos = null)
-    {
-        gameObject.SetActive(isActive);
-        if (!isActive) return;
-        SetPosition(spawnPos ?? Vector3.zero);
-    }*/
+    public delegate void DieHandler(Enemy enemy);
+    public event DieHandler Die;
 
     public void Init(Queue<RoadPlatform> initPath, EnemyManager manager)
     {
@@ -44,7 +40,11 @@ public class Enemy : MonoBehaviour
         //тут каой-то баг и я не могу прямо в выражении задать null, поэтому работаем так
         NextDestination = null;
         NextDestination = Path.Count > 0 ? Path.Peek() : NextDestination;
-        CalculateVelocity();
+        if (NextDestination != null)
+        {
+            CalculateVelocity();
+        }
+        Die += Manager.Kill;
     }
 
     private void OnEnable()
@@ -55,7 +55,10 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         health -= ReceivedDamage * Time.deltaTime;
-        if (health <= 0) Manager.Kill(this);
+        if (health <= 0)
+        {
+            Die(this);
+        }
     }
 
     private void FixedUpdate()
@@ -68,7 +71,10 @@ public class Enemy : MonoBehaviour
             //если у противника нет сокровища и он уже подошел к следующей точке маршрута несущего,
             //то он должен двинуться навстречу несущему 
             //(Carrier может быть равен null при определенных обстоятельствах)
-            if (NextDestination == null) SetPath(Manager.Carrier.LastDestination);
+            if (NextDestination == null)
+            {
+                SetPath(Manager.Carrier.LastDestination);
+            }
         }
     }
 

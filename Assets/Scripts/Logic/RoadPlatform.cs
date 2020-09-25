@@ -17,7 +17,7 @@ public class RoadPlatform : Platform
         }
         set
         {
-            Manager.UpdateDanger(this, value);
+            Manager.UpdateDanger(this, value - _danger);
             _danger = value;
         }
     }

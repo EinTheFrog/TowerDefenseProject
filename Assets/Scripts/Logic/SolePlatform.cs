@@ -5,7 +5,7 @@ public class SolePlatform : Platform, IPointerClickHandler, IPointerEnterHandler
 {
 
     Input input;
-    public bool IsFree { get; private set; }
+    public bool IsFree { get; set; }
     public TowerManager TowerManager { get; set; }
 
     public void Start()

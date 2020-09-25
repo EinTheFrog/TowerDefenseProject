@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TowerManager : MonoBehaviour
@@ -7,16 +8,22 @@ public class TowerManager : MonoBehaviour
 
     Input input;
     Tower chosenTower;
+    Dictionary<Tower, SolePlatform> towersSoles;
 
     public RoadManager RoadManager { get => roadManager; }
 
+
     private void OnEnable()
     {
-        //узнгаем актуальный input (общий для всех)
+        //узнаем актуальный input (общий для всех)
         input = InputShell.Instance;
         //добавляем реакции на нажатие клавиш
         input.BuildingMode.Quit.performed += _ => ChooseNone();
+    }
 
+    private void Start()
+    {
+        towersSoles = new Dictionary<Tower, SolePlatform>();
     }
 
     public void ChooseTower() //метод реагирующий на выбор башни в меню
@@ -33,8 +40,7 @@ public class TowerManager : MonoBehaviour
         chosenTower.Init(false);
 
         //настравиваем реакцию на клавишы в input-e
-        input.BuildingMode.Enable();
-        input.ViewMode.Disable();
+        InputShell.SetBuildingMode();
     }
 
     public void ChooseNone() //метод реагирующий на выход из режима постройки
@@ -43,16 +49,24 @@ public class TowerManager : MonoBehaviour
         Destroy(chosenTower.gameObject);
         chosenTower = null;
         //настравиваем реакцию на клавишы в input-e
-        input.BuildingMode.Disable();
-        input.ViewMode.Enable();
+        InputShell.SetViewMode();
     }
 
     public void BuildChosenTower(SolePlatform sole)
     {
         //создаем копию призрака (выбранного строения) в указанном месте
-        Instantiate(chosenTower).Init(Tower.TowerState.Building, sole.Center);
+        Tower newTower = Instantiate(chosenTower);
+        newTower.Init(Tower.TowerState.Building, sole.Center);
+        newTower.Remove += RemoveTower;
+        towersSoles[newTower] = sole;
         //ищем дороги в радиусе поражения и меняем их опасность
-        roadManager.UpdateDangerInRadius(sole.Center, chosenTower.GetComponent<CapsuleCollider>().radius);
+        roadManager.UpdateDangerInRadius(sole.Center, chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius);
+    }
+
+    private void RemoveTower(Tower tower)
+    {
+        towersSoles[tower].IsFree = true;
+        towersSoles.Remove(tower);
     }
 
     public void ShowChosenTower(SolePlatform sole)

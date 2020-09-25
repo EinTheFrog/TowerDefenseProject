@@ -102,9 +102,21 @@ public class EnemyManager : MonoBehaviour
 
     public Queue<RoadPlatform> GetPath(Enemy enemy)
     {
-        return GetPath(enemy.LastDestination, enemy.NextDestination, enemy.HasTreasure);
-    }
+        RoadPlatform next = enemy.NextDestination;
+        RoadPlatform last = enemy.LastDestination;
 
+        if (roadManager.GetNodesForRoadBetween(next) != null)
+        {
+            var roadsBeside = roadManager.GetNodesForRoadBetween(next).Value;
+            next = enemy.LastDestination != roadsBeside.Key ? roadsBeside.Key : roadsBeside.Value;
+        }
+        else if (roadManager.GetNodesForRoadBetween(last) != null)
+        {
+            var roadsBeside = roadManager.GetNodesForRoadBetween(next).Value;
+            last = enemy.NextDestination != roadsBeside.Key ? roadsBeside.Key : roadsBeside.Value;
+        }
+        return GetPath(last, next, enemy.HasTreasure);
+    }
 
     public void CaptureTreasure(Enemy enemy)
     {
@@ -112,22 +124,27 @@ public class EnemyManager : MonoBehaviour
         treasure.IsCaptured = true;
         Carrier = enemy;
         enemy.UpdatePath();
-        //Удаляем бесполезный пункт (стоит посреди прямой дороги или вообще ведет в тупик),
-        //т.к. он был нужен только для того, чтобы оптимально искать путь до упавшего (или заспауненного) сокровища
-        RemoveNodeIfUseless(ObjectivePlatform);
+
         //Все  противники теперь должны двигаться наопережение неусущему
+        RoadPlatform oldObjective = ObjectivePlatform;
         ObjectivePlatform = Carrier.NextDestination;
+        //Удаляем бесполезный пункт (стоит посреди прямой дороги или вообще ведет в тупик),
+        //т.к. он был нужен только для того, чтобы оптимально искать путь до упавшего (или заспауненного) сокровища.
+        //Удаляем через oldObjective, чтобы при поиске новых путей при удалении мы пользовались акутальной информацией
+        RemoveNodeIfUseless(oldObjective);
     }
 
     public void RemoveNodeIfUseless(RoadPlatform road)
     {
-        KeyValuePair<RoadPlatform, RoadPlatform> roadsBeside = roadManager.RemoveNodeIfUseless(ObjectivePlatform);
-        if (roadsBeside.Key != null)
+        bool deleted = roadManager.RemoveNodeIfUseless(road);
+        if (deleted)
         {
             foreach (Enemy enemy in enemies)
             {
-                if (enemy.LastDestination == road)
-                    enemy.LastDestination = enemy.NextDestination == roadsBeside.Value ? roadsBeside.Key : roadsBeside.Value;
+                if (enemy.Path.Contains(road))
+                {
+                    enemy.UpdatePath();
+                }            
             }
         }
     }
@@ -140,7 +157,13 @@ public class EnemyManager : MonoBehaviour
             return;
         }
         //Обновляем позицию до которпой (наопережение) нужно двигаться всем проотивникам, которые еще не идут вместе с несущим
-        foreach (Enemy enemy in enemies) if (!enemy.HasTreasure) enemy.MeetTheCarrier();
+        foreach (Enemy enemy in enemies)
+        {
+            if (!enemy.HasTreasure)
+            {
+                enemy.MeetTheCarrier();
+            }
+        }
     }
 
     public void Kill(Enemy dyingEnemy)
@@ -155,15 +178,27 @@ public class EnemyManager : MonoBehaviour
             treasure.IsCaptured = false;
             //Обнуляем несущего
             Carrier = null;
-            foreach (Enemy enemy in enemies) enemy.UpdatePath();
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.UpdatePath();
+            }
         }
         enemies.Remove(dyingEnemy);
         Destroy(dyingEnemy.gameObject);
     }
 
+
+
     //Метод для предупреждения всех необходимых противников о том, что опасность дорог изменилась
     public void AwareEnemies(RoadPlatform road)
     {
-        foreach (Enemy enemy in enemies) if (enemy.Path.Contains(road)) enemy.UpdatePath();
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.Path.Contains(road))
+            {
+                enemy.UpdatePath();
+            }
+        }
     }
+
 }
