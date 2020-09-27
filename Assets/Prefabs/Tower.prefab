@@ -251,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4090996799480038586}
   - component: {fileID: 8403851385011061650}
-  - component: {fileID: 6620768585974772895}
+  - component: {fileID: 1592332707560546100}
   m_Layer: 12
   m_Name: ColliderSphere
   m_TagString: Untagged
@@ -286,7 +286,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6620768585974772895
+--- !u!114 &1592332707560546100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,6 +295,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4970806227203917425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f236bb527589db438c8e632125c7c79, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cf1f93faa92926449ecd9d11e31d3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
