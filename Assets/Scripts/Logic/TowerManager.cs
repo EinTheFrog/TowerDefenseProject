@@ -60,13 +60,14 @@ public class TowerManager : MonoBehaviour
         newTower.Remove += RemoveTower;
         towersSoles[newTower] = sole;
         //ищем дороги в радиусе поражения и меняем их опасность
-        roadManager.UpdateDangerInRadius(sole.Center, chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius);
+        roadManager.UpdateDangerInRadius(sole.Center, chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius, 1);
     }
 
     private void RemoveTower(Tower tower)
     {
         towersSoles[tower].IsFree = true;
         towersSoles.Remove(tower);
+        roadManager.UpdateDangerInRadius(towersSoles[tower].Center, tower.transform.GetComponentInChildren<EnemyTrigger>().Radius, -1);
     }
 
     public void ShowChosenTower(SolePlatform sole)

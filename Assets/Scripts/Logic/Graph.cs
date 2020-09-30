@@ -59,11 +59,6 @@ public class Graph
         priorityQueue.Enqueue(start, pathCost[start]);
         visited.Add(start);
 
-        if (!graph.ContainsKey(start))
-        {
-            int a = 0;
-        }
-
         while (priorityQueue.Count > 0 && !pathParts.Keys.Contains(finish))
         {
             var node = priorityQueue.Dequeue();

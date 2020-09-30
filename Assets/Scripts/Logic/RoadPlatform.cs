@@ -4,14 +4,13 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class RoadPlatform : Platform
 {
-    private float _danger = 0f;
     public List<Vector3> NeighboursDirs { get; private set; }
     public Dictionary<Vector3, RoadPlatform> Neighbours { get; private set; }
 
     public RoadManager Manager { get; set; }
 
-    public float Danger { 
-        get
+    public float Danger = 0f;
+/*        get
         {
             return _danger;
         }
@@ -20,7 +19,7 @@ public class RoadPlatform : Platform
             Manager.UpdateDanger(this, value - _danger);
             _danger = value;
         }
-    }
+    }*/
     public int Id { get; set; }
     private void Start()
     {

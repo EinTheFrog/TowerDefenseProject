@@ -17,6 +17,7 @@ public class Tower : MonoBehaviour, IPointerClickHandler
     public delegate void RemoveHandler(Tower tower);
     public event RemoveHandler Remove;
     HashSet<Enemy> enemiesUderFire;
+    bool isShooting;
 
     public bool IsBuilded { get; private set; } = false;
     public void OnPointerClick(PointerEventData eventData)
@@ -33,6 +34,7 @@ public class Tower : MonoBehaviour, IPointerClickHandler
         GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         Remove += DestroyThis;
         enemiesUderFire = new HashSet<Enemy>();
+        isShooting = false;
     }
 
     private void DestroyThis(Tower tower)
@@ -47,6 +49,8 @@ public class Tower : MonoBehaviour, IPointerClickHandler
 
     public void StartShooting(Enemy enemy)
     {
+        if (isShooting) return;
+        isShooting = true;
         lineRenderer.SetPosition(1, enemy.transform.localPosition);
         enemy.ReceivedDamage += damage;
         //добавляем остановку стрельбы в событие смерти
@@ -61,6 +65,7 @@ public class Tower : MonoBehaviour, IPointerClickHandler
 
     public void StopShooting(Enemy enemy)
     {
+        isShooting = false;
         lineRenderer.SetPosition(1, transform.localPosition);
         enemy.ReceivedDamage = 0;
         enemiesUderFire.Remove(enemy);

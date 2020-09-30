@@ -63,10 +63,15 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (NextDestination != null) MovementUpdate();
-        else
+        if (NextDestination != null)
         {
-            if (HasTreasure) DefeatMenuBehaviour.Instance.Show();
+            MovementUpdate();
+        } else
+        {
+            if (HasTreasure)
+            {
+                DefeatMenuBehaviour.Instance.Show();
+            }
             UpdatePath();
             //если у противника нет сокровища и он уже подошел к следующей точке маршрута несущего,
             //то он должен двинуться навстречу несущему 
@@ -101,6 +106,7 @@ public class Enemy : MonoBehaviour
         if (Vector3.Distance(transform.localPosition, distinationPos) < speed * Time.deltaTime)
         {
             transform.localPosition = distinationPos;
+            Path.Dequeue();
             DefineDestinations();
         }
         transform.localPosition += velocity * Time.deltaTime;
@@ -108,11 +114,6 @@ public class Enemy : MonoBehaviour
 
     private void SetPath (Queue<RoadPlatform> newPath)
     {
-        if (newPath.Count == 0)
-        {
-            NextDestination = null;
-            return;
-        }
         //копируем данный путь, чтобы не изменять оригинал
         Path = new Queue<RoadPlatform>(newPath);
         DefineDestinations();
@@ -132,11 +133,14 @@ public class Enemy : MonoBehaviour
             NextDestination = null;
             return;
         }
-        //Если мы поменяли направление пути посередние дороги или просто достаем слоедующий пукт из пути
+        //Если мы поменяли направление пути посередние дороги или просто достаем следующий пункт из пути
         //то присваеваем LastDestinatiom значение NextDestination
-        if (NextDestination != null && NextDestination != Path.Peek()) LastDestination = NextDestination;
-        NextDestination = Path.Count > 0 ? Path.Dequeue() : null;
-        if (NextDestination != null) CalculateVelocity();
+        if (NextDestination != null && NextDestination != Path.Peek())
+        {
+            LastDestination = NextDestination;
+        }
+        NextDestination = Path.Peek();
+        CalculateVelocity();
     }
 
     private void CalculateVelocity() => velocity = speed * (PosAbove(NextDestination) - transform.localPosition).normalized;
@@ -151,6 +155,9 @@ public class Enemy : MonoBehaviour
 
     public void MeetTheCarrier()
     {
-        if (!CarriersPath) UpdatePath();
+        if (!CarriersPath)
+        {
+            UpdatePath();
+        }
     }
 }
