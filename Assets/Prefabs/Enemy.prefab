@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  health: 20
+  health: 10
   levitateHeight: 0.3
 --- !u!54 &6085065028219506216
 Rigidbody:

@@ -50,6 +50,7 @@ public class Tower : MonoBehaviour, IPointerClickHandler
     public void StartShooting(Enemy enemy)
     {
         if (isShooting) return;
+
         isShooting = true;
         lineRenderer.SetPosition(1, enemy.transform.localPosition);
         enemy.ReceivedDamage += damage;
@@ -60,11 +61,19 @@ public class Tower : MonoBehaviour, IPointerClickHandler
 
     public void MoveAim(Enemy enemy)
     {
-        lineRenderer.SetPosition(1, enemy.transform.localPosition);
+        if (!enemiesUderFire.Contains(enemy))
+        {
+            StartShooting(enemy);
+        }
+        if (enemiesUderFire.Contains(enemy))
+        {
+            lineRenderer.SetPosition(1, enemy.transform.localPosition);
+        }
     }
 
     public void StopShooting(Enemy enemy)
     {
+        if (!enemiesUderFire.Contains(enemy)) return;
         isShooting = false;
         lineRenderer.SetPosition(1, transform.localPosition);
         enemy.ReceivedDamage = 0;

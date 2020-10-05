@@ -29,7 +29,17 @@ public class EnemyManager : MonoBehaviour
         set
         {
             _carrier = value;
-            if (value) value.HasTreasure = true;
+            if (value)
+            {
+                _carrier.HasTreasure = true;
+            }
+            else
+            {
+                foreach (Enemy enemy in enemies)
+                {
+                    enemy.CarriersPath = false;
+                }
+            }
         }
     }
 
@@ -70,7 +80,10 @@ public class EnemyManager : MonoBehaviour
     private void FixedUpdate()
     {
         //Двигаем сокровище (чтобы не нагружать логикой сокровище)
-        if (Carrier != null) treasure.SetPosition(Carrier.transform.localPosition);
+        if (Carrier != null)
+        {
+            treasure.SetPosition(Carrier.transform.localPosition);
+        }
     }
 
     void SpawnEnemy()
@@ -88,9 +101,14 @@ public class EnemyManager : MonoBehaviour
         {
             finish = spawnPlatform;
         }
-        else
+        else if (lastDestination != ObjectivePlatform)
         {
             finish = ObjectivePlatform;
+        }
+        else
+        {
+            //если противник дошел до следующей точки маршрута несущего, то он должен двинуться ему навстречу
+            finish = Carrier.LastDestination;
         }
 
         List<RoadPlatform> bestPath;
@@ -111,6 +129,8 @@ public class EnemyManager : MonoBehaviour
 
     public Queue<RoadPlatform> GetPath(Enemy enemy)
     {
+        if (enemy.CarriersPath) return Carrier.Path;
+
         RoadPlatform next = enemy.NextDestination;
         RoadPlatform last = enemy.LastDestination;
 
@@ -162,6 +182,7 @@ public class EnemyManager : MonoBehaviour
             Debug.LogError("Enemy without treasure is trying to update carriets position");
             return;
         }
+        ObjectivePlatform = Carrier.NextDestination;
         //Обновляем позицию до которой (наопережение) нужно двигаться всем проотивникам, которые еще не идут вместе с несущим
         foreach (Enemy enemy in enemies)
         {
@@ -199,13 +220,22 @@ public class EnemyManager : MonoBehaviour
     //Метод для предупреждения всех необходимых противников о том, что опасность дорог изменилась
     public void AwareEnemies(IEnumerable<RoadPlatform> roads)
     {
+        //первым должен обновить путь несущий, чтобы следующие за ним могли просто скопировать его путь
+        foreach (RoadPlatform road in roads)
+        {
+            if (Carrier != null && Carrier.Path.Contains(road))
+            {
+                Carrier.UpdatePath();
+                break;
+            }
+        }
         foreach (Enemy enemy in enemies)
         {
             foreach (RoadPlatform road in roads)
             {
                 if (enemy.Path.Contains(road))
                 {
-                    enemy.MeetTheCarrier();
+                    enemy.UpdatePath();
                     break;
                 }
             }

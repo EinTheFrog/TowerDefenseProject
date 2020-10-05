@@ -33,7 +33,6 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        //Init(true, initPath.Peek().Center);
         Path = new Queue<RoadPlatform>(initPath);
         transform.localPosition = PosAbove(Path.Peek());
         LastDestination = Path.Dequeue();
@@ -63,6 +62,8 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Manager == null) return;
+
         if (NextDestination != null)
         {
             MovementUpdate();
@@ -95,7 +96,10 @@ public class Enemy : MonoBehaviour
         else
         {
             //Если столкнулись с скоровищем, то должны забрать его
-            if (other.GetComponent<Treasure>() != null) Manager.CaptureTreasure(this);
+            if (other.GetComponent<Treasure>() != null)
+            {
+                Manager.CaptureTreasure(this);
+            }
         }
     }
 
@@ -108,6 +112,10 @@ public class Enemy : MonoBehaviour
             transform.localPosition = distinationPos;
             Path.Dequeue();
             DefineDestinations();
+            if (HasTreasure)
+            {
+                Manager.UpdateCarrierPosition(this);
+            }
         }
         transform.localPosition += velocity * Time.deltaTime;
     }
@@ -150,6 +158,10 @@ public class Enemy : MonoBehaviour
 
     public void UpdatePath()
     {
+        if (Manager == null)
+        {
+            throw new ArgumentException("Manager hasn't been setted");
+        }
         SetPath(Manager.GetPath(this));
     }
 

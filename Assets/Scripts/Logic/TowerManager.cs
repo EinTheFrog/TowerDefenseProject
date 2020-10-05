@@ -56,18 +56,19 @@ public class TowerManager : MonoBehaviour
     {
         //создаем копию призрака (выбранного строения) в указанном месте
         Tower newTower = Instantiate(chosenTower);
-        newTower.Init(Tower.TowerState.Building, sole.Center);
         newTower.Remove += RemoveTower;
         towersSoles[newTower] = sole;
+        newTower.Init(Tower.TowerState.Building, sole.Center);
         //ищем дороги в радиусе поражения и меняем их опасность
         roadManager.UpdateDangerInRadius(sole.Center, chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius, 1);
     }
 
     private void RemoveTower(Tower tower)
     {
+        roadManager.UpdateDangerInRadius(towersSoles[tower].Center, tower.transform.GetComponentInChildren<EnemyTrigger>().Radius, -1);
+
         towersSoles[tower].IsFree = true;
         towersSoles.Remove(tower);
-        roadManager.UpdateDangerInRadius(towersSoles[tower].Center, tower.transform.GetComponentInChildren<EnemyTrigger>().Radius, -1);
     }
 
     public void ShowChosenTower(SolePlatform sole)

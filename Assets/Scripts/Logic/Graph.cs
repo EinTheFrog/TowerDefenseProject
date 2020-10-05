@@ -68,17 +68,25 @@ public class Graph
                 float cost = pathCost[node] + graph[node][neighbour];
                 if (!visited.Contains(neighbour))
                 {
-                    priorityQueue.Enqueue(neighbour, cost);
+                    priorityQueue.Enqueue(neighbour, cost + roughtRange);
+                    visited.Add(neighbour);
+                    pathCost[neighbour] = cost;
+                    pathParts[neighbour] = node;
                 }
                 else if (cost < pathCost[neighbour]) 
                 {
-                    priorityQueue.UpdatePriority(neighbour, cost + roughtRange);
+                    if (priorityQueue.Contains(neighbour))
+                    {
+                        priorityQueue.UpdatePriority(neighbour, cost + roughtRange);
+                    } else
+                    {
+                        priorityQueue.Enqueue(neighbour, cost + roughtRange);
+                    }
+                    pathCost[neighbour] = cost;
+                    pathParts[neighbour] = node;
                 }
                 else continue;
 
-                pathCost[neighbour] = cost;
-                pathParts[neighbour] = node;
-                visited.Add(neighbour);
                 if (neighbour == finish) break;
             }
         }

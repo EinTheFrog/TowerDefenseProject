@@ -130,12 +130,17 @@ public class RoadManager : MonoBehaviour
     {
         if (!roadNodes.ContainsKey(roadStart))
         {
-            roadNodeDirs.Add(roadStart, roadStart.NeighboursDirs);
+            roadNodeDirs[roadStart] = roadStart.NeighboursDirs;
             AddNodeToGraph(roadStart);
+        }
+
+        if (!roadNodes.ContainsKey(roadFinish) && roadNodeDirs.ContainsKey(roadFinish))
+        {
+            throw new Exception("road node isn't in roadNodes but in roadNodeDirs");
         }
         if (!roadNodes.ContainsKey(roadFinish))
         {
-            roadNodeDirs.Add(roadFinish, roadFinish.NeighboursDirs);
+            roadNodeDirs[roadFinish] = roadFinish.NeighboursDirs;
             AddNodeToGraph(roadFinish);
         }
         return ConvertNodesToRoads(graph.FindPath(roadNodes[roadStart], roadNodes[roadFinish]));
@@ -213,7 +218,7 @@ public class RoadManager : MonoBehaviour
             {
                 graph.UpdateCost(roadNodes[roadsBetweenNodes[road].Key], roadNodes[roadsBetweenNodes[road].Value], roadChanges[road]);
             }
-            else return;
+            else continue;
 
             paths.Remove(road);
             foreach (RoadPlatform start in paths.Keys)
@@ -239,14 +244,14 @@ public class RoadManager : MonoBehaviour
         //(не вызвывая лишний раз поиск нового пути)
         List<RoadPlatform> currentPath = new List<RoadPlatform>();
 
-        if (paths.ContainsKey(start))
+        /*if (paths.ContainsKey(start))
         {
             foreach (List<RoadPlatform> path in paths[start])
             {
                 if (path.Contains(finish))
                 {
                     int ind = path.IndexOf(finish);
-                    currentPath = path.GetRange(0, ind);
+                    currentPath = path.GetRange(0, ind + 1);
                     return currentPath;
                 }
             }
@@ -256,7 +261,7 @@ public class RoadManager : MonoBehaviour
             paths[start] = new List<List<RoadPlatform>>();
         }
 
-        if (currentPath.Count == 0) 
+        if (currentPath.Count == 0)
         {
             currentPath = FindPath(start, finish);
         }
@@ -268,7 +273,8 @@ public class RoadManager : MonoBehaviour
                 return currentPath;
             }
         }
-        paths[start].Add(currentPath);
+        paths[start].Add(currentPath);*/
+        currentPath = FindPath(start, finish);
         return currentPath;
     }
 
@@ -301,7 +307,8 @@ public class RoadManager : MonoBehaviour
             } 
             else
             {
-                List<List<RoadPlatform>> pathsCollection = paths[start];
+                List<RoadPlatform>[] pathsCollection = new List<RoadPlatform>[paths[start].Count];
+                paths[start].CopyTo(pathsCollection);
                 foreach (List<RoadPlatform> path in pathsCollection)
                 {
                     if (path.Contains(road))
