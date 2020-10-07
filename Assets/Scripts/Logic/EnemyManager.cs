@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
             _carrier = value;
             if (value)
             {
-                _carrier.HasTreasure = true;
+                _carrier.HasTreasure = true; 
             }
             else
             {
@@ -101,16 +101,23 @@ public class EnemyManager : MonoBehaviour
         {
             finish = spawnPlatform;
         }
-        else if (lastDestination != ObjectivePlatform)
+        else if (lastDestination != ObjectivePlatform || nextDestination != null)
         {
             finish = ObjectivePlatform;
         }
         else
         {
-            //если противник дошел до следующей точки маршрута несущего, то он должен двинуться ему навстречу
-            finish = Carrier.LastDestination;
+            if (Carrier != null)
+            {
+                //если противник дошел до следующей точки маршрута несущего, то он должен двинуться ему навстречу
+                finish = Carrier.LastDestination;
+            }
+            else
+            {
+                throw new System.Exception("Enemy is on treasure");
+            }
+            
         }
-
         List<RoadPlatform> bestPath;
         //если противник находится на дороге из одного пункта в другой,
         //то он может посередине дороги развернуться и пойти в направлении любого из 2-ух
@@ -165,7 +172,7 @@ public class EnemyManager : MonoBehaviour
         //RemoveNodeIfUseless(oldObjective);
     }
 
-    public void RemoveNodeIfUseless(RoadPlatform road)
+/*    public void RemoveNodeIfUseless(RoadPlatform road)
     {
         bool shouldBeDeleted = roadManager.ShouldNodeBeDeleted(road);
         if (shouldBeDeleted)
@@ -173,7 +180,7 @@ public class EnemyManager : MonoBehaviour
             AwareEnemies(new List<RoadPlatform> { road });
         }
         roadManager.RemoveNode(road);
-    }
+    }*/
 
     public void UpdateCarrierPosition(Enemy caller)
     {
@@ -182,7 +189,8 @@ public class EnemyManager : MonoBehaviour
             Debug.LogError("Enemy without treasure is trying to update carriets position");
             return;
         }
-        ObjectivePlatform = Carrier.NextDestination;
+        //Если несущий донес сокровище, но еще не вызвал окончание игры, то передаем всем противникам его последнюю позицию (тк его NextDestination == null)
+        ObjectivePlatform = Carrier.NextDestination != null ? Carrier.NextDestination  : Carrier.LastDestination;
         //Обновляем позицию до которой (наопережение) нужно двигаться всем проотивникам, которые еще не идут вместе с несущим
         foreach (Enemy enemy in enemies)
         {
@@ -239,6 +247,20 @@ public class EnemyManager : MonoBehaviour
                     break;
                 }
             }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (ObjectivePlatform != null)
+        {
+            Gizmos.DrawLine(ObjectivePlatform.Center, ObjectivePlatform.Center + Vector3.up * 10);
+        }
+
+        if (Carrier != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(Carrier.LastDestination.Center, Carrier.LastDestination.Center + Vector3.up * 10);
         }
     }
 

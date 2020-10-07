@@ -22,6 +22,7 @@ public class Graph
             foreach (KeyValuePair<Node, float> pair in neighbours)
             {
                 graph[newNode][pair.Key] = pair.Value;
+                if (pair.Value < 0) throw new Exception("Negative cost");
             }
         }  
 
@@ -66,6 +67,10 @@ public class Graph
             {
                 float roughtRange = Mathf.Abs(neighbour.Position.X - finish.Position.X + (neighbour.Position.Y - finish.Position.Y));
                 float cost = pathCost[node] + graph[node][neighbour];
+                if (cost < 0)
+                {
+                    throw new Exception("Negative cost");
+                }
                 if (!visited.Contains(neighbour))
                 {
                     priorityQueue.Enqueue(neighbour, cost + roughtRange);
@@ -95,8 +100,22 @@ public class Graph
 
     public void UpdateCost(Node start, Node finish, float costChange)
     {
-        if (graph.ContainsKey(start) && graph[start].ContainsKey(finish)) graph[start][finish] += costChange;
-        if (graph.ContainsKey(finish) && graph[finish].ContainsKey(start)) graph[finish][start] += costChange;
+        if (graph.ContainsKey(start) && graph[start].ContainsKey(finish))
+        {
+            if (graph[start][finish] + costChange < 0) throw new Exception("Negative cost");
+        }
+        if (graph.ContainsKey(finish) && graph[finish].ContainsKey(start))
+        {
+            if (graph[finish][start] + costChange < 0) throw new Exception("Negative cost");
+        }
+        if (graph.ContainsKey(start) && graph[start].ContainsKey(finish))
+        {
+            graph[start][finish] += costChange;
+        }
+        if (graph.ContainsKey(finish) && graph[finish].ContainsKey(start))
+        {
+            graph[finish][start] += costChange;
+        }
     }
 
     public void UpdateCost(Node node, float costChange)
@@ -105,13 +124,18 @@ public class Graph
         {
             Node[] keys = new Node[graph[node].Keys.Count];
             graph[node].Keys.CopyTo(keys, 0);
-            foreach (Node finish in keys)
+            foreach (Node neighbour in keys)
             {
-                graph[node][finish] += costChange;
-            }
-            foreach (Node start in keys)
-            {
-                graph[start][node] += costChange;
+                if (graph[node][neighbour] + costChange < 0)
+                {
+                    throw new Exception("Negative cost");
+                }
+                if (graph[neighbour][node] + costChange < 0)
+                {
+                    throw new Exception("Negative cost");
+                }
+                graph[node][neighbour] += costChange;
+                graph[neighbour][node] += costChange;
             }
          
         }

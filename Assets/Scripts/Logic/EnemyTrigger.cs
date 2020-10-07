@@ -13,7 +13,7 @@ public class EnemyTrigger : MonoBehaviour
         if (parrent == null) Debug.LogError("EnemyTrigger's parrent is not a tower!");
     }
 
-    private void OnTriggerEnter(Collider other) //реагируем на перемещение протв
+    private void OnTriggerEnter(Collider other)
     {
         if (!parrent.IsBuilded) return;
         Enemy enemy = other.GetComponent<Enemy>();
@@ -21,7 +21,7 @@ public class EnemyTrigger : MonoBehaviour
         parrent.StartShooting(enemy);
     }
 
-    private void OnTriggerStay(Collider other) //реагируем на перемещение протв
+    private void OnTriggerStay(Collider other) //реагируем на перемещение противников
     {
         if (!parrent.IsBuilded) return;
         Enemy enemy = other.GetComponent<Enemy>();

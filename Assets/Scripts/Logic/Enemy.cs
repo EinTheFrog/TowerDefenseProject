@@ -138,6 +138,7 @@ public class Enemy : MonoBehaviour
     {
         if (Path.Count == 0)
         {
+            LastDestination = NextDestination;
             NextDestination = null;
             return;
         }
@@ -167,7 +168,7 @@ public class Enemy : MonoBehaviour
 
     public void MeetTheCarrier()
     {
-        if (!CarriersPath)
+        if (!CarriersPath && !HasTreasure)
         {
             UpdatePath();
         }

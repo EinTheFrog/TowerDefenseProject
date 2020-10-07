@@ -83,22 +83,15 @@ public class RoadManager : MonoBehaviour
                 );
         Dictionary<Node, float> nodeNeighbours = new Dictionary<Node, float>();
 
-        if (roadsBetweenNodes.ContainsKey(roadNode))
-        {
-            RemoveDeprecatedPaths(roadsBetweenNodes[roadNode]);
-            roadsBetweenNodes.Remove(roadNode);
-            enemyManager.AwareEnemies(new List<RoadPlatform> { roadNode });
-        }
-
         foreach (Vector3 direction in roadNodeDirs[roadNode])
         {
             HashSet<RoadPlatform> roadsBetween = new HashSet<RoadPlatform>();
             RoadPlatform next = roadNode;
-            float pathCost = 0;
+            float pathCost = roadNode.Cost;
             while (next.Neighbours.ContainsKey(direction))
             {
                 next = next.Neighbours[direction];
-                pathCost += next.Danger;
+                pathCost += next.Cost;
                 if (roadNodeDirs.ContainsKey(next))
                 {
                     float x = next.transform.localPosition.x;
@@ -121,6 +114,15 @@ public class RoadManager : MonoBehaviour
                 }
             }
         }
+
+        if (roadsBetweenNodes.ContainsKey(roadNode))
+        {
+            RemoveDeprecatedPaths(roadsBetweenNodes[roadNode]);
+            roadsBetweenNodes.Remove(roadNode);
+
+            enemyManager.AwareEnemies(new List<RoadPlatform> { roadNode });
+        }
+
         graph.AddNode(node, nodeNeighbours);
         roadNodes[roadNode] = node;
         nodeRoads[node] = roadNode;
@@ -288,7 +290,7 @@ public class RoadManager : MonoBehaviour
             RoadPlatform road = collidersInRadius[i].GetComponent<RoadPlatform>();
             if (road != null)
             {
-                road.Danger += dangerChange;
+                road.Cost += dangerChange;
                 roads[road] = dangerChange;
             }
         }

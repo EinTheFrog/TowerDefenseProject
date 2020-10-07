@@ -9,17 +9,8 @@ public class RoadPlatform : Platform
 
     public RoadManager Manager { get; set; }
 
-    public float Danger = 0f;
-/*        get
-        {
-            return _danger;
-        }
-        set
-        {
-            Manager.UpdateDanger(this, value - _danger);
-            _danger = value;
-        }
-    }*/
+    public float Cost = 1f;
+
     public int Id { get; set; }
     private void Start()
     {
