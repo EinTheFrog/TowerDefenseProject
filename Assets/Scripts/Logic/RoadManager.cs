@@ -13,7 +13,7 @@ public class RoadManager : MonoBehaviour
     Dictionary<Node, RoadPlatform> nodeRoads;
     Dictionary<RoadPlatform, KeyValuePair<RoadPlatform, RoadPlatform>> roadsBetweenNodes;
     Graph graph;
-    Dictionary<RoadPlatform, List<List<RoadPlatform>>> paths;
+    //Dictionary<RoadPlatform, List<List<RoadPlatform>>> paths;
 
     public EnemyManager EnemyManager { get => enemyManager; }
 
@@ -31,7 +31,7 @@ public class RoadManager : MonoBehaviour
         roadNodes = new Dictionary<RoadPlatform, Node>();
         nodeRoads = new Dictionary<Node, RoadPlatform>();
         roadsBetweenNodes = new Dictionary<RoadPlatform, KeyValuePair<RoadPlatform, RoadPlatform>>();
-        paths = new Dictionary<RoadPlatform, List<List<RoadPlatform>>>();
+       // paths = new Dictionary<RoadPlatform, List<List<RoadPlatform>>>();
     }
 
     private void OnEnable()
@@ -117,7 +117,8 @@ public class RoadManager : MonoBehaviour
 
         if (roadsBetweenNodes.ContainsKey(roadNode))
         {
-            RemoveDeprecatedPaths(roadsBetweenNodes[roadNode]);
+            //RemoveDeprecatedPaths(roadsBetweenNodes[roadNode]);
+            graph.RemoveConnection(roadNodes[roadsBetweenNodes[roadNode].Key], roadNodes[roadsBetweenNodes[roadNode].Value]);
             roadsBetweenNodes.Remove(roadNode);
 
             enemyManager.AwareEnemies(new List<RoadPlatform> { roadNode });
@@ -148,12 +149,14 @@ public class RoadManager : MonoBehaviour
         return ConvertNodesToRoads(graph.FindPath(roadNodes[roadStart], roadNodes[roadFinish]));
     }
 
-    public void RemoveNode(RoadPlatform road)
+    public void RemoveNode(RoadPlatform roadNode)
     {
-        graph.RemoveNode(road.Id);
-        roadNodeDirs.Remove(road);
-        roadsBetweenNodes[road] = FindNearestRoadNodes(road);
-        RemoveDeprecatedPaths(road);
+        graph.RemoveNode(roadNode.Id);
+        roadNodeDirs.Remove(roadNode);
+        roadsBetweenNodes[roadNode] = FindNearestRoadNodes(roadNode);
+        float pathCost = CalculatePathCost(roadsBetweenNodes[roadNode].Key, roadsBetweenNodes[roadNode].Value);
+        graph.AddConnection(roadNodes[roadsBetweenNodes[roadNode].Key], roadNodes[roadsBetweenNodes[roadNode].Value], pathCost); 
+        //RemoveDeprecatedPaths(road);
     }
 
     public bool ShouldNodeBeDeleted(RoadPlatform road)
@@ -194,6 +197,26 @@ public class RoadManager : MonoBehaviour
         return new KeyValuePair<RoadPlatform, RoadPlatform>(nearestRoadNodes[0], nearestRoadNodes[1]);
     }
 
+    private float CalculatePathCost (RoadPlatform start, RoadPlatform finish)
+    {
+        float cost = 0;
+        foreach (Vector3 dir in start.NeighboursDirs)
+        {
+            cost = 0;
+            RoadPlatform next = start.Neighbours[dir];
+            while(!roadNodes.Keys.Contains(next))
+            {
+                cost += next.Cost;
+                next = next.Neighbours[dir];
+            }
+            if (next == finish)
+            {
+                return cost;
+            }
+        }
+        throw new ArgumentException("There is no path between these roadNodes");
+    }
+
     private List<RoadPlatform> ConvertNodesToRoads(List<Node> nodes)
     {
         List<RoadPlatform> result = new List<RoadPlatform>();
@@ -222,7 +245,7 @@ public class RoadManager : MonoBehaviour
             }
             else continue;
 
-            paths.Remove(road);
+            /*paths.Remove(road);
             foreach (RoadPlatform start in paths.Keys)
             {
                 List<RoadPlatform>[] pathsWithSameStart = new List<RoadPlatform>[paths[start].Count];
@@ -234,7 +257,7 @@ public class RoadManager : MonoBehaviour
                         paths[start].Remove(path);
                     }
                 }
-            }
+            }*/
         }
 
         enemyManager.AwareEnemies(roadChanges.Keys);
@@ -280,8 +303,25 @@ public class RoadManager : MonoBehaviour
         return currentPath;
     }
 
+    Vector3 pos1, pos2 = Vector3.zero;
+    float rad1, rad2 = 0;
     public void UpdateDangerInRadius(Vector3 center, float radius, float dangerChange)
     {
+        //test
+        if (dangerChange > 0)
+        {
+            pos1 = center;
+            rad1 = radius;
+            pos2 = Vector3.zero;
+            rad2 = 0;
+        } else
+        {
+            pos2 = center;
+            rad2 = radius;
+            pos1 = Vector3.zero;
+            rad1 = 0;
+        }
+
         Collider[] collidersInRadius = new Collider[100];
         Dictionary<RoadPlatform, float> roads = new Dictionary<RoadPlatform, float>();
         int count = Physics.OverlapSphereNonAlloc(center, radius, collidersInRadius);
@@ -291,41 +331,53 @@ public class RoadManager : MonoBehaviour
             if (road != null)
             {
                 road.Cost += dangerChange;
+                if (road.Cost < 0)
+                {
+                    throw new Exception("Road cost is less than 0");
+                }
                 roads[road] = dangerChange;
             }
         }
         UpdateDanger(roads);
     }
 
-    private void RemoveDeprecatedPaths(RoadPlatform road)
-    {
-        RoadPlatform[] starts = new RoadPlatform[paths.Keys.Count];
-        paths.Keys.CopyTo(starts, 0);
-        foreach (RoadPlatform start in starts)
+    /*    private void RemoveDeprecatedPaths(RoadPlatform road)
         {
-            if (start == road)
+            RoadPlatform[] starts = new RoadPlatform[paths.Keys.Count];
+            paths.Keys.CopyTo(starts, 0);
+            foreach (RoadPlatform start in starts)
             {
-                paths.Remove(start);
-            } 
-            else
-            {
-                List<RoadPlatform>[] pathsCollection = new List<RoadPlatform>[paths[start].Count];
-                paths[start].CopyTo(pathsCollection);
-                foreach (List<RoadPlatform> path in pathsCollection)
+                if (start == road)
                 {
-                    if (path.Contains(road))
+                    paths.Remove(start);
+                } 
+                else
+                {
+                    List<RoadPlatform>[] pathsCollection = new List<RoadPlatform>[paths[start].Count];
+                    paths[start].CopyTo(pathsCollection);
+                    foreach (List<RoadPlatform> path in pathsCollection)
                     {
-                        paths[start].Remove(path);
+                        if (path.Contains(road))
+                        {
+                            paths[start].Remove(path);
+                        }
                     }
                 }
             }
-        }
-    }
+        }*/
 
-    private void RemoveDeprecatedPaths(KeyValuePair<RoadPlatform, RoadPlatform> roads)
+    /*    private void RemoveDeprecatedPaths(KeyValuePair<RoadPlatform, RoadPlatform> roads)
+        {
+            RemoveDeprecatedPaths(roads.Key);
+            RemoveDeprecatedPaths(roads.Value);
+        }*/
+
+    private void OnDrawGizmos()
     {
-        RemoveDeprecatedPaths(roads.Key);
-        RemoveDeprecatedPaths(roads.Value);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(pos1, rad1);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(pos2, rad2);
     }
 }
 

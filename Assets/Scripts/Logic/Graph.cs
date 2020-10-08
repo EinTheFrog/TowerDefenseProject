@@ -38,7 +38,8 @@ public class Graph
 
     public void RemoveNode(int nodeId)
     {
-        if (!nodes.ContainsKey(nodeId)) return;
+        if (!nodes.ContainsKey(nodeId)) throw new Exception("Trying to remove node which doesn't exist");
+
         Node node = nodes[nodeId];
         graph.Remove(node);
         foreach (Node keyNode in graph.Keys)
@@ -103,17 +104,7 @@ public class Graph
         if (graph.ContainsKey(start) && graph[start].ContainsKey(finish))
         {
             if (graph[start][finish] + costChange < 0) throw new Exception("Negative cost");
-        }
-        if (graph.ContainsKey(finish) && graph[finish].ContainsKey(start))
-        {
-            if (graph[finish][start] + costChange < 0) throw new Exception("Negative cost");
-        }
-        if (graph.ContainsKey(start) && graph[start].ContainsKey(finish))
-        {
             graph[start][finish] += costChange;
-        }
-        if (graph.ContainsKey(finish) && graph[finish].ContainsKey(start))
-        {
             graph[finish][start] += costChange;
         }
     }
@@ -137,7 +128,9 @@ public class Graph
                 graph[node][neighbour] += costChange;
                 graph[neighbour][node] += costChange;
             }
-         
+        } else
+        {
+            throw new Exception("Trying to update cost of node which doesn't exits");
         }
     }
 
@@ -158,6 +151,18 @@ public class Graph
         }
         path.Reverse();
         return path;
+    }
+
+    public void RemoveConnection(Node start, Node finish)
+    {
+        graph[start].Remove(finish);
+        graph[finish].Remove(start);
+    }
+
+    public void AddConnection(Node start, Node finish, float cost)
+    {
+        graph[start][finish] = cost;
+        graph[finish][start] = cost;
     }
 }
 

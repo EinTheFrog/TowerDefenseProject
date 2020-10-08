@@ -37,9 +37,9 @@ public class EnemyTrigger : MonoBehaviour
         parrent.StopShooting(enemy);
     }
 
-    private void OnDrawGizmos()
+/*    private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, Radius);
-    }
+    }*/
 }
