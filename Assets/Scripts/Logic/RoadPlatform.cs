@@ -40,4 +40,10 @@ public class RoadPlatform : Platform
     {
         return $"id: {Id}, position: {transform.localPosition}, gameobject name: {gameObject.name}";
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(Center, Center + Vector3.up * Cost);
+    }
 }

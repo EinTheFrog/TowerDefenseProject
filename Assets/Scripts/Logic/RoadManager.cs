@@ -312,17 +312,13 @@ public class RoadManager : MonoBehaviour
         {
             pos1 = center;
             rad1 = radius;
-            pos2 = Vector3.zero;
-            rad2 = 0;
         } else
         {
             pos2 = center;
             rad2 = radius;
-            pos1 = Vector3.zero;
-            rad1 = 0;
         }
 
-        Collider[] collidersInRadius = new Collider[100];
+        Collider[] collidersInRadius = new Collider[200];
         Dictionary<RoadPlatform, float> roads = new Dictionary<RoadPlatform, float>();
         int count = Physics.OverlapSphereNonAlloc(center, radius, collidersInRadius);
         for (int i = 0; i < count; i++)
@@ -372,13 +368,13 @@ public class RoadManager : MonoBehaviour
             RemoveDeprecatedPaths(roads.Value);
         }*/
 
-    private void OnDrawGizmos()
+/*    private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(pos1, rad1);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(pos2, rad2);
-    }
+    }*/
 }
 
 
