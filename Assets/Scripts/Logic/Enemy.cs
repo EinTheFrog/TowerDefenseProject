@@ -74,17 +74,10 @@ public class Enemy : MonoBehaviour
                 DefeatMenuBehaviour.Instance.Show();
             }
             UpdatePath();
-            //если у противника нет сокровища и он уже подошел к следующей точке маршрута несущего,
-            //то он должен двинуться навстречу несущему 
-            //(Carrier может быть равен null при определенных обстоятельствах)
-            if (NextDestination == null)
-            {
-                SetPath(Manager.Carrier.LastDestination);
-            }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
         //Если столкнулись с противником, несущим сокровище, то должны просто следовать зат ним
@@ -124,13 +117,6 @@ public class Enemy : MonoBehaviour
     {
         //копируем данный путь, чтобы не изменять оригинал
         Path = new Queue<RoadPlatform>(newPath);
-        DefineDestinations();
-    }
-
-    private void SetPath(RoadPlatform target)
-    {
-        Path.Clear();
-        Path.Enqueue(target);
         DefineDestinations();
     }
 

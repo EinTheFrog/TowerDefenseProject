@@ -59,7 +59,7 @@ public class RoadManager : MonoBehaviour
                 Vector3.Dot(roadPart.NeighboursDirs[0], roadPart.NeighboursDirs[1]) == 0
                 )
             {
-                roadNodeDirs.Add(roadPart, roadPart.NeighboursDirs);
+                roadNodeDirs[roadPart] = roadPart.NeighboursDirs;
             }
         }
 
@@ -154,6 +154,17 @@ public class RoadManager : MonoBehaviour
         graph.RemoveNode(roadNode.Id);
         roadNodeDirs.Remove(roadNode);
         roadsBetweenNodes[roadNode] = FindNearestRoadNodes(roadNode);
+
+        RoadPlatform[] roadsBetweenNodesKeys = new RoadPlatform[roadsBetweenNodes.Count];
+        roadsBetweenNodes.Keys.CopyTo(roadsBetweenNodesKeys, 0);
+        foreach (RoadPlatform roadBetween in roadsBetweenNodesKeys)
+        {
+            if (roadsBetweenNodes[roadBetween].Key == roadNode && roadsBetweenNodes[roadBetween].Value == roadNode)
+            {
+                roadsBetweenNodes[roadBetween] = FindNearestRoadNodes(roadBetween);
+            }
+        }
+        roadNodes.Remove(roadNode);
         float pathCost = CalculatePathCost(roadsBetweenNodes[roadNode].Key, roadsBetweenNodes[roadNode].Value);
         graph.AddConnection(roadNodes[roadsBetweenNodes[roadNode].Key], roadNodes[roadsBetweenNodes[roadNode].Value], pathCost); 
         //RemoveDeprecatedPaths(road);
@@ -199,12 +210,12 @@ public class RoadManager : MonoBehaviour
 
     private float CalculatePathCost (RoadPlatform start, RoadPlatform finish)
     {
-        float cost = 0;
+        float cost;
         foreach (Vector3 dir in start.NeighboursDirs)
         {
             cost = 0;
             RoadPlatform next = start.Neighbours[dir];
-            while(!roadNodes.Keys.Contains(next))
+            while(!roadNodes.Keys.Contains(next) && next.Neighbours.ContainsKey(dir))
             {
                 cost += next.Cost;
                 next = next.Neighbours[dir];
@@ -303,21 +314,8 @@ public class RoadManager : MonoBehaviour
         return currentPath;
     }
 
-    Vector3 pos1, pos2 = Vector3.zero;
-    float rad1, rad2 = 0;
     public void UpdateDangerInRadius(Vector3 center, float radius, float dangerChange)
     {
-        //test
-        if (dangerChange > 0)
-        {
-            pos1 = center;
-            rad1 = radius;
-        } else
-        {
-            pos2 = center;
-            rad2 = radius;
-        }
-
         Collider[] collidersInRadius = new Collider[200];
         Dictionary<RoadPlatform, float> roads = new Dictionary<RoadPlatform, float>();
         int count = Physics.OverlapSphereNonAlloc(center, radius, collidersInRadius);
@@ -337,7 +335,7 @@ public class RoadManager : MonoBehaviour
         UpdateDanger(roads);
     }
 
-    /*    private void RemoveDeprecatedPaths(RoadPlatform road)
+    /*  private void RemoveDeprecatedPaths(RoadPlatform road)
         {
             RoadPlatform[] starts = new RoadPlatform[paths.Keys.Count];
             paths.Keys.CopyTo(starts, 0);
@@ -367,14 +365,6 @@ public class RoadManager : MonoBehaviour
             RemoveDeprecatedPaths(roads.Key);
             RemoveDeprecatedPaths(roads.Value);
         }*/
-
-/*    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(pos1, rad1);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(pos2, rad2);
-    }*/
 }
 
 

@@ -169,18 +169,18 @@ public class EnemyManager : MonoBehaviour
         //т.к. он был нужен только для того, чтобы оптимально искать путь до упавшего (или заспауненного) сокровища.
         //Удаляем через oldObjective, чтобы при поиске новых путей при удалении мы пользовались акутальной информацией
 
-        //RemoveNodeIfUseless(oldObjective);
+        RemoveNodeIfUseless(oldObjective);
     }
 
-/*    public void RemoveNodeIfUseless(RoadPlatform road)
+    public void RemoveNodeIfUseless(RoadPlatform road)
     {
         bool shouldBeDeleted = roadManager.ShouldNodeBeDeleted(road);
         if (shouldBeDeleted)
         {
             AwareEnemies(new List<RoadPlatform> { road });
+            roadManager.RemoveNode(road);
         }
-        roadManager.RemoveNode(road);
-    }*/
+    }
 
     public void UpdateCarrierPosition(Enemy caller)
     {
@@ -212,6 +212,7 @@ public class EnemyManager : MonoBehaviour
             enemies.Remove(dyingEnemy);
             Destroy(dyingEnemy.gameObject);
             Carrier = null;
+            //обновляем пути всех противников
             foreach (Enemy enemy in enemies)
             {
                 enemy.UpdatePath();
