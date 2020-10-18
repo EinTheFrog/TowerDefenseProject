@@ -4,6 +4,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class RoadPlatform : Platform
 {
+    //нужен отдельны лист так как мы в RoadManager обращаемся к индексам 0 и 1
     public List<Vector3> NeighboursDirs { get; private set; }
     public Dictionary<Vector3, RoadPlatform> Neighbours { get; private set; }
 
@@ -24,26 +25,24 @@ public class RoadPlatform : Platform
 
     private void CheckDirForNeighbour(Vector3 direction)
     {
-        Physics.Raycast(
-            transform.position + transform.right / 2 - transform.forward / 2,
-            direction,
-            out RaycastHit hit, 2f
-            );
+        Physics.Raycast(Center - Vector3.up * size.y * scale.y, direction,out RaycastHit hit, size.x * scale.x * 0.75f);
         if (hit.transform != null && hit.transform.gameObject.GetComponent<RoadPlatform>() != null)
         {
             NeighboursDirs.Add(direction);
             Neighbours[direction] = hit.transform.gameObject.GetComponent<RoadPlatform>();
         }
     }
-
-    public override string ToString()
-    {
-        return $"id: {Id}, position: {transform.localPosition}, gameobject name: {gameObject.name}";
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(Center, Center + Vector3.up * Cost);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(Center - Vector3.up * size.y * scale.y * 0.5f, Center - Vector3.up * size.y * scale.y * 0.5f + Vector3.forward * size.x * scale.x * 0.75f);
     }
+
+    public override bool Equals(object other) => other.ToString().Equals(ToString());
+
+    public override int GetHashCode() => ToString().GetHashCode();
+
+    public override string ToString() => $"[[Id: {Id}], [Cost: {Cost}], [localPosition: {transform.localPosition}]]";
 }

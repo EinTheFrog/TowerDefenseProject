@@ -25,6 +25,6 @@ public class Node
 
     public override string ToString()
     {
-        return $"[id: {Id}], [position: {Position}]";
+        return $"[Id: {Id}], [Position: {Position}]";
     }
 }

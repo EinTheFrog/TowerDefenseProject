@@ -4,6 +4,9 @@ public abstract class Platform : MonoBehaviour
 {
     public Vector3 Center { get; private set; }
 
+    protected Vector3 localPos;
+    protected Vector3 scale;
+    protected Vector3 size;
     void OnDrawGizmos() // метод для упрощения постройки уровней в редакторе
     {
         if (transform.hasChanged)
@@ -20,9 +23,9 @@ public abstract class Platform : MonoBehaviour
     void Awake() 
     {
         //выставляем Center удобный для нас
-        Vector3 localPos = transform.localPosition;
-        Vector3 scale = transform.localScale;
-        Vector3 size = GetComponent<MeshFilter>().mesh.bounds.size;
+        localPos = transform.localPosition;
+        scale = transform.localScale;
+        size = GetComponent<MeshFilter>().mesh.bounds.size;
         Center = new Vector3(
             localPos.x + scale.x * size.x * 0.5f,
             scale.y * size.y,
