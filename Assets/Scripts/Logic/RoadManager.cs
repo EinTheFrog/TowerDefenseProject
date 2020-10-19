@@ -64,6 +64,7 @@ public class RoadManager : MonoBehaviour
     }
 
     private bool CheckIfNode(RoadPlatform road) =>
+               roadNodes.ContainsKey(road) ||
                road.Neighbours.Count > 2 ||
                (road.Neighbours.Count == 2 &&
                Vector3.Dot(road.NeighboursDirs[0], road.NeighboursDirs[1]) == 0);
@@ -112,7 +113,6 @@ public class RoadManager : MonoBehaviour
             //RemoveDeprecatedPaths(roadsBetweenNodes[roadNode]);
             graph.RemoveConnection(roadNodes[roadsBetweenNodes[roadNode].Key], roadNodes[roadsBetweenNodes[roadNode].Value]);
             roadsBetweenNodes.Remove(roadNode);
-
             enemyManager.AwareEnemies(new List<RoadPlatform> { roadNode });
         }
 
@@ -141,6 +141,7 @@ public class RoadManager : MonoBehaviour
 
         RoadPlatform[] roadsBetweenNodesKeys = new RoadPlatform[roadsBetweenNodes.Count];
         roadsBetweenNodes.Keys.CopyTo(roadsBetweenNodesKeys, 0);
+        nodeRoads.Remove(roadNodes[roadNode]);
         roadNodes.Remove(roadNode);
         foreach (RoadPlatform roadBetween in roadsBetweenNodesKeys)
         {
@@ -167,25 +168,19 @@ public class RoadManager : MonoBehaviour
         else return null;
     }
 
-    private KeyValuePair<RoadPlatform, RoadPlatform> FindNearestRoadNodes(RoadPlatform road)
+    private KeyValuePair<RoadPlatform, RoadPlatform> FindNearestRoadNodes(RoadPlatform start)
     {
         List<RoadPlatform> nearestRoadNodes = new List<RoadPlatform>();
-        if (road.Neighbours.Count != 2) throw new ArgumentException("It is prohibited to delete useful node");
+        if (start.Neighbours.Count != 2) throw new ArgumentException("It is prohibited to delete useful node");
 
-        foreach (RoadPlatform neighbour in road.Neighbours.Values)
+        foreach (Vector3 dir in start.NeighboursDirs)
         {
-            if (roadsBetweenNodes.ContainsKey(neighbour))
+            RoadPlatform next = start.Neighbours[dir];
+            while (!roadNodes.ContainsKey(next) && next.Neighbours.ContainsKey(dir))
             {
-                nearestRoadNodes.Add(roadsBetweenNodes[neighbour].Key != road ? roadsBetweenNodes[neighbour].Key : roadsBetweenNodes[neighbour].Value);
+                next = next.Neighbours[dir];
             }
-            else if (roadNodes.ContainsKey(neighbour))
-            {
-                nearestRoadNodes.Add(neighbour);
-            }
-            else
-            {
-                throw new Exception("Neighbour road is not a roadNode but it is also not in roadsBetween");
-            }
+            if (roadNodes.ContainsKey(next)) nearestRoadNodes.Add(next);
         }
         if (nearestRoadNodes.Count != 2)
         {
@@ -201,7 +196,7 @@ public class RoadManager : MonoBehaviour
         {
             RoadPlatform next = start.Neighbours[dir];
             cost = start.Cost + next.Cost;
-            while (!roadNodes.Keys.Contains(next) && next.Neighbours.ContainsKey(dir))
+            while (!roadNodes.ContainsKey(next) && next.Neighbours.ContainsKey(dir))
             {
                 next = next.Neighbours[dir];
                 cost += next.Cost;
@@ -239,7 +234,8 @@ public class RoadManager : MonoBehaviour
             }
             else if (roadsBetweenNodes.ContainsKey(road))
             {
-                if (!roadNodes.ContainsKey(roadsBetweenNodes[road].Key) || roadNodes.ContainsKey(roadsBetweenNodes[road].Value)) {
+                if (!roadNodes.ContainsKey(roadsBetweenNodes[road].Key) || !roadNodes.ContainsKey(roadsBetweenNodes[road].Value)) 
+                {
                     throw new ArgumentException("Node in roadBetweenNodes value isn't in roadNodes");
                 }
                 graph.UpdateCost(roadNodes[roadsBetweenNodes[road].Key], roadNodes[roadsBetweenNodes[road].Value], roadChanges[road]);

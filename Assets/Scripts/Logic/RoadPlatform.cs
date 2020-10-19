@@ -42,7 +42,7 @@ public class RoadPlatform : Platform
 
     public override bool Equals(object other) => other.ToString().Equals(ToString());
 
-    public override int GetHashCode() => ToString().GetHashCode();
+    public override int GetHashCode() => Id + 31 * (int) (transform.localPosition.x + 31 * transform.localPosition.z);
 
     public override string ToString() => $"[[Id: {Id}], [Cost: {Cost}], [localPosition: {transform.localPosition}]]";
 }
