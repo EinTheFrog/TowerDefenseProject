@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Logic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour

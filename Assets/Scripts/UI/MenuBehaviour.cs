@@ -1,48 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MenuBehaviour : MonoBehaviour
+namespace UI
 {
-    Input input;
-    CanvasGroup canvasGroup;
-
-    private void Start()
+    public class MenuBehaviour : MonoBehaviour
     {
-        canvasGroup = GetComponent<CanvasGroup>();
+        Input input;
+        CanvasGroup canvasGroup;
 
-        input = InputShell.Instance;
-        input.MovementMode.Enable();
-        input.ViewMode.Enable();
-        input.ViewMode.CallMenu.performed += _ => CallMenu();
-        input.MenuMode.CloseMenu.performed += _ => CloseMenu();
+        private void Start()
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
 
-        CloseMenu();
-    }
+            input = InputShell.Instance;
+            input.MovementMode.Enable();
+            input.ViewMode.Enable();
+            input.ViewMode.CallMenu.performed += _ => CallMenu();
+            input.MenuMode.CloseMenu.performed += _ => CloseMenu();
 
-    private void CallMenu()
-    {
-        if (canvasGroup == null) return;
-        canvasGroup.alpha = 1;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
+            CloseMenu();
+        }
 
-        input.MovementMode.Disable();
-        input.ViewMode.Disable();
-        input.MenuMode.Enable();
-        Time.timeScale = 0f;
-    }
+        private void CallMenu()
+        {
+            if (canvasGroup == null) return;
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
 
-    public void CloseMenu()
-    {
-        if (canvasGroup == null) return;
-        canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
+            input.MovementMode.Disable();
+            input.ViewMode.Disable();
+            input.MenuMode.Enable();
+            Time.timeScale = 0f;
+        }
 
-        input.MenuMode.Disable();
-        input.ViewMode.Enable();
-        input.MovementMode.Enable();
-        Time.timeScale = 1f;
+        public void CloseMenu()
+        {
+            if (canvasGroup == null) return;
+            canvasGroup.alpha = 0;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+
+            input.MenuMode.Disable();
+            input.ViewMode.Enable();
+            input.MovementMode.Enable();
+            Time.timeScale = 1f;
+        }
     }
 }

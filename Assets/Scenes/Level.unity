@@ -49322,7 +49322,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1563434149}
-        m_MethodName: ChooseTower
+        m_MethodName: ChooseTowerOnBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

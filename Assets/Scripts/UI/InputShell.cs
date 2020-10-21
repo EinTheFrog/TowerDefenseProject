@@ -1,23 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class InputShell : MonoBehaviour
+namespace UI
 {
-    private static readonly Input input = new Input();
-    public static Input Instance { get; } = input;
-
-    public static void SetBuildingMode()
+    public class InputShell : MonoBehaviour
     {
-        input.BuildingMode.Enable();
-        input.ViewMode.Disable();
-        CameraMovement.Instance.TriggerOnTowers(false);
-    }
+        private static readonly Input input = new Input();
+        public static Input Instance { get; } = input;
 
-    public static void SetViewMode()
-    {
-        input.ViewMode.Enable();
-        input.BuildingMode.Disable();
-        CameraMovement.Instance.TriggerOnTowers(true);
+        public static void SetBuildingMode()
+        {
+            input.BuildingMode.Enable();
+            input.ViewMode.Disable();
+            CameraMovement.Instance.TriggerOnTowers(false);
+        }
+
+        public static void SetViewMode()
+        {
+            input.ViewMode.Enable();
+            input.BuildingMode.Disable();
+            CameraMovement.Instance.TriggerOnTowers(true);
+        }
     }
 }

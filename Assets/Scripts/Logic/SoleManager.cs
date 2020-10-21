@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SoleManager : MonoBehaviour
+namespace Logic
 {
-    [SerializeField] TowerManager towerManager = null;
-
-    private void OnEnable()
+    public class SoleManager : MonoBehaviour
     {
-        foreach (SolePlatform sole in GetComponentsInChildren<SolePlatform>())
+        [SerializeField] TowerManager towerManager = null;
+
+        private void OnEnable()
         {
-            sole.TowerManager = towerManager;
+            foreach (SolePlatform sole in GetComponentsInChildren<SolePlatform>())
+            {
+                sole.TowerManager = towerManager;
+            }
         }
     }
 }

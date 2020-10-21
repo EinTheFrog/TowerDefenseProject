@@ -1,35 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DefeatMenuBehaviour : MonoBehaviour
+namespace UI
 {
-    Input input;
-    CanvasGroup canvasGroup;
-
-    public static DefeatMenuBehaviour Instance { get; private set; }
-
-    private void OnEnable()
+    public class DefeatMenuBehaviour : MonoBehaviour
     {
-        Instance = this;
-    }
+        Input input;
+        CanvasGroup canvasGroup;
 
-    private void Start()
-    {
-        canvasGroup = GetComponent<CanvasGroup>();
+        public static DefeatMenuBehaviour Instance { get; private set; }
 
-        input = InputShell.Instance;
-    }
-    public void Show()
-    {
-        if (canvasGroup == null) return;
-        canvasGroup.alpha = 1;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
+        private void OnEnable()
+        {
+            Instance = this;
+        }
 
-        input.MovementMode.Disable();
-        input.ViewMode.Disable();
-        input.MenuMode.Disable();
-        Time.timeScale = 0f;
+        private void Start()
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+
+            input = InputShell.Instance;
+        }
+        public void Show()
+        {
+            if (canvasGroup == null) return;
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
+
+            input.MovementMode.Disable();
+            input.ViewMode.Disable();
+            input.MenuMode.Disable();
+            Time.timeScale = 0f;
+        }
     }
 }

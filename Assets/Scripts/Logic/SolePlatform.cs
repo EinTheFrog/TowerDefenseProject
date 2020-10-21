@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Logic;
+using UI;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class SolePlatform : Platform, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
