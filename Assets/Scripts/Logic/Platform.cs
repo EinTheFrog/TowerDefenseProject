@@ -6,32 +6,33 @@ namespace Logic
     {
         public Vector3 Center { get; private set; }
 
-        protected Vector3 localPos;
-        protected Vector3 scale;
-        protected Vector3 size;
-        void OnDrawGizmos() // метод для упрощения постройки уровней в редакторе
+        private Vector3 _localPos;
+        protected Vector3 Scale;
+        protected Vector3 Size;
+
+        public void OnDrawGizmos() // метод для упрощения постройки уровней в редакторе
         {
-            if (transform.hasChanged)
-            {
-                transform.localPosition = new Vector3(
-                    Mathf.Round(transform.localPosition.x),
-                    Mathf.Round(transform.localPosition.y),
-                    Mathf.Round(transform.localPosition.z)
-                );
-                transform.hasChanged = false;
-            }
+            if (!transform.hasChanged) return;
+            var localPosition = transform.localPosition;
+            localPosition = new Vector3(
+                Mathf.Round(localPosition.x),
+                Mathf.Round(localPosition.y),
+                Mathf.Round(localPosition.z)
+            );
+            transform.localPosition = localPosition;
+            transform.hasChanged = false;
         }
 
-        void Awake() 
+        private void Awake() 
         {
             //выставляем Center удобный для нас
-            localPos = transform.localPosition;
-            scale = transform.localScale;
-            size = GetComponent<MeshFilter>().mesh.bounds.size;
+            _localPos = transform.localPosition;
+            Scale = transform.localScale;
+            Size = GetComponent<MeshFilter>().mesh.bounds.size;
             Center = new Vector3(
-                localPos.x + scale.x * size.x * 0.5f,
-                scale.y * size.y,
-                localPos.z - scale.z * size.z * 0.5f
+                _localPos.x + Scale.x * Size.x * 0.5f,
+                Scale.y * Size.y,
+                _localPos.z - Scale.z * Size.z * 0.5f
             );
         }
     }

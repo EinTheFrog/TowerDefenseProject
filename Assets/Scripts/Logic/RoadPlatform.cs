@@ -26,7 +26,7 @@ public class RoadPlatform : Platform
 
     private void CheckDirForNeighbour(Vector3 direction)
     {
-        Physics.Raycast(Center - Vector3.up * size.y * scale.y, direction,out RaycastHit hit, size.x * scale.x * 0.75f);
+        Physics.Raycast(Center - Vector3.up * Size.y * Scale.y, direction,out RaycastHit hit, Size.x * Scale.x * 0.75f);
         if (hit.transform != null && hit.transform.gameObject.GetComponent<RoadPlatform>() != null)
         {
             NeighboursDirs.Add(direction);
@@ -38,7 +38,7 @@ public class RoadPlatform : Platform
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(Center, Center + Vector3.up * Cost);
         Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(Center - Vector3.up * size.y * scale.y * 0.5f, Center - Vector3.up * size.y * scale.y * 0.5f + Vector3.forward * size.x * scale.x * 0.75f);
+        Gizmos.DrawLine(Center - Vector3.up * Size.y * Scale.y * 0.5f, Center - Vector3.up * Size.y * Scale.y * 0.5f + Vector3.forward * Size.x * Scale.x * 0.75f);
     }
 
     public override bool Equals(object other) => other.ToString().Equals(ToString());

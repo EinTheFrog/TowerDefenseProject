@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
-  buildingdMat: {fileID: 2100000, guid: e54730a16797d2b4f8644d61ecbfd609, type: 2}
+  buildingMat: {fileID: 2100000, guid: e54730a16797d2b4f8644d61ecbfd609, type: 2}
   greenGhostMat: {fileID: 2100000, guid: a0cafb5c6d7f1cf43aa3e401bdae5081, type: 2}
   redGhostMat: {fileID: 2100000, guid: a06c4bbe4d6f6eb4a9c34173244b363f, type: 2}
 --- !u!136 &3499085007538575743

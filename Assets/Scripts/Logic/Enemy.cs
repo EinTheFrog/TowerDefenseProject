@@ -11,10 +11,10 @@ namespace Logic
         [SerializeField] private float health = 10;
         [SerializeField] private float levitateHeight = 0;
 
-        Vector3 velocity = Vector3.zero;
+        private Vector3 _velocity = Vector3.zero;
  
         public Queue<RoadPlatform> Path { get; private set; }
-        public EnemyManager Manager { get; private set; }
+        private EnemyManager _manager;
         public RoadPlatform LastDestination { get; private set; }
         public RoadPlatform NextDestination { get; private set; }
         public bool HasTreasure { get; set; }
@@ -26,7 +26,7 @@ namespace Logic
 
         public void Init(Queue<RoadPlatform> initPath, EnemyManager manager)
         {
-            Manager = manager;
+            _manager = manager;
             if (initPath.Count == 0)
             {
                 Debug.LogError("Cannot process empty path");
@@ -43,7 +43,7 @@ namespace Logic
             {
                 CalculateVelocity();
             }
-            Die += Manager.Kill;
+            Die += _manager.Kill;
         }
 
         private void OnEnable()
@@ -62,7 +62,7 @@ namespace Logic
 
         private void FixedUpdate()
         {
-            if (Manager == null) return;
+            if (_manager == null) return;
 
             if (NextDestination != null)
             {
@@ -91,7 +91,7 @@ namespace Logic
                 //Если столкнулись с скоровищем, то должны забрать его
                 if (other.GetComponent<Treasure>() != null)
                 {
-                    Manager.CaptureTreasure(this);
+                    _manager.CaptureTreasure(this);
                 }
             }
         }
@@ -107,10 +107,10 @@ namespace Logic
                 DefineDestinations();
                 if (HasTreasure)
                 {
-                    Manager.UpdateCarrierPosition(this);
+                    _manager.UpdateCarrierPosition(this);
                 }
             }
-            transform.localPosition += velocity * Time.deltaTime;
+            transform.localPosition += _velocity * Time.deltaTime;
         }
 
         private void SetPath (Queue<RoadPlatform> newPath)
@@ -138,18 +138,18 @@ namespace Logic
             CalculateVelocity();
         }
 
-        private void CalculateVelocity() => velocity = speed * (PosAbove(NextDestination) - transform.localPosition).normalized;
+        private void CalculateVelocity() => _velocity = speed * (PosAbove(NextDestination) - transform.localPosition).normalized;
 
         //Расчитываем позицию противника, с учетом того, что он левитирует над платформами
         private Vector3 PosAbove(RoadPlatform road) => road.Center + Vector3.up * levitateHeight;
 
         public void UpdatePath()
         {
-            if (Manager == null)
+            if (_manager == null)
             {
                 throw new ArgumentException("Manager hasn't been setted");
             }
-            SetPath(Manager.GetPath(this));
+            SetPath(_manager.GetPath(this));
         }
 
         public void MeetTheCarrier()

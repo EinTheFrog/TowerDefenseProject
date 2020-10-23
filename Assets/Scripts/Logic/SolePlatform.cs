@@ -1,50 +1,50 @@
-﻿using Logic;
-using UI;
-using UnityEngine;
+﻿using UI;
 using UnityEngine.EventSystems;
 
-public class SolePlatform : Platform, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+namespace Logic
 {
-
-    Input input;
-    public bool IsFree { get; set; }
-    public TowerManager TowerManager { get; set; }
-
-    public void Start()
+    public class SolePlatform : Platform, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        //изначально при загрузке уровня все фундаменты свободны
-        IsFree = true;
-        input = InputShell.Instance;
-    }
+        private Input _input;
+        public bool IsFree { get; set; }
+        public TowerManager TowerManager { get; set; }
 
-    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
-    {
-        if (!input.BuildingMode.enabled || !IsFree) return;
-        TowerManager.BuildChosenTower(this);
-        IsFree = false;
-        //Вызываем OnPointerEnter, чтобы пользователь сразу после постройки здания видел,
-        //что данный фундамент занят и ему не приходилось для этого убирать и
-        //сново наводить курсор на эту платформу
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+        public void Start()
         {
-            position = eventData.position,
-            pointerCurrentRaycast = eventData.pointerCurrentRaycast
-        };
-        OnPointerEnter(pointerEventData);
-    }
+            //изначально при загрузке уровня все фундаменты свободны
+            IsFree = true;
+            _input = InputShell.Instance;
+        }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (!input.BuildingMode.enabled) return;
-        //показываем сооружение при наведении курсора на фундамент
-        TowerManager.ShowChosenTower(this);
-    }
+        void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        {
+            if (!_input.BuildingMode.enabled || !IsFree) return;
+            TowerManager.BuildChosenTower(this);
+            IsFree = false;
+            //Вызываем OnPointerEnter, чтобы пользователь сразу после постройки здания видел,
+            //что данный фундамент занят и ему не приходилось для этого убирать и
+            //сново наводить курсор на эту платформу
+            var pointerEventData = new PointerEventData(EventSystem.current)
+            {
+                position = eventData.position,
+                pointerCurrentRaycast = eventData.pointerCurrentRaycast
+            };
+            OnPointerEnter(pointerEventData);
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (!input.BuildingMode.enabled) return;
-        //прячем показанное сооружение, если пользователь убрал курсор с платформы
-        TowerManager.HideTower();
-    }
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!_input.BuildingMode.enabled) return;
+            //показываем сооружение при наведении курсора на фундамент
+            TowerManager.ShowChosenTower(this);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if (!_input.BuildingMode.enabled) return;
+            //прячем показанное сооружение, если пользователь убрал курсор с платформы
+            TowerManager.HideTower();
+        }
    
+    }
 }

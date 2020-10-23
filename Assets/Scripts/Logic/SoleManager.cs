@@ -8,7 +8,7 @@ namespace Logic
 
         private void OnEnable()
         {
-            foreach (SolePlatform sole in GetComponentsInChildren<SolePlatform>())
+            foreach (var sole in GetComponentsInChildren<SolePlatform>())
             {
                 sole.TowerManager = towerManager;
             }

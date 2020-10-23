@@ -9,24 +9,24 @@ namespace Logic
     {
         [SerializeField] private RoadManager roadManager = null;
 
-        Input input;
-        Tower chosenTower;
-        public Dictionary<Tower, SolePlatform> towersSoles;
+        private Input _input;
+        private Tower _chosenTower;
+        public Dictionary<Tower, SolePlatform> TowersSoles;
 
-        public RoadManager RoadManager { get => roadManager; }
+        public RoadManager RoadManager => roadManager;
 
 
         private void OnEnable()
         {
             //узнаем актуальный input (общий для всех)
-            input = InputShell.Instance;
+            _input = InputShell.Instance;
             //добавляем реакции на нажатие клавиш
-            input.BuildingMode.Quit.performed += _ => ChooseNone();
+            _input.BuildingMode.Quit.performed += _ => ChooseNone();
         }
 
         private void Start()
         {
-            towersSoles = new Dictionary<Tower, SolePlatform>();
+            TowersSoles = new Dictionary<Tower, SolePlatform>();
         }
 
         public void ChooseTowerOnBtn() //метод реагирующий на выбор башни в меню
@@ -40,62 +40,65 @@ namespace Logic
                 return;
             }
             ChooseTower(button.TowerType);
+            //настравиваем реакцию на клавишы в input-e
+            InputShell.SetBuildingMode();
         }
 
         public void ChooseTower(Tower type)
         {
-            
             if (type != null)
             {
-                chosenTower = Instantiate(type);
-                chosenTower.Init(false);
-                //настравиваем реакцию на клавишы в input-e
-                InputShell.SetBuildingMode();
+                _chosenTower = Instantiate(type);
+                _chosenTower.Init(false);
             }
             else
             {
                 //удаляем выбранную юашню (она не видима для пользователя, но находится на сцене)
-                Destroy(chosenTower.gameObject);
-                chosenTower = null;
-                //настравиваем реакцию на клавишы в input-e
-                InputShell.SetViewMode();
+                Destroy(_chosenTower.gameObject);
+                _chosenTower = null;
             }
         }
 
         public void ChooseNone() //метод реагирующий на выход из режима постройки
         {
            ChooseTower(null);
+           //настравиваем реакцию на клавишы в input-e
+           InputShell.SetViewMode();
         }
 
         public void BuildChosenTower(SolePlatform sole)
         {
             //создаем копию призрака (выбранного строения) в указанном месте
-            Tower newTower = Instantiate(chosenTower);
+            var newTower = Instantiate(_chosenTower);
             newTower.Remove += RemoveTower;
-            towersSoles[newTower] = sole;
+            if (TowersSoles == null)
+            {
+                TowersSoles = new Dictionary<Tower, SolePlatform>();
+            }
+            TowersSoles[newTower] = sole;
             newTower.Init(Tower.TowerState.Building, sole.Center);
             //ищем дороги в радиусе поражения и меняем их опасность
-            roadManager.UpdateDangerInRadius(sole.Center, chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius, 1);
+            roadManager.UpdateDangerInRadius(sole.Center, _chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius, 1);
         }
 
         private void RemoveTower(Tower tower)
         {
-            roadManager.UpdateDangerInRadius(towersSoles[tower].Center, tower.transform.GetComponentInChildren<EnemyTrigger>().Radius, -1);
+            roadManager.UpdateDangerInRadius(TowersSoles[tower].Center, tower.transform.GetComponentInChildren<EnemyTrigger>().Radius, -1);
 
-            towersSoles[tower].IsFree = true;
-            towersSoles.Remove(tower);
+            TowersSoles[tower].IsFree = true;
+            TowersSoles.Remove(tower);
         }
 
         public void ShowChosenTower(SolePlatform sole)
         {
             //показываем призрак строения в зависимости от занятости фундамента
-            if (sole.IsFree) chosenTower.Init(Tower.TowerState.GreenGhost, sole.Center);
-            else chosenTower.Init(Tower.TowerState.RedGhost, sole.Center);
+            if (sole.IsFree) _chosenTower.Init(Tower.TowerState.GreenGhost, sole.Center);
+            else _chosenTower.Init(Tower.TowerState.RedGhost, sole.Center);
         }
 
         public void HideTower()
         {
-            chosenTower.Init(false);
+            _chosenTower.Init(false);
         }
     }
 }

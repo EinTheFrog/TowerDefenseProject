@@ -54,10 +54,10 @@ namespace Logic
         {
             if (start == finish) return new List<Node> { start };
 
-            SimplePriorityQueue<Node> priorityQueue = new SimplePriorityQueue<Node>();
-            HashSet<Node> visited = new HashSet<Node>();
-            Dictionary<Node, float> pathCost = new Dictionary<Node, float>();
-            Dictionary<Node, Node> pathParts = new Dictionary<Node, Node>();
+            var priorityQueue = new SimplePriorityQueue<Node>();
+            var visited = new HashSet<Node>();
+            var pathCost = new Dictionary<Node, float>();
+            var pathParts = new Dictionary<Node, Node>();
             pathCost[start] = 0f;
             priorityQueue.Enqueue(start, pathCost[start]);
             visited.Add(start);
@@ -65,7 +65,7 @@ namespace Logic
             while (priorityQueue.Count > 0 && !pathParts.Keys.Contains(finish))
             {
                 var node = priorityQueue.Dequeue();
-                foreach (Node neighbour in graph[node].Keys)
+                foreach (var neighbour in graph[node].Keys)
                 {
                     float roughtRange = Mathf.Abs(neighbour.Position.X - finish.Position.X + (neighbour.Position.Y - finish.Position.Y));
                     float cost = pathCost[node] + graph[node][neighbour];
@@ -94,7 +94,7 @@ namespace Logic
                     }
                     else continue;
 
-                    if (neighbour == finish) break;
+                    if (Equals(neighbour, finish)) break;
                 }
             }
             return WritePath(pathParts, start, finish);
@@ -102,12 +102,10 @@ namespace Logic
 
         public void UpdateCost(Node start, Node finish, float costChange)
         {
-            if (graph.ContainsKey(start) && graph[start].ContainsKey(finish))
-            {
-                if (graph[start][finish] + costChange < 0) throw new Exception("Negative cost");
-                graph[start][finish] += costChange;
-                graph[finish][start] += costChange;
-            }
+            if (!graph.ContainsKey(start) || !graph[start].ContainsKey(finish)) return;
+            if (graph[start][finish] + costChange < 0) throw new Exception("Negative cost");
+            graph[start][finish] += costChange;
+            graph[finish][start] += costChange;
         }
 
         public void UpdateCost(Node node, float costChange)

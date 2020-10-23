@@ -1,269 +1,250 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Logic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+namespace Logic
 {
-    [SerializeField] float secondsBeforeFirstSpawn = 2;
-    [SerializeField] float secondsBetweenSpawn = 2;
-    [SerializeField] Enemy enemyPrefab = null;
-    [SerializeField] RoadPlatform spawnPlatform = null;
-    [SerializeField] RoadPlatform treasurePlatform = null;
-    [SerializeField] Treasure treasurePrefab = null;
-    [SerializeField] RoadManager roadManager = null;
+    public class EnemyManager : MonoBehaviour
+    {
+        [SerializeField] private float secondsBeforeFirstSpawn = 2;
+        [SerializeField] private float secondsBetweenSpawn = 2;
+        [SerializeField] private Enemy enemyPrefab = null;
+        [SerializeField] private RoadPlatform spawnPlatform = null;
+        [SerializeField] private RoadPlatform treasurePlatform = null;
+        [SerializeField] private Treasure treasurePrefab = null;
+        [SerializeField] private RoadManager roadManager = null;
 
-    float secondsSinceLastSpawn;
-    HashSet<Enemy> enemies;
-    Treasure treasure;
-    Enemy _carrier = null;
+        private float _secondsSinceLastSpawn;
+        private HashSet<Enemy> _enemies;
+        private Treasure _treasure;
+        private Enemy _carrier = null;
 
-    public RoadPlatform ObjectivePlatform { get; private set; }
+        public RoadPlatform ObjectivePlatform { get; private set; }
 
-    //Свойство для хранения противника, несущего сокровище (HasTreasure такого противника должно быть равно true)
-    public Enemy Carrier {
-        get
-        {
-            return _carrier;
-        }
-        set
-        {
-            _carrier = value;
-            if (value)
+        //Свойство для хранения противника, несущего сокровище (HasTreasure такого противника должно быть равно true)
+        private Enemy Carrier {
+            get => _carrier;
+            set
             {
-                _carrier.HasTreasure = true; 
-            }
-            else
-            {
-                foreach (Enemy enemy in enemies)
+                _carrier = value;
+                if (value)
                 {
-                    enemy.CarriersPath = false;
+                    _carrier.HasTreasure = true; 
+                }
+                else
+                {
+                    foreach (Enemy enemy in _enemies)
+                    {
+                        enemy.CarriersPath = false;
+                    }
                 }
             }
         }
-    }
 
-    //Свойство для сравнения правильности взаимных ссылок в Manager-ах
-    public RoadManager RoadManager { get => roadManager; }
+        //Свойство для сравнения правильности взаимных ссылок в Manager-ах
+        public RoadManager RoadManager => roadManager;
 
-    private void OnValidate()
-    {
-        if (RoadManager == null ||
-            RoadManager.EnemyManager != this)
-            Debug.LogError("Reference connection between RoadManger and EnemyManager was broken");
-    }
-
-    private void Awake()
-    {
-        enemies = new HashSet<Enemy>();
-        ObjectivePlatform = treasurePlatform;
-    }
-
-    private void Start()
-    {
-        treasure = Instantiate(treasurePrefab);
-        treasure.Init(true, ObjectivePlatform.Center);
-        //устанавливаем кол-во секунд до следущего спауна (с учетом того, что для спауна secondsSinceLastSpawn должен быть >= secondsBetweenSpawn)
-        secondsSinceLastSpawn = secondsBetweenSpawn - secondsBeforeFirstSpawn;
-    }
-
-    private void Update()
-    {
-        if (secondsSinceLastSpawn >= secondsBetweenSpawn)
+        private void OnValidate()
         {
-            secondsSinceLastSpawn -= secondsBetweenSpawn;
-            SpawnEnemy();
+            if (RoadManager == null || RoadManager.EnemyManager != this)
+            {
+                Debug.Log("Reference connection between RoadManger and EnemyManager was broken");
+            }
         }
-        secondsSinceLastSpawn += Time.deltaTime;
-    }
 
-    private void FixedUpdate()
-    {
-        //Двигаем сокровище (чтобы не нагружать логикой сокровище)
-        if (Carrier != null)
+        private void Start()
         {
-            treasure.SetPosition(Carrier.transform.localPosition);
+            _enemies = new HashSet<Enemy>();
+            ObjectivePlatform = treasurePlatform;
+            _treasure = Instantiate(treasurePrefab);
+            _treasure.Init(true, ObjectivePlatform.Center);
+            //устанавливаем кол-во секунд до следущего спауна (с учетом того, что для спауна secondsSinceLastSpawn должен быть >= secondsBetweenSpawn)
+            _secondsSinceLastSpawn = secondsBetweenSpawn - secondsBeforeFirstSpawn;
         }
-    }
 
-    void SpawnEnemy()
-    {
-        Enemy enemy = Instantiate(enemyPrefab);
-        enemy.Init(GetPath(spawnPlatform, null, false), this);
-        enemies.Add(enemy);
-    }
+        private void Update()
+        {
+            if (_secondsSinceLastSpawn >= secondsBetweenSpawn)
+            {
+                _secondsSinceLastSpawn -= secondsBetweenSpawn;
+                SpawnEnemy();
+            }
+            _secondsSinceLastSpawn += Time.deltaTime;
+        }
 
-    private Queue<RoadPlatform> GetPath(RoadPlatform lastDestination, RoadPlatform nextDestination, bool hasTreasure)
-    {
-        RoadPlatform finish;
-        //Определяем куда нужно идти противнику
-        if (hasTreasure)
+        private void FixedUpdate()
         {
-            finish = spawnPlatform;
-        }
-        else if (lastDestination != ObjectivePlatform || nextDestination != null)
-        {
-            finish = ObjectivePlatform;
-        }
-        else
-        {
+            //Двигаем сокровище (чтобы не нагружать логикой сокровище)
             if (Carrier != null)
             {
-                //если противник дошел до следующей точки маршрута несущего, то он должен двинуться ему навстречу
-                finish = Carrier.LastDestination;
+                _treasure.SetPosition(Carrier.transform.localPosition);
+            }
+        }
+
+        void SpawnEnemy()
+        {
+            var enemy = Instantiate(enemyPrefab);
+            enemy.Init(GetPath(spawnPlatform, null, false), this);
+            _enemies.Add(enemy);
+        }
+
+        private Queue<RoadPlatform> GetPath(RoadPlatform lastDestination, RoadPlatform nextDestination, bool hasTreasure)
+        {
+            RoadPlatform finish;
+            //Определяем куда нужно идти противнику
+            if (hasTreasure)
+            {
+                finish = spawnPlatform;
+            }
+            else if (lastDestination != ObjectivePlatform || nextDestination != null)
+            {
+                finish = ObjectivePlatform;
             }
             else
             {
-                throw new System.Exception("Enemy is on treasure");
-            }
+                if (Carrier != null)
+                {
+                    //если противник дошел до следующей точки маршрута несущего, то он должен двинуться ему навстречу
+                    finish = Carrier.LastDestination;
+                }
+                else
+                {
+                    throw new System.Exception("Enemy is on treasure");
+                }
             
+            }
+            List<RoadPlatform> bestPath;
+            //если противник находится на дороге из одного пункта в другой,
+            //то он может посередине дороги развернуться и пойти в направлении любого из 2-ух
+            if (nextDestination != null)
+            {
+                var firstPath = roadManager.FindPath(lastDestination, finish);
+                var secondPath = roadManager.FindPath(nextDestination, finish);
+                bestPath = firstPath.Count < secondPath.Count ? firstPath : secondPath;
+            }
+            else
+            {
+                bestPath = roadManager.FindPath(lastDestination, finish);
+            }
+            return new Queue<RoadPlatform>(bestPath);
         }
-        List<RoadPlatform> bestPath;
-        //если противник находится на дороге из одного пункта в другой,
-        //то он может посередине дороги развернуться и пойти в направлении любого из 2-ух
-        if (nextDestination != null)
+
+        public Queue<RoadPlatform> GetPath(Enemy enemy)
         {
-            List<RoadPlatform> firstPath = roadManager.GetOrAddPath(lastDestination, finish);
-            List<RoadPlatform> secondPath = roadManager.GetOrAddPath(nextDestination, finish);
-            bestPath = firstPath.Count < secondPath.Count ? firstPath : secondPath;
+            if (enemy.CarriersPath) return Carrier.Path;
+
+            var next = enemy.NextDestination;
+            var last = enemy.LastDestination;
+
+            //destination не должен быть равен промежуточной дороге, т.к. путь строится исключительно по узловым дорогам
+            if (next != null && roadManager.GetNodesForRoadBetween(next) != null)
+            {
+                var roadsBeside = roadManager.GetNodesForRoadBetween(next).Value;
+                next = enemy.LastDestination != roadsBeside.Key ? roadsBeside.Key : roadsBeside.Value;
+            }
+            else if (roadManager.GetNodesForRoadBetween(last) != null)
+            {
+                var roadsBeside = roadManager.GetNodesForRoadBetween(last).Value;
+                last = enemy.NextDestination != roadsBeside.Key ? roadsBeside.Key : roadsBeside.Value;
+            }
+            return GetPath(last, next, enemy.HasTreasure);
         }
-        else
+
+        public void CaptureTreasure(Enemy enemy)
         {
-            bestPath = roadManager.GetOrAddPath(lastDestination, finish);
+            if (_treasure.IsCaptured) return;
+            _treasure.IsCaptured = true;
+            Carrier = enemy;
+            Carrier.UpdatePath();
+
+            //Все  противники теперь должны двигаться наопережение неусущему
+            var oldObjective = ObjectivePlatform;
+            ObjectivePlatform = Carrier.NextDestination;
+            //Удаляем бесполезный пункт (стоит посреди прямой дороги или вообще ведет в тупик),
+            //т.к. он был нужен только для того, чтобы оптимально искать путь до упавшего (или заспауненного) сокровища.
+            //Удаляем через oldObjective, чтобы при поиске новых путей при удалении мы пользовались акутальной информацией
+
+            RemoveNodeIfUseless(oldObjective);
         }
-        return new Queue<RoadPlatform>(bestPath);
-    }
 
-    public Queue<RoadPlatform> GetPath(Enemy enemy)
-    {
-        if (enemy.CarriersPath) return Carrier.Path;
-
-        RoadPlatform next = enemy.NextDestination;
-        RoadPlatform last = enemy.LastDestination;
-
-        //destination не должен быть равен промежуточной дороге, т.к. путь строится исключительно по узловым дорогам
-        if (next != null && roadManager.GetNodesForRoadBetween(next) != null)
+        private void RemoveNodeIfUseless(RoadPlatform road)
         {
-            var roadsBeside = roadManager.GetNodesForRoadBetween(next).Value;
-            next = enemy.LastDestination != roadsBeside.Key ? roadsBeside.Key : roadsBeside.Value;
-        }
-        else if (roadManager.GetNodesForRoadBetween(last) != null)
-        {
-            var roadsBeside = roadManager.GetNodesForRoadBetween(last).Value;
-            last = enemy.NextDestination != roadsBeside.Key ? roadsBeside.Key : roadsBeside.Value;
-        }
-        return GetPath(last, next, enemy.HasTreasure);
-    }
-
-    public void CaptureTreasure(Enemy enemy)
-    {
-        if (treasure.IsCaptured) return;
-        treasure.IsCaptured = true;
-        Carrier = enemy;
-        Carrier.UpdatePath();
-
-        //Все  противники теперь должны двигаться наопережение неусущему
-        RoadPlatform oldObjective = ObjectivePlatform;
-        ObjectivePlatform = Carrier.NextDestination;
-        //Удаляем бесполезный пункт (стоит посреди прямой дороги или вообще ведет в тупик),
-        //т.к. он был нужен только для того, чтобы оптимально искать путь до упавшего (или заспауненного) сокровища.
-        //Удаляем через oldObjective, чтобы при поиске новых путей при удалении мы пользовались акутальной информацией
-
-        RemoveNodeIfUseless(oldObjective);
-    }
-
-    public void RemoveNodeIfUseless(RoadPlatform road)
-    {
-        bool shouldBeDeleted = roadManager.ShouldNodeBeDeleted(road);
-        if (shouldBeDeleted)
-        {
+            var shouldBeDeleted = RoadManager.ShouldNodeBeDeleted(road);
+            if (!shouldBeDeleted) return;
             AwareEnemies(new List<RoadPlatform> { road });
             roadManager.RemoveNode(road);
         }
-    }
 
-    public void UpdateCarrierPosition(Enemy caller)
-    {
-        if (!caller.HasTreasure)
+        public void UpdateCarrierPosition(Enemy caller)
         {
-            Debug.LogError("Enemy without treasure is trying to update carriets position");
-            return;
+            if (!caller.HasTreasure)
+            {
+                Debug.LogError("Enemy without treasure is trying to update carriets position");
+                return;
+            }
+            //Если несущий донес сокровище, но еще не вызвал окончание игры, то передаем всем противникам его последнюю позицию (тк его NextDestination == null)
+            ObjectivePlatform = Carrier.NextDestination != null ? Carrier.NextDestination  : Carrier.LastDestination;
+            //Обновляем позицию до которой (наопережение) нужно двигаться всем проотивникам, которые еще не идут вместе с несущим
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.MeetTheCarrier();
+            }
         }
-        //Если несущий донес сокровище, но еще не вызвал окончание игры, то передаем всем противникам его последнюю позицию (тк его NextDestination == null)
-        ObjectivePlatform = Carrier.NextDestination != null ? Carrier.NextDestination  : Carrier.LastDestination;
-        //Обновляем позицию до которой (наопережение) нужно двигаться всем проотивникам, которые еще не идут вместе с несущим
-        foreach (Enemy enemy in enemies)
-        {
-            enemy.MeetTheCarrier();
-        }
-    }
 
-    public void Kill(Enemy dyingEnemy)
-    {
-        if (dyingEnemy.HasTreasure)
+        public void Kill(Enemy dyingEnemy)
         {
-            //Роняем сокровище
-            Physics.Raycast(dyingEnemy.transform.localPosition, Vector3.down, out RaycastHit hit, 1f, 1 << 9);
-            RoadPlatform road = hit.transform.GetComponent<RoadPlatform>();
-            if (road == null) Debug.LogError("Where is no road platform under the enemy!");
-            ObjectivePlatform = road;
-            treasure.IsCaptured = false;
-            //Обнуляем несущего
-            enemies.Remove(dyingEnemy);
-            Destroy(dyingEnemy.gameObject);
-            Carrier = null;
-            //обновляем пути всех противников
-            foreach (Enemy enemy in enemies)
+            if (dyingEnemy.HasTreasure)
+            {
+                //Роняем сокровище
+                Physics.Raycast(dyingEnemy.transform.localPosition, Vector3.down, out RaycastHit hit, 1f, 1 << 9);
+                var road = hit.transform.GetComponent<RoadPlatform>();
+                if (road == null) Debug.LogError("Where is no road platform under the enemy!");
+                ObjectivePlatform = road;
+                _treasure.IsCaptured = false;
+                //Обнуляем несущего
+                _enemies.Remove(dyingEnemy);
+                Destroy(dyingEnemy.gameObject);
+                Carrier = null;
+                //обновляем пути всех противников
+                foreach (Enemy enemy in _enemies)
+                {
+                    enemy.UpdatePath();
+                }
+            } else
+            {
+                _enemies.Remove(dyingEnemy);
+                Destroy(dyingEnemy.gameObject);
+            }
+        }
+
+
+
+        //Метод для предупреждения всех необходимых противников о том, что опасность дорог изменилась
+        public void AwareEnemies(IEnumerable<RoadPlatform> roads)
+        {
+            //первым должен обновить путь несущий, чтобы следующие за ним могли просто скопировать его путь
+            var roadPlatforms = roads as RoadPlatform[] ?? roads.ToArray();
+            if (roadPlatforms.Any(road => Carrier != null && Carrier.Path.Contains(road)))
+            {
+                Carrier.UpdatePath();
+            }
+
+            foreach (var enemy in _enemies.Where(enemy => roadPlatforms.Any(road => enemy.Path.Contains(road))))
             {
                 enemy.UpdatePath();
             }
-        } else
-        {
-            enemies.Remove(dyingEnemy);
-            Destroy(dyingEnemy.gameObject);
         }
-    }
 
-
-
-    //Метод для предупреждения всех необходимых противников о том, что опасность дорог изменилась
-    public void AwareEnemies(IEnumerable<RoadPlatform> roads)
-    {
-        //первым должен обновить путь несущий, чтобы следующие за ним могли просто скопировать его путь
-        foreach (RoadPlatform road in roads)
+        private void OnDrawGizmos()
         {
-            if (Carrier != null && Carrier.Path.Contains(road))
+            if (ObjectivePlatform != null)
             {
-                Carrier.UpdatePath();
-                break;
+                Gizmos.DrawLine(ObjectivePlatform.Center, ObjectivePlatform.Center + Vector3.up * 10);
             }
-        }
-        foreach (Enemy enemy in enemies)
-        {
-            foreach (RoadPlatform road in roads)
-            {
-                if (enemy.Path.Contains(road))
-                {
-                    enemy.UpdatePath();
-                    break;
-                }
-            }
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (ObjectivePlatform != null)
-        {
-            Gizmos.DrawLine(ObjectivePlatform.Center, ObjectivePlatform.Center + Vector3.up * 10);
-        }
-
-        if (Carrier != null)
-        {
+            if (Carrier == null) return;
             Gizmos.color = Color.cyan;
             Gizmos.DrawLine(Carrier.LastDestination.Center, Carrier.LastDestination.Center + Vector3.up * 10);
         }
-    }
 
+    }
 }

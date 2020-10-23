@@ -4,11 +4,9 @@ namespace Logic
 {
     public class Treasure : MonoBehaviour
     {
-        [SerializeField]
-        float deceleration = 0;
-        [SerializeField]
-        float levitateHeight = 0;
-        public float Deceleration { get { return deceleration; } }
+        [SerializeField] private float deceleration = 0;
+        [SerializeField] private float levitateHeight = 0;
+        public float Deceleration => deceleration;
 
         public bool IsCaptured { get; set; }
 
@@ -16,10 +14,12 @@ namespace Logic
         {
             get
             {
+                var transform1 = transform;
+                var localPosition = transform1.localPosition;
                 return new Vector3(
-                    transform.localPosition.x,
-                    transform.localPosition.y - (transform.localScale.y * 0.5f + levitateHeight),
-                    transform.localPosition.z);
+                    localPosition.x,
+                    localPosition.y - (transform1.localScale.y * 0.5f + levitateHeight),
+                    localPosition.z);
             }
         }
 
@@ -33,8 +33,10 @@ namespace Logic
 
         public void SetPosition(Vector3 newPosition)
         {
-            transform.localPosition = newPosition;
-            transform.localPosition += Vector3.up * (transform.localScale.y * 0.5f + levitateHeight);
+            var transform1 = transform;
+            var localPosition = newPosition;
+            localPosition += Vector3.up * (transform1.localScale.y * 0.5f + levitateHeight);
+            transform1.localPosition = localPosition;
         }
     
     }
