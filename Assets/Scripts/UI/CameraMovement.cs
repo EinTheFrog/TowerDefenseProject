@@ -5,29 +5,23 @@ namespace UI
 {
     public class CameraMovement : MonoBehaviour
     {
-        [SerializeField]
-        float movementAcceleration = 10f;
-        [SerializeField]
-        float movementMaxSpeed = 5f;
-        [SerializeField]
-        float zoomAcceleration = 6f;
-        [SerializeField]
-        float zoomMaxSpeed = 2f;
-        [SerializeField]
-        float rotationAcceleration = 90f;
-        [SerializeField]
-        float rotationMaxSpeed = 45f;
+        [SerializeField] private float movementAcceleration = 10f;
+        [SerializeField] private float movementMaxSpeed = 5f;
+        [SerializeField] private float zoomAcceleration = 6f;
+        [SerializeField] private float zoomMaxSpeed = 2f;
+        [SerializeField] private float rotationAcceleration = 90f;
+        [SerializeField] private float rotationMaxSpeed = 45f;
+        [SerializeField] private InputShell _inputShell = null;
 
-        Vector3 desiredMovementVelocity;
-        Vector3 movementVelocity;
+        private Vector3 _desiredMovementVelocity;
+        private Vector3 _movementVelocity;
 
-        float desiredRotationVelocity;
-        float rotationVelocity;
+        private float _desiredRotationVelocity;
+        private float _rotationVelocity;
 
-        float desiredZoomVelocity;
-        float zoomVelocity;
-        float timeSinceLastScroll;
-        Input input;
+        private float _desiredZoomVelocity;
+        private float _zoomVelocity;
+        private float _timeSinceLastScroll;
 
         public static CameraMovement Instance { get; private set; }
         private void Start()
@@ -36,11 +30,10 @@ namespace UI
         }
         private void OnEnable()
         {
-            input = InputShell.Instance;
-            movementVelocity = Vector3.zero;
-            rotationVelocity = 0f;
-            zoomVelocity = 0f;
-            timeSinceLastScroll = 0f;
+            _movementVelocity = Vector3.zero;
+            _rotationVelocity = 0f;
+            _zoomVelocity = 0f;
+            _timeSinceLastScroll = 0f;
         }
 
         private void Update()
@@ -55,57 +48,59 @@ namespace UI
             UpdateZoomSpeed();
             UpdateRotationSpeed();
 
+            var velocity = Vector3.zero;
+            var transform1 = transform;
+            velocity += transform1.right * _movementVelocity.x;
+            var forward1 = transform1.forward;
+            velocity += forward1 * _zoomVelocity;
+            var forward = Vector3.ProjectOnPlane(forward1, Vector3.down).normalized;
+            velocity += forward * _movementVelocity.y;
 
-            Vector3 velocity = Vector3.zero;
-            velocity += transform.right * movementVelocity.x;
-            velocity += transform.forward * zoomVelocity;
-            Vector3 forward = Vector3.ProjectOnPlane(transform.forward, Vector3.down).normalized;
-            velocity += forward * movementVelocity.y;
 
+            var deltaRotation = _rotationVelocity * Time.deltaTime;
 
-            float deltaRotation = rotationVelocity * Time.deltaTime;
-
-            transform.localPosition += velocity * Time.deltaTime;
-            transform.RotateAround(transform.position + Vector3.forward, Vector3.up, deltaRotation);
+            var transform2 = transform;
+            transform2.localPosition += velocity * Time.deltaTime;
+            transform.RotateAround(transform2.position + Vector3.forward, Vector3.up, deltaRotation);
         }
 
         private void ListenKeyboard()
         {
-            desiredMovementVelocity = input.MovementMode.Move.ReadValue<Vector2>();
-            desiredRotationVelocity = input.MovementMode.Rotate.ReadValue<float>();
+            _desiredMovementVelocity = _inputShell.Input.MovementMode.Move.ReadValue<Vector2>();
+            _desiredRotationVelocity = _inputShell.Input.MovementMode.Rotate.ReadValue<float>();
         }
 
         private void ListenMouse()
         {
-            float inputScroll = input.MovementMode.Zoom.ReadValue<Vector2>().y;
+            var inputScroll = _inputShell.Input.MovementMode.Zoom.ReadValue<Vector2>().y;
             if (inputScroll != 0)
             {
-                desiredZoomVelocity = Mathf.Sign(inputScroll);
-                timeSinceLastScroll = 0f;
+                _desiredZoomVelocity = Mathf.Sign(inputScroll);
+                _timeSinceLastScroll = 0f;
             }
             else
             {
-                timeSinceLastScroll += Time.deltaTime;
-                if (timeSinceLastScroll > 0.1f) desiredZoomVelocity = 0f;
+                _timeSinceLastScroll += Time.deltaTime;
+                if (_timeSinceLastScroll > 0.1f) _desiredZoomVelocity = 0f;
             }
         }
 
         private void UpdateZoomSpeed()
         {
             float deltaSpeed = zoomAcceleration * Time.deltaTime;
-            zoomVelocity = Mathf.Lerp(zoomVelocity, desiredZoomVelocity * zoomMaxSpeed, deltaSpeed);
+            _zoomVelocity = Mathf.Lerp(_zoomVelocity, _desiredZoomVelocity * zoomMaxSpeed, deltaSpeed);
         }
 
         private void UpdateMovementSpeed()
         {
             float deltaSpeed = movementAcceleration * Time.deltaTime;
-            movementVelocity = Vector3.Lerp(movementVelocity, desiredMovementVelocity * movementMaxSpeed, deltaSpeed);
+            _movementVelocity = Vector3.Lerp(_movementVelocity, _desiredMovementVelocity * movementMaxSpeed, deltaSpeed);
         }
 
         private void UpdateRotationSpeed()
         {
             float deltaSpeed = rotationAcceleration * Time.deltaTime;
-            rotationVelocity = Mathf.Lerp(rotationVelocity, desiredRotationVelocity * rotationMaxSpeed, deltaSpeed);
+            _rotationVelocity = Mathf.Lerp(_rotationVelocity, _desiredRotationVelocity * rotationMaxSpeed, deltaSpeed);
         }
 
         public void TriggerOnTowers(bool isTrigger)

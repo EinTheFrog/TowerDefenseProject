@@ -2,7 +2,7 @@
     "name": "Input",
     "maps": [
         {
-            "name": "BuildingMode",
+            "name": "BuildMode",
             "id": "1a0dd22e-9eca-4c41-948e-22b89fd8ee06",
             "actions": [
                 {

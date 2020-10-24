@@ -4,8 +4,8 @@ namespace UI
 {
     public class DefeatMenuBehaviour : MonoBehaviour
     {
-        Input input;
-        CanvasGroup canvasGroup;
+        private InputShell _inputShell;
+        private CanvasGroup _canvasGroup;
 
         public static DefeatMenuBehaviour Instance { get; private set; }
 
@@ -16,20 +16,19 @@ namespace UI
 
         private void Start()
         {
-            canvasGroup = GetComponent<CanvasGroup>();
-
-            input = InputShell.Instance;
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
         }
         public void Show()
         {
-            if (canvasGroup == null) return;
-            canvasGroup.alpha = 1;
-            canvasGroup.interactable = true;
-            canvasGroup.blocksRaycasts = true;
+            if (_canvasGroup == null) return;
+            _canvasGroup.alpha = 1;
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
 
-            input.MovementMode.Disable();
-            input.ViewMode.Disable();
-            input.MenuMode.Disable();
+            _inputShell.Input.MovementMode.Disable();
+            _inputShell.Input.ViewMode.Disable();
+            _inputShell.Input.MenuMode.Disable();
             Time.timeScale = 0f;
         }
     }

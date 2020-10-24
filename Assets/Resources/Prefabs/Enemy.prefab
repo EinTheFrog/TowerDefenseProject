@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e002065244641fb499f0ebbdccc30f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  health: 2
+  speed: 2
+  health: 10
   levitateHeight: 0.3
 --- !u!54 &6085065028219506216
 Rigidbody:

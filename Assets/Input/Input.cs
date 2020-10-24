@@ -15,7 +15,7 @@ public class @Input : IInputActionCollection, IDisposable
     ""name"": ""Input"",
     ""maps"": [
         {
-            ""name"": ""BuildingMode"",
+            ""name"": ""BuildMode"",
             ""id"": ""1a0dd22e-9eca-4c41-948e-22b89fd8ee06"",
             ""actions"": [
                 {
@@ -229,9 +229,9 @@ public class @Input : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // BuildingMode
-        m_BuildingMode = asset.FindActionMap("BuildingMode", throwIfNotFound: true);
-        m_BuildingMode_Quit = m_BuildingMode.FindAction("Quit", throwIfNotFound: true);
+        // BuildMode
+        m_BuildMode = asset.FindActionMap("BuildMode", throwIfNotFound: true);
+        m_BuildMode_Quit = m_BuildMode.FindAction("Quit", throwIfNotFound: true);
         // ViewMode
         m_ViewMode = asset.FindActionMap("ViewMode", throwIfNotFound: true);
         m_ViewMode_CallMenu = m_ViewMode.FindAction("CallMenu", throwIfNotFound: true);
@@ -289,29 +289,29 @@ public class @Input : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // BuildingMode
-    private readonly InputActionMap m_BuildingMode;
-    private IBuildingModeActions m_BuildingModeActionsCallbackInterface;
-    private readonly InputAction m_BuildingMode_Quit;
-    public struct BuildingModeActions
+    // BuildMode
+    private readonly InputActionMap m_BuildMode;
+    private IBuildModeActions m_BuildModeActionsCallbackInterface;
+    private readonly InputAction m_BuildMode_Quit;
+    public struct BuildModeActions
     {
         private @Input m_Wrapper;
-        public BuildingModeActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Quit => m_Wrapper.m_BuildingMode_Quit;
-        public InputActionMap Get() { return m_Wrapper.m_BuildingMode; }
+        public BuildModeActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Quit => m_Wrapper.m_BuildMode_Quit;
+        public InputActionMap Get() { return m_Wrapper.m_BuildMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(BuildingModeActions set) { return set.Get(); }
-        public void SetCallbacks(IBuildingModeActions instance)
+        public static implicit operator InputActionMap(BuildModeActions set) { return set.Get(); }
+        public void SetCallbacks(IBuildModeActions instance)
         {
-            if (m_Wrapper.m_BuildingModeActionsCallbackInterface != null)
+            if (m_Wrapper.m_BuildModeActionsCallbackInterface != null)
             {
-                @Quit.started -= m_Wrapper.m_BuildingModeActionsCallbackInterface.OnQuit;
-                @Quit.performed -= m_Wrapper.m_BuildingModeActionsCallbackInterface.OnQuit;
-                @Quit.canceled -= m_Wrapper.m_BuildingModeActionsCallbackInterface.OnQuit;
+                @Quit.started -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnQuit;
+                @Quit.performed -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnQuit;
+                @Quit.canceled -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnQuit;
             }
-            m_Wrapper.m_BuildingModeActionsCallbackInterface = instance;
+            m_Wrapper.m_BuildModeActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Quit.started += instance.OnQuit;
@@ -320,7 +320,7 @@ public class @Input : IInputActionCollection, IDisposable
             }
         }
     }
-    public BuildingModeActions @BuildingMode => new BuildingModeActions(this);
+    public BuildModeActions @BuildMode => new BuildModeActions(this);
 
     // ViewMode
     private readonly InputActionMap m_ViewMode;
@@ -436,7 +436,7 @@ public class @Input : IInputActionCollection, IDisposable
         }
     }
     public MenuModeActions @MenuMode => new MenuModeActions(this);
-    public interface IBuildingModeActions
+    public interface IBuildModeActions
     {
         void OnQuit(InputAction.CallbackContext context);
     }

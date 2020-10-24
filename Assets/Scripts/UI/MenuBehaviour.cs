@@ -4,45 +4,45 @@ namespace UI
 {
     public class MenuBehaviour : MonoBehaviour
     {
-        Input input;
-        CanvasGroup canvasGroup;
+        private InputShell _inputShell;
+        private CanvasGroup _canvasGroup;
 
         private void Start()
         {
-            canvasGroup = GetComponent<CanvasGroup>();
+            _canvasGroup = GetComponent<CanvasGroup>();
 
-            input = InputShell.Instance;
-            input.MovementMode.Enable();
-            input.ViewMode.Enable();
-            input.ViewMode.CallMenu.performed += _ => CallMenu();
-            input.MenuMode.CloseMenu.performed += _ => CloseMenu();
+            _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
+            _inputShell.Input.MovementMode.Enable();
+            _inputShell.Input.ViewMode.Enable();
+            _inputShell.Input.ViewMode.CallMenu.performed += _ => CallMenu();
+            _inputShell.Input.MenuMode.CloseMenu.performed += _ => CloseMenu();
 
             CloseMenu();
         }
 
         private void CallMenu()
         {
-            if (canvasGroup == null) return;
-            canvasGroup.alpha = 1;
-            canvasGroup.interactable = true;
-            canvasGroup.blocksRaycasts = true;
+            if (_canvasGroup == null) return;
+            _canvasGroup.alpha = 1;
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
 
-            input.MovementMode.Disable();
-            input.ViewMode.Disable();
-            input.MenuMode.Enable();
+            _inputShell.Input.MovementMode.Disable();
+            _inputShell.Input.ViewMode.Disable();
+            _inputShell.Input.MenuMode.Enable();
             Time.timeScale = 0f;
         }
 
         public void CloseMenu()
         {
-            if (canvasGroup == null) return;
-            canvasGroup.alpha = 0;
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
+            if (_canvasGroup == null) return;
+            _canvasGroup.alpha = 0;
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
 
-            input.MenuMode.Disable();
-            input.ViewMode.Enable();
-            input.MovementMode.Enable();
+            _inputShell.Input.MenuMode.Disable();
+            _inputShell.Input.ViewMode.Enable();
+            _inputShell.Input.MovementMode.Enable();
             Time.timeScale = 1f;
         }
     }

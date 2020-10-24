@@ -16,7 +16,7 @@ namespace Logic
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!_parent.IsBuilded) return;
+            if (!_parent.IsBuilt) return;
             var enemy = other.GetComponent<Enemy>();
             if (enemy == null) Debug.LogError("Something gone wrong! Tower has triggered on non enemy object");
             _parent.StartShooting(enemy);
@@ -24,7 +24,7 @@ namespace Logic
 
         private void OnTriggerStay(Collider other) //реагируем на перемещение противников
         {
-            if (!_parent.IsBuilded) return;
+            if (!_parent.IsBuilt) return;
             var enemy = other.GetComponent<Enemy>();
             if (enemy == null) Debug.LogError("Something gone wrong! Tower has triggered on non enemy object");
             _parent.MoveAim(enemy);
@@ -32,7 +32,7 @@ namespace Logic
 
         private void OnTriggerExit(Collider other) //реагируем на выход противников из зоны действия лазера
         {
-            if (!_parent.IsBuilded) return;
+            if (!_parent.IsBuilt) return;
             var enemy = other.GetComponent<Enemy>();
             if (enemy == null) Debug.LogError("Something gone wrong! Tower has triggered on non enemy object");
             _parent.StopShooting(enemy);

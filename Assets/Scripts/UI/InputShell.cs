@@ -1,26 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace UI
 {
     public class InputShell : MonoBehaviour
     {
-        private static readonly Input Input = new Input();
-        public static Input Instance { get; } = Input;
+        public Input Input { get; private set; }
 
-        public static void SetBuildingMode()
+        private void OnEnable()
         {
-            Debug.Log("Inside SetBuildingMode");
-            Input.BuildingMode.Enable();
-            Input.ViewMode.Disable();
-            CameraMovement.Instance.TriggerOnTowers(false);
-            Debug.Log("Exit SetBuildingMode");
+            Input = new Input();
         }
 
-        public static void SetViewMode()
+        public void SetBuildingMode()
+        {
+            Input.BuildMode.Enable();
+            Input.ViewMode.Disable();
+            CameraMovement.Instance.TriggerOnTowers(false);
+        }
+
+        public void SetViewMode()
         {
             Input.ViewMode.Enable();
-            Input.BuildingMode.Disable();
+            Input.BuildMode.Disable();
             CameraMovement.Instance.TriggerOnTowers(true);
         }
     }
+    
 }

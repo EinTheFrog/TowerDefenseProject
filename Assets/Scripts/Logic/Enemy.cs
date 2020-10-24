@@ -56,7 +56,7 @@ namespace Logic
             health -= ReceivedDamage * Time.deltaTime;
             if (health <= 0)
             {
-                Die(this);
+                Die?.Invoke(this);
             }
         }
 
@@ -147,7 +147,7 @@ namespace Logic
         {
             if (_manager == null)
             {
-                throw new ArgumentException("Manager hasn't been setted");
+                throw new ArgumentException("Manager hasn't been set");
             }
             SetPath(_manager.GetPath(this));
         }

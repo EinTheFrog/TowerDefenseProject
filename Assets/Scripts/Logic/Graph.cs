@@ -52,7 +52,7 @@ namespace Logic
 
         public List<Node> FindPath (Node start, Node finish)
         {
-            if (start == finish) return new List<Node> { start };
+            if (Equals(start, finish)) return new List<Node> { start };
 
             var priorityQueue = new SimplePriorityQueue<Node>();
             var visited = new HashSet<Node>();

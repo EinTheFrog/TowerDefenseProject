@@ -13,7 +13,6 @@ namespace Logic
         private Dictionary<Node, RoadPlatform> _nodeRoads;
         private Dictionary<RoadPlatform, KeyValuePair<RoadPlatform, RoadPlatform>> _roadsBetweenNodes;
         private Graph _graph;
-        //Dictionary<RoadPlatform, List<List<RoadPlatform>>> paths;
 
         public EnemyManager EnemyManager => enemyManager;
 
@@ -28,11 +27,9 @@ namespace Logic
         private void Awake()
         {
             _graph = new Graph();
-            //roadNodeDirs = new Dictionary<RoadPlatform, List<Vector3>>();
             _roadNodes = new Dictionary<RoadPlatform, Node>();
             _nodeRoads = new Dictionary<Node, RoadPlatform>();
             _roadsBetweenNodes = new Dictionary<RoadPlatform, KeyValuePair<RoadPlatform, RoadPlatform>>();
-            // paths = new Dictionary<RoadPlatform, List<List<RoadPlatform>>>();
         }
 
         private void Start()
@@ -40,7 +37,6 @@ namespace Logic
             var roads = GetComponentsInChildren<RoadPlatform>();
             foreach (var road in roads)
             {
-                road.Manager = this;
             }
             StartCoroutine(AddAllRoadParts());
 
@@ -84,15 +80,17 @@ namespace Logic
             {
                 var roadsBetween = new HashSet<RoadPlatform>();
                 var next = roadNode;
-                var pathCost = roadNode.Cost;
+                var pathCost = roadNode.cost;
                 while (next.Neighbours.ContainsKey(direction))
                 {
                     next = next.Neighbours[direction];
-                    pathCost += next.Cost;
+                    pathCost += next.cost;
                     if (CheckIfNode(next))
                     {
-                        var x = next.transform.localPosition.x;
-                        var z = next.transform.localPosition.z;
+                        var transform1 = next.transform;
+                        var position = transform1.localPosition;
+                        var x = position.x;
+                        var z = position.z;
                         var nodeNeighbour = _roadNodes.ContainsKey(next) ? _roadNodes[next] : new Node(next.Id, x, z);
                         nodeNeighbours[nodeNeighbour] = pathCost;
 
@@ -110,7 +108,6 @@ namespace Logic
 
             if (_roadsBetweenNodes.ContainsKey(roadNode))
             {
-                //RemoveDeprecatedPaths(roadsBetweenNodes[roadNode]);
                 _graph.RemoveConnection(_roadNodes[_roadsBetweenNodes[roadNode].Key], _roadNodes[_roadsBetweenNodes[roadNode].Value]);
                 _roadsBetweenNodes.Remove(roadNode);
                 enemyManager.AwareEnemies(new List<RoadPlatform> { roadNode });
@@ -192,11 +189,11 @@ namespace Logic
             foreach (var dir in start.NeighboursDirs)
             {
                 var next = start.Neighbours[dir];
-                var cost = start.Cost + next.Cost;
+                var cost = start.cost + next.cost;
                 while (!_roadNodes.ContainsKey(next) && next.Neighbours.ContainsKey(dir))
                 {
                     next = next.Neighbours[dir];
-                    cost += next.Cost;
+                    cost += next.cost;
                 }
                 if (next == finish) return cost;
             }
@@ -244,21 +241,19 @@ namespace Logic
 
         public void UpdateDangerInRadius(Vector3 center, float radius, float dangerChange)
         {
-            Collider[] collidersInRadius = new Collider[200];
-            Dictionary<RoadPlatform, float> roads = new Dictionary<RoadPlatform, float>();
+            var collidersInRadius = new Collider[200];
+            var roads = new Dictionary<RoadPlatform, float>();
             int count = Physics.OverlapSphereNonAlloc(center, radius, collidersInRadius);
             for (int i = 0; i < count; i++)
             {
-                RoadPlatform road = collidersInRadius[i].GetComponent<RoadPlatform>();
-                if (road != null)
+                var road = collidersInRadius[i].GetComponent<RoadPlatform>();
+                if (road == null) continue;
+                road.cost += dangerChange;
+                if (road.cost < 0)
                 {
-                    road.Cost += dangerChange;
-                    if (road.Cost < 0)
-                    {
-                        throw new Exception("Road cost is less than 0");
-                    }
-                    roads[road] = dangerChange;
+                    throw new Exception("Road cost is less than 0");
                 }
+                roads[road] = dangerChange;
             }
             UpdateDanger(roads);
         }

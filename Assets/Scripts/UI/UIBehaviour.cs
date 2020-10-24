@@ -12,12 +12,12 @@ namespace UI
 
         public void GoToMainMenu()
         {
+            var objects = SceneManager.GetActiveScene().GetRootGameObjects();
+            foreach (var o in objects)
+            {
+                Destroy(o);
+            }
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-        }
-
-        public void ResumeGame()
-        {
-
         }
     }
 }
