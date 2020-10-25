@@ -25,6 +25,8 @@ namespace UI
         private float _zoomVelocity;
         private float _timeSinceLastScroll;
 
+        private bool _collides = false;
+
         public static CameraMovement Instance { get; private set; }
         private void Start()
         {
@@ -54,7 +56,7 @@ namespace UI
             var transform1 = transform;
             velocity += transform1.right * _movementVelocity.x;
             var forward1 = transform1.forward;
-            velocity += forward1 * _zoomVelocity;
+            velocity += _collides? Vector3.down * _zoomVelocity: forward1 * _zoomVelocity;
             var forward = Vector3.ProjectOnPlane(forward1, Vector3.down).normalized;
             velocity += forward * _movementVelocity.y;
 
@@ -115,6 +117,16 @@ namespace UI
             {
                 GetComponent<PhysicsRaycaster>().eventMask -= LayerMask.GetMask("Towers");
             }
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            _collides = true;
+        }
+        
+        private void OnCollisionExit(Collision other)
+        {
+            _collides = false;
         }
     }
 }
