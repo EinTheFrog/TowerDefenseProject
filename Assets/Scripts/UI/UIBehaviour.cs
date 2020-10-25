@@ -5,8 +5,6 @@ namespace UI
 {
     public class UIBehaviour : MonoBehaviour
     {
-        [SerializeField] private InputShell inputShell = null;
-        [SerializeField] private MenuBehaviour menu = null;
         public void StartGame()
         {
             SceneManager.LoadScene("Level", LoadSceneMode.Single);

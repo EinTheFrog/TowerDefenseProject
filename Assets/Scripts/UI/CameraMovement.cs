@@ -116,10 +116,5 @@ namespace UI
                 GetComponent<PhysicsRaycaster>().eventMask -= LayerMask.GetMask("Towers");
             }
         }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            _zoomVelocity -= _zoomVelocity;
-        }
     }
 }
