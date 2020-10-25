@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace UI
 {
@@ -11,7 +13,7 @@ namespace UI
         [SerializeField] private float zoomMaxSpeed = 2f;
         [SerializeField] private float rotationAcceleration = 90f;
         [SerializeField] private float rotationMaxSpeed = 45f;
-        [SerializeField] private InputShell _inputShell = null;
+        [SerializeField] private InputShell inputShell = null;
 
         private Vector3 _desiredMovementVelocity;
         private Vector3 _movementVelocity;
@@ -66,13 +68,13 @@ namespace UI
 
         private void ListenKeyboard()
         {
-            _desiredMovementVelocity = _inputShell.Input.MovementMode.Move.ReadValue<Vector2>();
-            _desiredRotationVelocity = _inputShell.Input.MovementMode.Rotate.ReadValue<float>();
+            _desiredMovementVelocity = inputShell.Input.MovementMode.Move.ReadValue<Vector2>();
+            _desiredRotationVelocity = inputShell.Input.MovementMode.Rotate.ReadValue<float>();
         }
 
         private void ListenMouse()
         {
-            var inputScroll = _inputShell.Input.MovementMode.Zoom.ReadValue<Vector2>().y;
+            var inputScroll = inputShell.Input.MovementMode.Zoom.ReadValue<Vector2>().y;
             if (inputScroll != 0)
             {
                 _desiredZoomVelocity = Mathf.Sign(inputScroll);
@@ -113,6 +115,11 @@ namespace UI
             {
                 GetComponent<PhysicsRaycaster>().eventMask -= LayerMask.GetMask("Towers");
             }
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            _zoomVelocity -= _zoomVelocity;
         }
     }
 }

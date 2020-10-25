@@ -212,6 +212,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "TowerMode",
+            "id": "ac38edc6-140c-4f63-bfc8-72aa97979f4f",
+            "actions": [
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "a3889b19-fc8f-45fd-809f-2714dd5da001",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4d98f21e-aab3-4278-9c3d-d1d8bf4390c1",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

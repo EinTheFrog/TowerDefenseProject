@@ -225,6 +225,33 @@ public class @Input : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TowerMode"",
+            ""id"": ""ac38edc6-140c-4f63-bfc8-72aa97979f4f"",
+            ""actions"": [
+                {
+                    ""name"": ""Close"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3889b19-fc8f-45fd-809f-2714dd5da001"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4d98f21e-aab3-4278-9c3d-d1d8bf4390c1"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -243,6 +270,9 @@ public class @Input : IInputActionCollection, IDisposable
         // MenuMode
         m_MenuMode = asset.FindActionMap("MenuMode", throwIfNotFound: true);
         m_MenuMode_CloseMenu = m_MenuMode.FindAction("CloseMenu", throwIfNotFound: true);
+        // TowerMode
+        m_TowerMode = asset.FindActionMap("TowerMode", throwIfNotFound: true);
+        m_TowerMode_Close = m_TowerMode.FindAction("Close", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -436,6 +466,39 @@ public class @Input : IInputActionCollection, IDisposable
         }
     }
     public MenuModeActions @MenuMode => new MenuModeActions(this);
+
+    // TowerMode
+    private readonly InputActionMap m_TowerMode;
+    private ITowerModeActions m_TowerModeActionsCallbackInterface;
+    private readonly InputAction m_TowerMode_Close;
+    public struct TowerModeActions
+    {
+        private @Input m_Wrapper;
+        public TowerModeActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Close => m_Wrapper.m_TowerMode_Close;
+        public InputActionMap Get() { return m_Wrapper.m_TowerMode; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TowerModeActions set) { return set.Get(); }
+        public void SetCallbacks(ITowerModeActions instance)
+        {
+            if (m_Wrapper.m_TowerModeActionsCallbackInterface != null)
+            {
+                @Close.started -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnClose;
+                @Close.performed -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnClose;
+                @Close.canceled -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnClose;
+            }
+            m_Wrapper.m_TowerModeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Close.started += instance.OnClose;
+                @Close.performed += instance.OnClose;
+                @Close.canceled += instance.OnClose;
+            }
+        }
+    }
+    public TowerModeActions @TowerMode => new TowerModeActions(this);
     public interface IBuildModeActions
     {
         void OnQuit(InputAction.CallbackContext context);
@@ -453,5 +516,9 @@ public class @Input : IInputActionCollection, IDisposable
     public interface IMenuModeActions
     {
         void OnCloseMenu(InputAction.CallbackContext context);
+    }
+    public interface ITowerModeActions
+    {
+        void OnClose(InputAction.CallbackContext context);
     }
 }

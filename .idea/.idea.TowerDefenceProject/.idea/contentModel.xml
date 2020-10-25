@@ -39,10 +39,12 @@
           <e p="Scripts.asmdef" t="Include" />
           <e p="UI" t="Include">
             <e p="BtnTowerInfo.cs" t="Include" />
+            <e p="BuildingMenuBehaviour.cs" t="Include" />
             <e p="CameraMovement.cs" t="Include" />
             <e p="DefeatMenuBehaviour.cs" t="Include" />
             <e p="InputShell.cs" t="Include" />
             <e p="MenuBehaviour.cs" t="Include" />
+            <e p="TowerMenuBehaviour.cs" t="Include" />
             <e p="UIBehaviour.cs" t="Include" />
           </e>
         </e>

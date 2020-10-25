@@ -5,6 +5,8 @@ namespace UI
 {
     public class UIBehaviour : MonoBehaviour
     {
+        [SerializeField] private InputShell inputShell = null;
+        [SerializeField] private MenuBehaviour menu = null;
         public void StartGame()
         {
             SceneManager.LoadScene("Level", LoadSceneMode.Single);
@@ -12,11 +14,6 @@ namespace UI
 
         public void GoToMainMenu()
         {
-            var objects = SceneManager.GetActiveScene().GetRootGameObjects();
-            foreach (var o in objects)
-            {
-                Destroy(o);
-            }
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
     }

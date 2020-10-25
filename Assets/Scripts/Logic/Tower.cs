@@ -112,11 +112,10 @@ namespace Logic
             _enemiesUnderFire.Remove(enemy);
             enemy.Die -= StopShooting;
         }
-        
-        public void SetPosition(Vector3 newPos)
+
+        public void Upgrade()
         {
-            var transform1 = transform;
-            transform1.localPosition = newPos + Vector3.up * transform1.localScale.y;
+            throw new NotImplementedException();
         }
 
         public enum TowerState
