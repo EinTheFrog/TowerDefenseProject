@@ -7,7 +7,9 @@ namespace UI
     {
         [SerializeField] private BuildingMenuBehaviour buildingMenu = null;
         [SerializeField] private InputShell inputShell = null;
+        
         private CanvasGroup _canvasGroup;
+        private Tower _chosenTower;
         
         private void OnEnable()
         {
@@ -25,6 +27,8 @@ namespace UI
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
             buildingMenu.CloseMenu();
+
+            _chosenTower = chosenTower;
         }
 
         private void CloseMenu()
@@ -35,6 +39,11 @@ namespace UI
             _canvasGroup.blocksRaycasts = false;
             buildingMenu.CallMenu();
             
+        }
+
+        public void SellTower()
+        {
+            _chosenTower.Destroy();
         }
     }
 }

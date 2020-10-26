@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,8 +22,10 @@ namespace Logic
         public bool IsBuilt { get; private set; } = false;
         public void OnPointerClick(PointerEventData eventData)
         {
-            Remove?.Invoke(this);
+            var menuBehaviour = FindObjectOfType<TowerMenuBehaviour>().GetComponent<TowerMenuBehaviour>();
+            menuBehaviour.CallMenu(this);
         }
+        
 
         public void Init(bool isActive, Vector3? spawnPos = null)
         {
@@ -123,6 +126,16 @@ namespace Logic
             GreenGhost,
             RedGhost,
             Building
+        }
+
+        protected virtual void OnRemove(Tower tower)
+        {
+            Remove?.Invoke(tower);
+        }
+
+        public void Destroy()
+        {
+            Remove?.Invoke(this);
         }
     }
 }

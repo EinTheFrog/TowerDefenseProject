@@ -23,7 +23,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Logic/Tower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/Tower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,16 +59,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Graph.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/RoadManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/InputShell.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/SolePlatform.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/MenuBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/TowerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Tower.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/RoadPlatform.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/DefeatMenuBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/SolePlatform.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Tower.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" />
       </list>
     </option>
   </component>
@@ -139,7 +140,8 @@
       <workItem from="1603617870978" duration="2838000" />
       <workItem from="1603621189226" duration="1603000" />
       <workItem from="1603651871024" duration="2350000" />
-      <workItem from="1603655491695" duration="673000" />
+      <workItem from="1603655491695" duration="1269000" />
+      <workItem from="1603682775028" duration="1076000" />
     </task>
     <servers />
   </component>
@@ -237,6 +239,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="194" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603655311078" />
+    <state x="764" y="221" key="RiderGenerateDialog" timestamp="1603683114840">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="764" y="221" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603683114840" />
     <state x="201" y="75" width="1342" height="710" key="SettingsEditor" timestamp="1603385967610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
