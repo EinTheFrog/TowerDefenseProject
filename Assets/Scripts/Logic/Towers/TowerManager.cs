@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Logic
+namespace Logic.Towers
 {
     public class TowerManager : MonoBehaviour
     {
         [SerializeField] private RoadManager roadManager = null;
-        [SerializeField] private InputShell inputShell = null;
-        
-        private Tower _chosenTower;
-        public Dictionary<Tower, SolePlatform> TowersSoles;
+        [SerializeField] private MoneyManager moneyManager = null;
 
-        public RoadManager RoadManager => roadManager;
+        private Tower _chosenTower;
+        private InputShell _inputShell;
+        
+        public Dictionary<Tower, SolePlatform> TowersSoles { get; private set; }
 
         private void Start()
         {
             //добавляем реакции на нажатие клавиш
-            inputShell.Input.BuildMode.Quit.performed += _ => ChooseNone();
+            _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
+            _inputShell.Input.BuildMode.Quit.performed += _ => ChooseNone();
             TowersSoles = new Dictionary<Tower, SolePlatform>();
         }
 
@@ -35,7 +35,7 @@ namespace Logic
             }
             ChooseTower(button.TowerType);
             //настравиваем реакцию на клавишы в input-e
-            inputShell.SetBuildingMode();
+            _inputShell.SetBuildingMode();
         }
 
         public void ChooseTower(Tower type)
@@ -60,10 +60,20 @@ namespace Logic
         {
            ChooseTower(null);
            //настравиваем реакцию на клавишы в input-e
-           inputShell.SetViewMode();
+           _inputShell.SetViewMode();
         }
 
-        public void BuildChosenTower(SolePlatform sole)
+        public bool BuyChosenTower(SolePlatform sole)
+        {
+            if (_chosenTower.Cost > moneyManager.Money) return false;
+            moneyManager.Money -= _chosenTower.Cost;
+            BuildChosenTower(sole);
+            return true;
+        }
+
+        public void GetMoneyForKill(Enemy enemy) => moneyManager.Money += enemy.Reward;
+
+        private void BuildChosenTower(SolePlatform sole)
         {
             //создаем копию призрака (выбранного строения) в указанном месте
             var newTower = Instantiate(_chosenTower);
@@ -73,7 +83,7 @@ namespace Logic
                 TowersSoles = new Dictionary<Tower, SolePlatform>();
             }
             TowersSoles[newTower] = sole;
-            newTower.Init(Tower.TowerState.Building, sole.Center);
+            newTower.Init(Tower.TowerState.Building, sole.Center, this);
             //ищем дороги в радиусе поражения и меняем их опасность
             roadManager.UpdateDangerInRadius(sole.Center, _chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius, 1);
         }
@@ -89,7 +99,8 @@ namespace Logic
         public void ShowChosenTower(SolePlatform sole)
         {
             //показываем призрак строения в зависимости от занятости фундамента
-            _chosenTower.Init(sole.IsFree ? Tower.TowerState.GreenGhost : Tower.TowerState.RedGhost, sole.Center);
+            _chosenTower.Init(sole.IsFree &&  _chosenTower.Cost <= moneyManager.Money ?
+                Tower.TowerState.GreenGhost : Tower.TowerState.RedGhost, sole.Center, this);
         }
 
         public void HideTower()

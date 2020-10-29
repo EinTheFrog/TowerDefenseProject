@@ -1,4 +1,5 @@
-﻿using UI;
+﻿using Logic.Towers;
+using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,7 +21,7 @@ namespace Logic
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
             if (!_inputShell.Input.BuildMode.enabled || !IsFree) return;
-            TowerManager.BuildChosenTower(this);
+            if (!TowerManager.BuyChosenTower(this)) return;
             IsFree = false;
             //Вызываем OnPointerEnter, чтобы пользователь сразу после постройки здания видел,
             //что данный фундамент занят и ему не приходилось для этого убирать и

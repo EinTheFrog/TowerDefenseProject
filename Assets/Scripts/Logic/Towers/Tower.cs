@@ -4,22 +4,28 @@ using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Logic
+namespace Logic.Towers
 {
     public class Tower : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private float damage = 10;
+        [SerializeField] private int cost = 10;
         [SerializeField] private Material buildingMat = null;
         [SerializeField] private Material greenGhostMat = null;
         [SerializeField] private Material redGhostMat = null;
 
         private LineRenderer _lineRenderer;
+
         public delegate void RemoveHandler(Tower tower);
+
         public event RemoveHandler Remove;
         private HashSet<Enemy> _enemiesUnderFire;
         private bool _isShooting;
+        private TowerManager _manager;
+        
+        public bool IsBuilt { get; private set; }
+        public int Cost => cost;
 
-        public bool IsBuilt { get; private set; } = false;
         public void OnPointerClick(PointerEventData eventData)
         {
             var menuBehaviour = FindObjectOfType<TowerMenuBehaviour>().GetComponent<TowerMenuBehaviour>();
@@ -40,8 +46,9 @@ namespace Logic
             _isShooting = false;
         }
         
-        public void Init(TowerState state, Vector3 spawnPos)
+        public void Init(TowerState state, Vector3 spawnPos, TowerManager manager)
         {
+            _manager = manager;
             Init(true, spawnPos);
 
             var meshRenderer = GetComponent<MeshRenderer>();
@@ -74,16 +81,21 @@ namespace Logic
 
         private void DestroyThis(Tower tower)
         {
+            if (_manager == null) throw new MissingFieldException("TowerManager hasn't been added");
+            
             foreach (var enemy in _enemiesUnderFire)
             {
                 enemy.ReceivedDamage -= damage;
                 enemy.Die -= StopShooting;
+                enemy.Die -= _manager.GetMoneyForKill;
             }
             Destroy(gameObject);
         }
 
         public void StartShooting(Enemy enemy)
         {
+            if (_manager == null) throw new MissingFieldException("TowerManager hasn't been added");
+            
             if (_isShooting) return;
 
             _isShooting = true;
@@ -91,6 +103,7 @@ namespace Logic
             enemy.ReceivedDamage += damage;
             //добавляем остановку стрельбы в событие смерти
             enemy.Die += StopShooting;
+            enemy.Die += _manager.GetMoneyForKill;
             _enemiesUnderFire.Add(enemy);
         }
 
@@ -126,11 +139,6 @@ namespace Logic
             GreenGhost,
             RedGhost,
             Building
-        }
-
-        protected virtual void OnRemove(Tower tower)
-        {
-            Remove?.Invoke(tower);
         }
 
         public void Destroy()

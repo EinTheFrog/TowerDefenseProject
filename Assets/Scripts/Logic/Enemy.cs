@@ -10,6 +10,7 @@ namespace Logic
         [SerializeField] private float speed = 0;
         [SerializeField] private float health = 10;
         [SerializeField] private float levitateHeight = 0;
+        [SerializeField] private int reward = 5;
 
         private Vector3 _velocity = Vector3.zero;
  
@@ -20,6 +21,8 @@ namespace Logic
         public bool HasTreasure { get; set; }
         public float ReceivedDamage { get; set; }
         public bool CarriersPath { get; set; }
+
+        public int Reward => reward;
 
         public delegate void DieHandler(Enemy enemy);
         public event DieHandler Die;

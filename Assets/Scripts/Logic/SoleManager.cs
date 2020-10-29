@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Logic.Towers;
+using UnityEngine;
 
 namespace Logic
 {
     public class SoleManager : MonoBehaviour
     {
-        [SerializeField] TowerManager towerManager = null;
+        [SerializeField] private TowerManager towerManager = null;
 
         private void OnEnable()
         {

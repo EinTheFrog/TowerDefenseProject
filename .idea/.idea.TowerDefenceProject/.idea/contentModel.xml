@@ -26,14 +26,17 @@
             <e p="EnemyManager.cs" t="Include" />
             <e p="EnemyTrigger.cs" t="Include" />
             <e p="Graph.cs" t="Include" />
+            <e p="MoneyManager.cs" t="Include" />
             <e p="Node.cs" t="Include" />
             <e p="Platform.cs" t="Include" />
             <e p="RoadManager.cs" t="Include" />
             <e p="RoadPlatform.cs" t="Include" />
             <e p="SoleManager.cs" t="Include" />
             <e p="SolePlatform.cs" t="Include" />
-            <e p="Tower.cs" t="Include" />
-            <e p="TowerManager.cs" t="Include" />
+            <e p="Towers" t="Include">
+              <e p="Tower.cs" t="Include" />
+              <e p="TowerManager.cs" t="Include" />
+            </e>
             <e p="Treasure.cs" t="Include" />
           </e>
           <e p="Scripts.asmdef" t="Include" />
