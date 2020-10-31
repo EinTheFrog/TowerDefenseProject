@@ -34,6 +34,7 @@
             <e p="SoleManager.cs" t="Include" />
             <e p="SolePlatform.cs" t="Include" />
             <e p="Towers" t="Include">
+              <e p="LaserBeam.cs" t="Include" />
               <e p="Tower.cs" t="Include" />
               <e p="TowerManager.cs" t="Include" />
             </e>

@@ -139,10 +139,10 @@ GameObject:
   - component: {fileID: 1624096030084433430}
   - component: {fileID: 6909883583638700816}
   - component: {fileID: 239683624106413622}
-  - component: {fileID: -855786525618551573}
   - component: {fileID: 3499085007538575743}
+  - component: {fileID: 6849587084422627408}
   m_Layer: 11
-  m_Name: Tower
+  m_Name: LaserBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,22 +211,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-855786525618551573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3804475654540198231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a21f33a599233a94bb036ae8482c95e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 3
-  buildingMat: {fileID: 2100000, guid: e54730a16797d2b4f8644d61ecbfd609, type: 2}
-  greenGhostMat: {fileID: 2100000, guid: a0cafb5c6d7f1cf43aa3e401bdae5081, type: 2}
-  redGhostMat: {fileID: 2100000, guid: a06c4bbe4d6f6eb4a9c34173244b363f, type: 2}
 --- !u!136 &3499085007538575743
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -241,6 +225,23 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6849587084422627408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804475654540198231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fef30997328c96429a99bffdd133d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  cost: 10
+  buildingMat: {fileID: 2100000, guid: e54730a16797d2b4f8644d61ecbfd609, type: 2}
+  greenGhostMat: {fileID: 2100000, guid: a0cafb5c6d7f1cf43aa3e401bdae5081, type: 2}
+  redGhostMat: {fileID: 2100000, guid: a06c4bbe4d6f6eb4a9c34173244b363f, type: 2}
 --- !u!1 &4970806227203917425
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ namespace Tests.PlayMode
             var inputShell = inputShellObject.AddComponent<InputShell>();
             
             var sole = Object.Instantiate(Resources.Load<GameObject>("Prefabs/SolePlatform")).GetComponent<SolePlatform>();
-            var tower = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Tower")).GetComponent<Tower>();
+            var tower = Object.Instantiate(Resources.Load<GameObject>("Prefabs/LaserBeam")).GetComponent<Tower>();
             var treasure =  Object.Instantiate(Resources.Load<GameObject>("Prefabs/Treasure")).GetComponent<Treasure>();
             var road = Object.Instantiate(Resources.Load<GameObject>("Prefabs/RoadPlatform")).GetComponent<RoadPlatform>();
             var text = new GameObject().AddComponent<Text>();

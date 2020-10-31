@@ -26,12 +26,6 @@ namespace UI
         private float _timeSinceLastScroll;
 
         private bool _collides = false;
-
-        public static CameraMovement Instance { get; private set; }
-        private void Start()
-        {
-            Instance = this;
-        }
         private void OnEnable()
         {
             _movementVelocity = Vector3.zero;
@@ -111,10 +105,12 @@ namespace UI
         {
             if (isTrigger)
             {
+                var a = GetComponent<PhysicsRaycaster>();
                 GetComponent<PhysicsRaycaster>().eventMask += LayerMask.GetMask("Towers");
             }
             else
             {
+                var a = GetComponent<PhysicsRaycaster>();
                 GetComponent<PhysicsRaycaster>().eventMask -= LayerMask.GetMask("Towers");
             }
         }

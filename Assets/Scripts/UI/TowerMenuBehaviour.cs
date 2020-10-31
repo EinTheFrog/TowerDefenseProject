@@ -28,7 +28,8 @@ namespace UI
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
             buildingMenu.CloseMenu();
-
+            inputShell.SetTowerMode();
+            
             _chosenTower = chosenTower;
         }
 
@@ -38,13 +39,14 @@ namespace UI
             _canvasGroup.alpha = 0;
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
+            inputShell.SetViewMode();
             buildingMenu.CallMenu();
-            
         }
 
         public void SellTower()
         {
             _chosenTower.Destroy();
+            CloseMenu();
         }
     }
 }

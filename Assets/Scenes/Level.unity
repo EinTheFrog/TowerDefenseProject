@@ -37962,7 +37962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 3891
+    m_Bits: 1843
   m_MaxRayIntersections: 100
 --- !u!65 &1266308294
 BoxCollider:
@@ -50474,7 +50474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d957823db6ce6f84ba0a005ea50fbab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: {fileID: -855786525618551573, guid: 306c0f1f40069df47ae9760c28cbec4c,
+  towerType: {fileID: 6849587084422627408, guid: 306c0f1f40069df47ae9760c28cbec4c,
     type: 3}
 --- !u!1001 &1687049667
 PrefabInstance:
@@ -63712,6 +63712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda963720a3368f469fcaef58cfaee8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMovement: {fileID: 1266308292}
 --- !u!4 &2064351913
 Transform:
   m_ObjectHideFlags: 0

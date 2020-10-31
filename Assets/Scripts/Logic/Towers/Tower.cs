@@ -6,22 +6,20 @@ using UnityEngine.EventSystems;
 
 namespace Logic.Towers
 {
-    public class Tower : MonoBehaviour, IPointerClickHandler
+    public abstract class Tower : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] private float damage = 10;
+        [SerializeField] protected float damage = 10;
         [SerializeField] private int cost = 10;
-        [SerializeField] private Material buildingMat = null;
-        [SerializeField] private Material greenGhostMat = null;
-        [SerializeField] private Material redGhostMat = null;
-
-        private LineRenderer _lineRenderer;
+        [SerializeField] private Material buildingMat = default;
+        [SerializeField] private Material greenGhostMat = default;
+        [SerializeField] private Material redGhostMat = default;
 
         public delegate void RemoveHandler(Tower tower);
 
         public event RemoveHandler Remove;
-        private HashSet<Enemy> _enemiesUnderFire;
-        private bool _isShooting;
-        private TowerManager _manager;
+        protected HashSet<Enemy> EnemiesUnderFire;
+        protected bool IsShooting;
+        protected TowerManager Manager;
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
@@ -42,13 +40,13 @@ namespace Logic.Towers
             transform1.localPosition = (Vector3)spawnPos + Vector3.up * transform1.localScale.y;
             GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             Remove += DestroyThis;
-            _enemiesUnderFire = new HashSet<Enemy>();
-            _isShooting = false;
+            EnemiesUnderFire = new HashSet<Enemy>();
+            IsShooting = false;
         }
         
         public void Init(TowerState state, Vector3 spawnPos, TowerManager manager)
         {
-            _manager = manager;
+            Manager = manager;
             Init(true, spawnPos);
 
             var meshRenderer = GetComponent<MeshRenderer>();
@@ -62,77 +60,39 @@ namespace Logic.Towers
             {
                 case TowerState.GreenGhost: meshRenderer.material = greenGhostMat; break;
                 case TowerState.RedGhost: meshRenderer.material = redGhostMat; break;
-                case TowerState.Building:
-                {
-                    meshRenderer.material = buildingMat;
-                    meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-                    _lineRenderer = gameObject.GetComponentInChildren<LineRenderer>();
-                    var transform1 = transform;
-                    var localPosition = transform1.localPosition;
-                    _lineRenderer.SetPosition(0, localPosition + Vector3.up * transform1.localScale.y);
-                    _lineRenderer.SetPosition(1, localPosition);
-                    IsBuilt = true;
-                    break;
-                }
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+                case TowerState.Building: Build(meshRenderer); break;
+                default: throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
+        }
+
+        protected abstract void Build(Renderer meshRenderer);
+        protected void SetBuiltMaterial(Renderer meshRenderer)
+        {
+            meshRenderer.material = buildingMat;
+            meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            IsBuilt = true;
         }
 
         private void DestroyThis(Tower tower)
         {
-            if (_manager == null) throw new MissingFieldException("TowerManager hasn't been added");
+            if (Manager == null) throw new MissingFieldException("TowerManager hasn't been added");
             
-            foreach (var enemy in _enemiesUnderFire)
+            foreach (var enemy in EnemiesUnderFire)
             {
                 enemy.ReceivedDamage -= damage;
                 enemy.Die -= StopShooting;
-                enemy.Die -= _manager.GetMoneyForKill;
+                enemy.Die -= Manager.GetMoneyForKill;
             }
             Destroy(gameObject);
         }
 
-        public void StartShooting(Enemy enemy)
-        {
-            if (_manager == null) throw new MissingFieldException("TowerManager hasn't been added");
-            
-            if (_isShooting) return;
+        public abstract void StartShooting(Enemy enemy);
 
-            _isShooting = true;
-            _lineRenderer.SetPosition(1, enemy.transform.localPosition);
-            enemy.ReceivedDamage += damage;
-            //добавляем остановку стрельбы в событие смерти
-            enemy.Die += StopShooting;
-            enemy.Die += _manager.GetMoneyForKill;
-            _enemiesUnderFire.Add(enemy);
-        }
+        public abstract void MoveAim(Enemy enemy);
 
-        public void MoveAim(Enemy enemy)
-        {
-            if (!_enemiesUnderFire.Contains(enemy))
-            {
-                StartShooting(enemy);
-            }
-            if (_enemiesUnderFire.Contains(enemy))
-            {
-                _lineRenderer.SetPosition(1, enemy.transform.localPosition);
-            }
-        }
+        public abstract void StopShooting(Enemy enemy);
 
-        public void StopShooting(Enemy enemy)
-        {
-            if (!_enemiesUnderFire.Contains(enemy)) return;
-            _isShooting = false;
-            _lineRenderer.SetPosition(1, transform.localPosition);
-            enemy.ReceivedDamage = 0;
-            _enemiesUnderFire.Remove(enemy);
-            enemy.Die -= StopShooting;
-        }
-
-        public void Upgrade()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Upgrade();
 
         public enum TowerState
         {
