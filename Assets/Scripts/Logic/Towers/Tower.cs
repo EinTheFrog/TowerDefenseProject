@@ -18,11 +18,18 @@ namespace Logic.Towers
 
         public event RemoveHandler Remove;
         protected HashSet<Enemy> EnemiesUnderFire;
-        protected bool IsShooting;
         protected TowerManager Manager;
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
+        
+        public void Update()
+        {
+            foreach (var enemy in EnemiesUnderFire)
+            {
+                enemy.Health -= damage * Time.deltaTime;
+            }
+        }
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -41,7 +48,6 @@ namespace Logic.Towers
             GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             Remove += DestroyThis;
             EnemiesUnderFire = new HashSet<Enemy>();
-            IsShooting = false;
         }
         
         public void Init(TowerState state, Vector3 spawnPos, TowerManager manager)
@@ -79,7 +85,6 @@ namespace Logic.Towers
             
             foreach (var enemy in EnemiesUnderFire)
             {
-                enemy.ReceivedDamage -= damage;
                 enemy.Die -= StopShooting;
                 enemy.Die -= Manager.GetMoneyForKill;
             }

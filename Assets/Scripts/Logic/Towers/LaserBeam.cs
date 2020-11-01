@@ -6,16 +6,14 @@ namespace Logic.Towers
     public class LaserBeam : Tower
     {
         private LineRenderer _lineRenderer;
-
+        
         public override void StartShooting(Enemy enemy)
         {
             if (Manager == null) throw new MissingFieldException("TowerManager hasn't been added");
             
-            if (IsShooting) return;
-
-            IsShooting = true;
+            if (EnemiesUnderFire.Count > 0) return;
+            
             _lineRenderer.SetPosition(1, enemy.transform.localPosition);
-            enemy.ReceivedDamage += damage;
             //добавляем остановку стрельбы в событие смерти
             enemy.Die += StopShooting;
             enemy.Die += Manager.GetMoneyForKill;
@@ -37,11 +35,10 @@ namespace Logic.Towers
         public override  void StopShooting(Enemy enemy)
         {
             if (!EnemiesUnderFire.Contains(enemy)) return;
-            IsShooting = false;
             _lineRenderer.SetPosition(1, transform.localPosition);
-            enemy.ReceivedDamage = 0;
             EnemiesUnderFire.Remove(enemy);
             enemy.Die -= StopShooting;
+            enemy.Die -= Manager.GetMoneyForKill;
         }
 
         public override void Upgrade()

@@ -8,7 +8,7 @@ namespace Logic
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private float speed = 0;
-        [SerializeField] private float health = 10;
+        [SerializeField] private float maxHealth = 10;
         [SerializeField] private float levitateHeight = 0;
         [SerializeField] private int reward = 5;
 
@@ -19,8 +19,9 @@ namespace Logic
         public RoadPlatform LastDestination { get; private set; }
         public RoadPlatform NextDestination { get; private set; }
         public bool HasTreasure { get; set; }
-        public float ReceivedDamage { get; set; }
         public bool CarriersPath { get; set; }
+
+        public float Health { get; set; }
 
         public int Reward => reward;
 
@@ -51,13 +52,12 @@ namespace Logic
 
         private void OnEnable()
         {
-            ReceivedDamage = 0;
+            Health = maxHealth;
         }
 
         private void Update()
         {
-            health -= ReceivedDamage * Time.deltaTime;
-            if (health <= 0)
+            if (Health <= 0)
             {
                 Die?.Invoke(this);
             }

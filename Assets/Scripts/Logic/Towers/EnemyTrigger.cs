@@ -1,7 +1,6 @@
-﻿using Logic.Towers;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Logic
+namespace Logic.Towers
 {
     public class EnemyTrigger : MonoBehaviour
     {
@@ -38,11 +37,5 @@ namespace Logic
             if (enemy == null) Debug.LogError("Something gone wrong! Tower has triggered on non enemy object");
             _parent.StopShooting(enemy);
         }
-
-/*    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, Radius);
-    }*/
     }
 }
