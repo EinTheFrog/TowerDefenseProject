@@ -29,13 +29,6 @@ public class RoadPlatform : Platform
         NeighboursDirs.Add(direction);
         Neighbours[direction] = hit.transform.gameObject.GetComponent<RoadPlatform>();
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(Center, Center + Vector3.up * cost);
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(Center - Vector3.up * Size.y * Scale.y * 0.5f, Center - Vector3.up * Size.y * Scale.y * 0.5f + Vector3.forward * Size.x * Scale.x * 0.75f);
-    }
 
     public override bool Equals(object other) => other.ToString().Equals(ToString());
 

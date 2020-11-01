@@ -37,6 +37,8 @@
               <e p="FieldBehaviour.cs" t="Include" />
               <e p="FieldTower.cs" t="Include" />
               <e p="LaserBeam.cs" t="Include" />
+              <e p="Rocket.cs" t="Include" />
+              <e p="RocketLauncher.cs" t="Include" />
               <e p="Tower.cs" t="Include" />
               <e p="TowerManager.cs" t="Include" />
             </e>
