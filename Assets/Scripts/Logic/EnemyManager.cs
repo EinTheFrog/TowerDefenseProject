@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Logic
 {
@@ -8,16 +10,18 @@ namespace Logic
     {
         [SerializeField] private float secondsBeforeFirstSpawn = 2;
         [SerializeField] private float secondsBetweenSpawn = 2;
-        [SerializeField] private Enemy enemyPrefab = null;
+        [SerializeField] private Enemy[] enemyPrefabs = null;
         [SerializeField] private RoadPlatform spawnPlatform = null;
         [SerializeField] private RoadPlatform treasurePlatform = null;
         [SerializeField] private Treasure treasurePrefab = null;
         [SerializeField] private RoadManager roadManager = null;
+        [SerializeField] private int[] enemiesCount = null;
 
         private float _secondsSinceLastSpawn;
         private HashSet<Enemy> _enemies;
         private Treasure _treasure;
-        private Enemy _carrier = null;
+        private Enemy _carrier;
+        private List<KeyValuePair<Enemy, int>> _enemiesLeft;
 
         public RoadPlatform ObjectivePlatform { get; private set; }
 
@@ -54,6 +58,15 @@ namespace Logic
 
         private void Start()
         {
+            _enemiesLeft = new List<KeyValuePair<Enemy, int>>();
+            for (int i = 0; i < enemyPrefabs.Length; i++)
+            {
+                if (i >= enemiesCount.Length)
+                {
+                    throw new ArgumentException("There weren't enough elements in enemiesCount");
+                }
+                _enemiesLeft.Add(new KeyValuePair<Enemy, int>(enemyPrefabs[i], enemiesCount[i]));
+            }
             _enemies = new HashSet<Enemy>();
             ObjectivePlatform = treasurePlatform;
             _treasure = Instantiate(treasurePrefab);
@@ -83,6 +96,17 @@ namespace Logic
 
         void SpawnEnemy()
         {
+            var size = _enemiesLeft.Count;
+            if (size == 0) return;
+
+            var ind = Random.Range(0, size);
+            var enemyPrefab = _enemiesLeft[ind].Key;
+            _enemiesLeft[ind] = new KeyValuePair<Enemy, int>(enemyPrefab, _enemiesLeft[ind].Value - 1);
+            if (_enemiesLeft[ind].Value == 0)
+            {
+                _enemiesLeft.RemoveAt(ind);
+            }
+            
             var enemy = Instantiate(enemyPrefab);
             enemy.Init(GetPath(spawnPlatform, null, false), this);
             _enemies.Add(enemy);
