@@ -53,6 +53,7 @@ namespace Logic.Towers
             var localPosition = transform1.localPosition;
             _lineRenderer = gameObject.GetComponentInChildren<LineRenderer>();
             _lineRenderer.SetPosition(0, localPosition + Vector3.up * transform1.localScale.y);
+            _lineRenderer.SetPosition(1, transform.localPosition);
         }
     }
 }

@@ -105,13 +105,11 @@ namespace UI
         {
             if (isTrigger)
             {
-                var a = GetComponent<PhysicsRaycaster>();
-                GetComponent<PhysicsRaycaster>().eventMask += LayerMask.GetMask("Towers");
+                GetComponentInChildren<PhysicsRaycaster>().eventMask += LayerMask.GetMask("Towers");
             }
             else
             {
-                var a = GetComponent<PhysicsRaycaster>();
-                GetComponent<PhysicsRaycaster>().eventMask -= LayerMask.GetMask("Towers");
+                GetComponentInChildren<PhysicsRaycaster>().eventMask -= LayerMask.GetMask("Towers");
             }
         }
 

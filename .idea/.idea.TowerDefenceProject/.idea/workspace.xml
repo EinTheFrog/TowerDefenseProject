@@ -20,56 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e452dc46-5882-4cad-9e7b-4962fe516235" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender/HiddenNormalsTexture.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender/HiddenNormalsTexture.shader.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender/OutlinePostProfile.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender/OutlinePostProfile.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender/PostProcessOutline.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender/PostProcessOutline.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender/RenderReplacementShaderToTexture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OutlineRender/RenderReplacementShaderToTexture.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Pipeline.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Pipeline/UniversalRenderPipelineAsset.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Pipeline/UniversalRenderPipelineAsset.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Pipeline/UniversalRenderPipelineAsset_Renderer.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Pipeline/UniversalRenderPipelineAsset_Renderer.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial 2.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial 2.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/TreasureMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/TreasureMaterial.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/MyVertexShader.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/MyVertexShader.shadergraph.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/SmallGridShader.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/SmallGridShader.shadergraph.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/VertexShader.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Level_Profiles.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Level_Profiles/Camera Profile.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Level_Profiles/Camera Profile.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Render.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Render/UniversalRenderPipelineAsset.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Render/UniversalRenderPipelineAsset.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Render/UniversalRenderPipelineAsset_Renderer.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Render/UniversalRenderPipelineAsset_Renderer.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/RoadMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/RoadMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/SoleMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/SoleMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LaserBeam.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LaserBeam.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/RocketLauncher.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/RocketLauncher.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/SolePlatform.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/SolePlatform.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Treasure.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Treasure.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/GridShader.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/GridShader.shadergraph" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,13 +72,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/TowerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/PlayMode/TowerManagerTests.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/InputShell.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/EnemyTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/Tower.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/FieldBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/FieldTower.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/RoadPlatform.cs" />
@@ -132,6 +86,8 @@
         <option value="$PROJECT_DIR$/Assets/Resources/Shaders/VertexShader.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/OulineRenderer.cs" />
         <option value="$PROJECT_DIR$/Assets/Resources/Shaders/OutlineShader.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" />
       </list>
     </option>
   </component>
@@ -220,6 +176,7 @@
       <workItem from="1604517184081" duration="1245000" />
       <workItem from="1604641132646" duration="3504000" />
       <workItem from="1604824507797" duration="1287000" />
+      <workItem from="1604858754220" duration="988000" />
     </task>
     <servers />
   </component>
