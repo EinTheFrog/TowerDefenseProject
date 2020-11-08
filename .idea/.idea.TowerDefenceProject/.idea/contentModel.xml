@@ -38,7 +38,7 @@
         </e>
         <e p="Resources" t="Include">
           <e p="Shaders" t="Include">
-            <e p="VertexShader.shader" t="Include" />
+            <e p="GridShader.shader" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">

@@ -31,6 +31,9 @@ MonoBehaviour:
   depthNormalThresholdScale:
     overrideState: 1
     value: 15
+  color:
+    overrideState: 1
+    value: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

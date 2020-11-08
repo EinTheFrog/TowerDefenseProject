@@ -24,8 +24,7 @@ Shader "Hidden/Roystan/Outline Post Process"
             float4x4 _ClipToView;
             float _DepthNormalThreshold;
 			float _DepthNormalThresholdScale;
-          
-
+            float4 _Color;
 
 			float4 alphaBlend(float4 top, float4 bottom)
 			{
@@ -77,8 +76,6 @@ Shader "Hidden/Roystan/Outline Post Process"
 				float depth1 = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, sampler_CameraDepthTexture, topRightUV).r;
 				float depth2 = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, sampler_CameraDepthTexture, bottomRightUV).r;
 				float depth3 = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, sampler_CameraDepthTexture, topLeftUV).r;
-				
-				float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord);
 
 				float depthFiniteDifference0 = depth1 - depth0;
 				float depthFiniteDifference1 = depth3 - depth2;
@@ -105,7 +102,12 @@ Shader "Hidden/Roystan/Outline Post Process"
 				edgeDepth = edgeDepth > depthThreshold ? 1 : 0;
 				
 				float edge = max(edgeDepth, edgeNormal);
-				return edge;
+
+				float4 edgeColor = float4(_Color.rgb, _Color.a * edge);
+				float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord);
+
+				
+				return alphaBlend(edgeColor, color);
 			}
 			ENDHLSL
 		}
