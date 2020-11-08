@@ -49,7 +49,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 016ee4ad5a9012a4f96ca7a800f76143, type: 2}
+  - {fileID: 2100000, guid: 8ed7898974e0e0e40afebf6308ea9cb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -190,7 +190,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a06c4bbe4d6f6eb4a9c34173244b363f, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -239,9 +239,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   cost: 10
-  buildingMat: {fileID: 2100000, guid: e54730a16797d2b4f8644d61ecbfd609, type: 2}
-  greenGhostMat: {fileID: 2100000, guid: a0cafb5c6d7f1cf43aa3e401bdae5081, type: 2}
-  redGhostMat: {fileID: 2100000, guid: a06c4bbe4d6f6eb4a9c34173244b363f, type: 2}
+  buildingMat: {fileID: 2100000, guid: 6648d2ae8a861f048939295909f323c5, type: 2}
+  greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
+  redGhostMat: {fileID: 2100000, guid: 8dd199fcda004244b9314a76247b1b62, type: 2}
 --- !u!1 &4970806227203917425
 GameObject:
   m_ObjectHideFlags: 0

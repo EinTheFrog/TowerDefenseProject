@@ -5,10 +5,26 @@
     <e p="C:\Users\EIN\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_TowerDefenceProject.1982608106.00" t="ExcludeRecursive" />
     <e p="C:\Users\EIN\UnityProjects\TowerDefenceProject" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Input" t="Include">
           <e p="Input.asmdef" t="Include" />
           <e p="Input.cs" t="Include" />
+        </e>
+        <e p="OutlineRender" t="Include">
+          <e p="HiddenNormalsTexture.shader" t="Include" />
+          <e p="Outline.shader" t="Include" />
+          <e p="PostProcessOutline.cs" t="Include" />
+          <e p="RenderReplacementShaderToTexture.cs" t="Include" />
+        </e>
+        <e p="Packages" t="Include">
+          <e p="OptimizedPriorityQueue.5.0.0" t="Include">
+            <e p="lib" t="Include">
+              <e p="netstandard1.0" t="Include">
+                <e p="PriorityQueue.xml" t="Include" />
+              </e>
+            </e>
+          </e>
         </e>
         <e p="Plugins" t="Include">
           <e p="GitHub" t="Include">
@@ -18,6 +34,11 @@
               <e p="ExtensionLoader.cs" t="Include" />
               <e p="UnityAPIWrapper.cs" t="Include" />
             </e>
+          </e>
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Shaders" t="Include">
+            <e p="VertexShader.shader" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">
