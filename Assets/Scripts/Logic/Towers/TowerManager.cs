@@ -23,37 +23,30 @@ namespace Logic.Towers
             TowersSoles = new Dictionary<Tower, SolePlatform>();
         }
 
-        public void ChooseTowerOnBtn() //метод реагирующий на выбор башни в меню
+        public void ChooseTowerOnBtn()
         {
-            //узнаем какая башня была выбрана из скрипта, находяшегося в кнопке
             var button = EventSystem.current.currentSelectedGameObject.GetComponent<BtnTowerInfo>();
-            //прерываем функцию, сели была выбрана не кнопка
             if (button == null)
             {
                 Debug.LogError($"Current chosen object is not a button, but it is: {EventSystem.current.currentSelectedGameObject}");
                 return;
             }
             ChooseTower(button.TowerType);
-            //настравиваем реакцию на клавишы в input-e
             _inputShell.SetBuildingMode();
         }
 
         public void ChooseTower(Tower type)
         {
-            if (type != null)
+            if (_chosenTower != null)
             {
-                _chosenTower = Instantiate(type);
-                _chosenTower.Init(false);
+                Destroy(_chosenTower.gameObject);
             }
-            else
-            {
-                //удаляем выбранную юашню (она не видима для пользователя, но находится на сцене)
-                if (!(_chosenTower is null))
-                {
-                    Destroy(_chosenTower.gameObject);
-                }
-                _chosenTower = null;
-            }
+            _chosenTower = null;
+            
+            if (type == null) return;
+            
+            _chosenTower = Instantiate(type);
+            _chosenTower.Init(false);
         }
 
         private void ChooseNone() //метод реагирующий на выход из режима постройки

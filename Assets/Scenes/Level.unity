@@ -10657,8 +10657,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyUpdateTime: 1
-  initialMoney: 10
-  moneyChange: 1
+  initialMoney: 40
+  moneyChange: 0
   moneyText: {fileID: 553374044}
 --- !u!4 &343334809
 Transform:
@@ -10668,7 +10668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343334807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8440887, y: -18.308651, z: 32.495007}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -16,6 +16,7 @@ namespace UI
 
         public void SetBuildingMode()
         {
+            if (Input.BuildMode.enabled) return;
             Input.BuildMode.Enable();
             Input.ViewMode.Disable();
             Input.TowerMode.Disable();
@@ -24,6 +25,7 @@ namespace UI
         
         public void SetTowerMode()
         {
+            if (Input.TowerMode.enabled) return;
             Input.TowerMode.Enable();
             Input.BuildMode.Disable();
             Input.ViewMode.Disable();
@@ -32,6 +34,7 @@ namespace UI
 
         public void SetViewMode()
         {
+            if (Input.ViewMode.enabled) return;
             Input.ViewMode.Enable();
             Input.BuildMode.Disable();
             Input.TowerMode.Disable();
