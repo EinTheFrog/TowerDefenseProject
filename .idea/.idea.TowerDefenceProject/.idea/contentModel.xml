@@ -38,7 +38,7 @@
         </e>
         <e p="Resources" t="Include">
           <e p="Shaders" t="Include">
-            <e p="GridShader.shader" t="Include" />
+            <e p="HologramShader.shader" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">
@@ -76,6 +76,11 @@
             <e p="TowerMenuBehaviour.cs" t="Include" />
             <e p="UIBehaviour.cs" t="Include" />
           </e>
+        </e>
+        <e p="SimpleGridShader" t="Include">
+          <e p="DistanceScaling.cs" t="Include" />
+          <e p="GridShader.shader" t="Include" />
+          <e p="README.txt" t="Include" />
         </e>
         <e p="Tests" t="Include">
           <e p="PlayMode" t="Include">

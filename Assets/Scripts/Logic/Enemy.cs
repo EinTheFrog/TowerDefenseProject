@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 namespace Logic
 {
@@ -13,6 +14,7 @@ namespace Logic
         [SerializeField] private int reward = 5;
 
         private Vector3 _velocity = Vector3.zero;
+        private Renderer _renderer = default;
  
         public Queue<RoadPlatform> Path { get; private set; }
         private EnemyManager _manager;
@@ -53,10 +55,15 @@ namespace Logic
         private void OnEnable()
         {
             Health = maxHealth;
+            _renderer = GetComponent<Renderer>();
         }
 
         private void Update()
         {
+            var healthPercentage = Health / maxHealth;
+            var maxIntensity = 0.5f;
+            var glitchIntensity = (1 - healthPercentage) * maxIntensity;
+            _renderer.material.SetFloat("_GlitchIntensity", glitchIntensity);
             if (Health <= 0)
             {
                 Die?.Invoke(this);
