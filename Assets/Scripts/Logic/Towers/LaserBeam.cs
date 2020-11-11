@@ -49,11 +49,14 @@ namespace Logic.Towers
         protected override void Build(Renderer meshRenderer)
         {
             SetBuiltMaterial(meshRenderer);
-            var transform1 = transform;
-            var localPosition = transform1.localPosition;
+            var thisTransform = transform;
+            var localPosition = thisTransform.localPosition;
+            var localScale = thisTransform.localScale;
+            var size = GetComponent<MeshRenderer>().bounds.size;
+            var towerPeekPos = localPosition + Vector3.up * size.y * localScale.y;
             _lineRenderer = gameObject.GetComponentInChildren<LineRenderer>();
-            _lineRenderer.SetPosition(0, localPosition + Vector3.up * transform1.localScale.y);
-            _lineRenderer.SetPosition(1, transform.localPosition);
+            _lineRenderer.SetPosition(0, towerPeekPos);
+            _lineRenderer.SetPosition(1, towerPeekPos);
         }
     }
 }

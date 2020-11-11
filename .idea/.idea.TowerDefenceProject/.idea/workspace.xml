@@ -20,17 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e452dc46-5882-4cad-9e7b-4962fe516235" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/FieldMaterial.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/FieldMaterial.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Models/PyramidTower.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Models/PyramidTower.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Models/untitled.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Models/untitled.blend.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/GreenGhostMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/GreenGhostMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/RedGhostMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/RedGhostMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial 2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial 2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial 2.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial 2.mat.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LaserBeam.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LaserBeam.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/TowerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/TowerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/InputShell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/InputShell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +88,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/OulineRenderer.cs" />
         <option value="$PROJECT_DIR$/Assets/Resources/Shaders/OutlineShader.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" />
         <option value="$PROJECT_DIR$/Assets/OutlineRender/PostProcessOutline.cs" />
         <option value="$PROJECT_DIR$/Assets/OutlineRender/Outline.shader" />
         <option value="$PROJECT_DIR$/Assets/Resources/Shaders/GridShader2.shader" />
@@ -97,6 +96,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/TowerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/InputShell.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" />
       </list>
     </option>
   </component>
@@ -127,10 +127,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="14612">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="14612" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -189,6 +189,7 @@
       <workItem from="1604860555566" duration="1435000" />
       <workItem from="1604941822703" duration="2860000" />
       <workItem from="1605006683252" duration="6736000" />
+      <workItem from="1605116778332" duration="412000" />
     </task>
     <servers />
   </component>
