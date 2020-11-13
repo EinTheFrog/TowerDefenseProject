@@ -64,13 +64,13 @@ namespace UI
 
         private void ListenKeyboard()
         {
-            _desiredMovementVelocity = inputShell.Input.MovementMode.Move.ReadValue<Vector2>();
-            _desiredRotationVelocity = inputShell.Input.MovementMode.Rotate.ReadValue<float>();
+            _desiredMovementVelocity = inputShell.ReadMovementInput();
+            _desiredRotationVelocity = inputShell.ReadRotationInput();
         }
 
         private void ListenMouse()
         {
-            var inputScroll = inputShell.Input.MovementMode.Zoom.ReadValue<Vector2>().y;
+            var inputScroll = inputShell.ReadZoomInput().y;
             if (inputScroll != 0)
             {
                 _desiredZoomVelocity = Mathf.Sign(inputScroll);

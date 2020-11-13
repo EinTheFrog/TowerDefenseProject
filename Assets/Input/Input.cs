@@ -19,7 +19,7 @@ public class @Input : IInputActionCollection, IDisposable
             ""id"": ""1a0dd22e-9eca-4c41-948e-22b89fd8ee06"",
             ""actions"": [
                 {
-                    ""name"": ""Quit"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""e3297c48-6ead-4b05-901f-d4f4df5d24e3"",
                     ""expectedControlType"": ""Button"",
@@ -35,7 +35,7 @@ public class @Input : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Quit"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -46,7 +46,7 @@ public class @Input : IInputActionCollection, IDisposable
             ""id"": ""ebd91f5c-ac3a-4c56-b1b8-fda42d8666f9"",
             ""actions"": [
                 {
-                    ""name"": ""CallMenu"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""36520d05-7459-46e2-bd93-82a820b2119c"",
                     ""expectedControlType"": ""Button"",
@@ -62,7 +62,7 @@ public class @Input : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CallMenu"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -204,7 +204,7 @@ public class @Input : IInputActionCollection, IDisposable
             ""id"": ""61faa959-c454-4bb9-8633-1ee35ecc8824"",
             ""actions"": [
                 {
-                    ""name"": ""CloseMenu"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""ab8d97a8-02b6-4800-84e8-04176f159d02"",
                     ""expectedControlType"": ""Button"",
@@ -220,7 +220,7 @@ public class @Input : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CloseMenu"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -231,7 +231,7 @@ public class @Input : IInputActionCollection, IDisposable
             ""id"": ""ac38edc6-140c-4f63-bfc8-72aa97979f4f"",
             ""actions"": [
                 {
-                    ""name"": ""Close"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""a3889b19-fc8f-45fd-809f-2714dd5da001"",
                     ""expectedControlType"": ""Button"",
@@ -247,7 +247,7 @@ public class @Input : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Close"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -258,10 +258,10 @@ public class @Input : IInputActionCollection, IDisposable
 }");
         // BuildMode
         m_BuildMode = asset.FindActionMap("BuildMode", throwIfNotFound: true);
-        m_BuildMode_Quit = m_BuildMode.FindAction("Quit", throwIfNotFound: true);
+        m_BuildMode_Cancel = m_BuildMode.FindAction("Cancel", throwIfNotFound: true);
         // ViewMode
         m_ViewMode = asset.FindActionMap("ViewMode", throwIfNotFound: true);
-        m_ViewMode_CallMenu = m_ViewMode.FindAction("CallMenu", throwIfNotFound: true);
+        m_ViewMode_Cancel = m_ViewMode.FindAction("Cancel", throwIfNotFound: true);
         // MovementMode
         m_MovementMode = asset.FindActionMap("MovementMode", throwIfNotFound: true);
         m_MovementMode_Move = m_MovementMode.FindAction("Move", throwIfNotFound: true);
@@ -269,10 +269,10 @@ public class @Input : IInputActionCollection, IDisposable
         m_MovementMode_Zoom = m_MovementMode.FindAction("Zoom", throwIfNotFound: true);
         // MenuMode
         m_MenuMode = asset.FindActionMap("MenuMode", throwIfNotFound: true);
-        m_MenuMode_CloseMenu = m_MenuMode.FindAction("CloseMenu", throwIfNotFound: true);
+        m_MenuMode_Cancel = m_MenuMode.FindAction("Cancel", throwIfNotFound: true);
         // TowerMode
         m_TowerMode = asset.FindActionMap("TowerMode", throwIfNotFound: true);
-        m_TowerMode_Close = m_TowerMode.FindAction("Close", throwIfNotFound: true);
+        m_TowerMode_Cancel = m_TowerMode.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -322,12 +322,12 @@ public class @Input : IInputActionCollection, IDisposable
     // BuildMode
     private readonly InputActionMap m_BuildMode;
     private IBuildModeActions m_BuildModeActionsCallbackInterface;
-    private readonly InputAction m_BuildMode_Quit;
+    private readonly InputAction m_BuildMode_Cancel;
     public struct BuildModeActions
     {
         private @Input m_Wrapper;
         public BuildModeActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Quit => m_Wrapper.m_BuildMode_Quit;
+        public InputAction @Cancel => m_Wrapper.m_BuildMode_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_BuildMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -337,16 +337,16 @@ public class @Input : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_BuildModeActionsCallbackInterface != null)
             {
-                @Quit.started -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnQuit;
-                @Quit.performed -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnQuit;
-                @Quit.canceled -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnQuit;
+                @Cancel.started -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_BuildModeActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Quit.started += instance.OnQuit;
-                @Quit.performed += instance.OnQuit;
-                @Quit.canceled += instance.OnQuit;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
             }
         }
     }
@@ -355,12 +355,12 @@ public class @Input : IInputActionCollection, IDisposable
     // ViewMode
     private readonly InputActionMap m_ViewMode;
     private IViewModeActions m_ViewModeActionsCallbackInterface;
-    private readonly InputAction m_ViewMode_CallMenu;
+    private readonly InputAction m_ViewMode_Cancel;
     public struct ViewModeActions
     {
         private @Input m_Wrapper;
         public ViewModeActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CallMenu => m_Wrapper.m_ViewMode_CallMenu;
+        public InputAction @Cancel => m_Wrapper.m_ViewMode_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_ViewMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -370,16 +370,16 @@ public class @Input : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_ViewModeActionsCallbackInterface != null)
             {
-                @CallMenu.started -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCallMenu;
-                @CallMenu.performed -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCallMenu;
-                @CallMenu.canceled -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCallMenu;
+                @Cancel.started -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_ViewModeActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @CallMenu.started += instance.OnCallMenu;
-                @CallMenu.performed += instance.OnCallMenu;
-                @CallMenu.canceled += instance.OnCallMenu;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
             }
         }
     }
@@ -437,12 +437,12 @@ public class @Input : IInputActionCollection, IDisposable
     // MenuMode
     private readonly InputActionMap m_MenuMode;
     private IMenuModeActions m_MenuModeActionsCallbackInterface;
-    private readonly InputAction m_MenuMode_CloseMenu;
+    private readonly InputAction m_MenuMode_Cancel;
     public struct MenuModeActions
     {
         private @Input m_Wrapper;
         public MenuModeActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CloseMenu => m_Wrapper.m_MenuMode_CloseMenu;
+        public InputAction @Cancel => m_Wrapper.m_MenuMode_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_MenuMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -452,16 +452,16 @@ public class @Input : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_MenuModeActionsCallbackInterface != null)
             {
-                @CloseMenu.started -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCloseMenu;
-                @CloseMenu.performed -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCloseMenu;
-                @CloseMenu.canceled -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCloseMenu;
+                @Cancel.started -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_MenuModeActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_MenuModeActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @CloseMenu.started += instance.OnCloseMenu;
-                @CloseMenu.performed += instance.OnCloseMenu;
-                @CloseMenu.canceled += instance.OnCloseMenu;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
             }
         }
     }
@@ -470,12 +470,12 @@ public class @Input : IInputActionCollection, IDisposable
     // TowerMode
     private readonly InputActionMap m_TowerMode;
     private ITowerModeActions m_TowerModeActionsCallbackInterface;
-    private readonly InputAction m_TowerMode_Close;
+    private readonly InputAction m_TowerMode_Cancel;
     public struct TowerModeActions
     {
         private @Input m_Wrapper;
         public TowerModeActions(@Input wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Close => m_Wrapper.m_TowerMode_Close;
+        public InputAction @Cancel => m_Wrapper.m_TowerMode_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_TowerMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -485,27 +485,27 @@ public class @Input : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_TowerModeActionsCallbackInterface != null)
             {
-                @Close.started -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnClose;
-                @Close.performed -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnClose;
-                @Close.canceled -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnClose;
+                @Cancel.started -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_TowerModeActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Close.started += instance.OnClose;
-                @Close.performed += instance.OnClose;
-                @Close.canceled += instance.OnClose;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
             }
         }
     }
     public TowerModeActions @TowerMode => new TowerModeActions(this);
     public interface IBuildModeActions
     {
-        void OnQuit(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
     public interface IViewModeActions
     {
-        void OnCallMenu(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
     public interface IMovementModeActions
     {
@@ -515,10 +515,10 @@ public class @Input : IInputActionCollection, IDisposable
     }
     public interface IMenuModeActions
     {
-        void OnCloseMenu(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
     public interface ITowerModeActions
     {
-        void OnClose(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

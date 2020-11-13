@@ -6,7 +6,7 @@
             "id": "1a0dd22e-9eca-4c41-948e-22b89fd8ee06",
             "actions": [
                 {
-                    "name": "Quit",
+                    "name": "Cancel",
                     "type": "Button",
                     "id": "e3297c48-6ead-4b05-901f-d4f4df5d24e3",
                     "expectedControlType": "Button",
@@ -22,7 +22,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Quit",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -33,7 +33,7 @@
             "id": "ebd91f5c-ac3a-4c56-b1b8-fda42d8666f9",
             "actions": [
                 {
-                    "name": "CallMenu",
+                    "name": "Cancel",
                     "type": "Button",
                     "id": "36520d05-7459-46e2-bd93-82a820b2119c",
                     "expectedControlType": "Button",
@@ -49,7 +49,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CallMenu",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -191,7 +191,7 @@
             "id": "61faa959-c454-4bb9-8633-1ee35ecc8824",
             "actions": [
                 {
-                    "name": "CloseMenu",
+                    "name": "Cancel",
                     "type": "Button",
                     "id": "ab8d97a8-02b6-4800-84e8-04176f159d02",
                     "expectedControlType": "Button",
@@ -207,7 +207,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CloseMenu",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -218,7 +218,7 @@
             "id": "ac38edc6-140c-4f63-bfc8-72aa97979f4f",
             "actions": [
                 {
-                    "name": "Close",
+                    "name": "Cancel",
                     "type": "Button",
                     "id": "a3889b19-fc8f-45fd-809f-2714dd5da001",
                     "expectedControlType": "Button",
@@ -234,7 +234,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Close",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -26,9 +26,7 @@ namespace UI
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
 
-            _inputShell.Input.MovementMode.Disable();
-            _inputShell.Input.ViewMode.Disable();
-            _inputShell.Input.MenuMode.Disable();
+            _inputShell.SetDefeatMode();
             Time.timeScale = 0f;
         }
     }

@@ -19,7 +19,8 @@ namespace Logic.Towers
         {
             //добавляем реакции на нажатие клавиш
             _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
-            _inputShell.Input.BuildMode.Quit.performed += _ => ChooseNone();
+            //_inputShell.Input.BuildMode.Quit.performed += _ => ChooseNone();
+            _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.BuildMode, ChooseNone);
             TowersSoles = new Dictionary<Tower, SolePlatform>();
         }
 

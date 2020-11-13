@@ -18,7 +18,8 @@ namespace UI
         }
         private void Start()
         {
-            inputShell.Input.TowerMode.Close.performed += _ => CloseMenu();
+            //inputShell.Input.TowerMode.Close.performed += _ => CloseMenu();
+            inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.TowerMode, CloseMenu);
             CloseMenu();
         }
         public void CallMenu(Tower chosenTower)

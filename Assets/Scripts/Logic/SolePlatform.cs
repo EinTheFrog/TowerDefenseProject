@@ -20,7 +20,7 @@ namespace Logic
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            if (!_inputShell.Input.BuildMode.enabled || !IsFree) return;
+            if (_inputShell.CurrentMode != InputShell.Mode.BuildMode || !IsFree) return;
             if (!TowerManager.BuyChosenTower(this)) return;
             IsFree = false;
             //Вызываем OnPointerEnter, чтобы пользователь сразу после постройки здания видел,
@@ -36,14 +36,14 @@ namespace Logic
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (!_inputShell.Input.BuildMode.enabled) return;
+            if (_inputShell.CurrentMode != InputShell.Mode.BuildMode) return;
             //показываем сооружение при наведении курсора на фундамент
             TowerManager.ShowChosenTower(this);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (!_inputShell.Input.BuildMode.enabled) return;
+            if (_inputShell.CurrentMode != InputShell.Mode.BuildMode) return;
             //прячем показанное сооружение, если пользователь убрал курсор с платформы
             TowerManager.HideTower();
         }

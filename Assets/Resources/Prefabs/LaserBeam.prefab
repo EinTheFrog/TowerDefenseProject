@@ -137,10 +137,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1624096030084433430}
-  - component: {fileID: 2000689652900450642}
   - component: {fileID: 239683624106413622}
   - component: {fileID: 3499085007538575743}
   - component: {fileID: 6849587084422627408}
+  - component: {fileID: 3939235890721274906}
   m_Layer: 11
   m_Name: LaserBeam
   m_TagString: Untagged
@@ -157,21 +157,13 @@ Transform:
   m_GameObject: {fileID: 3804475654540198231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4866575477813780244}
   - {fileID: 4090996799480038586}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2000689652900450642
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3804475654540198231}
-  m_Mesh: {fileID: -5495902117074765545, guid: caf3341e0aae8764b8fc50a02d7be06c, type: 3}
 --- !u!23 &239683624106413622
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -221,10 +213,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3
+  m_Radius: 0.25
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!114 &6849587084422627408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +234,14 @@ MonoBehaviour:
   buildingMat: {fileID: 2100000, guid: 6648d2ae8a861f048939295909f323c5, type: 2}
   greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
   redGhostMat: {fileID: 2100000, guid: 8dd199fcda004244b9314a76247b1b62, type: 2}
+--- !u!33 &3939235890721274906
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804475654540198231}
+  m_Mesh: {fileID: -5495902117074765545, guid: 9660ab612e3eee74e88cc3a82122cb9a, type: 3}
 --- !u!1 &4970806227203917425
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +285,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4333584934742050127
 MonoBehaviour:

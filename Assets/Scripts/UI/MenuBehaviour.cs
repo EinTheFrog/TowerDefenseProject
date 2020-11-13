@@ -12,10 +12,8 @@ namespace UI
             _canvasGroup = GetComponent<CanvasGroup>();
 
             _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
-            _inputShell.Input.MovementMode.Enable();
-            _inputShell.Input.ViewMode.Enable();
-            _inputShell.Input.ViewMode.CallMenu.performed += _ => CallMenu();
-            _inputShell.Input.MenuMode.CloseMenu.performed += _ => CloseMenu();
+            _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.ViewMode, CallMenu);
+            _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.MenuMode, CloseMenu);
 
             CloseMenu();
         }
@@ -27,9 +25,7 @@ namespace UI
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
 
-            _inputShell.Input.MovementMode.Disable();
-            _inputShell.Input.ViewMode.Disable();
-            _inputShell.Input.MenuMode.Enable();
+            _inputShell.SetMenuMode();
             Time.timeScale = 0f;
         }
 
@@ -40,9 +36,7 @@ namespace UI
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
 
-            _inputShell.Input.MenuMode.Disable();
-            _inputShell.Input.ViewMode.Enable();
-            _inputShell.Input.MovementMode.Enable();
+            _inputShell.SetViewMode();
             Time.timeScale = 1f;
         }
     }
