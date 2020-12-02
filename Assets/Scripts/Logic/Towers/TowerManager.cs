@@ -82,6 +82,8 @@ namespace Logic.Towers
             roadManager.UpdateDangerInRadius(sole.Center, _chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius, 1);
         }
 
+        public void AddMoney(int amount) => moneyManager.Money += amount;
+
         private void RemoveTower(Tower tower)
         {
             roadManager.UpdateDangerInRadius(TowersSoles[tower].Center, tower.transform.GetComponentInChildren<EnemyTrigger>().Radius, -1);
@@ -93,7 +95,7 @@ namespace Logic.Towers
         public void ShowChosenTower(SolePlatform sole)
         {
             //показываем призрак строения в зависимости от занятости фундамента
-            _chosenTower.Init(sole.IsFree &&  _chosenTower.Cost <= moneyManager.Money ?
+            _chosenTower.Init(sole.IsFree &&  _chosenTower.Cost <= moneyManager.Money ? 
                 Tower.TowerState.GreenGhost : Tower.TowerState.RedGhost, sole.Center, this);
         }
 

@@ -106,9 +106,15 @@ namespace Logic.Towers
             Building
         }
 
-        public void Destroy()
+        private void Destroy()
         {
             Remove?.Invoke(this);
+        }
+
+        public void Sell()
+        {
+            Manager.AddMoney(cost);
+            Destroy();
         }
     }
 }

@@ -220,7 +220,7 @@ namespace Logic
             if (dyingEnemy.HasTreasure)
             {
                 //Роняем сокровище
-                Physics.Raycast(dyingEnemy.transform.localPosition, Vector3.down, out RaycastHit hit, 1f, 1 << 9);
+                Physics.Raycast(dyingEnemy.transform.localPosition, Vector3.down, out RaycastHit hit, 1f, 1 << 14);
                 var road = hit.transform.GetComponent<RoadPlatform>();
                 if (road == null) Debug.LogError("Where is no road platform under the enemy!");
                 ObjectivePlatform = road;

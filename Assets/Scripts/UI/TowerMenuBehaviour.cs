@@ -18,7 +18,6 @@ namespace UI
         }
         private void Start()
         {
-            //inputShell.Input.TowerMode.Close.performed += _ => CloseMenu();
             inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.TowerMode, CloseMenu);
             CloseMenu();
         }
@@ -46,7 +45,7 @@ namespace UI
 
         public void SellTower()
         {
-            _chosenTower.Destroy();
+            _chosenTower.Sell();
             CloseMenu();
         }
     }
