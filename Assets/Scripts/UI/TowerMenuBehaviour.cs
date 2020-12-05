@@ -1,5 +1,4 @@
-﻿using Logic;
-using Logic.Towers;
+﻿using Gameplay.Towers;
 using UnityEngine;
 
 namespace UI

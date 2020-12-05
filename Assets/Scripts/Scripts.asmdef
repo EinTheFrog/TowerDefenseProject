@@ -1,8 +1,8 @@
 {
     "name": "Scripts",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:ec0d0835927fd434ca4aaf47b13a8278"
+        "GUID:ec0d0835927fd434ca4aaf47b13a8278",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

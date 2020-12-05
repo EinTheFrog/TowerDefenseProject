@@ -42,17 +42,31 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Logic" t="Include">
-            <e p="Enemy.cs" t="Include" />
-            <e p="EnemyManager.cs" t="Include" />
-            <e p="Graph.cs" t="Include" />
-            <e p="MoneyManager.cs" t="Include" />
-            <e p="Node.cs" t="Include" />
-            <e p="Platform.cs" t="Include" />
-            <e p="RoadManager.cs" t="Include" />
-            <e p="RoadPlatform.cs" t="Include" />
-            <e p="SoleManager.cs" t="Include" />
-            <e p="SolePlatform.cs" t="Include" />
+          <e p="Gameplay" t="Include">
+            <e p="Enemies" t="Include">
+              <e p="Enemy.cs" t="Include" />
+              <e p="Treasure.cs" t="Include" />
+            </e>
+            <e p="GraphSearch" t="Include">
+              <e p="Graph.cs" t="Include" />
+              <e p="Node.cs" t="Include" />
+            </e>
+            <e p="Managers" t="Include">
+              <e p="EnemyManager.cs" t="Include" />
+              <e p="MoneyManager.cs" t="Include" />
+              <e p="RoadManager.cs" t="Include" />
+              <e p="SoleManager.cs" t="Include" />
+              <e p="TowerManager.cs" t="Include" />
+            </e>
+            <e p="Movement" t="Include">
+              <e p="CameraMovement.cs" t="Include" />
+              <e p="InputShell.cs" t="Include" />
+            </e>
+            <e p="Platforms" t="Include">
+              <e p="Platform.cs" t="Include" />
+              <e p="RoadPlatform.cs" t="Include" />
+              <e p="SolePlatform.cs" t="Include" />
+            </e>
             <e p="Towers" t="Include">
               <e p="EnemyTrigger.cs" t="Include" />
               <e p="FieldBehaviour.cs" t="Include" />
@@ -61,17 +75,13 @@
               <e p="Rocket.cs" t="Include" />
               <e p="RocketLauncher.cs" t="Include" />
               <e p="Tower.cs" t="Include" />
-              <e p="TowerManager.cs" t="Include" />
             </e>
-            <e p="Treasure.cs" t="Include" />
           </e>
           <e p="Scripts.asmdef" t="Include" />
           <e p="UI" t="Include">
             <e p="BtnTowerInfo.cs" t="Include" />
             <e p="BuildingMenuBehaviour.cs" t="Include" />
-            <e p="CameraMovement.cs" t="Include" />
             <e p="DefeatMenuBehaviour.cs" t="Include" />
-            <e p="InputShell.cs" t="Include" />
             <e p="MenuBehaviour.cs" t="Include" />
             <e p="TowerMenuBehaviour.cs" t="Include" />
             <e p="UIBehaviour.cs" t="Include" />

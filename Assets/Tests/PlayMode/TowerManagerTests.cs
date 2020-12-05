@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
-using Logic;
-using Logic.Towers;
+using Gameplay.Enemies;
+using Gameplay.Managers;
+using Gameplay.Platforms;
+using Gameplay.Towers;
 using NUnit.Framework;
 using UI;
 using UnityEditor;
