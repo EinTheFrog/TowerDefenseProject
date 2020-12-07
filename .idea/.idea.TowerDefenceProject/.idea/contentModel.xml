@@ -39,6 +39,7 @@
         <e p="Resources" t="Include">
           <e p="Shaders" t="Include">
             <e p="HologramShader.shader" t="Include" />
+            <e p="TVNoise.shader" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">

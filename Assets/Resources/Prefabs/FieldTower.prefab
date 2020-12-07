@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf8258562f52a64081ed5161ec32ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
   cost: 10
   buildingMat: {fileID: 2100000, guid: 6648d2ae8a861f048939295909f323c5, type: 2}
   greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5178011182562116647}
   - component: {fileID: 2841928288918758290}
   - component: {fileID: 2783101328860053931}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -34536,7 +34536,7 @@ MonoBehaviour:
   treasurePrefab: {fileID: 5418727713796052880, guid: fe319fc7714a4d84ca9812862c4c2632,
     type: 3}
   roadManager: {fileID: 1576647989}
-  enemiesCount: 07000000
+  enemiesCount: 64000000
 --- !u!4 &1104749839
 Transform:
   m_ObjectHideFlags: 0
@@ -38953,7 +38953,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32311
+    m_Bits: 32259
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -70536,7 +70536,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 308
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
