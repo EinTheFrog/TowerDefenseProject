@@ -85,7 +85,7 @@ Shader "ddShaders/TVNoise"
             {
                
                 fixed4 sc = fixed4((screenPos.xy), 0.0, 1.0);
-                sc *= 0.001;
+                sc *= 0.01;
                
                 sc.xy -= 0.5;
                 sc.xy *= i.camDist.xx;
@@ -95,12 +95,9 @@ Shader "ddShaders/TVNoise"
                 sc.x = round(sc.x*_ResX)/_ResX;
                 sc.y = round(sc.y*_ResY)/_ResY;
                
-               
-               
                 float noise = rand(sc.xy);
                
-                float4 stat = lerp(_ColorA, _ColorB, clamp(0, 1, noise.x * 30));
-               
+                float4 stat = lerp(_ColorA, _ColorB, clamp(0, 1, noise.x * 20));
                
                 return stat;
             }

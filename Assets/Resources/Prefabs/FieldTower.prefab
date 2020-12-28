@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1079921416674447418}
   - component: {fileID: 239683624106413622}
   - component: {fileID: 3499085007538575743}
+  - component: {fileID: 6023436432941749244}
+  - component: {fileID: -8988913004704609044}
   m_Layer: 11
   m_Name: FieldTower
   m_TagString: Untagged
@@ -61,6 +63,7 @@ MonoBehaviour:
   buildingMat: {fileID: 2100000, guid: 6648d2ae8a861f048939295909f323c5, type: 2}
   greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
   redGhostMat: {fileID: 2100000, guid: 8dd199fcda004244b9314a76247b1b62, type: 2}
+  _fieldAnimation: {fileID: 6023436432941749244}
 --- !u!23 &239683624106413622
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -114,6 +117,37 @@ CapsuleCollider:
   m_Height: 0.05
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.02}
+--- !u!114 &6023436432941749244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804475654540198231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e6e81da5034174aa53e6640349e9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &-8988913004704609044
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804475654540198231}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1475faf7291dfc54d8f72b07356cebd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4970806227203917425
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +191,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4333584934742050127
 MonoBehaviour:
@@ -199,7 +233,7 @@ Transform:
   m_GameObject: {fileID: 6826388917913469947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1624096030084433430}
   m_RootOrder: 1
@@ -221,7 +255,7 @@ MeshRenderer:
   m_GameObject: {fileID: 6826388917913469947}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1

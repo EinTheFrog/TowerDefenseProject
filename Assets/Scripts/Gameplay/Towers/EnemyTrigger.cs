@@ -7,12 +7,12 @@ namespace Gameplay.Towers
     {
         private Tower _parent;
 
-        public float Radius => GetComponent<SphereCollider>().radius;
+        public float Radius => GetComponent<SphereCollider>().radius * transform.localScale.x;
 
         private void Start()
         {
             _parent = transform.parent.GetComponent<Tower>();
-            if (_parent == null) Debug.LogError("EnemyTrigger's parrent is not a tower!");
+            if (_parent == null) Debug.LogError("EnemyTrigger's parent is not a tower!");
         }
 
         private void OnTriggerEnter(Collider other)

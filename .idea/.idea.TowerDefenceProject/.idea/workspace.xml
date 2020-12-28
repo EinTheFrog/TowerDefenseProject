@@ -20,13 +20,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e452dc46-5882-4cad-9e7b-4962fe516235" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/TVNoise.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldAnimatorController.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldAnimatorController.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStartAnimation.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStartAnimation.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStopAnimation.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStopAnimation.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/OutlinePostProfile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/OutlinePostProfile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/PostProcessOutline.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/PostProcessOutline.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/RenderReplacementShaderToTexture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/RenderReplacementShaderToTexture.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/HiddenNormalsTexture.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/HiddenNormalsTexture.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/Outline.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/Outline.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/OutlinePostProfile.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/OutlinePostProfile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/PostProcessOutline.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/PostProcessOutline.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/RenderReplacementShaderToTexture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/RenderReplacementShaderToTexture.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/FieldMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/FieldMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/RoadMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/RoadMaterial.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/TVNoise.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/TVNoise.shader" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/EnemyTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/EnemyTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,70 +66,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/PostProcessing/RenderReplacementShaderToTexture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Tests/PlayMode/TowerManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.14/UnityEditor.TestRunner/Api/CallbacksDelegator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.14/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.14/UnityEditor.TestRunner/TestRun/Tasks/SaveModiedSceneTask.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../Program Files/Unity/Hub/Editor/2019.4.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.14/UnityEditor.TestRunner/Api/CallbacksDelegator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.14/UnityEditor.TestRunner/TestRun/Tasks/SaveModiedSceneTask.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/PlayMode/TowerManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.14/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/EnemyTrigger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/FieldBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/FieldTower.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/RoadPlatform.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/RocketLauncher.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/Rocket.cs" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Shaders/VertexShader.shader" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/OulineRenderer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Shaders/OutlineShader.shader" />
-        <option value="$PROJECT_DIR$/Assets/OutlineRender/PostProcessOutline.cs" />
-        <option value="$PROJECT_DIR$/Assets/OutlineRender/Outline.shader" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Shaders/GridShader2.shader" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Shaders/GridShader.shader" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Shaders/HologramShader.shader" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/LaserBeam.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/SolePlatform.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/DefeatMenuBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/CameraMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/InputShell.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/MenuBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/TowerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/Towers/Tower.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Logic/EnemyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/InputShell.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Treasure.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GraphSearch/Node.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/MoneyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/CameraMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Platforms/Platform.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Platforms/RoadPlatform.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Platforms/SolePlatform.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/EnemyTrigger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/SoleManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/BtnTowerInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/GraphSearch/Graph.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/RoadManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/Tower.cs" />
-        <option value="$PROJECT_DIR$/Assets/Tests/PlayMode/TowerManagerTests.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/LaserBeam.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/Rocket.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/RocketLauncher.cs" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Shaders/SimplexNoise.shader" />
-        <option value="$PROJECT_DIR$/Assets/Resources/Shaders/TVNoise.shader" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/EnemyTrigger.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1jC8RKVXnxfS70Vdqjsd7zRVPY8" />
   <component name="ProjectLevelVcsManager">
@@ -114,7 +95,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.52654386" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -129,12 +110,12 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="23140">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="23140" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -143,7 +124,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -201,7 +182,11 @@
       <workItem from="1606934623167" duration="173000" />
       <workItem from="1607150483136" duration="2110000" />
       <workItem from="1607195301838" duration="3071000" />
-      <workItem from="1607365087265" duration="7189000" />
+      <workItem from="1607365087265" duration="7239000" />
+      <workItem from="1609077827813" duration="13000" />
+      <workItem from="1609077946273" duration="1770000" />
+      <workItem from="1609186499143" duration="126000" />
+      <workItem from="1609186951219" duration="1708000" />
     </task>
     <servers />
   </component>
@@ -225,114 +210,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="666" y="291" key="#Log_Highlighting_(ideolog)" timestamp="1603385340902">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="666" y="291" key="#Log_Highlighting_(ideolog)/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603385340902" />
-    <state width="876" height="631" key="DebuggerActiveHint" timestamp="1607198086484">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="876" height="631" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198086484" />
-    <state width="876" height="631" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1605247278846" />
-    <state width="1877" height="273" key="GridCell.Tab.0.bottom" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.0.center" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.0.left" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.0.right" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.1.bottom" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.1.center" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.1.left" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.1.right" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.2.bottom" timestamp="1607198398623">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398623" />
-    <state width="1877" height="273" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.2.center" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.2.left" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.2.right" timestamp="1607198398622">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398622" />
-    <state width="1877" height="273" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.3.bottom" timestamp="1607198398623">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398623" />
-    <state width="1877" height="273" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.3.center" timestamp="1607198398623">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398623" />
-    <state width="1877" height="273" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.3.left" timestamp="1607198398623">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398623" />
-    <state width="1877" height="273" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state width="1877" height="273" key="GridCell.Tab.3.right" timestamp="1607198398623">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="273" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607198398623" />
-    <state width="1877" height="273" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605256102209" />
-    <state x="764" y="221" key="RiderGenerateDialog" timestamp="1604240946458">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="764" y="221" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604164286430" />
-    <state x="764" y="221" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604240946458" />
-    <state x="201" y="75" width="1342" height="710" key="SettingsEditor" timestamp="1607197789058">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="201" y="75" width="1342" height="710" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607197789058" />
-    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1603519871435">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603519871435" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1604123581775">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604123581775" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -394,6 +271,71 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs</url>
+          <line>251</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\EnemyManager.cs" initialLine="251" containingFunctionPresentation="method 'AwareEnemies'">
+            <startOffsets>
+              <option value="9895" />
+            </startOffsets>
+            <endOffsets>
+              <option value="9958" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs</url>
+          <line>259</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\EnemyManager.cs" initialLine="259" containingFunctionPresentation="method 'AwareEnemies'">
+            <startOffsets>
+              <option value="10260" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10279" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs</url>
+          <line>257</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\EnemyManager.cs" initialLine="257" containingFunctionPresentation="method 'AwareEnemies'">
+            <startOffsets>
+              <option value="10129" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10229" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs</url>
+          <line>254</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\EnemyManager.cs" initialLine="254" containingFunctionPresentation="method 'AwareEnemies'">
+            <startOffsets>
+              <option value="10080" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10101" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs</url>
+          <line>87</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\TowerManager.cs" initialLine="84" containingFunctionPresentation="method 'BuildChosenTower'">
+            <startOffsets>
+              <option value="3175" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3237" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -82,7 +82,11 @@ namespace Gameplay.Managers
             TowersSoles[newTower] = sole;
             newTower.Init(Tower.TowerState.Building, sole.Center, this);
             //ищем дороги в радиусе поражения и меняем их опасность
-            roadManager.UpdateDangerInRadius(sole.Center, _chosenTower.transform.GetComponentInChildren<EnemyTrigger>().Radius, 1);
+            var chosenTowerTransform = _chosenTower.transform;
+            var rad = chosenTowerTransform.GetComponentInChildren<EnemyTrigger>().Radius;
+            //берем масштаб любого измерения
+            var scale = chosenTowerTransform.localScale.x;
+            roadManager.UpdateDangerInRadius(sole.Center, rad * scale, 1);
         }
 
         public void AddMoney(int amount) => moneyManager.Money += amount;

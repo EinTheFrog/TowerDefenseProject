@@ -6,6 +6,7 @@ namespace Gameplay.Towers
 {
     public class FieldTower : Tower
     {
+        [SerializeField] private FieldAnimation _fieldAnimation;
         private FieldBehaviour _field;
         protected override void Build(Renderer meshRenderer)
         {
@@ -24,6 +25,7 @@ namespace Gameplay.Towers
             enemy.Die += StopShooting;
             enemy.Die += Manager.GetMoneyForKill;
             EnemiesUnderFire.Add(enemy);
+            _fieldAnimation.PlayAnimation(FieldAnimation.Anim.FieldStart);
         }
 
         public override void MoveAim(Enemy enemy)
@@ -41,6 +43,7 @@ namespace Gameplay.Towers
             if (EnemiesUnderFire.Count == 0)
             {
                 _field.gameObject.SetActive(false);
+                _fieldAnimation.PlayAnimation(FieldAnimation.Anim.FieldStop);
             }
         }
 
