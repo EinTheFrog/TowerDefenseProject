@@ -1,17 +1,17 @@
 ﻿using System;
 using Gameplay.Enemies;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Gameplay.Towers
 {
     public class FieldTower : Tower
     {
-        [SerializeField] private FieldAnimation _fieldAnimation;
-        private FieldBehaviour _field;
+        [SerializeField] private FieldAnimation fieldAnimation;
         protected override void Build(Renderer meshRenderer)
         {
             SetBuiltMaterial(meshRenderer);
-            _field = GetComponentInChildren<FieldBehaviour>(true).GetComponent<FieldBehaviour>();
+            fieldAnimation.PlayAnimation(FieldAnimation.Anim.TowerBuild);
         }
 
         public override void StartShooting(Enemy enemy)
@@ -19,13 +19,13 @@ namespace Gameplay.Towers
             if (Manager == null) throw new MissingFieldException("TowerManager hasn't been added");
         
             if (EnemiesUnderFire.Contains(enemy)) return;
-        
-            _field.gameObject.SetActive(true);
+            
+            fieldAnimation.PlayAnimation(FieldAnimation.Anim.FieldStart);
+            
             //добавляем остановку стрельбы в событие смерти
             enemy.Die += StopShooting;
             enemy.Die += Manager.GetMoneyForKill;
             EnemiesUnderFire.Add(enemy);
-            _fieldAnimation.PlayAnimation(FieldAnimation.Anim.FieldStart);
         }
 
         public override void MoveAim(Enemy enemy)
@@ -42,8 +42,7 @@ namespace Gameplay.Towers
             
             if (EnemiesUnderFire.Count == 0)
             {
-                _field.gameObject.SetActive(false);
-                _fieldAnimation.PlayAnimation(FieldAnimation.Anim.FieldStop);
+                fieldAnimation.PlayAnimation(FieldAnimation.Anim.FieldStop);
             }
         }
 

@@ -20,41 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e452dc46-5882-4cad-9e7b-4962fe516235" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldAnimatorController.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldAnimatorController.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStartAnimation.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStartAnimation.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStopAnimation.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStopAnimation.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/OutlinePostProfile.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/OutlinePostProfile.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/PostProcessOutline.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/PostProcessOutline.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/RenderReplacementShaderToTexture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/PostProcessing/RenderReplacementShaderToTexture.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldIdleAnim.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FiledGhostAnim.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FiledGhostAnim.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/FieldGhostMaterial.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Materials/FieldGhostMaterial.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/HiddenNormalsTexture.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/HiddenNormalsTexture.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/Outline.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/Outline.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/OutlinePostProfile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/OutlinePostProfile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/PostProcessOutline.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/PostProcessOutline.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/RenderReplacementShaderToTexture.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender/RenderReplacementShaderToTexture.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/FieldAnimatorController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldAnimatorController.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStartAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStartAnim.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStartAnimation.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldIdleAnim.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStopAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStopAnim.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStopAnimation.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStartAnim.anim.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/FieldMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/FieldMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/RoadMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/RoadMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 2.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/FieldStopAnim.anim.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Shaders/TVNoise.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Shaders/TVNoise.shader" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/EnemyTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/EnemyTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,10 +61,10 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/EnemyTrigger.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/EnemyTrigger.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jC8RKVXnxfS70Vdqjsd7zRVPY8" />
@@ -110,10 +94,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="23140">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15964">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="23140" />
+      <option name="pid" value="15964" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -186,7 +170,9 @@
       <workItem from="1609077827813" duration="13000" />
       <workItem from="1609077946273" duration="1770000" />
       <workItem from="1609186499143" duration="126000" />
-      <workItem from="1609186951219" duration="1708000" />
+      <workItem from="1609186951219" duration="2645000" />
+      <workItem from="1609223431950" duration="5739000" />
+      <workItem from="1609249155474" duration="937000" />
     </task>
     <servers />
   </component>
@@ -273,69 +259,56 @@
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs</url>
-          <line>251</line>
-          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\EnemyManager.cs" initialLine="251" containingFunctionPresentation="method 'AwareEnemies'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldTower.cs</url>
+          <line>13</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Towers\FieldTower.cs" initialLine="13" containingFunctionPresentation="method 'Build'">
             <startOffsets>
-              <option value="9895" />
+              <option value="352" />
             </startOffsets>
             <endOffsets>
-              <option value="9958" />
+              <option value="413" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="71" />
+          <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs</url>
-          <line>259</line>
-          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\EnemyManager.cs" initialLine="259" containingFunctionPresentation="method 'AwareEnemies'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs</url>
+          <line>21</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Towers\FieldAnimation.cs" initialLine="21" containingFunctionPresentation="method 'PlayAnimation'">
             <startOffsets>
-              <option value="10260" />
+              <option value="672" />
             </startOffsets>
             <endOffsets>
-              <option value="10279" />
+              <option value="709" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="72" />
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs</url>
-          <line>257</line>
-          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\EnemyManager.cs" initialLine="257" containingFunctionPresentation="method 'AwareEnemies'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Towers\FieldAnimation.cs" initialLine="30" containingFunctionPresentation="method 'PlayAnimation'">
             <startOffsets>
-              <option value="10129" />
+              <option value="894" />
             </startOffsets>
             <endOffsets>
-              <option value="10229" />
+              <option value="930" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="73" />
+          <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs</url>
-          <line>254</line>
-          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\EnemyManager.cs" initialLine="254" containingFunctionPresentation="method 'AwareEnemies'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/FieldAnimation.cs</url>
+          <line>26</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Towers\FieldAnimation.cs" initialLine="26" containingFunctionPresentation="method 'PlayAnimation'">
             <startOffsets>
-              <option value="10080" />
+              <option value="784" />
             </startOffsets>
             <endOffsets>
-              <option value="10101" />
+              <option value="821" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs</url>
-          <line>87</line>
-          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Managers\TowerManager.cs" initialLine="84" containingFunctionPresentation="method 'BuildChosenTower'">
-            <startOffsets>
-              <option value="3175" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3237" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="75" />
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
