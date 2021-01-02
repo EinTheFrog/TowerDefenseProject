@@ -29,7 +29,8 @@ namespace Gameplay.Towers
             var newRocket = Instantiate(rocketPrefab);
             var height = GetComponent<MeshRenderer>().bounds.size.y;
             var heightV3 = Vector3.up * height;
-            newRocket.Init(transform.localPosition + heightV3, enemy.transform.localPosition, damage);
+            var destinationPos = enemy.NextDestination.Center;
+            newRocket.Init(transform.localPosition + heightV3, destinationPos, damage);
         }
 
         public override void MoveAim(Enemy enemy)

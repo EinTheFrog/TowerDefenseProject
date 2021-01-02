@@ -1,39 +1,42 @@
 ﻿using UnityEngine;
 
-public class FieldAnimation : MonoBehaviour
+namespace Gameplay.Towers
 {
-    private Animator _thisAnimator;
-    private static readonly int TowerBuild = Animator.StringToHash("Build");
-    private static readonly int FieldStop = Animator.StringToHash("Stop");
-    private static readonly int FieldStart = Animator.StringToHash("Start");
-
-    void OnEnable()
+    public class FieldAnimation : MonoBehaviour
     {
-        _thisAnimator = GetComponent<Animator>();
-    }
+        private Animator _thisAnimator;
+        private readonly int _towerBuild = Animator.StringToHash("Build");
+        private readonly int _fieldStop = Animator.StringToHash("Stop");
+        private readonly int _fieldStart = Animator.StringToHash("Start");
 
-    public void PlayAnimation(Anim animType)
-    {
-        _thisAnimator.ResetTrigger(FieldStart);
-        _thisAnimator.ResetTrigger(FieldStop);
-        _thisAnimator.ResetTrigger(TowerBuild);
-        if (animType == Anim.TowerBuild)
+        void OnEnable()
         {
-            _thisAnimator.SetTrigger(TowerBuild);
+            _thisAnimator = GetComponent<Animator>();
         }
 
-        if (animType == Anim.FieldStart)
+        public void PlayAnimation(Anim animType)
         {
-            _thisAnimator.SetTrigger(FieldStart);
+            _thisAnimator.ResetTrigger(_fieldStart);
+            _thisAnimator.ResetTrigger(_fieldStop);
+            _thisAnimator.ResetTrigger(_towerBuild);
+            if (animType == Anim.TowerBuild)
+            {
+                _thisAnimator.SetTrigger(_towerBuild);
+            }
+
+            if (animType == Anim.FieldStart)
+            {
+                _thisAnimator.SetTrigger(_fieldStart);
+            }
+            if (animType == Anim.FieldStop)
+            {
+                _thisAnimator.SetTrigger(_fieldStop);
+            }
         }
-        if (animType == Anim.FieldStop)
-        {
-            _thisAnimator.SetTrigger(FieldStop);
-        }
-    }
     
-    public enum Anim
-    {
-        FieldStart, FieldStop, TowerBuild
+        public enum Anim
+        {
+            FieldStart, FieldStop, TowerBuild
+        }
     }
 }

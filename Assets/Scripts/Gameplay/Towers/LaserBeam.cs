@@ -7,7 +7,7 @@ namespace Gameplay.Towers
     public class LaserBeam : Tower
     {
         private LineRenderer _lineRenderer;
-        
+
         public override void StartShooting(Enemy enemy)
         {
             if (Manager == null) throw new MissingFieldException("TowerManager hasn't been added");
@@ -15,7 +15,8 @@ namespace Gameplay.Towers
             if (EnemiesUnderFire.Count > 0) return;
             
             _lineRenderer.gameObject.SetActive(true);
-            _lineRenderer.SetPosition(1, enemy.transform.localPosition);
+            var enemyPos = enemy.transform.localPosition;
+            _lineRenderer.SetPosition(1, enemyPos);
             //добавляем остановку стрельбы в событие смерти
             enemy.Die += StopShooting;
             enemy.Die += Manager.GetMoneyForKill;
@@ -30,7 +31,9 @@ namespace Gameplay.Towers
             }
 
             if (!EnemiesUnderFire.Contains(enemy)) return;
-            _lineRenderer.SetPosition(1, enemy.transform.localPosition);
+            
+            var enemyPos = enemy.transform.localPosition;
+            _lineRenderer.SetPosition(1, enemyPos);
         }
 
         public override  void StopShooting(Enemy enemy)
@@ -39,7 +42,7 @@ namespace Gameplay.Towers
             
             _lineRenderer.SetPosition(1, transform.localPosition);
             _lineRenderer.gameObject.SetActive(false);
-            
+
             EnemiesUnderFire.Remove(enemy);
             enemy.Die -= StopShooting;
             enemy.Die -= Manager.GetMoneyForKill;

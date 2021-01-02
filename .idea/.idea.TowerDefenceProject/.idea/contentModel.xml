@@ -69,6 +69,7 @@
               <e p="SolePlatform.cs" t="Include" />
             </e>
             <e p="Towers" t="Include">
+              <e p="DestroyOnExit.cs" t="Include" />
               <e p="EnemyTrigger.cs" t="Include" />
               <e p="FieldAnimation.cs" t="Include" />
               <e p="FieldBehaviour.cs" t="Include" />
