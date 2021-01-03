@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gameplay.Enemies;
 using Gameplay.Platforms;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -241,6 +242,11 @@ namespace Gameplay.Managers
                 _enemies.Remove(dyingEnemy);
                 Destroy(dyingEnemy.gameObject);
             }
+
+            if (_enemies.Count == 0)
+            {
+                EndGame(true);
+            }
         }
 
 
@@ -272,5 +278,10 @@ namespace Gameplay.Managers
             Gizmos.DrawLine(Carrier.LastDestination.Center, Carrier.LastDestination.Center + Vector3.up * 10);
         }
 
+        public void EndGame(bool playerWon)
+        {
+            EndMenuBehaviour.Instance.Show(playerWon);
+        }
+        
     }
 }

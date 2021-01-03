@@ -12,7 +12,7 @@ namespace Gameplay.Movement
         [SerializeField] private float zoomMaxSpeed = 2f;
         [SerializeField] private float rotationAcceleration = 90f;
         [SerializeField] private float rotationMaxSpeed = 45f;
-        [SerializeField] private InputShell inputShell = null;
+        [SerializeField] private InputShell inputShell = default;
 
         private Vector3 _desiredMovementVelocity;
         private Vector3 _movementVelocity;
@@ -45,20 +45,22 @@ namespace Gameplay.Movement
             UpdateZoomSpeed();
             UpdateRotationSpeed();
 
+            var tform = transform;
             var velocity = Vector3.zero;
-            var transform1 = transform;
-            velocity += transform1.right * _movementVelocity.x;
-            var forward1 = transform1.forward;
-            velocity += _collides? Vector3.down * _zoomVelocity: forward1 * _zoomVelocity;
-            var forward = Vector3.ProjectOnPlane(forward1, Vector3.down).normalized;
-            velocity += forward * _movementVelocity.y;
-
-
+            velocity += tform.right * _movementVelocity.x;
+            var forward = tform.forward;
+            velocity += _collides? Vector3.down * _zoomVelocity: forward * _zoomVelocity;
+            var vForward = Vector3.ProjectOnPlane(forward, Vector3.down).normalized;
+            velocity += vForward * _movementVelocity.y;
             var deltaRotation = _rotationVelocity * Time.deltaTime;
-
-            var transform2 = transform;
-            transform2.localPosition += velocity * Time.deltaTime;
-            transform.RotateAround(transform2.position + Vector3.forward, Vector3.up, deltaRotation);
+            
+            var localPos = tform.localPosition;
+            var newPos = localPos + velocity * Time.deltaTime;
+            newPos.x = Mathf.Clamp(newPos.x, -12f, 12f);
+            newPos.z = Mathf.Clamp(newPos.z, -12f, 20f);
+            
+            tform.localPosition = newPos;
+            tform.RotateAround(localPos + Vector3.forward, Vector3.up, deltaRotation);
         }
 
         private void ListenKeyboard()

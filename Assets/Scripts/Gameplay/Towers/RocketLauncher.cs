@@ -35,6 +35,7 @@ namespace Gameplay.Towers
 
         public override void MoveAim(Enemy enemy)
         {
+            StartShooting(enemy);
         }
 
         public override void StopShooting(Enemy enemy)

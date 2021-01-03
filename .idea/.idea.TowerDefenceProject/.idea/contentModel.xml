@@ -84,7 +84,7 @@
           <e p="UI" t="Include">
             <e p="BtnTowerInfo.cs" t="Include" />
             <e p="BuildingMenuBehaviour.cs" t="Include" />
-            <e p="DefeatMenuBehaviour.cs" t="Include" />
+            <e p="EndMenuBehaviour.cs" t="Include" />
             <e p="MenuBehaviour.cs" t="Include" />
             <e p="TowerMenuBehaviour.cs" t="Include" />
             <e p="UIBehaviour.cs" t="Include" />

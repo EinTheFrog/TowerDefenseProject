@@ -82,7 +82,7 @@ namespace Gameplay.Enemies
             {
                 if (HasTreasure)
                 {
-                    DefeatMenuBehaviour.Instance.Show();
+                    _manager.EndGame(false);
                 }
                 UpdatePath();
             }
