@@ -14,5 +14,10 @@ namespace UI
         {
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
     }
 }

@@ -20,17 +20,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e452dc46-5882-4cad-9e7b-4962fe516235" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/EndMenuBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/EnemyMaterial 1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/CameraMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/RocketLauncher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/RocketLauncher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DefeatMenuBehaviour.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DefeatMenuBehaviour.cs.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/Enemy 1.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/Enemy 1.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/FieldTower.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/FieldTower.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/LaserBeam.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/LaserBeam.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/RoadPlatform.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/RoadPlatform.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/Rocket.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/Rocket.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/RocketLauncher.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/RocketLauncher.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/SolePlatform.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/SolePlatform.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/Treasure.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Gameplay/Treasure.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OutlineRender.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Enemy 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/FieldTower.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LaserBeam.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LaserBeam.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/RoadPlatform.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/RoadPlatform.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Rocket.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Rocket.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/RocketLauncher.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/RocketLauncher.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/SolePlatform.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/SolePlatform.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Treasure.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Treasure.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +94,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndMenuBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/RocketLauncher.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Enemy.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/CameraMovement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jC8RKVXnxfS70Vdqjsd7zRVPY8" />
@@ -182,6 +209,7 @@
       <workItem from="1609592552923" duration="1645000" />
       <workItem from="1609603636469" duration="3733000" />
       <workItem from="1609663872572" duration="5279000" />
+      <workItem from="1609836928996" duration="239000" />
     </task>
     <servers />
   </component>
