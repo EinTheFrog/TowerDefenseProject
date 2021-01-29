@@ -31,6 +31,11 @@
           </e>
         </e>
         <e p="Resources" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="Pixel Fonts Megapack" t="Include">
+              <e p="_README.txt" t="Include" />
+            </e>
+          </e>
           <e p="PostProcessing" t="Include">
             <e p="PostProcessOutline.cs" t="Include" />
             <e p="RenderReplacementShaderToTexture.cs" t="Include" />
@@ -86,6 +91,7 @@
             <e p="BuildingMenuBehaviour.cs" t="Include" />
             <e p="EndMenuBehaviour.cs" t="Include" />
             <e p="MenuBehaviour.cs" t="Include" />
+            <e p="TextBehaviour.cs" t="Include" />
             <e p="TowerMenuBehaviour.cs" t="Include" />
             <e p="UIBehaviour.cs" t="Include" />
           </e>
