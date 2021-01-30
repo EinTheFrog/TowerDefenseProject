@@ -44,7 +44,6 @@ namespace Gameplay.Towers
             menuBehaviour.CallMenu(this);
         }
         
-
         public void Init(bool isActive, Vector3? spawnPos = null)
         {
             gameObject.SetActive(isActive);

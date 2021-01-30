@@ -26,18 +26,7 @@ namespace Gameplay.Managers
             _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.BuildMode, ChooseNone);
             TowersSoles = new Dictionary<Tower, SolePlatform>();
         }
-
-        public void ChooseTowerOnBtn()
-        {
-            var button = EventSystem.current.currentSelectedGameObject.GetComponent<BtnTowerInfo>();
-            if (button == null)
-            {
-                Debug.LogError($"Current chosen object is not a button, but it is: {EventSystem.current.currentSelectedGameObject}");
-                return;
-            }
-            ChooseTower(button.TowerType);
-            _inputShell.SetBuildingMode();
-        }
+        
 
         public void ChooseTower(Tower type)
         {
@@ -51,6 +40,7 @@ namespace Gameplay.Managers
             
             _chosenTower = Instantiate(type);
             _chosenTower.Init(false);
+            _inputShell.SetBuildingMode();
         }
 
         private void ChooseNone() //метод реагирующий на выход из режима постройки

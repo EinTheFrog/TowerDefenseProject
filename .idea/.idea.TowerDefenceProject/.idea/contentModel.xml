@@ -91,7 +91,6 @@
             <e p="BuildingMenuBehaviour.cs" t="Include" />
             <e p="EndMenuBehaviour.cs" t="Include" />
             <e p="MenuBehaviour.cs" t="Include" />
-            <e p="TextBehaviour.cs" t="Include" />
             <e p="TowerMenuBehaviour.cs" t="Include" />
             <e p="UIBehaviour.cs" t="Include" />
           </e>

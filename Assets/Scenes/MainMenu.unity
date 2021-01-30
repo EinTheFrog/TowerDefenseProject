@@ -292,6 +292,13 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8876620071060982092, guid: 05f5e05343dcba847a6b32747fa28504,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Day 2
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f5e05343dcba847a6b32747fa28504, type: 3}
 --- !u!1001 &93642557
@@ -1297,7 +1304,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 269710562}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5939675
+  m_Size: 0.48071218
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1729,6 +1736,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876620071060982092, guid: 05f5e05343dcba847a6b32747fa28504,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Day 3
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f5e05343dcba847a6b32747fa28504, type: 3}
@@ -2315,6 +2329,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876620071060982092, guid: 05f5e05343dcba847a6b32747fa28504,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Day 4
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f5e05343dcba847a6b32747fa28504, type: 3}

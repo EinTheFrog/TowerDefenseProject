@@ -13,7 +13,7 @@ namespace UI
         
         private void OnEnable()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
+            _canvasGroup = gameObject.GetComponent<CanvasGroup>();
         }
         private void Start()
         {
