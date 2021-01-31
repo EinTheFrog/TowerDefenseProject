@@ -87,7 +87,6 @@
           </e>
           <e p="Scripts.asmdef" t="Include" />
           <e p="UI" t="Include">
-            <e p="BtnTowerInfo.cs" t="Include" />
             <e p="BuildingMenuBehaviour.cs" t="Include" />
             <e p="EndMenuBehaviour.cs" t="Include" />
             <e p="MenuBehaviour.cs" t="Include" />
