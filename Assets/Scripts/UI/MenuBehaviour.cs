@@ -6,11 +6,14 @@ namespace UI
     {
         private InputShell _inputShell;
         private CanvasGroup _canvasGroup;
+        
+        private void OnEnable()
+        {
+            _canvasGroup = GetComponent<CanvasGroup>();
+        }
 
         private void Start()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
-
             _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
             _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.ViewMode, CallMenu);
             _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.MenuMode, CloseMenu);
