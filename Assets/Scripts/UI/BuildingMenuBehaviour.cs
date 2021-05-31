@@ -5,12 +5,21 @@ namespace UI
 {
     public class BuildingMenuBehaviour : MonoBehaviour
     {
+        private InputShell _inputShell;
         private CanvasGroup _canvasGroup;
 
         private void OnEnable()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
         }
+
+        private void Start()
+        {
+            _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
+            _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.ViewMode, CloseMenu);
+            _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.MenuMode, CallMenu);
+        }
+
         public void CallMenu()
         {
             if (_canvasGroup == null) return;
