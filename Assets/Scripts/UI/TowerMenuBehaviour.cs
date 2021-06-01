@@ -6,10 +6,10 @@ namespace UI
     public class TowerMenuBehaviour : MonoBehaviour
     {
         [SerializeField] private BuildingMenuBehaviour buildingMenu = null;
-        [SerializeField] private InputShell inputShell = null;
-        
+
         private CanvasGroup _canvasGroup;
         private Tower _chosenTower;
+        private InputShell _inputShell = null;
         
         private void OnEnable()
         {
@@ -17,7 +17,8 @@ namespace UI
         }
         private void Start()
         {
-            inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.TowerMode, CloseMenu);
+            _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
+            _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.TowerMode, CloseMenu);
             CloseMenu();
         }
         public void CallMenu(Tower chosenTower)
@@ -27,7 +28,7 @@ namespace UI
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;
             buildingMenu.CloseMenu();
-            inputShell.SetTowerMode();
+            _inputShell.SetTowerMode();
             
             _chosenTower = chosenTower;
         }
@@ -38,7 +39,7 @@ namespace UI
             _canvasGroup.alpha = 0;
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
-            inputShell.SetViewMode();
+            _inputShell.SetViewMode();
             buildingMenu.CallMenu();
         }
 

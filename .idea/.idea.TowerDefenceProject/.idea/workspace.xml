@@ -20,18 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e452dc46-5882-4cad-9e7b-4962fe516235" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/basicButton.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/basicButton.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/gameMenuButton.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/gameMenuButton.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/riderModule.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,14 +62,17 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndMenuBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/RocketLauncher.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Enemy.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/CameraMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/TextBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/Tower.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/PlayMode/TowerManagerTests.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/MenuBehaviour.cs" />
+      <option value="$PROJECT_DIR$/Assets/Resources/Animations/TimeScaleIndependency.cs" />
+      <option value="$PROJECT_DIR$/Assets/NonScaleTime.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Movement/CameraMovement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/MenuBehaviour.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jC8RKVXnxfS70Vdqjsd7zRVPY8" />
@@ -114,10 +110,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="13624">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12004">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="13624" />
+      <option name="pid" value="12004" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -209,7 +205,8 @@
       <workItem from="1612119939977" duration="3272000" />
       <workItem from="1622398569303" duration="171000" />
       <workItem from="1622399021285" duration="3083000" />
-      <workItem from="1622489178231" duration="385000" />
+      <workItem from="1622489178231" duration="4559000" />
+      <workItem from="1622562920077" duration="960000" />
     </task>
     <servers />
   </component>
@@ -257,43 +254,69 @@
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/Tower.cs</url>
-          <line>43</line>
-          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\Gameplay\Towers\Tower.cs" initialLine="43" containingFunctionPresentation="method 'OnPointerClick'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs</url>
+          <line>16</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\UI\TowerMenuBehaviour.cs" initialLine="16" containingFunctionPresentation="method 'OnEnable'">
             <startOffsets>
-              <option value="1330" />
+              <option value="433" />
             </startOffsets>
             <endOffsets>
-              <option value="1359" />
+              <option value="434" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="116" />
+          <option name="timeStamp" value="127" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs</url>
-          <line>31</line>
-          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\UI\TowerMenuBehaviour.cs" initialLine="31" containingFunctionPresentation="method 'CallMenu'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs</url>
+          <line>13</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\UI\BuildingMenuBehaviour.cs" initialLine="13" containingFunctionPresentation="method 'OnEnable'">
             <startOffsets>
-              <option value="978" />
+              <option value="299" />
             </startOffsets>
             <endOffsets>
-              <option value="1005" />
+              <option value="300" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="126" />
+          <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs</url>
           <line>25</line>
-          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\UI\TowerMenuBehaviour.cs" initialLine="25" containingFunctionPresentation="method 'CallMenu'">
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\UI\TowerMenuBehaviour.cs" initialLine="24" containingFunctionPresentation="method 'CallMenu'">
             <startOffsets>
-              <option value="758" />
+              <option value="773" />
             </startOffsets>
             <endOffsets>
-              <option value="781" />
+              <option value="798" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="127" />
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs</url>
+          <line>15</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\UI\TowerMenuBehaviour.cs" initialLine="15" containingFunctionPresentation="method 'OnEnable'">
+            <startOffsets>
+              <option value="381" />
+            </startOffsets>
+            <endOffsets>
+              <option value="424" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs</url>
+          <line>12</line>
+          <properties documentPath="C:\Users\EIN\UnityProjects\TowerDefenceProject\Assets\Scripts\UI\BuildingMenuBehaviour.cs" initialLine="12" containingFunctionPresentation="method 'OnEnable'">
+            <startOffsets>
+              <option value="247" />
+            </startOffsets>
+            <endOffsets>
+              <option value="290" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="132" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
