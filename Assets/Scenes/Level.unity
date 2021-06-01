@@ -56732,7 +56732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d462766b9ce14942837c6c2dd39fae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingMenu: {fileID: 0}
+  buildingMenu: {fileID: 1317528373}
 --- !u!1001 &1707518793
 PrefabInstance:
   m_ObjectHideFlags: 0
