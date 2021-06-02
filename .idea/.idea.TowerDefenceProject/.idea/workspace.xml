@@ -20,10 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e452dc46-5882-4cad-9e7b-4962fe516235" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/LevelManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TowerDefenceProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LevelMenuBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LevelMenuBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +43,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Tests/PlayMode/TowerManagerTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.14/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveSystem/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../Program Files/Unity/Hub/Editor/2019.4.0f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Text.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/DestroyOnExit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -58,11 +64,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/DestroyOnExit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/Rocket.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/DefeatMenuBehaviour.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/EndMenuBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/RocketLauncher.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Enemies/Enemy.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/TextBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Towers/Tower.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/PlayMode/TowerManagerTests.cs" />
@@ -73,8 +77,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/BuildingMenuBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/TowerManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/TowerMenuBehaviour.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SaveSystem/LevelManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Gameplay/Managers/EnemyManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/LevelMenuBehaviour.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SaveSystem/SaveSystem.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1jC8RKVXnxfS70Vdqjsd7zRVPY8" />
@@ -211,6 +218,8 @@
       <workItem from="1622562920077" duration="2362000" />
       <workItem from="1622580179922" duration="1985000" />
       <workItem from="1622620254437" duration="6673000" />
+      <workItem from="1622639095975" duration="947000" />
+      <workItem from="1622643720116" duration="3891000" />
     </task>
     <servers />
   </component>

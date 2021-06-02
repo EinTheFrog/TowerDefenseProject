@@ -34,15 +34,15 @@ namespace SaveSystem
             {
                 fileStream = File.Open(savePath, FileMode.Open);
             }
-            catch (DirectoryNotFoundException e)
+            catch (FileNotFoundException e)
             {
-                return new bool[0];
+                return null;
             }
             
             bool[] boolArr = new bool[length];
             using (var reader = new BinaryReader(fileStream))
             {
-                for (var i = 0; i < length; i++)
+                for (int i = 0; i < length; i++)
                 {
                     boolArr[i] = reader.ReadBoolean();
                 }
@@ -54,6 +54,14 @@ namespace SaveSystem
         public static bool[] LoadLevelsStates( int length )
         {
             return LoadBoolArray(length);
+        }
+
+        public static void CompleteLevel( int k )
+        {
+            bool[] levelsStates = LoadLevelsStates(LevelMenuBehaviour.LEVELS_AMOUNT);
+            if (k + 1 >= LevelMenuBehaviour.LEVELS_AMOUNT) return;
+            levelsStates[k + 1] = true;
+            SaveLevelsStates(levelsStates);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gameplay.Enemies;
 using Gameplay.Platforms;
+using SaveSystem;
 using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -19,6 +20,7 @@ namespace Gameplay.Managers
         [SerializeField] private Treasure treasurePrefab = null;
         [SerializeField] private RoadManager roadManager = null;
         [SerializeField] private int[] enemiesCount = null;
+        [SerializeField] private LevelManager levelManager = null;
 
         private float _secondsSinceLastSpawn;
         private HashSet<Enemy> _enemies;
@@ -281,6 +283,7 @@ namespace Gameplay.Managers
         public void EndGame(bool playerWon)
         {
             EndMenuBehaviour.Instance.Show(playerWon);
+            SaveSystem.SaveSystem.CompleteLevel(levelManager.LevelNumber);
         }
         
     }
