@@ -23,6 +23,9 @@ namespace UI
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
+            _canvasGroup.alpha = 0;
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
         public void Show(bool playerWon)
         {

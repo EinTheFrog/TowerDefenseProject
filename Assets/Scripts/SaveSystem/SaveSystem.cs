@@ -59,6 +59,11 @@ namespace SaveSystem
         public static void CompleteLevel( int k )
         {
             bool[] levelsStates = LoadLevelsStates(LevelMenuBehaviour.LEVELS_AMOUNT);
+            if (levelsStates == null)
+            {
+                Debug.Log("ATTENTION: Save file hasn't been found");
+                return;
+            }
             if (k + 1 >= LevelMenuBehaviour.LEVELS_AMOUNT) return;
             levelsStates[k + 1] = true;
             SaveLevelsStates(levelsStates);
