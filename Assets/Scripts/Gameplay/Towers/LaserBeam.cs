@@ -48,6 +48,15 @@ namespace Gameplay.Towers
             enemy.Die -= Manager.GetMoneyForKill;
         }
 
+        protected override void Update()
+        {
+            var damage = basicDamage + damagePerLevel * Level;
+            foreach (var enemy in EnemiesUnderFire)
+            {
+                enemy.Health -= damage * Time.deltaTime;
+            }
+        }
+
         public override void Upgrade()
         {
             throw new NotImplementedException();

@@ -48,5 +48,11 @@ namespace UI
             _chosenTower.Sell();
             CloseMenu();
         }
+        
+        public void UpgradeTower()
+        {
+            _chosenTower.Upgrade();
+            CloseMenu();
+        }
     }
 }

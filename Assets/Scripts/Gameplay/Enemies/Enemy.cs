@@ -9,8 +9,8 @@ namespace Gameplay.Enemies
 {
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private float speed = 0;
         [SerializeField] private float maxHealth = 10;
+        [SerializeField] private float basicSpeed = 2;
         [SerializeField] private float levitateHeight = 0;
         [SerializeField] private int reward = 5;
 
@@ -25,6 +25,7 @@ namespace Gameplay.Enemies
         public bool CarriersPath { get; set; }
 
         public float Health { get; set; }
+        public float Speed { get; set; }
 
         public int Reward => reward;
 
@@ -56,6 +57,7 @@ namespace Gameplay.Enemies
         private void OnEnable()
         {
             Health = maxHealth;
+            Speed = basicSpeed;
             _renderer = GetComponent<Renderer>();
         }
 
@@ -111,7 +113,7 @@ namespace Gameplay.Enemies
         {
             Vector3 distinationPos = PosAbove(NextDestination);
             //Если добрались до следующего пункта пути - пора обновить скорость
-            if (Vector3.Distance(transform.localPosition, distinationPos) < speed * Time.deltaTime)
+            if (Vector3.Distance(transform.localPosition, distinationPos) < Speed * Time.deltaTime)
             {
                 transform.localPosition = distinationPos;
                 Path.Dequeue();
@@ -149,7 +151,7 @@ namespace Gameplay.Enemies
             CalculateVelocity();
         }
 
-        private void CalculateVelocity() => _velocity = speed * (PosAbove(NextDestination) - transform.localPosition).normalized;
+        private void CalculateVelocity() => _velocity = Speed * (PosAbove(NextDestination) - transform.localPosition).normalized;
 
         //Расчитываем позицию противника, с учетом того, что он левитирует над платформами
         private Vector3 PosAbove(RoadPlatform road) => road.Center + Vector3.up * levitateHeight;
@@ -170,5 +172,7 @@ namespace Gameplay.Enemies
                 UpdatePath();
             }
         }
+        
+        public void RestoreBasicSpeed() => Speed = basicSpeed;
     }
 }

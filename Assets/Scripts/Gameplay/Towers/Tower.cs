@@ -10,7 +10,8 @@ namespace Gameplay.Towers
 {
     public abstract class Tower : MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField] protected float damage = 10;
+        [SerializeField] protected float basicDamage = 10f;
+        [SerializeField] protected float damagePerLevel = 2f;
         [SerializeField] private int cost = 10;
         [SerializeField] private Material buildingMat = default;
         [SerializeField] private Material greenGhostMat = default;
@@ -21,6 +22,7 @@ namespace Gameplay.Towers
         public event RemoveHandler Remove;
         protected HashSet<Enemy> EnemiesUnderFire;
         protected TowerManager Manager;
+        protected int Level = 1;
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
@@ -30,13 +32,15 @@ namespace Gameplay.Towers
             EnemiesUnderFire = new HashSet<Enemy>();
         }
 
-        public void Update()
+        /*private void Update()
         {
             foreach (var enemy in EnemiesUnderFire)
             {
                 enemy.Health -= damage * Time.deltaTime;
             }
-        }
+        }*/
+
+        protected abstract void Update();
 
         public void OnPointerClick(PointerEventData eventData)
         {
