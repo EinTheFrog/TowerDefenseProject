@@ -25,6 +25,14 @@ public class @Input : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ShowAdditionalInfo"",
+                    ""type"": ""Button"",
+                    ""id"": ""28798b85-d0d5-4ecb-8141-17a1eaaa587d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -36,6 +44,17 @@ public class @Input : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35a780e6-81ae-45a8-b77f-8020b633bd01"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowAdditionalInfo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -52,6 +71,14 @@ public class @Input : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ShowAdditionalInfo"",
+                    ""type"": ""Button"",
+                    ""id"": ""1bc6c82b-31e6-42a6-bb87-e7e03d3aea3e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -63,6 +90,17 @@ public class @Input : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d53c061d-f974-45c7-b079-6e1364930db6"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowAdditionalInfo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -237,6 +275,14 @@ public class @Input : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ShowAdditionalInfo"",
+                    ""type"": ""Button"",
+                    ""id"": ""efd1bc0a-b4d8-4213-928c-474570457921"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -250,6 +296,17 @@ public class @Input : IInputActionCollection, IDisposable
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d5de665-bf71-4f56-9590-1cb0eb633654"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShowAdditionalInfo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -259,9 +316,11 @@ public class @Input : IInputActionCollection, IDisposable
         // BuildMode
         m_BuildMode = asset.FindActionMap("BuildMode", throwIfNotFound: true);
         m_BuildMode_Cancel = m_BuildMode.FindAction("Cancel", throwIfNotFound: true);
+        m_BuildMode_ShowAdditionalInfo = m_BuildMode.FindAction("ShowAdditionalInfo", throwIfNotFound: true);
         // ViewMode
         m_ViewMode = asset.FindActionMap("ViewMode", throwIfNotFound: true);
         m_ViewMode_Cancel = m_ViewMode.FindAction("Cancel", throwIfNotFound: true);
+        m_ViewMode_ShowAdditionalInfo = m_ViewMode.FindAction("ShowAdditionalInfo", throwIfNotFound: true);
         // MovementMode
         m_MovementMode = asset.FindActionMap("MovementMode", throwIfNotFound: true);
         m_MovementMode_Move = m_MovementMode.FindAction("Move", throwIfNotFound: true);
@@ -273,6 +332,7 @@ public class @Input : IInputActionCollection, IDisposable
         // TowerMode
         m_TowerMode = asset.FindActionMap("TowerMode", throwIfNotFound: true);
         m_TowerMode_Cancel = m_TowerMode.FindAction("Cancel", throwIfNotFound: true);
+        m_TowerMode_ShowAdditionalInfo = m_TowerMode.FindAction("ShowAdditionalInfo", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -323,11 +383,13 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputActionMap m_BuildMode;
     private IBuildModeActions m_BuildModeActionsCallbackInterface;
     private readonly InputAction m_BuildMode_Cancel;
+    private readonly InputAction m_BuildMode_ShowAdditionalInfo;
     public struct BuildModeActions
     {
         private @Input m_Wrapper;
         public BuildModeActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Cancel => m_Wrapper.m_BuildMode_Cancel;
+        public InputAction @ShowAdditionalInfo => m_Wrapper.m_BuildMode_ShowAdditionalInfo;
         public InputActionMap Get() { return m_Wrapper.m_BuildMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -340,6 +402,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Cancel.started -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnCancel;
+                @ShowAdditionalInfo.started -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.performed -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.canceled -= m_Wrapper.m_BuildModeActionsCallbackInterface.OnShowAdditionalInfo;
             }
             m_Wrapper.m_BuildModeActionsCallbackInterface = instance;
             if (instance != null)
@@ -347,6 +412,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @ShowAdditionalInfo.started += instance.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.performed += instance.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.canceled += instance.OnShowAdditionalInfo;
             }
         }
     }
@@ -356,11 +424,13 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputActionMap m_ViewMode;
     private IViewModeActions m_ViewModeActionsCallbackInterface;
     private readonly InputAction m_ViewMode_Cancel;
+    private readonly InputAction m_ViewMode_ShowAdditionalInfo;
     public struct ViewModeActions
     {
         private @Input m_Wrapper;
         public ViewModeActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Cancel => m_Wrapper.m_ViewMode_Cancel;
+        public InputAction @ShowAdditionalInfo => m_Wrapper.m_ViewMode_ShowAdditionalInfo;
         public InputActionMap Get() { return m_Wrapper.m_ViewMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -373,6 +443,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Cancel.started -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnCancel;
+                @ShowAdditionalInfo.started -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.performed -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.canceled -= m_Wrapper.m_ViewModeActionsCallbackInterface.OnShowAdditionalInfo;
             }
             m_Wrapper.m_ViewModeActionsCallbackInterface = instance;
             if (instance != null)
@@ -380,6 +453,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @ShowAdditionalInfo.started += instance.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.performed += instance.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.canceled += instance.OnShowAdditionalInfo;
             }
         }
     }
@@ -471,11 +547,13 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputActionMap m_TowerMode;
     private ITowerModeActions m_TowerModeActionsCallbackInterface;
     private readonly InputAction m_TowerMode_Cancel;
+    private readonly InputAction m_TowerMode_ShowAdditionalInfo;
     public struct TowerModeActions
     {
         private @Input m_Wrapper;
         public TowerModeActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @Cancel => m_Wrapper.m_TowerMode_Cancel;
+        public InputAction @ShowAdditionalInfo => m_Wrapper.m_TowerMode_ShowAdditionalInfo;
         public InputActionMap Get() { return m_Wrapper.m_TowerMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -488,6 +566,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Cancel.started -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnCancel;
+                @ShowAdditionalInfo.started -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.performed -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.canceled -= m_Wrapper.m_TowerModeActionsCallbackInterface.OnShowAdditionalInfo;
             }
             m_Wrapper.m_TowerModeActionsCallbackInterface = instance;
             if (instance != null)
@@ -495,6 +576,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @ShowAdditionalInfo.started += instance.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.performed += instance.OnShowAdditionalInfo;
+                @ShowAdditionalInfo.canceled += instance.OnShowAdditionalInfo;
             }
         }
     }
@@ -502,10 +586,12 @@ public class @Input : IInputActionCollection, IDisposable
     public interface IBuildModeActions
     {
         void OnCancel(InputAction.CallbackContext context);
+        void OnShowAdditionalInfo(InputAction.CallbackContext context);
     }
     public interface IViewModeActions
     {
         void OnCancel(InputAction.CallbackContext context);
+        void OnShowAdditionalInfo(InputAction.CallbackContext context);
     }
     public interface IMovementModeActions
     {
@@ -520,5 +606,6 @@ public class @Input : IInputActionCollection, IDisposable
     public interface ITowerModeActions
     {
         void OnCancel(InputAction.CallbackContext context);
+        void OnShowAdditionalInfo(InputAction.CallbackContext context);
     }
 }

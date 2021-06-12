@@ -12,6 +12,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ShowAdditionalInfo",
+                    "type": "Button",
+                    "id": "28798b85-d0d5-4ecb-8141-17a1eaaa587d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -23,6 +31,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35a780e6-81ae-45a8-b77f-8020b633bd01",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowAdditionalInfo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -39,6 +58,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ShowAdditionalInfo",
+                    "type": "Button",
+                    "id": "1bc6c82b-31e6-42a6-bb87-e7e03d3aea3e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -50,6 +77,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d53c061d-f974-45c7-b079-6e1364930db6",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowAdditionalInfo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -224,6 +262,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ShowAdditionalInfo",
+                    "type": "Button",
+                    "id": "efd1bc0a-b4d8-4213-928c-474570457921",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -235,6 +281,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d5de665-bf71-4f56-9590-1cb0eb633654",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowAdditionalInfo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

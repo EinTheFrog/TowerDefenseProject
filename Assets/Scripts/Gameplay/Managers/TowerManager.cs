@@ -15,8 +15,14 @@ namespace Gameplay.Managers
 
         private Tower _chosenTower;
         private InputShell _inputShell;
+        private bool _showingLevels = false;
         
+        public bool ShowingLevels => _showingLevels;
+
         public Dictionary<Tower, SolePlatform> TowersSoles { get; private set; }
+        
+        public delegate void LevelShowHandler(bool shouldShow);
+        public event LevelShowHandler ShowLevel;
 
         private void Start()
         {
@@ -27,7 +33,6 @@ namespace Gameplay.Managers
             TowersSoles = new Dictionary<Tower, SolePlatform>();
         }
         
-
         public void ChooseTower(Tower type)
         {
             if (_chosenTower != null)
@@ -99,6 +104,12 @@ namespace Gameplay.Managers
         public void HideTower()
         {
             _chosenTower.Init(false);
+        }
+
+        public void ShowTowersLevels()
+        {
+            ShowLevel?.Invoke(!_showingLevels);
+            _showingLevels = !_showingLevels;
         }
     }
 }

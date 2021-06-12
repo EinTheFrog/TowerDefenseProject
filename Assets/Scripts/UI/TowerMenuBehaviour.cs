@@ -1,16 +1,18 @@
-﻿using Gameplay.Towers;
+﻿using Gameplay.Managers;
+using Gameplay.Towers;
 using UnityEngine;
 
 namespace UI
 {
     public class TowerMenuBehaviour : MonoBehaviour
     {
-        [SerializeField] private BuildingMenuBehaviour buildingMenu = null;
+        [SerializeField] private BuildingMenuBehaviour buildingMenu = default;
+        [SerializeField] private TowerManager towerManager = default;
 
-        private CanvasGroup _canvasGroup;
-        private Tower _chosenTower;
-        private InputShell _inputShell = null;
-        
+        private CanvasGroup _canvasGroup = default;
+        private Tower _chosenTower = default;
+        private InputShell _inputShell = default;
+
         private void OnEnable()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
@@ -19,6 +21,9 @@ namespace UI
         {
             _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
             _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.TowerMode, CloseMenu);
+            _inputShell.SetActionForMode(InputShell.ActionType.ShowAdditionalInfo, InputShell.Mode.ViewMode, towerManager.ShowTowersLevels);
+            _inputShell.SetActionForMode(InputShell.ActionType.ShowAdditionalInfo, InputShell.Mode.BuildMode, towerManager.ShowTowersLevels);
+            _inputShell.SetActionForMode(InputShell.ActionType.ShowAdditionalInfo, InputShell.Mode.TowerMode, towerManager.ShowTowersLevels);
             CloseMenu();
         }
         public void CallMenu(Tower chosenTower)
@@ -52,7 +57,6 @@ namespace UI
         public void UpgradeTower()
         {
             _chosenTower.Upgrade();
-            CloseMenu();
         }
     }
 }

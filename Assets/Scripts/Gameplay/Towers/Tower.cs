@@ -13,16 +13,18 @@ namespace Gameplay.Towers
         [SerializeField] protected float basicDamage = 10f;
         [SerializeField] protected float damagePerLevel = 2f;
         [SerializeField] private int cost = 10;
+        [SerializeField] private int upgradeCost = 10;
         [SerializeField] private Material buildingMat = default;
         [SerializeField] private Material greenGhostMat = default;
         [SerializeField] private Material redGhostMat = default;
 
         public delegate void RemoveHandler(Tower tower);
-
         public event RemoveHandler Remove;
+        
         protected HashSet<Enemy> EnemiesUnderFire;
         protected TowerManager Manager;
-        protected int Level = 1;
+        protected int Level = 0;
+        private TextMesh _levelText = default;
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
@@ -30,15 +32,16 @@ namespace Gameplay.Towers
         private void Start()
         {
             EnemiesUnderFire = new HashSet<Enemy>();
+            GetLevelText();
         }
 
-        /*private void Update()
+        private void GetLevelText()
         {
-            foreach (var enemy in EnemiesUnderFire)
-            {
-                enemy.Health -= damage * Time.deltaTime;
-            }
-        }*/
+            if (_levelText != null) return;
+            _levelText = GetComponentInChildren<TextMesh>();
+            _levelText.color = Color.clear;
+            _levelText.text = Level.ToString();
+        }
 
         protected abstract void Update();
 
@@ -75,7 +78,14 @@ namespace Gameplay.Towers
             {
                 case TowerState.GreenGhost: meshRenderer.material = greenGhostMat; break;
                 case TowerState.RedGhost: meshRenderer.material = redGhostMat; break;
-                case TowerState.Building: Build(meshRenderer); break;
+                case TowerState.Building:
+                {
+                    Manager.ShowLevel += ShowLevel;
+                    GetLevelText();
+                    ShowLevel(manager.ShowingLevels);
+                    Build(meshRenderer); 
+                    break;
+                }
                 default: throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
@@ -97,6 +107,8 @@ namespace Gameplay.Towers
                 enemy.Die -= StopShooting;
                 enemy.Die -= Manager.GetMoneyForKill;
             }
+            Manager.ShowLevel -= ShowLevel;
+            
             Destroy(gameObject);
         }
 
@@ -105,8 +117,6 @@ namespace Gameplay.Towers
         public abstract void MoveAim(Enemy enemy);
 
         public abstract void StopShooting(Enemy enemy);
-
-        public abstract void Upgrade();
 
         public enum TowerState
         {
@@ -124,6 +134,13 @@ namespace Gameplay.Towers
         {
             Manager.AddMoney(cost);
             Destroy();
+        }
+        
+        public void Upgrade() => _levelText.text = (++Level).ToString();
+
+        private void ShowLevel(bool shouldShow)
+        {
+            _levelText.color = shouldShow? Color.white : Color.clear;
         }
     }
 }

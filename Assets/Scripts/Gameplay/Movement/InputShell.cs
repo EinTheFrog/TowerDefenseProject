@@ -98,6 +98,19 @@ namespace UI
                         default: throw new ArgumentException();
                     } 
                 } break;
+                case ActionType.ShowAdditionalInfo:
+                {
+                    switch (mode)
+                    {
+                        case Mode.BuildMode: inputAction = _input.BuildMode.ShowAdditionalInfo;
+                            break;
+                        case Mode.ViewMode: inputAction = _input.ViewMode.ShowAdditionalInfo;
+                            break;
+                        case Mode.TowerMode: inputAction = _input.TowerMode.ShowAdditionalInfo;
+                            break;
+                        default: throw new ArgumentException();
+                    } 
+                } break;
                 default: throw new ArgumentException();
             }
             inputAction.performed += _ => action();
@@ -121,7 +134,7 @@ namespace UI
         public enum ActionType
         {
             Cancel,
-            Apply
+            ShowAdditionalInfo
         }
     }
 }

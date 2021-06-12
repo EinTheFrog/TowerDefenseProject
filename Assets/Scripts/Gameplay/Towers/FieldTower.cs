@@ -60,10 +60,5 @@ namespace Gameplay.Towers
                 enemy.Health -= damage * Time.deltaTime;
             }
         }
-
-        public override void Upgrade()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

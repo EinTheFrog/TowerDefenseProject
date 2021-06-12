@@ -46,10 +46,5 @@ namespace Gameplay.Towers
         protected override void Update()
         {
         }
-
-        public override void Upgrade()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

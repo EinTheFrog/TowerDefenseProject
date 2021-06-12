@@ -57,11 +57,6 @@ namespace Gameplay.Towers
             }
         }
 
-        public override void Upgrade()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override void Build(Renderer meshRenderer)
         {
             SetBuiltMaterial(meshRenderer);
