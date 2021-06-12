@@ -29213,6 +29213,7 @@ MonoBehaviour:
   rotationAcceleration: 10
   rotationMaxSpeed: 135
   inputShell: {fileID: 2064351912}
+  towerManager: {fileID: 1563434149}
 --- !u!4 &963205297
 Transform:
   m_ObjectHideFlags: 0

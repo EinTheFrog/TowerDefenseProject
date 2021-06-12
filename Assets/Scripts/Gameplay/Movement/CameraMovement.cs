@@ -1,4 +1,5 @@
-﻿using UI;
+﻿using Gameplay.Managers;
+using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,6 +14,7 @@ namespace Gameplay.Movement
         [SerializeField] private float rotationAcceleration = 90f;
         [SerializeField] private float rotationMaxSpeed = 45f;
         [SerializeField] private InputShell inputShell = default;
+        [SerializeField] private TowerManager towerManager = default;
 
         private Vector3 _desiredMovementVelocity;
         private Vector3 _movementVelocity;
@@ -61,6 +63,7 @@ namespace Gameplay.Movement
             
             tform.localPosition = newPos;
             tform.RotateAround(localPos + Vector3.forward, Vector3.up, deltaRotation);
+            towerManager.SetLevelTextsRotation(tform.position);
         }
 
         private void ListenKeyboard()

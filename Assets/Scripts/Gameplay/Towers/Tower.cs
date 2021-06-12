@@ -81,6 +81,7 @@ namespace Gameplay.Towers
                 case TowerState.Building:
                 {
                     Manager.ShowLevel += ShowLevel;
+                    Manager.UpdateRotation += SetRotationByCamPos;
                     GetLevelText();
                     ShowLevel(manager.ShowingLevels);
                     Build(meshRenderer); 
@@ -137,6 +138,11 @@ namespace Gameplay.Towers
         }
         
         public void Upgrade() => _levelText.text = (++Level).ToString();
+
+        private void SetRotationByCamPos(Vector3 cameraPos)
+        {
+            _levelText.transform.LookAt(cameraPos);
+        }
 
         private void ShowLevel(bool shouldShow)
         {

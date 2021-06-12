@@ -23,6 +23,8 @@ namespace Gameplay.Managers
         
         public delegate void LevelShowHandler(bool shouldShow);
         public event LevelShowHandler ShowLevel;
+        public delegate void RotationHandler(Vector3 v);
+        public event RotationHandler UpdateRotation;
 
         private void Start()
         {
@@ -110,6 +112,11 @@ namespace Gameplay.Managers
         {
             ShowLevel?.Invoke(!_showingLevels);
             _showingLevels = !_showingLevels;
+        }
+
+        public void SetLevelTextsRotation(Vector3 v)
+        {
+            UpdateRotation?.Invoke(v);
         }
     }
 }
