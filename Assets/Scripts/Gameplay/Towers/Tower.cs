@@ -109,6 +109,7 @@ namespace Gameplay.Towers
                 enemy.Die -= Manager.GetMoneyForKill;
             }
             Manager.ShowLevel -= ShowLevel;
+            Manager.UpdateRotation -= SetRotationByCamPos;
             
             Destroy(gameObject);
         }
@@ -141,7 +142,8 @@ namespace Gameplay.Towers
 
         private void SetRotationByCamPos(Vector3 cameraPos)
         {
-            _levelText.transform.LookAt(cameraPos);
+            var fixedPos = _levelText.transform.position - cameraPos;
+            _levelText.transform.LookAt(fixedPos);
         }
 
         private void ShowLevel(bool shouldShow)

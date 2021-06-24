@@ -55,15 +55,18 @@ namespace Gameplay.Movement
             var vForward = Vector3.ProjectOnPlane(forward, Vector3.down).normalized;
             velocity += vForward * _movementVelocity.y;
             var deltaRotation = _rotationVelocity * Time.deltaTime;
-            
-            var localPos = tform.localPosition;
+
+            var localPosition = tform.localPosition;
+            var localPos = localPosition;
             var newPos = localPos + velocity * Time.deltaTime;
             newPos.x = Mathf.Clamp(newPos.x, -12f, 12f);
             newPos.z = Mathf.Clamp(newPos.z, -12f, 20f);
             
-            tform.localPosition = newPos;
+            localPosition = newPos;
+            tform.localPosition = localPosition;
             tform.RotateAround(localPos + Vector3.forward, Vector3.up, deltaRotation);
-            towerManager.SetLevelTextsRotation(tform.position);
+
+            towerManager.SetLevelTextsRotation(localPosition);
         }
 
         private void ListenKeyboard()
