@@ -113,6 +113,7 @@ MonoBehaviour:
   damagePerLevel: 2
   cost: 20
   upgradeCost: 10
+  maxLevel: 10
   buildingMat: {fileID: 2100000, guid: 6648d2ae8a861f048939295909f323c5, type: 2}
   greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
   redGhostMat: {fileID: 2100000, guid: 8dd199fcda004244b9314a76247b1b62, type: 2}
@@ -196,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 3746148899120796076, guid: d96bc2aefdcc96d4896ca4d45c53f1b7,
         type: 3}
       propertyPath: m_TagString
-      value: Tower level text
+      value: TowerLevelText
       objectReference: {fileID: 0}
     - target: {fileID: 8661846350875391545, guid: d96bc2aefdcc96d4896ca4d45c53f1b7,
         type: 3}

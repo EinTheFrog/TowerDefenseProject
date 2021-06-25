@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Gameplay.Managers
@@ -8,9 +9,10 @@ namespace Gameplay.Managers
         [SerializeField] private float moneyUpdateTime = 1f;
         [SerializeField] private int initialMoney = 1;
         [SerializeField] private int moneyChange = 1;
-        [SerializeField] private Text moneyText = default;
 
         private int _money = default;
+        private Text[] _moneyTexts = default;
+        private string textTag = "MoneyTextTag";
 
         public int Money
         {
@@ -18,15 +20,20 @@ namespace Gameplay.Managers
             set
             {
                 _money = value;
-                moneyText.text = _money.ToString();
+                foreach (var moneyText in _moneyTexts)
+                {
+                    moneyText.text = _money.ToString();
+                }
             }
         }
 
         private float _timePassed = 0;
 
-        private void Start()
+        private void OnEnable()
         {
-            Money = initialMoney;
+            _money = initialMoney;
+            _moneyTexts = GameObject.FindGameObjectsWithTag(textTag).Select(gameObj => gameObj.GetComponent<Text>())
+                .ToArray();
         }
 
         private void Update()

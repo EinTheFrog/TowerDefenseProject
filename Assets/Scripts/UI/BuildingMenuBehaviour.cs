@@ -18,7 +18,7 @@ namespace UI
             _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
             _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.ViewMode, CloseMenu);
             _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.MenuMode, CallMenu);
-            CloseMenu();
+            CallMenu();
         }
 
         public void CallMenu()

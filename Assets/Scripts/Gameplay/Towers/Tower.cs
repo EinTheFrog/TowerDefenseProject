@@ -27,7 +27,7 @@ namespace Gameplay.Towers
         protected int level = 0;
         private GameObject _levelTextObj = default;
         private TextMesh _levelText = default;
-        private const string LevelTextTag = "Tower level text";
+        private const string LevelTextTag = "TowerLevelText";
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
