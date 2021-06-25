@@ -24,7 +24,9 @@ namespace Gameplay.Towers
         protected HashSet<Enemy> EnemiesUnderFire;
         protected TowerManager Manager;
         protected int Level = 0;
+        private GameObject _levelTextObj = default;
         private TextMesh _levelText = default;
+        private const string LevelTextTag = "Tower level text";
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
@@ -38,7 +40,8 @@ namespace Gameplay.Towers
         private void GetLevelText()
         {
             if (_levelText != null) return;
-            _levelText = GetComponentInChildren<TextMesh>();
+            _levelTextObj = FindChildWithTag(LevelTextTag);
+            _levelText = _levelTextObj.GetComponentInChildren<TextMesh>();
             _levelText.color = Color.clear;
             _levelText.text = Level.ToString();
         }
@@ -142,13 +145,26 @@ namespace Gameplay.Towers
 
         private void SetRotationByCamPos(Vector3 cameraPos)
         {
-            var fixedPos = _levelText.transform.position - cameraPos;
-            _levelText.transform.LookAt(fixedPos);
+            _levelTextObj.transform.LookAt(cameraPos);
         }
 
         private void ShowLevel(bool shouldShow)
         {
             _levelText.color = shouldShow? Color.white : Color.clear;
+        }
+
+        private GameObject FindChildWithTag(string tag)
+        {
+            var children = GetComponentsInChildren<Transform>();
+            foreach (var child in children)
+            {
+                if (child.CompareTag(tag))
+                {
+                    return child.gameObject;
+                }
+            }
+
+            return null;
         }
     }
 }
