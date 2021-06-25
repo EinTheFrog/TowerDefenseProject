@@ -118,5 +118,17 @@ namespace Gameplay.Managers
         {
             UpdateRotation?.Invoke(v);
         }
+        
+        public void SellTower(Tower chosenTower)
+        {
+            chosenTower.Sell();
+        }
+        
+        public void UpgradeTower(Tower chosenTower)
+        {
+            if (chosenTower.UpgradeCost > moneyManager.Money || chosenTower.Level == chosenTower.MaxLevel) return;
+            chosenTower.Upgrade();
+            moneyManager.Money -= chosenTower.UpgradeCost;
+        }
     }
 }

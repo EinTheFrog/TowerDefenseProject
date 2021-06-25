@@ -28,7 +28,7 @@ namespace Gameplay.Towers
             enemy.Die += StopShooting;
             enemy.Die += Manager.GetMoneyForKill;
 
-            var speedMultiplier = basicSpeedMultiplier * Mathf.Pow(speedMultiplierPerLevel, Level);
+            var speedMultiplier = basicSpeedMultiplier * Mathf.Pow(speedMultiplierPerLevel, level);
             enemy.Speed *= speedMultiplier;
             EnemiesUnderFire.Add(enemy);
         }
@@ -54,7 +54,7 @@ namespace Gameplay.Towers
         
         protected override void Update()
         {
-            var damage = basicDamage + damagePerLevel * Level;
+            var damage = basicDamage + damagePerLevel * level;
             foreach (var enemy in EnemiesUnderFire)
             {
                 enemy.Health -= damage * Time.deltaTime;

@@ -14,6 +14,7 @@ namespace Gameplay.Towers
         [SerializeField] protected float damagePerLevel = 2f;
         [SerializeField] private int cost = 10;
         [SerializeField] private int upgradeCost = 10;
+        [SerializeField] private int maxLevel = 10;
         [SerializeField] private Material buildingMat = default;
         [SerializeField] private Material greenGhostMat = default;
         [SerializeField] private Material redGhostMat = default;
@@ -23,14 +24,19 @@ namespace Gameplay.Towers
         
         protected HashSet<Enemy> EnemiesUnderFire;
         protected TowerManager Manager;
-        protected int Level = 0;
+        protected int level = 0;
         private GameObject _levelTextObj = default;
         private TextMesh _levelText = default;
         private const string LevelTextTag = "Tower level text";
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
+        
+        public int UpgradeCost => upgradeCost;
 
+        public int MaxLevel => maxLevel;
+
+        public int Level => level;
         private void Start()
         {
             EnemiesUnderFire = new HashSet<Enemy>();
@@ -43,7 +49,7 @@ namespace Gameplay.Towers
             _levelTextObj = FindChildWithTag(LevelTextTag);
             _levelText = _levelTextObj.GetComponentInChildren<TextMesh>();
             _levelText.color = Color.clear;
-            _levelText.text = Level.ToString();
+            _levelText.text = level.ToString();
         }
 
         protected abstract void Update();
@@ -140,8 +146,12 @@ namespace Gameplay.Towers
             Manager.AddMoney(cost);
             Destroy();
         }
-        
-        public void Upgrade() => _levelText.text = (++Level).ToString();
+
+        public void Upgrade()
+        {
+            level++;
+            _levelText.text = level.ToString();
+        }
 
         private void SetRotationByCamPos(Vector3 cameraPos)
         {

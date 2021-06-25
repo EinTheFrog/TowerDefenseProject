@@ -30,7 +30,7 @@ namespace Gameplay.Towers
             var height = GetComponent<MeshRenderer>().bounds.size.y;
             var heightV3 = Vector3.up * height;
             var destinationPos = enemy.NextDestination.Center;
-            var damage = basicDamage + damagePerLevel * Level;
+            var damage = basicDamage + damagePerLevel * level;
             newRocket.Init(transform.localPosition + heightV3, destinationPos, damage);
         }
 

@@ -50,7 +50,7 @@ namespace Gameplay.Towers
 
         protected override void Update()
         {
-            var damage = basicDamage + damagePerLevel * Level;
+            var damage = basicDamage + damagePerLevel * level;
             foreach (var enemy in EnemiesUnderFire)
             {
                 enemy.Health -= damage * Time.deltaTime;

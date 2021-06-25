@@ -47,16 +47,16 @@ namespace UI
             _inputShell.SetViewMode();
             buildingMenu.CallMenu();
         }
-
+        
         public void SellTower()
         {
-            _chosenTower.Sell();
+            towerManager.SellTower(_chosenTower);
             CloseMenu();
         }
         
         public void UpgradeTower()
         {
-            _chosenTower.Upgrade();
+            towerManager.UpgradeTower(_chosenTower);
         }
     }
 }
