@@ -110,13 +110,15 @@ namespace Gameplay.Movement
 
         public void TriggerOnTowers(bool isTrigger)
         {
+            var maskBit = LayerMask.GetMask("Towers");
+            var raycaster = GetComponentInChildren<PhysicsRaycaster>();
             if (isTrigger)
             {
-                GetComponentInChildren<PhysicsRaycaster>().eventMask += LayerMask.GetMask("Towers");
+                raycaster.eventMask |= maskBit;
             }
             else
             {
-                GetComponentInChildren<PhysicsRaycaster>().eventMask -= LayerMask.GetMask("Towers");
+                raycaster.eventMask ^= maskBit;
             }
         }
 

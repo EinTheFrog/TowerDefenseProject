@@ -28,6 +28,7 @@ namespace Gameplay.Towers
         private GameObject _levelTextObj = default;
         private TextMesh _levelText = default;
         private const string LevelTextTag = "TowerLevelText";
+        private TowerMenuBehaviour _towerMenu = default;
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
@@ -41,6 +42,7 @@ namespace Gameplay.Towers
         {
             EnemiesUnderFire = new HashSet<Enemy>();
             GetLevelText();
+            _towerMenu = FindObjectOfType<TowerMenuBehaviour>().GetComponent<TowerMenuBehaviour>();
         }
 
         private void GetLevelText()
@@ -56,8 +58,7 @@ namespace Gameplay.Towers
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            var menuBehaviour = FindObjectOfType<TowerMenuBehaviour>().GetComponent<TowerMenuBehaviour>();
-            menuBehaviour.CallMenu(this);
+            _towerMenu.CallMenu(this);
         }
         
         public void Init(bool isActive, Vector3? spawnPos = null)

@@ -36,7 +36,7 @@ namespace UI
             _input.BuildMode.Disable();
             _input.ViewMode.Disable();
             _input.MenuMode.Disable();
-            cameraMovement.TriggerOnTowers(false);
+            cameraMovement.TriggerOnTowers(true);
 
             CurrentMode = Mode.TowerMode;
         }
