@@ -23,6 +23,7 @@ namespace Gameplay.Towers
             if (EnemiesUnderFire.Contains(enemy)) return;
             
             fieldAnimation.PlayAnimation(FieldAnimation.Anim.FieldStart);
+            audio.Play();
             
             //добавляем остановку стрельбы в событие смерти
             enemy.Die += StopShooting;
@@ -49,6 +50,7 @@ namespace Gameplay.Towers
             if (EnemiesUnderFire.Count == 0)
             {
                 fieldAnimation.PlayAnimation(FieldAnimation.Anim.FieldStop);
+                audio.Stop();
             }
         }
         

@@ -17,6 +17,7 @@ namespace Gameplay.Towers
             _lineRenderer.gameObject.SetActive(true);
             var enemyPos = enemy.transform.localPosition;
             _lineRenderer.SetPosition(1, enemyPos);
+            audio.Play();
             //добавляем остановку стрельбы в событие смерти
             enemy.Die += StopShooting;
             enemy.Die += Manager.GetMoneyForKill;
@@ -42,6 +43,7 @@ namespace Gameplay.Towers
             
             _lineRenderer.SetPosition(1, transform.localPosition);
             _lineRenderer.gameObject.SetActive(false);
+            audio.Stop();
 
             EnemiesUnderFire.Remove(enemy);
             enemy.Die -= StopShooting;

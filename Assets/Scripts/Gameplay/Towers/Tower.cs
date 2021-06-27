@@ -18,6 +18,8 @@ namespace Gameplay.Towers
         [SerializeField] private Material buildingMat = default;
         [SerializeField] private Material greenGhostMat = default;
         [SerializeField] private Material redGhostMat = default;
+        [SerializeField] private AudioClip buildSound = default;
+        
 
         public delegate void RemoveHandler(Tower tower);
         public event RemoveHandler Remove;
@@ -29,6 +31,7 @@ namespace Gameplay.Towers
         private TextMesh _levelText = default;
         private const string LevelTextTag = "TowerLevelText";
         private TowerMenuBehaviour _towerMenu = default;
+        protected AudioSource audio = default;
         
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
@@ -94,7 +97,9 @@ namespace Gameplay.Towers
                     Manager.UpdateRotation += SetRotationByCamPos;
                     GetLevelText();
                     ShowLevel(manager.ShowingLevels);
-                    Build(meshRenderer); 
+                    Build(meshRenderer);
+                    audio = GetComponent<AudioSource>();
+                    audio.PlayOneShot(buildSound, 1f);
                     break;
                 }
                 default: throw new ArgumentOutOfRangeException(nameof(state), state, null);

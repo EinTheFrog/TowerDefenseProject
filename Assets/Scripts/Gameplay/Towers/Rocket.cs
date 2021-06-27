@@ -42,7 +42,8 @@ namespace Gameplay.Towers
             var explosionAnim = GetComponent<Animator>();
             var explodeTrigger = Animator.StringToHash("Explode");
             explosionAnim.SetTrigger(explodeTrigger);
-            
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.PlayDelayed(1f/3);
         }
 
         private void OnTriggerEnter(Collider other)
