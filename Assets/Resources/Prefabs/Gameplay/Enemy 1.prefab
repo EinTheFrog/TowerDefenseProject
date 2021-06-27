@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  basicSpeed: 2
+  basicSpeed: 0
   levitateHeight: 0.3
   reward: 5
 --- !u!54 &6085065028219506216

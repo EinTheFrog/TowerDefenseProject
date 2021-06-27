@@ -1,6 +1,7 @@
 ﻿using System;
 using Gameplay.Enemies;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Gameplay.Towers
 {
@@ -21,6 +22,15 @@ namespace Gameplay.Towers
             SetBuiltMaterial(meshRenderer);
         }
 
+        private Vector3 LerpVector3(Vector3 v1, Vector3 v2, float t)
+        {
+            var x = Mathf.Lerp(v1.x, v2.x, t);
+            var y = Mathf.Lerp(v1.y, v2.y, t);
+            var z = Mathf.Lerp(v1.z, v2.z, t);
+
+            return new Vector3(x, y, z);
+        }
+
         public override void StartShooting(Enemy enemy)
         {
             if (Manager == null) throw new MissingFieldException("TowerManager hasn't been added");
@@ -29,7 +39,7 @@ namespace Gameplay.Towers
             var newRocket = Instantiate(rocketPrefab);
             var height = GetComponent<MeshRenderer>().bounds.size.y;
             var heightV3 = Vector3.up * height;
-            var destinationPos = enemy.NextDestination.Center;
+            var destinationPos = LerpVector3(enemy.LastDestination.Center, enemy.NextDestination.Center, Random.value);
             var damage = basicDamage + damagePerLevel * level;
             newRocket.Init(transform.localPosition + heightV3, destinationPos, damage);
         }
