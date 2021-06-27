@@ -111,10 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicDamage: 10
-  damagePerLevel: 2
-  cost: 20
-  upgradeCost: 10
-  maxLevel: 10
+  damagePerLevel: 5
+  cost: 60
+  upgradeCost: 30
+  maxLevel: 5
   buildingMat: {fileID: 2100000, guid: 6648d2ae8a861f048939295909f323c5, type: 2}
   greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
   redGhostMat: {fileID: 2100000, guid: 8dd199fcda004244b9314a76247b1b62, type: 2}

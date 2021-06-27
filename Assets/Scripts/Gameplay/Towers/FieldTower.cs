@@ -8,8 +8,8 @@ namespace Gameplay.Towers
     public class FieldTower : Tower
     {
         [SerializeField] private FieldAnimation fieldAnimation;
-        [SerializeField] private float basicSpeedMultiplier = 1f;
-        [SerializeField] private float speedMultiplierPerLevel = 1f;
+        [SerializeField] private float basicSpeedDebaff = 0.4f;
+        [SerializeField] private float speedDebaffPerLevel = 0.05f;
         protected override void Build(Renderer meshRenderer)
         {
             SetBuiltMaterial(meshRenderer);
@@ -29,8 +29,8 @@ namespace Gameplay.Towers
             enemy.Die += StopShooting;
             enemy.Die += Manager.GetMoneyForKill;
 
-            var speedMultiplier = basicSpeedMultiplier * Mathf.Pow(speedMultiplierPerLevel, level);
-            enemy.Speed *= speedMultiplier;
+            var speedDebaff = basicSpeedDebaff + speedDebaffPerLevel * level;
+            enemy.SlowDown(speedDebaff);
             EnemiesUnderFire.Add(enemy);
         }
 

@@ -11316,7 +11316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyUpdateTime: 1
-  initialMoney: 40
+  initialMoney: 100
   moneyChange: 1
 --- !u!4 &343334809
 Transform:
@@ -35085,12 +35085,14 @@ MonoBehaviour:
   secondsBetweenSpawn: 1
   enemyPrefabs:
   - {fileID: 6642060908670460648, guid: 6359cd0e189f9f845a6e986c8f5ce35e, type: 3}
+  - {fileID: 6642060908670460648, guid: a08a446d9ea148f4ba7c8232f3cd928e, type: 3}
+  - {fileID: 6642060908670460648, guid: 634d5e75d77087543b3399e85b2d4b1e, type: 3}
   spawnPlatform: {fileID: 269437728}
   treasurePlatform: {fileID: 1206851835}
   treasurePrefab: {fileID: 5418727713796052880, guid: fe319fc7714a4d84ca9812862c4c2632,
     type: 3}
   roadManager: {fileID: 1576647989}
-  enemiesCount: 0a000000
+  enemiesCount: 140000000f0000000a000000
   levelManager: {fileID: 1548004388}
 --- !u!4 &1104749839
 Transform:

@@ -174,5 +174,11 @@ namespace Gameplay.Enemies
         }
         
         public void RestoreBasicSpeed() => Speed = basicSpeed;
+
+        public void SlowDown(float speedDebaff)
+        {
+            var newSpeed = basicSpeed * (1 - speedDebaff);
+            Speed = newSpeed < Speed ? newSpeed : Speed;
+        }
     }
 }

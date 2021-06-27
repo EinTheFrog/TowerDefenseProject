@@ -231,10 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fef30997328c96429a99bffdd133d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicDamage: 10
-  damagePerLevel: 2
-  cost: 10
-  upgradeCost: 5
+  basicDamage: 5
+  damagePerLevel: 1
+  cost: 30
+  upgradeCost: 15
   maxLevel: 10
   buildingMat: {fileID: 2100000, guid: 6648d2ae8a861f048939295909f323c5, type: 2}
   greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
