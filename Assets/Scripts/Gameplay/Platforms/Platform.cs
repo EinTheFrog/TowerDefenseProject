@@ -12,15 +12,16 @@ namespace Gameplay.Platforms
 
         public void OnDrawGizmos() // метод для упрощения постройки уровней в редакторе
         {
-            if (!transform.hasChanged) return;
+            var tform = transform;
+            if (!tform.hasChanged) return;
             var localPosition = transform.localPosition;
             localPosition = new Vector3(
                 Mathf.Round(localPosition.x),
                 Mathf.Round(localPosition.y),
                 Mathf.Round(localPosition.z)
             );
-            transform.localPosition = localPosition;
-            transform.hasChanged = false;
+            tform.localPosition = localPosition;
+            tform.hasChanged = false;
         }
 
         private void Awake() 

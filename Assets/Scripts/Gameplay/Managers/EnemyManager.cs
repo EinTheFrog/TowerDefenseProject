@@ -245,7 +245,7 @@ namespace Gameplay.Managers
                 Destroy(dyingEnemy.gameObject);
             }
 
-            if (_enemies.Count == 0)
+            if (_enemies.Count + _enemiesLeft.Count == 0)
             {
                 EndGame(true);
             }
