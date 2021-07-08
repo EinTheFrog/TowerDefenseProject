@@ -283,7 +283,7 @@ namespace Gameplay.Managers
         public void EndGame(bool playerWon)
         {
             EndMenuBehaviour.Instance.Show(playerWon);
-            SaveSystem.SaveSystem.CompleteLevel(levelManager.LevelNumber);
+            SaveSystem.SaveSystem.CompleteLevel(levelManager.LevelId);
         }
         
     }

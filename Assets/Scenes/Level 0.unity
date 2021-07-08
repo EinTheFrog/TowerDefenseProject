@@ -4279,7 +4279,7 @@ PrefabInstance:
     - target: {fileID: 7088601502235632608, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7088601502235632608, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
@@ -4294,7 +4294,7 @@ PrefabInstance:
     - target: {fileID: 7088601502235632608, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: RestartGame
       objectReference: {fileID: 0}
     - target: {fileID: 7088601502235632608, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
@@ -14706,7 +14706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05601ad5c237e44abbeb7d0f9e72f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 0
 --- !u!4 &1548004389
 Transform:
   m_ObjectHideFlags: 0
@@ -19213,7 +19212,7 @@ PrefabInstance:
     - target: {fileID: 7088601502235632608, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7088601502235632608, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
@@ -19228,7 +19227,7 @@ PrefabInstance:
     - target: {fileID: 7088601502235632608, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: RestartGame
       objectReference: {fileID: 0}
     - target: {fileID: 7088601502235632608, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
