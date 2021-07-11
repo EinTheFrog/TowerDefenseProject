@@ -83,14 +83,19 @@ namespace Gameplay.Managers
             var rad = chosenTowerTransform.GetComponentInChildren<EnemyTrigger>().Radius;
             //берем масштаб любого измерения
             var scale = chosenTowerTransform.localScale.x;
-            roadManager.UpdateDangerInRadius(sole.Center, rad * scale, 1);
+            roadManager.UpdateDangerInRadius(sole.Center, rad * scale, newTower.BasicDanger);
         }
 
         public void AddMoney(int amount) => moneyManager.Money += amount;
 
         private void RemoveTower(Tower tower)
         {
-            roadManager.UpdateDangerInRadius(TowersSoles[tower].Center, tower.transform.GetComponentInChildren<EnemyTrigger>().Radius, -1);
+            //ищем дороги в радиусе поражения и меняем их опасность
+            var towerTransform = tower.transform;
+            var rad = towerTransform.GetComponentInChildren<EnemyTrigger>().Radius;
+            //берем масштаб любого измерения
+            var scale = towerTransform.localScale.x;
+            roadManager.UpdateDangerInRadius(TowersSoles[tower].Center, rad * scale, -tower.CurrentDanger);
 
             TowersSoles[tower].IsFree = true;
             TowersSoles.Remove(tower);
@@ -129,6 +134,12 @@ namespace Gameplay.Managers
             if (chosenTower.UpgradeCost > moneyManager.Money || chosenTower.Level == chosenTower.MaxLevel) return;
             chosenTower.Upgrade();
             moneyManager.Money -= chosenTower.UpgradeCost;
+            //ищем дороги в радиусе поражения и меняем их опасность
+            var towerTransform = chosenTower.transform;
+            var rad = towerTransform.GetComponentInChildren<EnemyTrigger>().Radius;
+            //берем масштаб любого измерения
+            var scale = towerTransform.localScale.x;
+            roadManager.UpdateDangerInRadius(TowersSoles[chosenTower].Center, rad * scale, chosenTower.DangerChangePerLevel);
         }
     }
 }

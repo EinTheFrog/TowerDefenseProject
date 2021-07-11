@@ -19,8 +19,9 @@ namespace Gameplay.Towers
         [SerializeField] private Material greenGhostMat = default;
         [SerializeField] private Material redGhostMat = default;
         [SerializeField] private AudioClip buildSound = default;
+        [SerializeField] private float basicDanger = 1;
+        [SerializeField] private float dangerChangePerLevel = 1;
         
-
         public delegate void RemoveHandler(Tower tower);
         public event RemoveHandler Remove;
         
@@ -37,10 +38,12 @@ namespace Gameplay.Towers
         public int Cost => cost;
         
         public int UpgradeCost => upgradeCost;
-
         public int MaxLevel => maxLevel;
-
         public int Level => level;
+        public float BasicDanger => basicDanger;
+        public float DangerChangePerLevel => dangerChangePerLevel;
+
+        public float CurrentDanger => BasicDanger + DangerChangePerLevel * Level;
         private void Start()
         {
             EnemiesUnderFire = new HashSet<Enemy>();

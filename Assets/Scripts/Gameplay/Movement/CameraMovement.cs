@@ -15,6 +15,12 @@ namespace Gameplay.Movement
         [SerializeField] private float rotationMaxSpeed = 45f;
         [SerializeField] private InputShell inputShell = default;
         [SerializeField] private TowerManager towerManager = default;
+        [SerializeField] private float minX = -12;
+        [SerializeField] private float maxX = 12;
+        [SerializeField] private float minZ = -12;
+        [SerializeField] private float maxZ = 12;
+        
+        
 
         private Vector3 _desiredMovementVelocity;
         private Vector3 _movementVelocity;
@@ -59,8 +65,8 @@ namespace Gameplay.Movement
             var localPosition = tform.localPosition;
             var localPos = localPosition;
             var newPos = localPos + velocity * Time.deltaTime;
-            newPos.x = Mathf.Clamp(newPos.x, -12f, 12f);
-            newPos.z = Mathf.Clamp(newPos.z, -12f, 20f);
+            newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+            newPos.z = Mathf.Clamp(newPos.z, minZ, maxZ);
             
             localPosition = newPos;
             tform.localPosition = localPosition;

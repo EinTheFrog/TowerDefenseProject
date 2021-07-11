@@ -67,7 +67,7 @@ namespace Gameplay.GraphSearch
                 var node = priorityQueue.Dequeue();
                 foreach (var neighbour in graph[node].Keys)
                 {
-                    float roughtRange = Mathf.Abs(neighbour.Position.X - finish.Position.X + (neighbour.Position.Y - finish.Position.Y));
+                    float roughRange = Mathf.Abs(neighbour.Position.X - finish.Position.X + (neighbour.Position.Y - finish.Position.Y));
                     float cost = pathCost[node] + graph[node][neighbour];
                     if (cost < 0)
                     {
@@ -75,7 +75,7 @@ namespace Gameplay.GraphSearch
                     }
                     if (!visited.Contains(neighbour))
                     {
-                        priorityQueue.Enqueue(neighbour, cost + roughtRange);
+                        priorityQueue.Enqueue(neighbour, cost + roughRange);
                         visited.Add(neighbour);
                         pathCost[neighbour] = cost;
                         pathParts[neighbour] = node;
@@ -84,10 +84,10 @@ namespace Gameplay.GraphSearch
                     {
                         if (priorityQueue.Contains(neighbour))
                         {
-                            priorityQueue.UpdatePriority(neighbour, cost + roughtRange);
+                            priorityQueue.UpdatePriority(neighbour, cost + roughRange);
                         } else
                         {
-                            priorityQueue.Enqueue(neighbour, cost + roughtRange);
+                            priorityQueue.Enqueue(neighbour, cost + roughRange);
                         }
                         pathCost[neighbour] = cost;
                         pathParts[neighbour] = node;

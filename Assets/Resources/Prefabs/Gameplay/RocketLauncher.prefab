@@ -119,6 +119,8 @@ MonoBehaviour:
   greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
   redGhostMat: {fileID: 2100000, guid: 8dd199fcda004244b9314a76247b1b62, type: 2}
   buildSound: {fileID: 8300000, guid: 9ccbf1bc4f49a8a4781120ebcd39e782, type: 3}
+  basicDanger: 10
+  dangerChangePerLevel: 5
   rocketPrefab: {fileID: 528988503002386228, guid: 6660a38702e6aa743b816056f226d699,
     type: 3}
   timeBetweenFires: 2
