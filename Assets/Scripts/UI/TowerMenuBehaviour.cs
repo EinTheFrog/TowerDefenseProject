@@ -1,6 +1,7 @@
 ﻿using Gameplay.Managers;
 using Gameplay.Towers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -8,6 +9,7 @@ namespace UI
     {
         [SerializeField] private BuildingMenuBehaviour buildingMenu = default;
         [SerializeField] private TowerManager towerManager = default;
+        [SerializeField] private Text levelText = default;
 
         private CanvasGroup _canvasGroup = default;
         private Tower _chosenTower = default;
@@ -36,6 +38,12 @@ namespace UI
             _inputShell.SetTowerMode();
             
             _chosenTower = chosenTower;
+            SetLevelText(_chosenTower.Level);
+        }
+
+        private void SetLevelText(int level)
+        {
+            levelText.text = "Level " + level;
         }
 
         private void CloseMenu()
@@ -57,6 +65,7 @@ namespace UI
         public void UpgradeTower()
         {
             towerManager.UpgradeTower(_chosenTower);
+            SetLevelText(_chosenTower.Level);
         }
     }
 }

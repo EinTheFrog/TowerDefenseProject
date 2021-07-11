@@ -183,6 +183,8 @@ namespace Gameplay.Managers
         {
             if (_treasure.IsCaptured) return;
             _treasure.IsCaptured = true;
+            _treasure.transform.position = enemy.transform.position;
+            
             Carrier = enemy;
             Carrier.UpdatePath();
 
