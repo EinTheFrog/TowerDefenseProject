@@ -25,7 +25,7 @@ namespace UI
         public void RestartGame()
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene(_levelManager.LevelId, LoadSceneMode.Single);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         }
 
         public void GoToMainMenu()
