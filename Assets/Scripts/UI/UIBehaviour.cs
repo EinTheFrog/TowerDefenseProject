@@ -18,7 +18,8 @@ namespace UI
         public void StartGame( int levelId )
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene(levelId, LoadSceneMode.Single);
+            var levelName = "Level " + levelId;
+            SceneManager.LoadScene(levelName, LoadSceneMode.Single);
         }
         
         public void RestartGame()
@@ -36,6 +37,11 @@ namespace UI
         public void Quit()
         {
             Application.Quit();
+        }
+
+        public void ClearMemory()
+        {
+            SaveSystem.SaveSystem.ClearMemory();
         }
     }
 }
