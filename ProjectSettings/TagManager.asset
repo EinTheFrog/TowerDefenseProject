@@ -6,7 +6,7 @@ TagManager:
   tags:
   - MoneyTextTag
   - TowerLevelText
-  - Tower level text
+  - ChoseLine
   layers:
   - Default
   - TransparentFX

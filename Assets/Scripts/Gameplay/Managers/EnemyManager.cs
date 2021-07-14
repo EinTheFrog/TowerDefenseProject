@@ -251,6 +251,10 @@ namespace Gameplay.Managers
             {
                 EndGame(true);
             }
+
+            var deathEffect = Instantiate(dyingEnemy.deathEffect);
+            deathEffect.transform.position = dyingEnemy.transform.position;
+            deathEffect.Play();
         }
 
 

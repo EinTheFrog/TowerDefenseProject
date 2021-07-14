@@ -13,6 +13,7 @@ namespace Gameplay.Enemies
         [SerializeField] private float basicSpeed = 2;
         [SerializeField] private float levitateHeight = 0;
         [SerializeField] private int reward = 5;
+        public ParticleSystem deathEffect = default;
 
         private Vector3 _velocity = Vector3.zero;
         private Renderer _renderer = default;

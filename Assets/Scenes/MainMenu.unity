@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 269710562}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.59302324
+  m_Size: 0.5930233
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1481,7 +1481,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7cda41a22663647e09049e60edf750cb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -36,9 +36,14 @@ namespace UI
             _canvasGroup.blocksRaycasts = true;
             buildingMenu.CloseMenu();
             _inputShell.SetTowerMode();
-            
+
+            if (_chosenTower != null)
+            {
+                _chosenTower.showChose(false);
+            }
             _chosenTower = chosenTower;
             SetLevelText(_chosenTower.Level);
+            _chosenTower.showChose(true);
         }
 
         private void SetLevelText(int level)
@@ -54,6 +59,10 @@ namespace UI
             _canvasGroup.blocksRaycasts = false;
             _inputShell.SetViewMode();
             buildingMenu.CallMenu();
+            
+            if (_chosenTower == null) return;
+            _chosenTower.showChose(false);
+            _chosenTower = null;
         }
         
         public void SellTower()

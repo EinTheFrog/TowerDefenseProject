@@ -33,7 +33,9 @@ namespace Gameplay.Towers
         private const string LevelTextTag = "TowerLevelText";
         private TowerMenuBehaviour _towerMenu = default;
         protected AudioSource audio = default;
-        
+        private const string ChoseLineTagName = "ChoseLine";
+        private LineRenderer _choseLine = default;
+
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
         
@@ -49,6 +51,10 @@ namespace Gameplay.Towers
             EnemiesUnderFire = new HashSet<Enemy>();
             GetLevelText();
             _towerMenu = FindObjectOfType<TowerMenuBehaviour>().GetComponent<TowerMenuBehaviour>();
+            _choseLine = FindChildWithTag(ChoseLineTagName).GetComponent<LineRenderer>();
+            var pos = transform.position;
+            _choseLine.SetPosition(0, pos);
+            _choseLine.SetPosition(1, pos);
         }
 
         private void GetLevelText()
@@ -184,6 +190,20 @@ namespace Gameplay.Towers
             }
 
             return null;
+        }
+
+        public void showChose(bool b)
+        {
+            var pos = transform.position;
+            var pos1 = pos + Vector3.up * 100;
+            if (b)
+            {
+                _choseLine.SetPosition(1, pos1);
+            }
+            else
+            {
+                _choseLine.SetPosition(1, pos);
+            }
         }
     }
 }
