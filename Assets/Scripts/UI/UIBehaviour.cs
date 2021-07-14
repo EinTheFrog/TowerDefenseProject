@@ -15,7 +15,7 @@ namespace UI
             _levelManager = FindObjectOfType<LevelManager>();
         }
 
-        public void StartGame( int levelId )
+        public void StartGame(int levelId)
         {
             Time.timeScale = 1f;
             var levelName = "Level " + levelId;
@@ -26,6 +26,14 @@ namespace UI
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        }
+
+        public void StartNext()
+        {
+            var nextLevelId = _levelManager.LevelId + 1;
+            Time.timeScale = 1f;
+            var levelName = "Level " + nextLevelId;
+            SceneManager.LoadScene(levelName, LoadSceneMode.Single);
         }
 
         public void GoToMainMenu()
