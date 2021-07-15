@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using UI;
 using UnityEngine;
 
 namespace SaveSystem
@@ -7,6 +8,9 @@ namespace SaveSystem
     public static class SaveSystem
     {
         private const string SAVE_FILE_NAME = "saveFile";
+
+        private static int _mainMenuLevelId = 0;
+        public static int MainMenuLevelId => _mainMenuLevelId;
 
         private static void SaveBoolArray( bool[] boolArr )
         {
@@ -66,6 +70,7 @@ namespace SaveSystem
             }
             if (k + 1 >= LevelMenuBehaviour.LEVELS_AMOUNT) return;
             levelsStates[k + 1] = true;
+            _mainMenuLevelId = k + 1;
             SaveLevelsStates(levelsStates);
         }
 

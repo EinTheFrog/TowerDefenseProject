@@ -1757,7 +1757,7 @@ GameObject:
   - component: {fileID: 887538841}
   - component: {fileID: 887538844}
   m_Layer: 5
-  m_Name: ScrollRect
+  m_Name: LevelsScrollRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1862,6 +1862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbef946c4a51953469a859c574dfd457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiBehaviour: {fileID: 41038697}
 --- !u!1 &906667581
 GameObject:
   m_ObjectHideFlags: 0
