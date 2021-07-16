@@ -9,16 +9,36 @@ namespace UI
     public class UIBehaviour : MonoBehaviour
     {
         [SerializeField] private Text infoText = default;
+        [SerializeField] private AudioManager audioManager = default;
+        [SerializeField] private Slider audioSlider = default;
+        [SerializeField] private Slider musicSlider = default;
         
         private LevelManager _levelManager = default;
         private int _chosenLevelId = 0;
+        private float _audioVolume = 1;
+        private float _musicVolume = 1;
+
+        public float AudioVolume => _audioVolume;
+        public float MusicVolume => _musicVolume;
 
         private void Start()
         {
             _levelManager = FindObjectOfType<LevelManager>();
+            if (PlayerPrefs.HasKey(SaveSystem.SaveSystem.AUDIO_SETTINGS_KEY))
+            {
+                _audioVolume = SaveSystem.SaveSystem.LoadAudio();
+            }
+            if (PlayerPrefs.HasKey(SaveSystem.SaveSystem.MUSIC_SETTINGS_KEY))
+            {
+                _musicVolume = SaveSystem.SaveSystem.LoadMusic();
+            }
+            
+            audioManager.UpdateVolume(_audioVolume, _musicVolume);
+            if (audioSlider != null) audioSlider.value = _audioVolume;
+            if (musicSlider != null) musicSlider.value = _musicVolume;
         }
 
-        public void StartLevel(int levelId)
+        private void StartLevel(int levelId)
         {
             Time.timeScale = 1f;
             var levelName = "Level " + levelId;
@@ -87,6 +107,24 @@ persuade them to stop attacking us.";
         public void ClearMemory()
         {
             SaveSystem.SaveSystem.ClearMemory();
+        }
+        
+        public void OnAudioSliderChange(float volume)
+        {
+            _audioVolume = volume;
+            audioManager.UpdateVolume(_audioVolume, _musicVolume);
+        }
+
+        public void OnMusicSliderChange(float volume)
+        {
+            _musicVolume = volume;
+            audioManager.UpdateVolume(_audioVolume, _musicVolume);
+        }
+
+        private void OnDestroy()
+        {
+            SaveSystem.SaveSystem.SaveAudio(_audioVolume);
+            SaveSystem.SaveSystem.SaveMusic(_musicVolume);
         }
     }
 }

@@ -35,6 +35,7 @@ namespace Gameplay.Towers
         protected AudioSource audio = default;
         private const string ChoseLineTagName = "ChoseLine";
         private LineRenderer _choseLine = default;
+        protected float _audioVolume = 1;
 
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
@@ -84,7 +85,7 @@ namespace Gameplay.Towers
             Remove += DestroyThis;
         }
         
-        public void Init(TowerState state, Vector3 spawnPos, TowerManager manager)
+        public void Init(TowerState state, Vector3 spawnPos, TowerManager manager, float audioVolume)
         {
             Manager = manager;
             Init(true, spawnPos);
@@ -109,6 +110,8 @@ namespace Gameplay.Towers
                     Build(meshRenderer);
                     audio = GetComponent<AudioSource>();
                     audio.PlayOneShot(buildSound, 1f);
+                    audio.volume = audioVolume;
+                    _audioVolume = audioVolume;
                     break;
                 }
                 default: throw new ArgumentOutOfRangeException(nameof(state), state, null);

@@ -5,6 +5,7 @@ using Gameplay.Towers;
 using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UIBehaviour = UI.UIBehaviour;
 
 namespace Gameplay.Managers
 {
@@ -12,6 +13,7 @@ namespace Gameplay.Managers
     {
         [SerializeField] private RoadManager roadManager = null;
         [SerializeField] private MoneyManager moneyManager = null;
+        [SerializeField] private UIBehaviour uiManager = null;
 
         private Tower _chosenTower;
         private InputShell _inputShell;
@@ -77,7 +79,7 @@ namespace Gameplay.Managers
                 TowersSoles = new Dictionary<Tower, SolePlatform>();
             }
             TowersSoles[newTower] = sole;
-            newTower.Init(Tower.TowerState.Building, sole.Center, this);
+            newTower.Init(Tower.TowerState.Building, sole.Center, this, uiManager.AudioVolume);
             //ищем дороги в радиусе поражения и меняем их опасность
             var chosenTowerTransform = _chosenTower.transform;
             var rad = chosenTowerTransform.GetComponentInChildren<EnemyTrigger>().Radius;
@@ -105,7 +107,7 @@ namespace Gameplay.Managers
         {
             //показываем призрак строения в зависимости от занятости фундамента
             _chosenTower.Init(sole.IsFree &&  _chosenTower.Cost <= moneyManager.Money ? 
-                Tower.TowerState.GreenGhost : Tower.TowerState.RedGhost, sole.Center, this);
+                Tower.TowerState.GreenGhost : Tower.TowerState.RedGhost, sole.Center, this, uiManager.AudioVolume);
         }
 
         public void HideTower()

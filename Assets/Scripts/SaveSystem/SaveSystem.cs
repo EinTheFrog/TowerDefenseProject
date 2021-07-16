@@ -8,6 +8,8 @@ namespace SaveSystem
     public static class SaveSystem
     {
         private const string SAVE_FILE_NAME = "saveFile";
+        public const string AUDIO_SETTINGS_KEY = "audioVolume";
+        public const string MUSIC_SETTINGS_KEY = "musicVolume";
 
         private static int _mainMenuLevelId = 0;
         public static int MainMenuLevelId => _mainMenuLevelId;
@@ -87,6 +89,26 @@ namespace SaveSystem
                 FileInfo file_info = new FileInfo(file);
                 file_info.Delete();
             }
+        }
+
+        public static void SaveAudio(float audioVolume)
+        {
+            PlayerPrefs.SetFloat(AUDIO_SETTINGS_KEY, audioVolume);
+        }
+
+        public static float LoadAudio()
+        {
+            return PlayerPrefs.GetFloat(AUDIO_SETTINGS_KEY);
+        }
+        
+        public static void SaveMusic(float musicVolume)
+        {
+            PlayerPrefs.SetFloat(MUSIC_SETTINGS_KEY, musicVolume);
+        }
+
+        public static float LoadMusic()
+        {
+            return PlayerPrefs.GetFloat(MUSIC_SETTINGS_KEY);
         }
     }
 }

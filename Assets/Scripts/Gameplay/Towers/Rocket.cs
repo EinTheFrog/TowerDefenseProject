@@ -12,14 +12,21 @@ namespace Gameplay.Towers
         private Vector3 _velocity;
         private float _damage;
         private bool _isExploding;
+        private AudioSource _audio;
 
-        public void Init(Vector3 curPos, Vector3 destinationPos, float damage)
+        private void OnEnable()
+        {
+            _audio = GetComponent<AudioSource>();
+        }
+
+        public void Init(Vector3 curPos, Vector3 destinationPos, float damage, float audioVolume)
         {
             var thisTransform = transform;
             thisTransform.localPosition = curPos;
             _desiredPos = destinationPos;
             _velocity = (destinationPos - thisTransform.localPosition).normalized * speed;
             _damage = damage;
+            _audio.volume = audioVolume;
         }
         private void Update()
         {

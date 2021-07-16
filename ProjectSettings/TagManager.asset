@@ -8,6 +8,7 @@ TagManager:
   - TowerLevelText
   - ChoseLine
   - WinButton
+  - MusicSource
   layers:
   - Default
   - TransparentFX

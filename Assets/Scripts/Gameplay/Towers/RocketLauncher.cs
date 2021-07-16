@@ -41,7 +41,7 @@ namespace Gameplay.Towers
             var heightV3 = Vector3.up * height;
             var destinationPos = LerpVector3(enemy.LastDestination.Center, enemy.NextDestination.Center, Random.value);
             var damage = basicDamage + damagePerLevel * level;
-            newRocket.Init(transform.localPosition + heightV3, destinationPos, damage);
+            newRocket.Init(transform.localPosition + heightV3, destinationPos, damage, _audioVolume);
         }
 
         public override void MoveAim(Enemy enemy)
