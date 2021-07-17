@@ -53,13 +53,22 @@ namespace Gameplay.Towers
                 audio.Stop();
             }
         }
-        
+
         protected override void Update()
         {
             var damage = basicDamage + damagePerLevel * level;
             foreach (var enemy in EnemiesUnderFire)
             {
                 enemy.Health -= damage * Time.deltaTime;
+            }
+        }
+        
+        protected override void UpgradeFeatures()
+        {
+            var speedDebaff = basicSpeedDebaff + speedDebaffPerLevel * level;
+            foreach (var enemy in EnemiesUnderFire)
+            {
+                enemy.SlowDown(speedDebaff);
             }
         }
     }

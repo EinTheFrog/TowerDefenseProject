@@ -147,6 +147,8 @@ namespace Gameplay.Towers
 
         public abstract void StopShooting(Enemy enemy);
 
+        protected abstract void UpgradeFeatures();
+
         public enum TowerState
         {
             GreenGhost,
@@ -161,7 +163,7 @@ namespace Gameplay.Towers
 
         public void Sell()
         {
-            Manager.AddMoney(cost);
+            Manager.AddMoney(cost + level * upgradeCost);
             Destroy();
         }
 
@@ -169,6 +171,7 @@ namespace Gameplay.Towers
         {
             level++;
             _levelText.text = level.ToString();
+            UpgradeFeatures();
         }
 
         private void SetRotationByCamPos(Vector3 cameraPos)
@@ -195,7 +198,7 @@ namespace Gameplay.Towers
             return null;
         }
 
-        public void showChose(bool b)
+        public void ShowChose(bool b)
         {
             var pos = transform.position;
             var pos1 = pos + Vector3.up * 100;

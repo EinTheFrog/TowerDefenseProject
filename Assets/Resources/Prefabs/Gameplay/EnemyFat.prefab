@@ -107,10 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e002065244641fb499f0ebbdccc30f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  basicSpeed: 0.5
+  maxHealth: 1000
+  basicSpeed: 0.1
   levitateHeight: 0.3
-  reward: 2
+  reward: 20
   deathEffect: {fileID: 2962488966114001412, guid: dde3e97336bb44f49a31541e244ef1bf,
     type: 3}
 --- !u!54 &6085065028219506216

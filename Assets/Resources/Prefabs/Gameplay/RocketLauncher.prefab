@@ -111,10 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197f946701923b54b97c83fa7a1675c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicDamage: 10
-  damagePerLevel: 5
+  basicDamage: 5
+  damagePerLevel: 1
   cost: 60
-  upgradeCost: 30
+  upgradeCost: 20
   maxLevel: 5
   buildingMat: {fileID: 2100000, guid: 6648d2ae8a861f048939295909f323c5, type: 2}
   greenGhostMat: {fileID: 2100000, guid: f70704e4cd4cf9c4d8dca6601f16cb20, type: 2}
@@ -125,6 +125,7 @@ MonoBehaviour:
   rocketPrefab: {fileID: 528988503002386228, guid: 6660a38702e6aa743b816056f226d699,
     type: 3}
   timeBetweenFires: 2
+  accuracy: 4
 --- !u!82 &8969239861765020760
 AudioSource:
   m_ObjectHideFlags: 0

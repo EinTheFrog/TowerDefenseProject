@@ -78,6 +78,7 @@ namespace Gameplay.Managers
             _treasure.Init(true, ObjectivePlatform.Center);
             //устанавливаем кол-во секунд до следущего спауна (с учетом того, что для спауна secondsSinceLastSpawn должен быть >= secondsBetweenSpawn)
             _secondsSinceLastSpawn = secondsBetweenSpawn - secondsBeforeFirstSpawn;
+            CheckEmptyEnemies();
         }
 
         private void Update()
@@ -99,7 +100,18 @@ namespace Gameplay.Managers
             }
         }
 
-        void SpawnEnemy()
+        private void CheckEmptyEnemies()
+        {
+            for (int i = 0; i < _enemiesLeft.Count; i++)
+            {
+                if (_enemiesLeft[i].Value <= 0)
+                {
+                    _enemiesLeft.RemoveAt(i);
+                }
+            }
+        }
+
+        private void SpawnEnemy()
         {
             var size = _enemiesLeft.Count;
             if (size == 0) return;

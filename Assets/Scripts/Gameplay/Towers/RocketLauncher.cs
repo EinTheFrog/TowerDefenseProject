@@ -9,6 +9,7 @@ namespace Gameplay.Towers
     {
         [SerializeField] private Rocket rocketPrefab = default;
         [SerializeField] private float timeBetweenFires = default;
+        [SerializeField] private float accuracy = 3;
 
         private float _timeSinceLastFire = 0f;
 
@@ -39,7 +40,10 @@ namespace Gameplay.Towers
             var newRocket = Instantiate(rocketPrefab);
             var height = GetComponent<MeshRenderer>().bounds.size.y;
             var heightV3 = Vector3.up * height;
-            var destinationPos = LerpVector3(enemy.LastDestination.Center, enemy.NextDestination.Center, Random.value);
+            var d1 = accuracy * (Vector3.back + Vector3.right);
+            var d2 = accuracy * (Vector3.forward + Vector3.left);
+            var enemyPos = enemy.transform.position;
+            var destinationPos = LerpVector3( enemyPos+ d1, enemyPos + d2, Random.value);
             var damage = basicDamage + damagePerLevel * level;
             newRocket.Init(transform.localPosition + heightV3, destinationPos, damage, _audioVolume);
         }
@@ -52,8 +56,12 @@ namespace Gameplay.Towers
         public override void StopShooting(Enemy enemy)
         {
         }
-        
+
         protected override void Update()
+        {
+        }
+        
+        protected override void UpgradeFeatures()
         {
         }
     }

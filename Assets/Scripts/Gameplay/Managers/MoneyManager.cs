@@ -22,7 +22,7 @@ namespace Gameplay.Managers
                 _money = value;
                 foreach (var moneyText in _moneyTexts)
                 {
-                    moneyText.text = "Money " + _money;
+                    moneyText.text = "Energy " + _money;
                 }
             }
         }

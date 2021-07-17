@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fef30997328c96429a99bffdd133d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicDamage: 5
+  basicDamage: 3
   damagePerLevel: 1
   cost: 30
   upgradeCost: 15

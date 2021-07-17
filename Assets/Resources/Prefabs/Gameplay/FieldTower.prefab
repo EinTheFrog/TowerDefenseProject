@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf8258562f52a64081ed5161ec32ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicDamage: 2
-  damagePerLevel: 1
+  basicDamage: 1
+  damagePerLevel: 0
   cost: 40
   upgradeCost: 20
   maxLevel: 5

@@ -70,5 +70,9 @@ namespace Gameplay.Towers
             _lineRenderer.SetPosition(0, towerPeekPos);
             _lineRenderer.SetPosition(1, towerPeekPos);
         }
+        
+        protected override void UpgradeFeatures()
+        {
+        }
     }
 }

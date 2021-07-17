@@ -39,11 +39,11 @@ namespace UI
 
             if (_chosenTower != null)
             {
-                _chosenTower.showChose(false);
+                _chosenTower.ShowChose(false);
             }
             _chosenTower = chosenTower;
             SetLevelText(_chosenTower.Level);
-            _chosenTower.showChose(true);
+            _chosenTower.ShowChose(true);
         }
 
         private void SetLevelText(int level)
@@ -61,7 +61,7 @@ namespace UI
             buildingMenu.CallMenu();
             
             if (_chosenTower == null) return;
-            _chosenTower.showChose(false);
+            _chosenTower.ShowChose(false);
             _chosenTower = null;
         }
         
