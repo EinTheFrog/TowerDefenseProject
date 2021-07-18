@@ -110,7 +110,7 @@ MonoBehaviour:
   maxHealth: 30
   basicSpeed: 2
   levitateHeight: 0.3
-  reward: 10
+  reward: 3
   deathEffect: {fileID: 2962488966114001412, guid: ff4170af1fd5f284392bc050e07eb5e0,
     type: 3}
 --- !u!54 &6085065028219506216

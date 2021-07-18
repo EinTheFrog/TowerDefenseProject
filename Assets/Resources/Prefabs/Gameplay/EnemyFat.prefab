@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3059612340334349322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.81, z: 0.56}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -107,10 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e002065244641fb499f0ebbdccc30f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  basicSpeed: 0.1
-  levitateHeight: 0.3
-  reward: 20
+  maxHealth: 500
+  basicSpeed: 0.5
+  levitateHeight: 0.4
+  reward: 5
   deathEffect: {fileID: 2962488966114001412, guid: dde3e97336bb44f49a31541e244ef1bf,
     type: 3}
 --- !u!54 &6085065028219506216
