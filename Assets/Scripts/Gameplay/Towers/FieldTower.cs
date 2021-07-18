@@ -42,7 +42,8 @@ namespace Gameplay.Towers
         {
             if (!EnemiesUnderFire.Contains(enemy)) return;
             
-            enemy.RestoreBasicSpeed();;
+            var speedDebaff = basicSpeedDebaff + speedDebaffPerLevel * level;
+            enemy.RestoreBasicSpeed(speedDebaff);;
             enemy.Die -= StopShooting;
             enemy.Die -= Manager.GetMoneyForKill;
             EnemiesUnderFire.Remove(enemy);
@@ -66,8 +67,10 @@ namespace Gameplay.Towers
         protected override void UpgradeFeatures()
         {
             var speedDebaff = basicSpeedDebaff + speedDebaffPerLevel * level;
+            var oldSpeedDebaff = basicSpeedDebaff + speedDebaffPerLevel * (level - 1);
             foreach (var enemy in EnemiesUnderFire)
             {
+                enemy.RestoreBasicSpeed(oldSpeedDebaff);
                 enemy.SlowDown(speedDebaff);
             }
         }

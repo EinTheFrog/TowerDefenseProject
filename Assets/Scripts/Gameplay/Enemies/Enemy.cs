@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Gameplay.Managers;
 using Gameplay.Platforms;
 using UI;
@@ -17,16 +18,17 @@ namespace Gameplay.Enemies
 
         private Vector3 _velocity = Vector3.zero;
         private Renderer _renderer = default;
+        private EnemyManager _manager;
+        private List<float> _speedDebaffs;
  
         public Queue<RoadPlatform> Path { get; private set; }
-        private EnemyManager _manager;
         public RoadPlatform LastDestination { get; private set; }
         public RoadPlatform NextDestination { get; private set; }
         public bool HasTreasure { get; set; }
         public bool CarriersPath { get; set; }
 
         public float Health { get; set; }
-        public float Speed { get; set; }
+        private float Speed { get; set; }
 
         public int Reward => reward;
 
@@ -60,6 +62,7 @@ namespace Gameplay.Enemies
             Health = maxHealth;
             Speed = basicSpeed;
             _renderer = GetComponent<Renderer>();
+            _speedDebaffs = new List<float>();
         }
 
         private void Update()
@@ -174,14 +177,23 @@ namespace Gameplay.Enemies
             }
         }
 
-        public void RestoreBasicSpeed()
+        public void RestoreBasicSpeed(float speedDebaff)
         {
-            Speed = basicSpeed;
+            _speedDebaffs.Remove(speedDebaff);
+            if (_speedDebaffs.Count > 0)
+            {
+                Speed =  basicSpeed * (1 - _speedDebaffs.Max());
+            }
+            else
+            {
+                Speed = basicSpeed;
+            }
             CalculateVelocity();
         }
 
         public void SlowDown(float speedDebaff)
         {
+            _speedDebaffs.Add(speedDebaff);
             var newSpeed = basicSpeed * (1 - speedDebaff);
             Speed = newSpeed < Speed ? newSpeed : Speed;
             CalculateVelocity();

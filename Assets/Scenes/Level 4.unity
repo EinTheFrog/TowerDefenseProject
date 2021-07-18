@@ -12963,7 +12963,7 @@ MonoBehaviour:
   treasurePrefab: {fileID: 5418727713796052880, guid: fe319fc7714a4d84ca9812862c4c2632,
     type: 3}
   roadManager: {fileID: 1576647989}
-  enemiesCount: 64000000140000000a000000
+  enemiesCount: 000000000a00000000000000
   levelManager: {fileID: 1548004388}
 --- !u!4 &270124272
 Transform:
@@ -15118,7 +15118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyUpdateTime: 0.5
-  initialMoney: 100
+  initialMoney: 1000
   moneyChange: 1
 --- !u!4 &343334809
 Transform:
