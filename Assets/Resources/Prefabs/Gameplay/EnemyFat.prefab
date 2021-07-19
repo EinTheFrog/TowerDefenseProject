@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e002065244641fb499f0ebbdccc30f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 600
   basicSpeed: 0.5
   levitateHeight: 0.4
   reward: 5

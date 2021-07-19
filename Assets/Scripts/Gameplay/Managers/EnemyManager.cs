@@ -102,12 +102,18 @@ namespace Gameplay.Managers
 
         private void CheckEmptyEnemies()
         {
-            for (int i = 0; i < _enemiesLeft.Count; i++)
+            var removeElements= new List<KeyValuePair<Enemy, int>>();
+            foreach (var t in _enemiesLeft)
             {
-                if (_enemiesLeft[i].Value <= 0)
+                if (t.Value <= 0)
                 {
-                    _enemiesLeft.RemoveAt(i);
+                    removeElements.Add(t);
                 }
+            }
+
+            foreach (var element in removeElements)
+            {
+                _enemiesLeft.Remove(element);
             }
         }
 

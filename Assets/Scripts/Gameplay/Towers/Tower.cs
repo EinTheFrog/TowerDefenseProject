@@ -36,6 +36,7 @@ namespace Gameplay.Towers
         private const string ChoseLineTagName = "ChoseLine";
         private LineRenderer _choseLine = default;
         protected float _audioVolume = 1;
+        private TowerInfoBehaviour _towerInfo = default;
 
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
@@ -52,6 +53,7 @@ namespace Gameplay.Towers
             EnemiesUnderFire = new HashSet<Enemy>();
             GetLevelText();
             _towerMenu = FindObjectOfType<TowerMenuBehaviour>().GetComponent<TowerMenuBehaviour>();
+            _towerInfo = FindObjectOfType<TowerInfoBehaviour>().GetComponent<TowerInfoBehaviour>();
             _choseLine = FindChildWithTag(ChoseLineTagName).GetComponent<LineRenderer>();
             var pos = transform.position;
             _choseLine.SetPosition(0, pos);
@@ -72,6 +74,7 @@ namespace Gameplay.Towers
         public void OnPointerClick(PointerEventData eventData)
         {
             _towerMenu.CallMenu(this);
+            _towerInfo.CallMenu(this);
         }
         
         public void Init(bool isActive, Vector3? spawnPos = null)
@@ -163,6 +166,12 @@ namespace Gameplay.Towers
 
         public void Sell()
         {
+            var enemiesCopy = new Enemy[EnemiesUnderFire.Count];
+            EnemiesUnderFire.CopyTo(enemiesCopy);
+            foreach (var enemy in enemiesCopy)
+            {
+                StopShooting(enemy);
+            }
             Manager.AddMoney(cost + level * upgradeCost);
             Destroy();
         }
