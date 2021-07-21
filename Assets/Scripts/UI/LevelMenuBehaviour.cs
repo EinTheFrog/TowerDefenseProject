@@ -22,13 +22,17 @@ namespace UI
             var buttons = GetComponentsInChildren<Button>();
             for (int i = 0; i < buttons.Length; i++)
             {
-                if (_levelsStates[i] == false)
-                {
-                    buttons[i].interactable = false;
-                }
+                buttons[i].interactable = _levelsStates[i];
             }
         
             uiBehaviour.ChooseLevel(SaveSystem.SaveSystem.MainMenuLevelId);
+        }
+
+        public void OpenLevel(int levelId)
+        {
+            _levelsStates[levelId] = true;
+            var buttons = GetComponentsInChildren<Button>();
+            buttons[levelId].interactable = true;
         }
     }
 }

@@ -12,7 +12,8 @@ namespace UI
         [SerializeField] private AudioManager audioManager = default;
         [SerializeField] private Slider audioSlider = default;
         [SerializeField] private Slider musicSlider = default;
-        
+        [SerializeField] private LevelMenuBehaviour levelMenu  = default;
+
         private LevelManager _levelManager = default;
         private int _chosenLevelId = 0;
         private float _audioVolume = 1;
@@ -67,23 +68,17 @@ hacker attacks. They will try to steal our data using different viruses and you 
 destroy these viruses until we will define geolocation of these hackers and... 
 persuade them to stop attacking us."; 
                     break;
-                case 1: txt = "Day 1"; 
+                case 1: txt = "Day 2"; 
                     break;
-                case 2: txt = "Day 2"; 
+                case 2: txt = "Day 3"; 
                     break;
-                case 3: txt = "Day 3"; 
+                case 3: txt = "Day 4"; 
                     break;
-                case 4: txt = "Day 4"; 
+                case 4: txt = "Day 5"; 
                     break;
-                case 5: txt = "Day 5"; 
+                case 5: txt = "Day 6"; 
                     break;
-                case 6: txt = "Day 6"; 
-                    break;
-                case 7: txt = "Day 7"; 
-                    break;
-                case 8: txt = "Day 8"; 
-                    break;
-                case 9: txt = "Day 9"; 
+                case 6: txt = "Day 7"; 
                     break;
             }
             infoText.text = txt;
@@ -91,6 +86,13 @@ persuade them to stop attacking us.";
         public void StartChosenLevel()
         {
             StartLevel(_chosenLevelId);
+        }
+        
+        public void SkipChosenLevel()
+        {
+            SaveSystem.SaveSystem.CompleteLevel(_chosenLevelId);
+            levelMenu.OpenLevel(_chosenLevelId + 1);
+            ChooseLevel(_chosenLevelId + 1);
         }
 
         public void GoToMainMenu()
@@ -107,6 +109,7 @@ persuade them to stop attacking us.";
         public void ClearMemory()
         {
             SaveSystem.SaveSystem.ClearMemory();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         
         public void OnAudioSliderChange(float volume)
