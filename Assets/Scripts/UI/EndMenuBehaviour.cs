@@ -13,7 +13,9 @@ namespace UI
         private InputShell _inputShell;
         private CanvasGroup _canvasGroup;
         private Text _mainMenuBtnText;
-        private const string _winButtonsTag = "WinButton";
+        private Button _restartButton;
+        private const string WinButtonsTag = "WinButton";
+        private const string LoseButtonsTag = "LoseButton";
 
         public static EndMenuBehaviour Instance { get; private set; }
 
@@ -26,7 +28,8 @@ namespace UI
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _inputShell = GameObject.Find("InputShell").GetComponent<InputShell>();
-            _mainMenuBtnText = GameObject.FindGameObjectWithTag(_winButtonsTag).GetComponentInChildren<Text>();
+            _mainMenuBtnText = GameObject.FindGameObjectWithTag(WinButtonsTag).GetComponentInChildren<Text>();
+            _restartButton = GameObject.FindGameObjectWithTag(LoseButtonsTag).GetComponent<Button>();
             _canvasGroup.alpha = 0;
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
@@ -37,8 +40,9 @@ namespace UI
             
             Time.timeScale = 0f;
 
-            text.text = playerWon ? "You won" : "You lose";
+            text.text = playerWon ? "Mission completed" : "Mission failed";
             _mainMenuBtnText.text = playerWon ? "Complete level" : "To main menu";
+            _restartButton.gameObject.SetActive(!playerWon);
             _canvasGroup.alpha = 1;
             _canvasGroup.interactable = true;
             _canvasGroup.blocksRaycasts = true;

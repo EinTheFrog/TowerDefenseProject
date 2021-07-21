@@ -652,7 +652,7 @@ PrefabInstance:
     - target: {fileID: 3870252574715967630, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_Text
-      value: Level 3
+      value: Day 3
       objectReference: {fileID: 0}
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
@@ -817,7 +817,7 @@ PrefabInstance:
     - target: {fileID: 3870252574715967630, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_Text
-      value: Level 7
+      value: Day 7
       objectReference: {fileID: 0}
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
@@ -2664,7 +2664,7 @@ PrefabInstance:
     - target: {fileID: 3549590822524016866, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_Text
-      value: choose day
+      value: choose a day
       objectReference: {fileID: 0}
     - target: {fileID: 3549590822524016866, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
@@ -2906,7 +2906,7 @@ PrefabInstance:
     - target: {fileID: 3870252574715967630, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_Text
-      value: Level 4
+      value: Day 4
       objectReference: {fileID: 0}
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
@@ -3296,7 +3296,7 @@ PrefabInstance:
     - target: {fileID: 3870252574715967630, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_Text
-      value: Level 1
+      value: Day 1
       objectReference: {fileID: 0}
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
@@ -3456,7 +3456,7 @@ PrefabInstance:
     - target: {fileID: 3870252574715967630, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_Text
-      value: Level 5
+      value: Day 5
       objectReference: {fileID: 0}
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
@@ -3786,7 +3786,7 @@ PrefabInstance:
     - target: {fileID: 3870252574715967630, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_Text
-      value: Level 2
+      value: Day 2
       objectReference: {fileID: 0}
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
@@ -4086,7 +4086,7 @@ PrefabInstance:
     - target: {fileID: 3870252574715967630, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_Text
-      value: Level 6
+      value: Day 6
       objectReference: {fileID: 0}
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}

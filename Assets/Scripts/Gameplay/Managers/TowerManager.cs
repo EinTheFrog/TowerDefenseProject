@@ -17,7 +17,7 @@ namespace Gameplay.Managers
 
         private Tower _chosenTower;
         private InputShell _inputShell;
-        private bool _showingLevels = false;
+        private bool _showingLevels = true;
         private TowerInfoBehaviour _towerInfo;
         public bool ShowingLevels => _showingLevels;
 

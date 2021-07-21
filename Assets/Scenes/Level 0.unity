@@ -2468,6 +2468,7 @@ MonoBehaviour:
   audioManager: {fileID: 966168786}
   audioSlider: {fileID: 0}
   musicSlider: {fileID: 0}
+  levelMenu: {fileID: 0}
 --- !u!1 &270124270
 GameObject:
   m_ObjectHideFlags: 0
@@ -21293,6 +21294,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397331150766123508, guid: 75205023b055c5c43b4141439d293320,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397331150766123508, guid: 75205023b055c5c43b4141439d293320,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397331151546794327, guid: 75205023b055c5c43b4141439d293320,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397331151546794327, guid: 75205023b055c5c43b4141439d293320,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397331151546794327, guid: 75205023b055c5c43b4141439d293320,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6776260173302298878, guid: 75205023b055c5c43b4141439d293320,
         type: 3}

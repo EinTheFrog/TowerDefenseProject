@@ -9,6 +9,7 @@ TagManager:
   - ChoseLine
   - WinButton
   - MusicSource
+  - LoseButton
   layers:
   - Default
   - TransparentFX

@@ -411,7 +411,7 @@ PrefabInstance:
     - target: {fileID: 3549590822524016865, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 90
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3549590822524016865, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
@@ -446,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 3549590822524016866, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_Text
-      value: you won
+      value: mission completed
       objectReference: {fileID: 0}
     - target: {fileID: 3549590822608881380, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
@@ -644,6 +644,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RestartButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967745142100074837, guid: 2d283ce81cb334d4d80d314893ff6eae,
+        type: 3}
+      propertyPath: m_TagString
+      value: LoseButton
       objectReference: {fileID: 0}
     - target: {fileID: 5614336317589034136, guid: 2d283ce81cb334d4d80d314893ff6eae,
         type: 3}
