@@ -74,5 +74,7 @@ namespace Gameplay.Towers
                 enemy.SlowDown(speedDebaff);
             }
         }
+
+        public override string TowerName { protected set; get; } = "Field tower";
     }
 }

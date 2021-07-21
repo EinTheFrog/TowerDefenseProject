@@ -8,10 +8,12 @@ namespace UI
     {
         [SerializeField] private string nameTxtName;
         [SerializeField] private string costTxtName;
-        [SerializeField] private string upgradeTxtName;
-        [SerializeField] private string rangeTxtName;
         [SerializeField] private string damageTxtName;
-        
+        [SerializeField] private string rangeTxtName;
+        [SerializeField] private string upgradeCostTxtName;
+        [SerializeField] private string upgradeTxtName;
+        [SerializeField] private string maxLevelTxtName;
+
         private CanvasGroup _canvasGroup = default;
         private Tower _chosenTower = default;
         private InputShell _inputShell = default;
@@ -20,6 +22,8 @@ namespace UI
         private Text _upgradeText = default;
         private Text _rangeText = default;
         private Text _damageText = default;
+        private Text _upgradeCostText = default;
+        private Text _maxLevelText = default;
 
         private void OnEnable()
         {
@@ -34,9 +38,11 @@ namespace UI
 
             _nameText = GameObject.Find(nameTxtName).GetComponentInChildren<Text>();
             _costText = GameObject.Find(costTxtName).GetComponentInChildren<Text>();
-            _upgradeText = GameObject.Find(upgradeTxtName).GetComponentInChildren<Text>();
-            _rangeText = GameObject.Find(rangeTxtName).GetComponentInChildren<Text>();
             _damageText = GameObject.Find(damageTxtName).GetComponentInChildren<Text>();
+            _rangeText = GameObject.Find(rangeTxtName).GetComponentInChildren<Text>();
+            _upgradeCostText = GameObject.Find(upgradeCostTxtName)?.GetComponentInChildren<Text>();
+            _upgradeText = GameObject.Find(upgradeTxtName)?.GetComponentInChildren<Text>();
+            _maxLevelText = GameObject.Find(maxLevelTxtName)?.GetComponentInChildren<Text>();
         }
         public void CallMenu(Tower chosenTower)
         {
@@ -47,10 +53,26 @@ namespace UI
             
             _chosenTower = chosenTower;
 
-            _nameText.text = _chosenTower.name;
-            _costText.text = "Cost " + _chosenTower.Cost + "/Upgrade cost " + _chosenTower.UpgradeCost;
-            _upgradeText.text = "+" + _chosenTower.DangerChangePerLevel + "dmg/";
-            _rangeText
+            _nameText.text = _chosenTower.TowerName;
+            _costText.text = "Cost " + _chosenTower.Cost;
+            _damageText.text = "Damage " + _chosenTower.Damage;
+            _rangeText.text = "Range " + _chosenTower.Range;
+            if (_upgradeCostText == null) return;
+            _upgradeCostText.text = "Upgrade cost " + _chosenTower.UpgradeCost;
+            if (_chosenTower.TowerName == "Field tower")
+            {
+                _upgradeText.text = "Upgrade gives +slowdown";
+            }
+            else
+            {
+                _upgradeText.text = "Upgrade gives +" + _chosenTower.DamagePerLevel + " dmg";
+            }
+            _maxLevelText.text = "Max level " + _chosenTower.MaxLevel;
+        }
+
+        public void UpdateDamage(Tower chosenTower)
+        {
+            _damageText.text = "Damage " + _chosenTower.Damage;
         }
 
         private void CloseMenu()

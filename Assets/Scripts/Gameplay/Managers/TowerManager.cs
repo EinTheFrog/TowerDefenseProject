@@ -18,7 +18,7 @@ namespace Gameplay.Managers
         private Tower _chosenTower;
         private InputShell _inputShell;
         private bool _showingLevels = false;
-        
+        private TowerInfoBehaviour _towerInfo;
         public bool ShowingLevels => _showingLevels;
 
         public Dictionary<Tower, SolePlatform> TowersSoles { get; private set; }
@@ -35,6 +35,7 @@ namespace Gameplay.Managers
             //_inputShell.Input.BuildMode.Quit.performed += _ => ChooseNone();
             _inputShell.SetActionForMode(InputShell.ActionType.Cancel, InputShell.Mode.BuildMode, ChooseNone);
             TowersSoles = new Dictionary<Tower, SolePlatform>();
+            _towerInfo = FindObjectOfType<TowerInfoBehaviour>().GetComponent<TowerInfoBehaviour>();
         }
         
         public void ChooseTower(Tower type)
@@ -49,6 +50,7 @@ namespace Gameplay.Managers
             
             _chosenTower = Instantiate(type);
             _chosenTower.Init(false);
+            _towerInfo.CallMenu(_chosenTower);
             _inputShell.SetBuildingMode();
         }
 
@@ -142,6 +144,7 @@ namespace Gameplay.Managers
             //берем масштаб любого измерения
             var scale = towerTransform.localScale.x;
             roadManager.UpdateDangerInRadius(TowersSoles[chosenTower].Center, rad * scale, chosenTower.DangerChangePerLevel);
+            _towerInfo.UpdateDamage(chosenTower);
         }
     }
 }

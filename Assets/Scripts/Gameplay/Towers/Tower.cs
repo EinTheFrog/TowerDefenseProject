@@ -40,14 +40,23 @@ namespace Gameplay.Towers
 
         public bool IsBuilt { get; private set; }
         public int Cost => cost;
-        
         public int UpgradeCost => upgradeCost;
         public int MaxLevel => maxLevel;
         public int Level => level;
         public float BasicDanger => basicDanger;
         public float DangerChangePerLevel => dangerChangePerLevel;
-
         public float CurrentDanger => BasicDanger + DangerChangePerLevel * Level;
+        public float Range { get; private set; }
+
+        public float Damage => basicDamage + level * damagePerLevel;
+        
+        public float DamagePerLevel => damagePerLevel;
+
+        private void OnEnable()
+        {
+            Range = GetComponentInChildren<SphereCollider>().radius * transform.localScale.x;
+        }
+
         private void Start()
         {
             EnemiesUnderFire = new HashSet<Enemy>();
@@ -151,6 +160,8 @@ namespace Gameplay.Towers
         public abstract void StopShooting(Enemy enemy);
 
         protected abstract void UpgradeFeatures();
+        
+        public abstract string TowerName { protected set; get; }
 
         public enum TowerState
         {

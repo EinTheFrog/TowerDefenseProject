@@ -64,5 +64,7 @@ namespace Gameplay.Towers
         protected override void UpgradeFeatures()
         {
         }
+        
+        public override string TowerName { protected set; get; } = "Rocket launcher";
     }
 }
