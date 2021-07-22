@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 600
-  basicSpeed: 0.5
+  basicSpeed: 0.6
   levitateHeight: 0.4
   reward: 5
   deathEffect: {fileID: 2962488966114001412, guid: dde3e97336bb44f49a31541e244ef1bf,

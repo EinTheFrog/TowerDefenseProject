@@ -54,7 +54,8 @@ namespace Gameplay.Towers
 
         private void OnEnable()
         {
-            Range = GetComponentInChildren<SphereCollider>().radius * transform.localScale.x;
+            var localCollider = GetComponentInChildren<SphereCollider>();
+            Range = localCollider.radius * localCollider.transform.localScale.x * transform.localScale.x;
         }
 
         private void Start()

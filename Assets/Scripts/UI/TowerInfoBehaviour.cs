@@ -72,7 +72,7 @@ namespace UI
 
         public void UpdateDamage(Tower chosenTower)
         {
-            _damageText.text = "Damage " + _chosenTower.Damage;
+            _damageText.text = "Damage " + chosenTower.Damage;
         }
 
         private void CloseMenu()
