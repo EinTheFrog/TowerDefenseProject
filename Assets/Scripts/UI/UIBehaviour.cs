@@ -129,5 +129,10 @@ persuade them to stop attacking us.";
             SaveSystem.SaveSystem.SaveAudio(_audioVolume);
             SaveSystem.SaveSystem.SaveMusic(_musicVolume);
         }
+
+        public void OpenScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
     }
 }
