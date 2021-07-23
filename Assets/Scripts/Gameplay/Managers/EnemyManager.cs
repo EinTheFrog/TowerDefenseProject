@@ -36,16 +36,9 @@ namespace Gameplay.Managers
             set
             {
                 _carrier = value;
-                if (value)
+                if (value != null)
                 {
                     _carrier.HasTreasure = true; 
-                }
-                else
-                {
-                    foreach (Enemy enemy in _enemies)
-                    {
-                        enemy.CarriersPath = false;
-                    }
                 }
             }
         }
@@ -178,8 +171,6 @@ namespace Gameplay.Managers
 
         public Queue<RoadPlatform> GetPath(Enemy enemy)
         {
-            if (enemy.CarriersPath) return Carrier.Path;
-
             var next = enemy.NextDestination;
             var last = enemy.LastDestination;
 
@@ -209,6 +200,10 @@ namespace Gameplay.Managers
             //Все  противники теперь должны двигаться наопережение неусущему
             var oldObjective = ObjectivePlatform;
             ObjectivePlatform = Carrier.NextDestination;
+            foreach (Enemy otherEnemy in _enemies)
+            {
+                otherEnemy.MeetTheCarrier();
+            }
             //Удаляем бесполезный пункт (стоит посреди прямой дороги или вообще ведет в тупик),
             //т.к. он был нужен только для того, чтобы оптимально искать путь до упавшего (или заспауненного) сокровища.
             //Удаляем через oldObjective, чтобы при поиске новых путей при удалении мы пользовались акутальной информацией

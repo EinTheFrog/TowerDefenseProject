@@ -125,7 +125,7 @@ MonoBehaviour:
   rocketPrefab: {fileID: 528988503002386228, guid: 6660a38702e6aa743b816056f226d699,
     type: 3}
   timeBetweenFires: 2
-  accuracy: 4
+  accuracy: 3.5
 --- !u!82 &8969239861765020760
 AudioSource:
   m_ObjectHideFlags: 0

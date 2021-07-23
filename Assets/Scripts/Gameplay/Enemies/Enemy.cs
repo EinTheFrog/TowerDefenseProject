@@ -25,7 +25,6 @@ namespace Gameplay.Enemies
         public RoadPlatform LastDestination { get; private set; }
         public RoadPlatform NextDestination { get; private set; }
         public bool HasTreasure { get; set; }
-        public bool CarriersPath { get; set; }
 
         public float Health { get; set; }
         private float Speed { get; set; }
@@ -101,7 +100,6 @@ namespace Gameplay.Enemies
             if (enemy && enemy.HasTreasure)
             {
                 SetPath(enemy.Path);
-                CarriersPath = true;
             }
             else
             {
@@ -171,7 +169,7 @@ namespace Gameplay.Enemies
 
         public void MeetTheCarrier()
         {
-            if (!CarriersPath && !HasTreasure)
+            if (!HasTreasure)
             {
                 UpdatePath();
             }
