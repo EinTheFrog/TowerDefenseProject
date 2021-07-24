@@ -156,7 +156,7 @@ PrefabInstance:
     - target: {fileID: 3549590822524016865, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3549590822524016865, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
@@ -176,10 +176,13 @@ PrefabInstance:
     - target: {fileID: 3549590822524016866, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_Text
-      value: 'Viruses try to steal the information block
+      value: 'Viruses attempt to steal the information block transporting it out
+        the level
 
-        They use the safest
-        path (if there are plenty of them)
+        Information block is a violet  parallelepiped
+
+        Enemies
+        determine the safest route in order to reach the objective
 
 
 '
@@ -257,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 3549590822608881380, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 3549590822608881380, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
@@ -346,6 +349,7 @@ MonoBehaviour:
   audioSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   levelMenu: {fileID: 0}
+  energyText: {fileID: 0}
 --- !u!4 &41038698
 Transform:
   m_ObjectHideFlags: 0
@@ -791,7 +795,7 @@ PrefabInstance:
     - target: {fileID: 3549590822524016865, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3549590822524016865, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
@@ -813,16 +817,19 @@ PrefabInstance:
       propertyPath: m_Text
       value: 'Towers could be bought for energy
 
-        Towers could be upgraded
-        for energy
+        They can be built only on
+        platforms (without holes)
 
-        Towers could be sold returning all energy that was spent
-        on it
+        Towers could be upgraded for energy
 
-        The amount of energy is increasing during the time
+        Towers
+        could be sold returning all energy that was spent on it
 
-        Also
-        energy could be obtained destroying viruses
+        The amount
+        of energy is increasing during the time
+
+        Also energy could be obtained
+        destroying viruses
 
 
 '
@@ -900,7 +907,7 @@ PrefabInstance:
     - target: {fileID: 3549590822608881380, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3549590822608881380, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
@@ -1498,6 +1505,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1124239051}
+  - {fileID: 1050694314}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2022,6 +2030,87 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!1001 &1050694313
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 784435119}
+    m_Modifications:
+    - target: {fileID: 667792448770322836, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_Name
+      value: BtnAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b53e9a7fec9ee9c4f9f06260613031d9, type: 3}
+--- !u!4 &1050694314 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 667792448770322837, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050694313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1050694315 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 667792448770322838, guid: b53e9a7fec9ee9c4f9f06260613031d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1050694313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1057049117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2072,7 +2161,7 @@ PrefabInstance:
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
@@ -2097,6 +2186,31 @@ PrefabInstance:
     - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1050694315}
+    - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740424628924364841, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8232343569317400401, guid: 1f3adf84c11f66445a7dc84b53e40bb1,
@@ -2423,7 +2537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1124239051
 Transform:
   m_ObjectHideFlags: 0
@@ -3156,7 +3270,8 @@ PrefabInstance:
 
         Upgrade gives: +5% slowdown
 
-'
+        Max
+        level: 5'
       objectReference: {fileID: 0}
     - target: {fileID: 255392170417123694, guid: 7fa66099e91611549917d44b878f156c,
         type: 3}
@@ -3718,7 +3833,7 @@ PrefabInstance:
       propertyPath: m_Text
       value: "Cost: 60 energy\nDamage: 5 aoe dmg \nRange: 6 squares\nTime between
         fires: 2 seconds\nAccuracy: 4 squares\nUpgrade cost: 20 energy\nUpgrade gives:
-        +1 dmg\n"
+        +1 dmg\nMax level: 5"
       objectReference: {fileID: 0}
     - target: {fileID: 255392170417123694, guid: 7fa66099e91611549917d44b878f156c,
         type: 3}
@@ -4355,7 +4470,8 @@ PrefabInstance:
 
         Upgrade gives: +1 dmg
 
-'
+        Max
+        level: 10'
       objectReference: {fileID: 0}
     - target: {fileID: 255392170417123694, guid: 7fa66099e91611549917d44b878f156c,
         type: 3}

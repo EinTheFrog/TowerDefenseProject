@@ -6,13 +6,13 @@ namespace UI
 {
     public class TowerInfoBehaviour : MonoBehaviour
     {
-        [SerializeField] private string nameTxtName;
-        [SerializeField] private string costTxtName;
-        [SerializeField] private string damageTxtName;
-        [SerializeField] private string rangeTxtName;
-        [SerializeField] private string upgradeCostTxtName;
-        [SerializeField] private string upgradeTxtName;
-        [SerializeField] private string maxLevelTxtName;
+        [SerializeField] private string nameTxtName = default;
+        [SerializeField] private string costTxtName = default;
+        [SerializeField] private string damageTxtName = default;
+        [SerializeField] private string rangeTxtName = default;
+        [SerializeField] private string upgradeCostTxtName = default;
+        [SerializeField] private string upgradeTxtName = default;
+        [SerializeField] private string maxLevelTxtName = default;
 
         private CanvasGroup _canvasGroup = default;
         private Tower _chosenTower = default;

@@ -223,10 +223,11 @@ namespace Gameplay.Managers
         {
             if (!caller.HasTreasure)
             {
-                Debug.LogError("Enemy without treasure is trying to update carriets position");
+                Debug.LogError("Enemy without treasure is trying to update carriers position");
                 return;
             }
             //Если несущий донес сокровище, но еще не вызвал окончание игры, то передаем всем противникам его последнюю позицию (тк его NextDestination == null)
+            if (Carrier == null) return;
             ObjectivePlatform = Carrier.NextDestination != null ? Carrier.NextDestination  : Carrier.LastDestination;
             //Обновляем позицию до которой (наопережение) нужно двигаться всем проотивникам, которые еще не идут вместе с несущим
             foreach (Enemy enemy in _enemies)

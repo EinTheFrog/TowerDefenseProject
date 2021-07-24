@@ -205,12 +205,12 @@ namespace Gameplay.Towers
             _levelText.color = shouldShow? Color.white : Color.clear;
         }
 
-        private GameObject FindChildWithTag(string tag)
+        private GameObject FindChildWithTag(string childTag)
         {
             var children = GetComponentsInChildren<Transform>();
             foreach (var child in children)
             {
-                if (child.CompareTag(tag))
+                if (child.CompareTag(childTag))
                 {
                     return child.gameObject;
                 }

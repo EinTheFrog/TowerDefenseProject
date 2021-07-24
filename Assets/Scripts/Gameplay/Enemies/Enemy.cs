@@ -74,11 +74,7 @@ namespace Gameplay.Enemies
             {
                 Die?.Invoke(this);
             }
-        }
-
-        private void FixedUpdate()
-        {
-            if (_manager == null) return;
+            
 
             if (NextDestination != null)
             {
@@ -89,7 +85,10 @@ namespace Gameplay.Enemies
                 {
                     _manager.EndGame(false);
                 }
-                UpdatePath();
+                else
+                {
+                    UpdatePath();
+                }
             }
         }
 

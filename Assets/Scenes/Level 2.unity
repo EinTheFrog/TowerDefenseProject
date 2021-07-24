@@ -8045,6 +8045,7 @@ MonoBehaviour:
   audioSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   levelMenu: {fileID: 0}
+  energyText: {fileID: 0}
 --- !u!43 &266787892
 Mesh:
   m_ObjectHideFlags: 0
@@ -8815,7 +8816,7 @@ PrefabInstance:
     - target: {fileID: 8898210075845976967, guid: e9218d2716fbd9a409718646e415397f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -140
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 8898210075845976967, guid: e9218d2716fbd9a409718646e415397f,
         type: 3}
@@ -8825,7 +8826,7 @@ PrefabInstance:
     - target: {fileID: 8898210075845976967, guid: e9218d2716fbd9a409718646e415397f,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 280
+      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 8898210075845976967, guid: e9218d2716fbd9a409718646e415397f,
         type: 3}
@@ -21010,11 +21011,11 @@ Transform:
   - {fileID: 486043580}
   - {fileID: 1538532468}
   - {fileID: 640952775}
-  - {fileID: 570094490}
   - {fileID: 812748866}
-  - {fileID: 1619522963}
+  - {fileID: 570094490}
   - {fileID: 682045392}
   - {fileID: 1623210911}
+  - {fileID: 1619522963}
   - {fileID: 2004134126}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -37807,7 +37808,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

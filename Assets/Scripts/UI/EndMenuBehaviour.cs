@@ -41,7 +41,7 @@ namespace UI
             Time.timeScale = 0f;
 
             text.text = playerWon ? "Mission completed" : "Mission failed";
-            _mainMenuBtnText.text = playerWon ? "Complete level" : "To main menu";
+            _mainMenuBtnText.text = playerWon ? "Complete the day" : "To main menu";
             _restartButton.gameObject.SetActive(!playerWon);
             _canvasGroup.alpha = 1;
             _canvasGroup.interactable = true;

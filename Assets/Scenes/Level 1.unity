@@ -4820,6 +4820,7 @@ MonoBehaviour:
   audioSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   levelMenu: {fileID: 0}
+  energyText: {fileID: 0}
 --- !u!1 &270124270
 GameObject:
   m_ObjectHideFlags: 0
@@ -18684,7 +18685,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -31269,7 +31270,7 @@ PrefabInstance:
     - target: {fileID: 2962636307475250071, guid: 415ce8d7811b16c44bdcc509f04c59e6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -140
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 2962636307475250071, guid: 415ce8d7811b16c44bdcc509f04c59e6,
         type: 3}
@@ -31279,7 +31280,7 @@ PrefabInstance:
     - target: {fileID: 2962636307475250071, guid: 415ce8d7811b16c44bdcc509f04c59e6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 280
+      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 2962636307475250071, guid: 415ce8d7811b16c44bdcc509f04c59e6,
         type: 3}

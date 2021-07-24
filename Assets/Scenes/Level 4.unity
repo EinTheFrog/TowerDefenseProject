@@ -7117,6 +7117,7 @@ MonoBehaviour:
   audioSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   levelMenu: {fileID: 0}
+  energyText: {fileID: 0}
 --- !u!1 &270124270
 GameObject:
   m_ObjectHideFlags: 0
@@ -8364,7 +8365,7 @@ PrefabInstance:
     - target: {fileID: 8898210075845976967, guid: e9218d2716fbd9a409718646e415397f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -140
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 8898210075845976967, guid: e9218d2716fbd9a409718646e415397f,
         type: 3}
@@ -8374,7 +8375,7 @@ PrefabInstance:
     - target: {fileID: 8898210075845976967, guid: e9218d2716fbd9a409718646e415397f,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 280
+      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 8898210075845976967, guid: e9218d2716fbd9a409718646e415397f,
         type: 3}
@@ -48003,6 +48004,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4673154339354883046, guid: 9d5c8c67a6499cb43898cec909d97b87,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4673154339769334412, guid: 9d5c8c67a6499cb43898cec909d97b87,
         type: 3}
       propertyPath: inputShell
