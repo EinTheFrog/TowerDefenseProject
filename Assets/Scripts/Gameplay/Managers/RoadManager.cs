@@ -253,7 +253,7 @@ namespace Gameplay.Managers
                 road.cost += dangerChange;
                 if (road.cost < 0)
                 {
-                    throw new Exception("Road cost is less than 0");
+                    road.cost = 0;
                 }
                 roads[road] = dangerChange;
             }

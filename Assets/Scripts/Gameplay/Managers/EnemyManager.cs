@@ -136,22 +136,13 @@ namespace Gameplay.Managers
             {
                 finish = spawnPlatform;
             }
-            else if (lastDestination != ObjectivePlatform || nextDestination != null)
+            else if (Carrier != null && lastDestination == ObjectivePlatform && nextDestination == null)
             {
-                finish = ObjectivePlatform;
+                finish = Carrier.LastDestination;
             }
             else
             {
-                if (Carrier != null)
-                {
-                    //если противник дошел до следующей точки маршрута несущего, то он должен двинуться ему навстречу
-                    finish = Carrier.LastDestination;
-                }
-                else
-                {
-                    throw new System.Exception("Enemy is on treasure");
-                }
-            
+                finish = ObjectivePlatform;
             }
             List<RoadPlatform> bestPath;
             //если противник находится на дороге из одного пункта в другой,

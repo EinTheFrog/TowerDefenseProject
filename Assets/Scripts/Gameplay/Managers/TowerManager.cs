@@ -71,6 +71,8 @@ namespace Gameplay.Managers
 
         public void GetMoneyForKill(Enemy enemy) => moneyManager.Money += enemy.Reward;
 
+        public void AddMoney(int amount) => moneyManager.Money += amount;
+        
         private void BuildChosenTower(SolePlatform sole)
         {
             //создаем копию призрака (выбранного строения) в указанном месте
@@ -81,7 +83,17 @@ namespace Gameplay.Managers
                 TowersSoles = new Dictionary<Tower, SolePlatform>();
             }
             TowersSoles[newTower] = sole;
-            newTower.Init(Tower.TowerState.Building, sole.Center, this, uiManager.AudioVolume);
+            float towerAudioMultiplier = 1f;
+            switch (_chosenTower.TowerName)
+            {
+                case "Laser beam": towerAudioMultiplier = 0.1f;
+                    break;
+                case "Field tower": towerAudioMultiplier = 0.1f;
+                    break;
+                case "Rocket launcher": towerAudioMultiplier = 0.2f;
+                    break;
+            }
+            newTower.Init(Tower.TowerState.Building, sole.Center, this, uiManager.AudioVolume * towerAudioMultiplier);
             //ищем дороги в радиусе поражения и меняем их опасность
             var chosenTowerTransform = _chosenTower.transform;
             var rad = chosenTowerTransform.GetComponentInChildren<EnemyTrigger>().Radius;
@@ -89,8 +101,20 @@ namespace Gameplay.Managers
             var scale = chosenTowerTransform.localScale.x;
             roadManager.UpdateDangerInRadius(sole.Center, rad * scale, newTower.BasicDanger);
         }
-
-        public void AddMoney(int amount) => moneyManager.Money += amount;
+        
+        public void UpgradeTower(Tower chosenTower)
+        {
+            if (chosenTower.UpgradeCost > moneyManager.Money || chosenTower.Level == chosenTower.MaxLevel) return;
+            chosenTower.Upgrade();
+            moneyManager.Money -= chosenTower.UpgradeCost;
+            //ищем дороги в радиусе поражения и меняем их опасность
+            var towerTransform = chosenTower.transform;
+            var rad = towerTransform.GetComponentInChildren<EnemyTrigger>().Radius;
+            //берем масштаб любого измерения
+            var scale = towerTransform.localScale.x;
+            roadManager.UpdateDangerInRadius(TowersSoles[chosenTower].Center, rad * scale, chosenTower.DangerChangePerLevel);
+            _towerInfo.UpdateDamage(chosenTower);
+        }
 
         private void RemoveTower(Tower tower)
         {
@@ -131,20 +155,6 @@ namespace Gameplay.Managers
         public void SellTower(Tower chosenTower)
         {
             chosenTower.Sell();
-        }
-        
-        public void UpgradeTower(Tower chosenTower)
-        {
-            if (chosenTower.UpgradeCost > moneyManager.Money || chosenTower.Level == chosenTower.MaxLevel) return;
-            chosenTower.Upgrade();
-            moneyManager.Money -= chosenTower.UpgradeCost;
-            //ищем дороги в радиусе поражения и меняем их опасность
-            var towerTransform = chosenTower.transform;
-            var rad = towerTransform.GetComponentInChildren<EnemyTrigger>().Radius;
-            //берем масштаб любого измерения
-            var scale = towerTransform.localScale.x;
-            roadManager.UpdateDangerInRadius(TowersSoles[chosenTower].Center, rad * scale, chosenTower.DangerChangePerLevel);
-            _towerInfo.UpdateDamage(chosenTower);
         }
     }
 }

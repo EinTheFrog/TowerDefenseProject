@@ -4821,6 +4821,7 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   levelMenu: {fileID: 0}
   energyText: {fileID: 0}
+  skipButton: {fileID: 0}
 --- !u!1 &270124270
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,7 +4852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsBeforeFirstSpawn: 1
-  secondsBetweenSpawn: 4
+  secondsBetweenSpawn: 5
   enemyPrefabs:
   - {fileID: 6642060908670460648, guid: 6359cd0e189f9f845a6e986c8f5ce35e, type: 3}
   - {fileID: 6642060908670460648, guid: 63899685e3cd70e4c8cf51905ebc38b1, type: 3}
@@ -4860,7 +4861,7 @@ MonoBehaviour:
   treasurePrefab: {fileID: 5418727713796052880, guid: fe319fc7714a4d84ca9812862c4c2632,
     type: 3}
   roadManager: {fileID: 1576647989}
-  enemiesCount: 0500000005000000
+  enemiesCount: 0300000005000000
   levelManager: {fileID: 1548004388}
 --- !u!4 &270124272
 Transform:

@@ -176,16 +176,13 @@ PrefabInstance:
     - target: {fileID: 3549590822524016866, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_Text
-      value: 'Viruses attempt to steal the information block transporting it out
-        the level
+      value: 'The viruses attempt to steal the information block by transporting
+        it out of the level
 
-        Information block is a violet  parallelepiped
+        Information block is a violet parallelepiped
 
         Enemies
-        determine the safest route in order to reach the objective
-
-
-'
+        determine the safest route in order to reach the objective'
       objectReference: {fileID: 0}
     - target: {fileID: 3549590822608881380, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
@@ -350,6 +347,7 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   levelMenu: {fileID: 0}
   energyText: {fileID: 0}
+  skipButton: {fileID: 0}
 --- !u!4 &41038698
 Transform:
   m_ObjectHideFlags: 0
@@ -815,21 +813,21 @@ PrefabInstance:
     - target: {fileID: 3549590822524016866, guid: 43cf0e305219e2b4dada07e611a6f3ce,
         type: 3}
       propertyPath: m_Text
-      value: 'Towers could be bought for energy
+      value: 'Towers can be bought for energy
 
-        They can be built only on
-        platforms (without holes)
+        The tower can only be built
+        on platforms (without holes)
 
-        Towers could be upgraded for energy
+        Towers can be upgraded for energy
 
         Towers
-        could be sold returning all energy that was spent on it
+        can be sold returning all energy that was spent on it
 
         The amount
-        of energy is increasing during the time
+        of energy increases over time
 
-        Also energy could be obtained
-        destroying viruses
+        Also, the energy can be obtained by
+        destroying the viruses
 
 
 '
@@ -1411,7 +1409,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 269710562}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.15824915
+  m_Size: 0.15824917
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

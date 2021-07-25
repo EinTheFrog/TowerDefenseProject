@@ -43,7 +43,7 @@ namespace Gameplay.Towers
             var d1 = accuracy * (Vector3.back + Vector3.right);
             var d2 = accuracy * (Vector3.forward + Vector3.left);
             var enemyPos = enemy.transform.position;
-            var destinationPos = LerpVector3( enemyPos+ d1, enemyPos + d2, Random.value);
+            var destinationPos = LerpVector3( enemyPos + d1, enemyPos + d2, Random.value);
             var damage = basicDamage + damagePerLevel * level;
             newRocket.Init(transform.localPosition + heightV3, destinationPos, damage, _audioVolume);
         }

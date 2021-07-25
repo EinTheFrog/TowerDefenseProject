@@ -152,7 +152,17 @@ namespace Gameplay.Enemies
             CalculateVelocity();
         }
 
-        private void CalculateVelocity() => _velocity = Speed * (PosAbove(NextDestination) - transform.localPosition).normalized;
+        private void CalculateVelocity()
+        {
+            if (NextDestination == null)
+            {
+                _velocity = Vector3.zero;
+            }
+            else
+            {
+                _velocity = Speed * (PosAbove(NextDestination) - transform.localPosition).normalized; 
+            }
+        }
 
         //Расчитываем позицию противника, с учетом того, что он левитирует над платформами
         private Vector3 PosAbove(RoadPlatform road) => road.Center + Vector3.up * levitateHeight;

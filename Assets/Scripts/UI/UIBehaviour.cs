@@ -69,7 +69,7 @@ namespace UI
                     txt = "Day 1. Welcome to Black Tower inc. You will protect our great company from hacker attacks. " +
                           "Hackers will use viruses to steal our data. You should destroy these viruses using antivirus programs ('towers'). " +
                           "Check out the manual for more information. " +
-                          "Be ware though that sell/upgrade options aren't ready yet and you will able to use only one antivirus program. Good luck.";
+                          "Beware though that sell/upgrade options aren't ready yet and you will be able to use only one antivirus program. Good luck.";
                     skipButton.gameObject.SetActive(true);
                     energyText.text = "3 energy/sec";
                 } 
@@ -77,15 +77,15 @@ namespace UI
                 case 1:
                 {
                     txt = "Day 2. Bad news: today's task will be harder. You will protect 2 paths at once and " +
-                          "hackers will use a new strong virus. But there are also good news: I've added an ability to sell towers. " +
-                          "You won't lose any energy if you would sell the tower. So you can do this as often as you want to.";
+                          "hackers will use a new powerful virus. But there are also good news: I've added an ability to sell towers. " +
+                          "All the invested energy in the tower returns after selling. So you can do this as often as you want to.";
                     skipButton.gameObject.SetActive(true);
                     energyText.text = "1 energy/sec";
                 } 
                     break;
                 case 2:
                 {
-                    txt = "Day 3. You get along quite well with selling option. So I added a new ability. Now you can upgrade towers. " +
+                    txt = "Day 3. You got along with the selling option quite well. So, I added a new ability- now you can upgrade towers. " +
                           "Also, I've added Field Tower. It will slow down the viruses. You're welcome.";
                     skipButton.gameObject.SetActive(true);
                     energyText.text = "1 energy/sec";
@@ -101,16 +101,16 @@ namespace UI
                     break;
                 case 4:
                 {
-                    txt = "Day 5. I'm glad you did it. But there is no time to celebrate. Hackers started to use another virus. " +
-                          "This one is extremely fast. Be careful.";
+                    txt = "Day 5. I’m glad you did it, but there is no time to celebrate - hackers started to use another virus. " +
+                          "This one is extremely fast, you should be careful!";
                     skipButton.gameObject.SetActive(true);
                     energyText.text = "1 energy/sec";
                 } 
                     break;
                 case 5:
                 {
-                    txt = "Day 6. I have some bad news: this part of our system is extremely vulnerable. On the other side, " +
-                          "there are good news also. You will have enough energy to build a strong defense. " +
+                    txt = "Day 6. I have some bad news: this part of our system is highly vulnerable. " +
+                          "However, there are also good news: now you have enough energy to build a strong defense. " +
                           "I hope it will be strong enough to stop the hackers.";
                     skipButton.gameObject.SetActive(true);
                     energyText.text = "2 energy/sec";
@@ -118,9 +118,8 @@ namespace UI
                     break;
                 case 6:
                 {
-                    txt = "Day 7. We've identified the hackers! Our security units are already on the way. " +
-                          "But hackers are still trying to  steal our data. Looks like they mean serious business. " +
-                          "So be ready, this is our final round.";
+                    txt = "Day 7. We’ve identified the hackers! Our security units are already on the way, " +
+                          "but the hackers are still trying to steal our data. Looks like they mean serious business. Be ready, this is our final round!";
                     skipButton.gameObject.SetActive(true);
                     energyText.text = "2 energy/sec";
                 }  

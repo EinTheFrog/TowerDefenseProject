@@ -122,7 +122,7 @@ namespace Gameplay.Towers
                     ShowLevel(manager.ShowingLevels);
                     Build(meshRenderer);
                     audio = GetComponent<AudioSource>();
-                    audio.PlayOneShot(buildSound, 1f);
+                    audio.PlayOneShot(buildSound, 2.5f);
                     audio.volume = audioVolume;
                     _audioVolume = audioVolume;
                     break;

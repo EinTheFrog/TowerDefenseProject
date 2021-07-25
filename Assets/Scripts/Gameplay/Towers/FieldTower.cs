@@ -43,7 +43,10 @@ namespace Gameplay.Towers
             if (!EnemiesUnderFire.Contains(enemy)) return;
             
             var speedDebaff = basicSpeedDebaff + speedDebaffPerLevel * level;
-            enemy.RestoreBasicSpeed(speedDebaff);;
+            if (enemy != null)
+            {
+                enemy.RestoreBasicSpeed(speedDebaff);
+            }
             enemy.Die -= StopShooting;
             enemy.Die -= Manager.GetMoneyForKill;
             EnemiesUnderFire.Remove(enemy);
@@ -70,6 +73,10 @@ namespace Gameplay.Towers
             var oldSpeedDebaff = basicSpeedDebaff + speedDebaffPerLevel * (level - 1);
             foreach (var enemy in EnemiesUnderFire)
             {
+                if (enemy == null)
+                {
+                    
+                }
                 enemy.RestoreBasicSpeed(oldSpeedDebaff);
                 enemy.SlowDown(speedDebaff);
             }

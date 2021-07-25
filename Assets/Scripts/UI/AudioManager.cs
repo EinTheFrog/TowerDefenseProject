@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
         }
         foreach (var audioSource in _audioSources)
         {
-            audioSource.volume = audioSource.CompareTag(MusicTag) ? musicVolume : audioVolume;
+            audioSource.volume = audioSource.CompareTag(MusicTag) ? musicVolume / 4 : audioVolume / 8;
         }
     }
 }

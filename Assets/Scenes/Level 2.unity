@@ -8046,6 +8046,7 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   levelMenu: {fileID: 0}
   energyText: {fileID: 0}
+  skipButton: {fileID: 0}
 --- !u!43 &266787892
 Mesh:
   m_ObjectHideFlags: 0
@@ -8247,7 +8248,7 @@ MonoBehaviour:
   treasurePrefab: {fileID: 5418727713796052880, guid: fe319fc7714a4d84ca9812862c4c2632,
     type: 3}
   roadManager: {fileID: 1576647989}
-  enemiesCount: 28000000
+  enemiesCount: 1e000000
   levelManager: {fileID: 1548004388}
 --- !u!4 &270124272
 Transform:
