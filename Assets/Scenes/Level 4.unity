@@ -7118,6 +7118,7 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   levelMenu: {fileID: 0}
   energyText: {fileID: 0}
+  skipButton: {fileID: 0}
 --- !u!1 &270124270
 GameObject:
   m_ObjectHideFlags: 0
@@ -7157,7 +7158,7 @@ MonoBehaviour:
   treasurePrefab: {fileID: 5418727713796052880, guid: fe319fc7714a4d84ca9812862c4c2632,
     type: 3}
   roadManager: {fileID: 1576647989}
-  enemiesCount: 3c0000000f000000
+  enemiesCount: 320000000a000000
   levelManager: {fileID: 1548004388}
 --- !u!4 &270124272
 Transform:
@@ -17188,6 +17189,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5953663598453061337, guid: 151fcd662428a6c48bdc69c1fb466747,
+        type: 3}
+      propertyPath: musicVolumeMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6741532446426053702, guid: 151fcd662428a6c48bdc69c1fb466747,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48009,6 +48015,11 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4673154339354883046, guid: 9d5c8c67a6499cb43898cec909d97b87,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 909fe30d9bbe043979e842fc67ad940d, type: 3}
     - target: {fileID: 4673154339769334412, guid: 9d5c8c67a6499cb43898cec909d97b87,
         type: 3}
       propertyPath: inputShell

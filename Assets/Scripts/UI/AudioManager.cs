@@ -1,21 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+namespace UI
 {
-    private AudioSource[] _audioSources = default;
-    private const string MusicTag = "MusicSource";
-
-    public void UpdateVolume(float audioVolume, float musicVolume)
+    public class AudioManager : MonoBehaviour
     {
-        if (_audioSources == null)
+        [SerializeField] private float musicVolumeMultiplier = 1;
+        
+        private AudioSource[] _audioSources = default;
+        private const string MusicTag = "MusicSource";
+
+        public void UpdateVolume(float audioVolume, float musicVolume)
         {
-            _audioSources = FindObjectsOfType<AudioSource>();
-        }
-        foreach (var audioSource in _audioSources)
-        {
-            audioSource.volume = audioSource.CompareTag(MusicTag) ? musicVolume / 4 : audioVolume / 8;
+            if (_audioSources == null)
+            {
+                _audioSources = FindObjectsOfType<AudioSource>();
+            }
+            foreach (var audioSource in _audioSources)
+            {
+                audioSource.volume = audioSource.CompareTag(MusicTag) ? musicVolume * musicVolumeMultiplier : audioVolume / 4;
+            }
         }
     }
 }

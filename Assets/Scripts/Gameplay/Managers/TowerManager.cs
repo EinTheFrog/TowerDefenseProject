@@ -86,11 +86,11 @@ namespace Gameplay.Managers
             float towerAudioMultiplier = 1f;
             switch (_chosenTower.TowerName)
             {
-                case "Laser beam": towerAudioMultiplier = 0.1f;
+                case "Laser beam": towerAudioMultiplier = 0.2f;
                     break;
-                case "Field tower": towerAudioMultiplier = 0.1f;
+                case "Field tower": towerAudioMultiplier = 0.15f;
                     break;
-                case "Rocket launcher": towerAudioMultiplier = 0.2f;
+                case "Rocket launcher": towerAudioMultiplier = 0.4f;
                     break;
             }
             newTower.Init(Tower.TowerState.Building, sole.Center, this, uiManager.AudioVolume * towerAudioMultiplier);
