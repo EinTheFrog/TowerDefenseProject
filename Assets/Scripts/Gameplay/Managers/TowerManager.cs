@@ -124,7 +124,7 @@ namespace Gameplay.Managers
             //берем масштаб любого измерения
             var scale = towerTransform.localScale.x;
             roadManager.UpdateDangerInRadius(TowersSoles[tower].Center, rad * scale, -tower.CurrentDanger);
-
+            _towerInfo.CloseMenu();
             TowersSoles[tower].IsFree = true;
             TowersSoles.Remove(tower);
         }

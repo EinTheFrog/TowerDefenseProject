@@ -75,7 +75,7 @@ namespace UI
             _damageText.text = "Damage " + chosenTower.Damage;
         }
 
-        private void CloseMenu()
+        public void CloseMenu()
         {
             if (_canvasGroup == null) return;
             _canvasGroup.alpha = 0;

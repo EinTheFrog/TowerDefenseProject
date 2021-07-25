@@ -6844,6 +6844,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 120876703}
     m_Modifications:
+    - target: {fileID: 1839603476863125026, guid: 44cde0d4ebb50b5409bb56be31dde512,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 99754148}
+    - target: {fileID: 1839603476863125026, guid: 44cde0d4ebb50b5409bb56be31dde512,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839603478517280385, guid: 44cde0d4ebb50b5409bb56be31dde512,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 99754148}
+    - target: {fileID: 1839603478517280385, guid: 44cde0d4ebb50b5409bb56be31dde512,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
     - target: {fileID: 3905308334310185465, guid: 44cde0d4ebb50b5409bb56be31dde512,
         type: 3}
       propertyPath: m_AnchorMin.y

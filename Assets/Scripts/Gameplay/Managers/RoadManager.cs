@@ -161,6 +161,7 @@ namespace Gameplay.Managers
 
         public KeyValuePair<RoadPlatform, RoadPlatform>? GetNodesForRoadBetween(RoadPlatform road)
         {
+            if (road == null) return null;
             if (_roadsBetweenNodes.ContainsKey(road)) return _roadsBetweenNodes[road];
             return null;
         }

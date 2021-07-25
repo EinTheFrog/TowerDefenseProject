@@ -67,18 +67,18 @@ namespace UI
             {
                 case 0: {
                     txt = "Day 1. Welcome to Black Tower inc. You will protect our great company from hacker attacks. " +
-                          "Hackers will use viruses to steal our data. You should destroy these viruses using antivirus programs ('towers'). " +
-                          "Check out the manual for more information. " +
-                          "Beware though that sell/upgrade options aren't ready yet and you will be able to use only one antivirus program. Good luck.";
+                          "Hackers will use viruses to steal our data. You must destroy these viruses by using antivirus programs ('towers'). " +
+                          "Check out the manual for more information. Beware: sell/upgrade options aren't ready yet and you can only use one antivirus program. " +
+                          "Good luck.";
                     skipButton.gameObject.SetActive(true);
                     energyText.text = "3 energy/sec";
                 } 
                     break;
                 case 1:
                 {
-                    txt = "Day 2. Bad news: today's task will be harder. You will protect 2 paths at once and " +
-                          "hackers will use a new powerful virus. But there are also good news: I've added an ability to sell towers. " +
-                          "All the invested energy in the tower returns after selling. So you can do this as often as you want to.";
+                    txt = "Day 2. Bad news: today's task will be harder. You will protect 2 paths at once and hackers will use a new powerful virus. " +
+                          "However, there are also good news: I've added an ability to sell towers. All the energy invested in the tower returns after selling it. " +
+                          "So you can do this as often as you want to.";
                     skipButton.gameObject.SetActive(true);
                     energyText.text = "1 energy/sec";
                 } 
