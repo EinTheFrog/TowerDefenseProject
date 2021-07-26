@@ -111,7 +111,7 @@ MonoBehaviour:
   basicSpeed: 0.8
   levitateHeight: 0.3
   reward: 1
-  deathEffect: {fileID: 2962488966114001412, guid: 29a24740e94e858489fd220facf85687,
+  deathEffect: {fileID: 2962488966114001412, guid: bf52eded7283a5d4a8fe1c384adea5ca,
     type: 3}
 --- !u!54 &6085065028219506216
 Rigidbody:

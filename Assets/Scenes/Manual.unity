@@ -3257,7 +3257,7 @@ PrefabInstance:
         Damage: 1 aoe dmg per second
 
         Range:
-        1.5 squares
+        2.25 squares
 
         Slowdown: 40%
 
@@ -3830,8 +3830,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: "Cost: 60 energy\nDamage: 5 aoe dmg \nRange: 6 squares\nTime between
-        fires: 2 seconds\nAccuracy: 4 squares\nUpgrade cost: 20 energy\nUpgrade gives:
-        +1 dmg\nMax level: 5"
+        fires: 2 seconds\nAccuracy: 3.5 squares\nUpgrade cost: 20 energy\nUpgrade
+        gives: +1 dmg\nMax level: 5"
       objectReference: {fileID: 0}
     - target: {fileID: 255392170417123694, guid: 7fa66099e91611549917d44b878f156c,
         type: 3}

@@ -23242,46 +23242,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 973882308735900999, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973882308735900999, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973882308735900999, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 973882308735900999, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2465167106338695743, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 99754148}
-    - target: {fileID: 2465167106338695743, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 2465167106338695743, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 264675886}
-    - target: {fileID: 2465167106338695743, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartNext
-      objectReference: {fileID: 0}
     - target: {fileID: 4351823580527548177, guid: ce46909eea0e86643a4533b2ec7015e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23451,11 +23411,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609069122282432650, guid: ce46909eea0e86643a4533b2ec7015e8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce46909eea0e86643a4533b2ec7015e8, type: 3}
