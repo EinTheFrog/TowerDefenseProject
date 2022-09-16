@@ -1,1 +1,1 @@
-MyTowerDefence
+**Black Tower inc.** is a tower defense game developed with Unity. The game was released on [itch.io](https://einthefrog.itch.io/black-tower-inc). It's completely free so I decided to make source code open for everybody in case it can help anyone learning Unity engine.
